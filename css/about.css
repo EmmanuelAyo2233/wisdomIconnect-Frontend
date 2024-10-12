@@ -3,6 +3,7 @@ body{
     margin: 0;
     font-family: sans-serif;
 }
+
 .navbar {
     padding: 1rem;
     background-color: #fff;
@@ -274,7 +275,6 @@ body{
 .footer {
   background-color: #4B3D29; 
   color: #f8f9fa; 
-  height: 280px;
 }
 
 .footer a {
