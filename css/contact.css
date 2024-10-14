@@ -60,7 +60,7 @@ body{
 .login-register .nav-link {
     margin-left: 10px; 
     padding: 10px 20px; 
-    background-color: #4B3D29;
+    background-color: #b22222;
     color: #fff; 
     border-radius: 5px; 
     text-align: center; 
@@ -69,7 +69,7 @@ body{
 }
 
 .login-register .nav-link:hover {
-    background-color: #B22222; 
+    background-color: #4B3D29; 
 }
 
 
@@ -77,3 +77,216 @@ body{
     flex-grow: 1; 
     justify-content: center; 
 }
+
+
+.contact-header {
+    position: relative; 
+    background: url(img/contact\ bg.webp);
+    background-size: cover;
+    height: 94vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; 
+    text-align: center;
+    padding: 0 20px; 
+}
+
+.contact-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  .contact-header .header-text {
+    position: relative;
+    z-index: 2; 
+    text-align: center;
+    padding: 20px;
+  }
+
+.header-text h1{
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-family: sans-serif;
+    text-align: center;
+    align-items: center;
+    font-family: 'poppins', sans-serif;
+}
+
+.header-text p{
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'lora', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    align-items: center;
+}
+
+.contacth2{
+    color: #B22222;
+    margin-right: 10px;
+    font-size: 2.3rem;
+    font-weight: 600;
+  }
+
+  .contact p i{
+    color: #b22222;
+    margin-right: 10px;
+    font-size: 25px;
+  }
+
+  .social-icons{
+    margin-top: 30px;
+
+}
+
+.social-icons a i{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #4B3D29;
+    display: inline-block;
+    transition: transform 0.5s;
+
+}
+
+.social-icons a i:hover{
+    color: #B22222;
+    transform: translate(-5px);
+
+}
+
+.form-group input textarea{
+    width: 100%;
+    outline:none;
+    padding: 15px ;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+    border-radius: 10px;
+}
+
+
+
+
+.about-btn {
+    padding: 10px 20px; 
+    background-color: #b22222; 
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    text-decoration: none; 
+    text-align: center; 
+    margin: 0; 
+}
+.sectionsheader{
+    padding-bottom: 10px; 
+    font-size: 2.4rem; 
+    color: #B22222; 
+    font-weight: 600;
+    font-family: 'poppins', sans-serif;
+}
+
+
+.about-btn:hover{
+    background-color: #4B3D29;
+}
+
+input{
+    height: 3.3rem;
+    font-family: 'poppins' sans-serif;
+}
+
+.hear{
+    font-size: 1.1rem;
+    margin: 0 auto;
+    font-family: 'lora', sans-serif;
+    color: #b22222;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.sectionsheader1{
+    font-size: 2.1rem; 
+    color: #B22222; 
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+  
+.footer {
+    background-color: #4B3D29; 
+    color: #f8f9fa; 
+  }
+  
+  .footer a {
+    color: #f8f9fa; 
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    color: #b22222; 
+  }
+  
+  .footer hr {
+    border-top: 1px solid #f8f9fa; 
+  }
+  
+  .footer-text{
+    font-size: 15px;
+  }
+  
+  
+  
+  .social-icons-footer{
+    margin-top: 30px;
+  
+  }
+  
+  .social-icons-footer a i{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #fff;
+    display: inline-block;
+    transition: transform 0.5s;
+  
+  }
+  
+  .social-icons-footer a i:hover{
+    color: #B22222;
+    transform: translate(-5px);
+  
+  }
+  
+  
+  .nav-link-footer{
+    font-size: 1.1rem; 
+    transition: color 0.3s ease; 
+    font-weight: 400;
+    color: black;
+  }
+  
+  .nav-link-footer:hover {
+    color: #b22222 !important;
+  }
+  
+  .footer-header{
+    color: #B22222;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  
