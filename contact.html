@@ -49,7 +49,7 @@
                 <!-- Login and Register Links -->
                 <div class="login-register">
                     <a class="nav-link" href="login.html">Login</a>
-                    <a class="nav-link" href="sign-up.html">Sign-up</a>
+                    <a class="nav-link" href="mainRegistration.html">Sign-up</a>
                 </div>
             </div>
         </div>
@@ -222,6 +222,10 @@
     </div>
 </footer>
 
+<a href="#" class="scroll-up" id="scrollUpButton">
+    <i class="bi bi-chevron-up"></i>
+</a>
+
 
   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -269,6 +273,25 @@
         beforeReveal: function (el) {
             el.classList.add('show');
         }
+    });
+</script>
+
+
+<script>
+    // Show the scroll-up button when scrolling down 100px
+    window.addEventListener('scroll', function() {
+        let scrollButton = document.getElementById('scrollUpButton');
+        if (window.scrollY > 100) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    });
+
+    // Smoothly scroll to the top when the button is clicked
+    document.getElementById('scrollUpButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 </script>
 

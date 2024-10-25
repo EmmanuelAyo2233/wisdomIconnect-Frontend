@@ -45,7 +45,7 @@
                 <!-- Login and Register Links -->
                 <div class="login-register">
                     <a class="nav-link" href="login.html">Login</a>
-                    <a class="nav-link" href="sign-up.html">Sign-up</a>
+                    <a class="nav-link" href="mainRegistration.html">Sign-up</a>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-md-8 fade-in">
                     <div class="main-img-wrapper" style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
-                        <img src="css/img/moringa.jpg " alt="Danafojura Masquerade" class="img-fluid my-4 main-img fade-in-delay" style="max-width: 100%; height: auto;">
+                        <img src="css/img/moringa.jpg " alt="Danafojura Masquerade" class="img-fluid my-4 main-img fade-in-delay" style="max-width: 100%;">
         
                     
                         <p class="fade-in"><strong>Moringa</strong>, often referred to as the "miracle tree," is celebrated for its exceptional nutritional and medicinal properties. Native to parts of Africa and Asia, the Moringa tree has been used for centuries in traditional medicine to address various health issues and improve overall well-being. It is highly valued for its ability to grow rapidly and thrive in harsh climates, making it a vital resource in regions facing food scarcity.</p>
@@ -240,6 +240,10 @@
     </div>
 </footer>
 
+<a href="#" class="scroll-up" id="scrollUpButton">
+    <i class="bi bi-chevron-up"></i>
+</a>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/scrollreveal"></script>
 <script>
@@ -311,5 +315,23 @@
             });
         });
     </script>
+
+<script>
+    // Show the scroll-up button when scrolling down 100px
+    window.addEventListener('scroll', function() {
+        let scrollButton = document.getElementById('scrollUpButton');
+        if (window.scrollY > 100) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    });
+
+    // Smoothly scroll to the top when the button is clicked
+    document.getElementById('scrollUpButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
 </body>
 </html>

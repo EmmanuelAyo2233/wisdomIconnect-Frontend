@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adult Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/adultreg.css">
+</head>
+<body class="bg-light">
+
+    <nav>
+        <div class="nav1">
+        
+            <a class="logo text-center">Wisdom<span style="color: #B22222;">Connect</span></a>
+        </div>
+            
+    </nav>
+
+    <div class="container fade-in">
+        <form class="fade-in">
+            <h2>Create Account</h2>
+            <div class="text-center tagline fade-in-delay">
+                <p><strong>Join WisdomConnect Today!</strong></p>
+                <p class="mb-4">Share your wealth of knowledge and guide the next generation. Join us as a Wise Mentor and inspire others through your experiences!</p>
+            </div>
+            <div class="form-group fade-in">
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+            </div>
+            <div class="form-group fade-in">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group position-relative fade-in">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                <i class="bi bi-eye toggle-password" id="togglePassword"></i>
+            </div>
+            <div class="form-group position-relative fade-in">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+                <i class="bi bi-eye toggle-password" id="toggleConfirmPassword"></i>
+            </div>
+            <div class="form-group fade-in">
+                <label for="bio">Bio</label>
+                <textarea class="form-control" id="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+            </div>
+            <div class="form-check fade-in ">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                <label class="form-check-label" for="checkbox1">History</label>
+            </div>
+            <div class="form-check fade-in">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox2">
+                <label class="form-check-label" for="checkbox2">Self-care</label>
+            </div>
+            <div class="form-check fade-in">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox3">
+                <label class="form-check-label" for="checkbox3">Ancient Medicine</label>
+            </div>
+            <div class="form-check fade-in">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
+                <label class="form-check-label" for="checkbox4">Agriculture</label>
+            </div>
+            <div class="form-button fade-in">
+                <button type="submit" class="btn btn-danger">Sign UP</button>
+            </div>
+
+            <div class="text-center fade-in">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <a href="#" class="scroll-up" id="scrollUpButton">
+        <i class="bi bi-chevron-up"></i>
+    </a>
+
+    <script>
+        document.querySelectorAll('.toggle-password').forEach(item => {
+            item.addEventListener('click', function () {
+                let input = this.previousElementSibling;
+                if (input.type === "password") {
+                    input.type = "text";
+                    this.classList.remove('bi-eye');
+                    this.classList.add('bi-eye-slash');
+                } else {
+                    input.type = "password";
+                    this.classList.remove('bi-eye-slash');
+                    this.classList.add('bi-eye');
+                }
+            });
+        });
+    </script>
+
+
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+    ScrollReveal().reveal('.fade-in', {
+         duration: 1000,
+         distance: '50px',
+         origin: 'bottom',
+         easing: 'ease-in-out',
+         beforeReveal: function (el) {
+             el.classList.add('show');
+         }
+     });
+ 
+     ScrollReveal().reveal('.fade-in-delay', {
+         duration: 1000,
+         distance: '50px',
+         origin: 'left',
+         easing: 'ease-in-out',
+         easing: 'ease-in-out',
+         beforeReveal: function (el) {
+             el.classList.add('show');
+         }
+     });
+ 
+     ScrollReveal().reveal('.top', {
+         duration: 1000,
+         distance: '50px',
+         origin: 'top',
+         easing: 'ease-in-out',
+         easing: 'ease-in-out',
+         beforeReveal: function (el) {
+             el.classList.add('show');
+         }
+     });
+ 
+     ScrollReveal().reveal('.fade-in-delay-2', {
+         duration: 1000,
+         distance: '50px',
+         origin: 'right',
+         easing: 'ease-in-out',
+         easing: 'ease-in-out',
+         beforeReveal: function (el) {
+             el.classList.add('show');
+         }
+     });
+ </script>
+
+
+<script>
+    // Show the scroll-up button when scrolling down 100px
+    window.addEventListener('scroll', function() {
+        let scrollButton = document.getElementById('scrollUpButton');
+        if (window.scrollY > 100) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    });
+
+    // Smoothly scroll to the top when the button is clicked
+    document.getElementById('scrollUpButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+ 
+</body>
+</html>
