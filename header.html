@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
+            </div>
+            <div class="menu-button">
+                <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
+            </div>
+            <div class="search-bar">
+                <div class="search-input">
+                    <i class="bi bi-search" id="searchIcon"></i>
+                    <input type="text" placeholder="Search Wise Mentor" id="searchInput">
+                </div>
+            </div>
+            <div class="header-icons">
+                <div class="noti">
+                    <i class="bi bi-bell notification"></i>
+                    <span class="badge" id="notificationCount">4</span>
+                </div>
+                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="#">Book A Session</a></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sliding-menu" id="slidingMenu">
+        <!-- Cancel Icon -->
+        <div class="cancel-btn" id="cancelBtn">
+            <i class="bx bx-x"></i>
+        </div>
+        
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <div class="profile-info">
+                <p class="profile-name">Emmanuel Ayobami</p>
+                <a href="#" class="view-profile">View Profile</a>
+            </div>
+        </div>
+        
+        <hr>
+        <!-- Main Navigation -->
+        <ul class="nav-list">
+            <li>
+                <a href="#" class="res">
+                    <i class="bi bi-house-door"></i> Home 
+                </a>
+                <span class="menu-description">Track your home page and connections</span>
+            </li>
+            <li>
+                <a href="#" class="res">
+                    <i class="bx bx-message-alt-detail"></i> Messages 
+                </a>
+                <span class="menu-description">View your messages and stay updated</span>
+            </li>
+            <li>
+                <a href="#" class="res">
+                    <i class="bx bx-user"></i> My Connections 
+                </a>
+                <span class="menu-description">Manage your personal connections</span>
+            </li>
+            <li>
+                <a href="#" class="res">
+                    <i class="bx bxs-calendar-alt"></i> Booking  </a>
+                    <span class="menu-description">Book your sessions with mentors</span>
+            </li>
+        </ul>
+        <hr>
+
+        
+        <ul class="nav-list">
+            <li><a href="#" class="res"><i class="bi bi-calendar-plus"></i> Book a Session </a></li>
+            <li><a href="#"  class="res"><i class="bi bi-bell"></i> Notifications </a></li>
+            <li><a href="#"  class="res"><i class="bx bx-mentor"></i> Become a Mentor </a></li>
+        </ul>
+        <hr>
+    
+ 
+        <ul class="nav-list">
+            <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
+            <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
+            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+        </ul>
+    </div>
+    
+    
+    <div class="sidebar">
+        <ul class="nav-list">
+            <li><a href="#"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
+            <li><a href="#"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
+            <li><a href="#"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
+            <li><a href="#"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
+            <li><a href="#"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
+        </ul>
+    
+        <div class="profile-container">
+            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <div class="hover-options" id="hoverMenu" data-visible="false">
+                <a href="/profile" class="profile-link">
+                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <div>
+                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="view-profile">View Profile</span>
+                    </div>
+                </a>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-calendar-check"></i> Connect your calendar</a></li>
+                    <li><a href="#"><i class="bi bi-award"></i> Quality</a></li>
+                    <li><a href="#"><i class="bi bi-heart"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="bi bi-people"></i> Get A Match</a></li>
+                    <li><a href="#"><i class="bi bi-person"></i> Become a Mentor</a></li>
+                </ul>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
+                    <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                    <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
+                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <!-- Bottom Navigation for Mobile and Tablet -->
+<div class="bottom-nav">
+    <ul class="nav-list">
+        <li><a href="#" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
+    </ul>
+</div>
+
+    
+
+
+
+<script src="js/header.js"></script>
+</body>
+</html>

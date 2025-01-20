@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Card Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<style>
+    /* Main Container */
+.main-container {
+    padding: 20px;
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 8/4 Split */
+    gap: 20px;
+}
+
+/* Left Section Styling */
+.left-column {
+    background-color: #f9f9f9; /* Optional */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Right Section Styling */
+.right-column {
+    background-color: #fff; /* Optional */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards Styling */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Strength Styling */
+.profile-strength {
+    text-align: left;
+}
+
+.progress-bar-container {
+    background-color: #e0e0e0;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 20%;
+    background-color: #4caf50;
+    border-radius: 4px;
+}
+
+</style>
+<body>
+
+    <div class="main-container">
+        <div class="grid-container">
+            <!-- Left Section -->
+            <div class="left-column">
+                <div class="home-content">
+                    <div class="welcome">
+                        <img src="css/img/welcome-img.jpg" alt="Welcome Image" class="welcome-image">
+                        <div class="text">Welcome👋</div>
+                    </div>
+                    <p class="notice">You have no upcoming sessions.</p>
+                </div>
+                <div class="cards-container">
+                    <div class="card fast-link">
+                        <h5 class="card-title"><a href="#">Upcoming Sessions</a></h5>
+                        <p class="card-text">Check out your booked sessions with elders here.</p>
+                    </div>
+                    <!-- Add more cards as needed -->
+                </div>
+            </div>
+    
+            <!-- Right Section -->
+            <div class="right-column">
+                <div class="profile-strength">
+                    <h3>Boost Your Profile</h3>
+                    <div class="strength-level">
+                        <span id="strength-name">Youngling</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                        <span id="progress-percent">20%</span>
+                    </div>
+                    <ul class="tasks-list">
+                        <li><input type="checkbox" /> Upload Profile Picture</li>
+                        <li><input type="checkbox" /> Add a Bio</li>
+                        <li><input type="checkbox" /> Verify Email</li>
+                        <li><input type="checkbox" /> Add Skills</li>
+                    </ul>
+                    <p class="encouragement">Complete the steps to reach <b>Rookie</b>!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

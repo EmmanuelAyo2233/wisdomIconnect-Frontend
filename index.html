@@ -3,329 +3,772 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wisdom Connect</title>
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="css/home.css">
+    <title>Youth Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
-
-<style>
-    .fade-in {
-        opacity: 0;  
-        transition: opacity 1s ease-in-out;  
-    }
-
-    .fade-in.show {
-        opacity: 1; 
-    }
-</style>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top ">
+    <header class="header">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Wisdom<span style="color: #B22222;">Connect</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse " id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item me-3">
-                        <a class="nav-link text-dark" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item dropdown me-3">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button">
-                            Categories
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="history.html">History</a></li>
-                            <li><a class="dropdown-item" href="selfcare.html">Self-Care</a></li>
-                            <li><a class="dropdown-item" href="ancient-medicine.html">Ancient Medicine</a></li>
-                            <li><a class="dropdown-item" href="agriculture.html">Agriculture</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item me-3 ">
-                        <a class="nav-link text-dark" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="contact.html">Contact</a>
-                    </li>
+            <div class="logo">
+                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
+            </div>
+            <div class="menu-button">
+                <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
+            </div>
+            <div class="search-bar">
+                <div class="search-input">
+                    <i class="bi bi-search" id="searchIcon"></i>
+                    <input type="text" placeholder="Search Wise Mentor" id="searchInput">
+                </div>
+            </div>
+            <div class="header-icons">
+                <div class="noti">
+                    <i class="bi bi-bell notification"></i>
+                    <span class="badge" id="notificationCount">4</span>
+                </div>
+                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="#">Book A Session</a></button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="sliding-menu" id="slidingMenu">
+        <!-- Cancel Icon -->
+        <div class="cancel-btn" id="cancelBtn">
+            <i class="bx bx-x"></i>
+        </div>
+        
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <div class="profile-info">
+                <p class="profile-name">Emmanuel Ayobami</p>
+                <a href="#" class="view-profile">View Profile</a>
+            </div>
+        </div>
+        
+        <hr>
+        <!-- Main Navigation -->
+        <ul class="nav-list">
+            <li>
+                <a href="dashboard.html" class="res">
+                    <i class="bi bi-house-door"></i> Home 
+                </a>
+                <span class="menu-description">Track your home page and connections</span>
+            </li>
+            <li>
+                <a href="Explore.html" class="res">
+                    <i class="bx bx-message-alt-detail"></i> Messages 
+                </a>
+                <span class="menu-description">View your messages and stay updated</span>
+            </li>
+            <li>
+                <a href="#" class="res">
+                    <i class="bx bx-user"></i> My Connections 
+                </a>
+                <span class="menu-description">Manage your personal connections</span>
+            </li>
+            <li>
+                <a href="#" class="res">
+                    <i class="bx bxs-calendar-alt"></i> Booking  </a>
+                    <span class="menu-description">Book your sessions with mentors</span>
+            </li>
+        </ul>
+        <hr>
+
+        
+        <ul class="nav-list">
+            <li><a href="#" class="res"><i class="bi bi-calendar-plus"></i> Book a Session </a></li>
+            <li><a href="#"  class="res"><i class="bi bi-bell"></i> Notifications </a></li>
+            <li><a href="#"  class="res"><i class="bx bx-mentor"></i> Become a Mentor </a></li>
+        </ul>
+        <hr>
+    
+ 
+        <ul class="nav-list">
+            <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
+            <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
+            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+        </ul>
+    </div>
+    
+    
+    <div class="sidebar">
+        <ul class="nav-list">
+            <li><a href="dashboard.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
+            <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
+            <li><a href="#"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
+            <li><a href="#"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
+            <li><a href="#"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
+        </ul>
+    
+        <div class="profile-container">
+            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <div class="hover-options" id="hoverMenu" data-visible="false">
+                <a href="/profile" class="profile-link">
+                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <div>
+                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="view-profile">View Profile</span>
+                    </div>
+                </a>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-calendar-check"></i> Connect your calendar</a></li>
+                    <li><a href="#"><i class="bi bi-award"></i> Quality</a></li>
+                    <li><a href="#"><i class="bi bi-heart"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="bi bi-people"></i> Get A Match</a></li>
+                    <li><a href="#"><i class="bi bi-person"></i> Become a Mentor</a></li>
                 </ul>
-    
-                <!-- Login and Register Links -->
-                <div class="login-register">
-                    <a class="nav-link" href="login.html">Login</a>
-                    <a class="nav-link" href="mainRegistration.html">Sign-up</a>
-                </div>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
+                    <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                    <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
+                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                </ul>
             </div>
         </div>
-    </nav>
-    
-    <section class="hero mt-5 fade-in">
-        <div class="overlay"></div>
-        <div class="container text-center">
-            <h1 class="hero-h1 fade-in">Bridging the Gap: Connecting <br> Youth with Experience</h1>
-            <p class="hero-p fade-in-delay">Empowering the Next Generation Through Shared Knowledge and Experience</p>
-            <a href="#" class="book fade-in-delay-2"><span>Book A Session Now</span></a>
-        </div>
-    </section>
-    
-    <section id="about" class="about py-4 fade-in-delay-2">
-        <div class="container about-us">
-            <h2 class="text-center mb-3 sectionsheader">About Us</h2>
-            <div class="row">
-              <div class="col-md-6 fade-in-delay-2">
-                <img src="css/img/homebg2.webp" alt="WisdomConnect" class="img-fluid">
-              </div>
-              <div class="col-md-6 fade-in-delay">
-                <h3 style="color: #B22222;">Our Mission</h3>
-                <p class="about-text">Welcome to <strong>WisdomConnect</strong>, a unique platform designed to bridge the gap between generations. Our mission is to empower young people by connecting them with the wisdom and experiences of our elders. We believe that the stories and insights of the older generation are invaluable and can greatly enrich the lives of the youth.</p>
-                
-                <h3 style="color: #B22222;">Our Vision</h3>
-                <p class="about-text">At WisdomConnect, we envision a world where the knowledge and wisdom  of the old , can be leveraged alongside the innovation and technology, of the young towards creating a prosperous and enriched society.</p>
-                
-                <h3 style="color: #B22222;">What We Do</h3>
-                <p class="about-text">We facilitate one-on-one sessions and group discussions, allowing young people to engage with elders on various topics such as history, self-care, ancient medicine, and agriculture. Our platform not only promotes learning but also encourages intergenerational friendships and understanding.</p>
-                <button class="about-btn"><a href="about.html">Learn More </a>&gt;&gt;</button>
-            </div>
-          </div>
-          
-      </section>
-      
-  
-  
-      <section id="services" class="py-5 fade-in-delay-2">
-        <div class="container">
-            <p class="text-center mb-2" style="font-family: sans-serif; color: #B22222;">FEATURES</p>
-            <h2 class="text-center mb-5 sectionsheader">Our Features & Services</h2>
-            <div class="row justify-content-center">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 text-center mb-3 top">
-                    <div class="service-box shadow-box">
-                        <i class="bi bi-book-half serviceIcon"></i>
-                        <h4>History</h4>
-                        <p class="mb-4">Learn about ancient events, history and philosophy and their relevance in today's world.</p>
-                        <button class="about-btn">Learn More &gt;&gt;</button>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 text-center mb-3 fade-in  ">
-                    <div class="service-box shadow-box">
-                        <i class="bi bi-heart serviceIcon"></i>
-                        <h4>Self-Care</h4>
-                        <p class="mb-4">Cross-pollinated ideas, such as wellness tips and advice from older generations, infuse their knowledge into improving lives and overall well-being. </p>
-                        <button class="about-btn">Learn More &gt;&gt;</button>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 text-center mb-3 fade-in">
-                    <div class="service-box shadow-box">
-                        <i class="bi bi-heart-pulse-fill serviceIcon"></i>
-                        <h4>Ancient Medicine</h4>
-                        <p class="mb-4">Discover remedies, treatments, and more, and learn how today's technology can be utilized to enhance them.</p>
-                        <button class="about-btn">Learn More &gt;&gt;</button>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 text-center mb-3 top">
-                    <div class="service-box shadow-box">
-                        <i class="bi bi-tree serviceIcon"></i>
-                        <h4>Agriculture</h4>
-                        <p class="mb-4">Learn traditional farming techniques and the importance of sustainable agriculture.</p>
-                        <button class="about-btn">Learn More &gt;&gt;</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="py-5 fade-in">
-        <div class="container top">
-            <p class="text-center" style="font-family: 'Lora', serif; color: #B22222; font-size: 20px;">Testimonial</p>
-            <h2 class="text-center mb-4 sectionsheader">What People Are Saying</h2>
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="testimonial-box text-center  fade-in">
-                            <p>"This platform has truly changed my perspective. I learned so much from the older generations!"</p>
-                            <div class="d-flex align-items-center justify-content-center mt-3">
-                                <img src="css/img/user1.jpg" alt="User 1" class="user-image">
-                                <h5 class="username ml-2">Abayomi Tomilola</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-box text-center">
-                            <p>"Connecting with elders has been a wonderful experience. Their wisdom is valuable."</p>
-                            <div class="d-flex align-items-center justify-content-center mt-3">
-                                <img src="css/img/emma.jpg" alt="User 2" class="user-image">
-                                <h5 class="username ml-2">Ishola Emmanuel</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-box text-center">
-                            <p>"A fantastic initiative that brings generations together. Highly recommend!"</p>
-                            <div class="d-flex align-items-center justify-content-center mt-3">
-                                <img src="css/img/user3.jpg" alt="User 3" class="user-image">
-                                <h5 class="username ml-2">Abdulsamad</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
-    
-  
-  
-<section class="py-5  blog-section top">
-  <div class="container blog-header">
-    <h2 class="text-center sectionsheader1 mb-2" style="color: #B22222; font-family: sans-serif; font-weight: 600;">Our Blog</h2>
-    <p class="text-center" style=" font-family: 'Lora', serif; color: #B22222; font-size: 20px;">Insights and Stories From Our Elders</p>
-  </div>
-  <div class="container">
-    <div class="row">
-      <!-- Blog Post 1 -->  
-      <div class="col-md-4 blog-card fade-in-delay">
-        <div class="card">
-          <img src="css/img/dana.png" class="card-img-top img-fluid blog-img" alt="Post Image">
-          <div class="card-body">
-            <h5 class="card-title">Danafojura: The Oldest Masquerade in Oyo Kingdom</h5>
-            <p class="card-text">Danafojura is the oldest masquerade in the Oyo Kingdom, representing the rich cultural heritage of the Yoruba people. Closely linked to the Oyo Mesi (council of chiefs), it reinforces social norms and serves as entertainment while connecting to ancestral spirits. Performed during festivals like the Oyo Festival, it features elaborate costumes and rhythmic drumming. This masquerade is crucial for preserving Yoruba culture and educating younger generations, while also promoting tourism by attracting visitors interested in Oyo's traditions.
-            The Odua Festival serves as a celebration of cultural identity and a platform for social cohesion, reminding participants of their roots and the importance of community and diversity.</p>
-            <p><i class="fas fa-calendar-alt icon"></i> <span class="date-text">October 18, 2024</span></p>
-            <a href="blog.html"><button class="about-btn">Learn More &gt;&gt;</button></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 blog-card fade-in ">
-        <div class="card">
-          <img src="css/img/moringa.jpg" class="card-img-top blog-img" alt="Post Image">
-          <div class="card-body">
-            <h5 class="card-title">Moringa (Moringa oleifera)</h5>
-            <p class="card-text">Moringa, known as the "miracle tree," is celebrated in traditional African medicine for its numerous health benefits. Rich in vitamins and minerals, Moringa leaves combat malnutrition and support overall health. They possess anti-inflammatory properties, help regulate blood sugar levels, and exhibit antimicrobial effects, making them effective against infections. Additionally, Moringa supports digestive health and may aid in gastrointestinal disorders.</p>
-            <p><i class="fas fa-calendar-alt icon"></i> <span class="date-text">October 18, 2024</span></p>
-            <a href="blog.html"><button class="about-btn">Learn More &gt;&gt;</button></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Blog Post 2 -->
-      <div class="col-md-4 blog-card fade-in-delay-2">
-        <div class="card">
-          <img src="css/img/blog2.jpg " class="card-img-top blog-img" alt="Post Image">
-          <div class="card-body">
-            <h5 class="card-title">Effective Pest and Disease Control in Agriculture: Crop Rotation and Intercropping</h5>
-            <p class="card-text">In agriculture, effective pest and disease control is essential for sustainable farming. This post discusses two traditional methods: crop rotation, which alternates crops to disrupt pest life cycles and improve soil health, and intercropping, which involves growing multiple crops together to optimize resource use and deter pests. These practices enhance yields and promote biodiversity.</p>
-            <p><i class="fas fa-calendar-alt icon"></i> <span class="date-text">October 18, 2024</span></p>
-            <a href="blog.html"><button class="about-btn">Learn More &gt;&gt;</button></a>
-          </div>
-        </div>
-      </div>
+        
+        
     </div>
-  </div>
-  </div>
-</section>
 
-<section class="py-5 fade-in">
-    <div class="container fade-in">
-        <h2 class="text-center mb-4 sectionsheader">Contact Us</h2>
-    <div class="row contact fade-in">
-        <div class="col-lg-4 fade-in-delay">
-            <h2 class="contacth2">Get In Touch</h2>
-            <p class="reachus"> <i class="bi bi-envelope"></i>emmanuelayobami61@gmail.com</p>
-           
-            <p class=""><i class="bi bi-telephone"></i> +234 9117942751</p>
-            <div class="social-icons top">
-                <a href=""><i class="bi bi-twitter-x"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-
-        <div class="col-lg-8 ">
-            <form
-            action="https://formspree.io/f/movqvjka"
-            method="post"
-            >
-                <div class="form-group fade-in-delay-2">
-                    <input type="text" class="form-control mb-3" id="name" placeholder="Your Name" name="your name" required>
-                </div>
-                <div class="form-group fade-in-delay-2">
-                    <input type="email" class="form-control mb-3" id="email" placeholder="Your Email" name="email" required>
-                </div>
-                <div class="form-group fade-in-delay-2">
-                    <textarea class="form-control mb-3" id="message" rows="4" placeholder="Your Message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit">Send Message</button>
-            </form>
-        </div>
-        </div>
-
-    </div>
+    <!-- Bottom Navigation for Mobile and Tablet -->
+<div class="bottom-nav">
+    <ul class="nav-list">
+        <li><a href="dashboard.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
+        <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
+    </ul>
 </div>
-</section>
 
-
-<footer class="footer bg-dark text-light py-4 fade-in-delay-2">
-    <div class="container">
-        <div class="row">
-            <!-- About Section -->
-            <div class="col-md-4 fade-in">
-                <h5 class="mb-4 footer-header">About WisdomConnect</h5>
-                <p class="footer-text">WisdomConnect connects young people with elders to share knowledge and preserve wisdom. We believe in the power of intergenerational learning and cultural preservation.</p>
+    
+    <div class="main-container">
+        <div class="container-fluid">
+            <div class="row equal-height-container">
+                <div class="col-12 col-lg-9  p-4 left-column " id="main-content">
+                    <div class="left-side">
+            <div class="home-content">
+                <div class="welcome">
+                <img src="css/img/welcome-img.jpg" alt="Welcome Image" class="welcome-image">
+                <div class="text">Welcome👋</div>
+            </div>
+            <p class="notice">You have no upcoming sessions.</p>
             </div>
 
-            <div class="col-md-4 fade-in-delay">
-                <h5 class="mb-4 footer-header">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="home.html" class="text-light nav-link-footer">Home</a></li>
-                    <li><a href="about.html" class="text-light nav-link-footer">About Us</a></li>
-                    <li><a href="blog.html" class="text-light nav-link-footer">Blog</a></li>
-                    <li><a href="contact.html" class="text-light nav-link-footer">Contact Us</a></li>
-                </ul>
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm p-4 fast-link">
+                        <div class="card-body ">
+                            <h5 class="card-title"><a href="#">Upcoming Sessions</a></h5>
+                            <p class="card-text">Check out your booked sessions with elders here.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm p-4 fast-link">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#">Explore Topics</a></h5>
+                            <p class="card-text">Dive into different topics like history, self-care, and more.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm p-4 fast-link">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#">Notifications</a></h5>
+                            <p class="card-text">Stay updated on new messages and booking reminders.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm p-4 fast-link">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#">Explore Topics</a></h5>
+                            <p class="card-text">Read articles shared by elders on various knowledge areas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="arro-container position-relative">
+            <div class="arrow-controls">
+                <button id="prevArrow" class="arrow-btn">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button id="nextArrow" class="arrow-btn">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-wrapper">
+            <div class="row card-container position-relative ">
+                <div class="col-lg-3">
+                    <div class="card text-light mentor-card">
+                        <img src="css/img/mentor.webp" class="card-img-top" alt="Mentor Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Discover mentors</h5>
+                            <p class="card-text">Explore from over 1K mentors</p>
+                           <button class="discover"><a href="#" class="btn2">Discover Mentors</a></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- <div class="card-item  ">
+                 <div class="elder-profile">
+                         <div class="elder-card">
+                            <div class="elder-img-container">
+                                <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
+                                <span class="top-rated-badge">Top Rated</span>
+                               </div>
+                            <div class="elder-info">
+                                <h4 class="elder-name">John Doe</h4>
+                               <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
+                                <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
+                                <div class="elder-rating">
+                                    <span class="star">&#9733;</span> 4.7 (41 reviews)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="card-item">
+                    <div class="elder-profile">
+                        <div class="elder-card">
+                            <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
+                            <div class="elder-info">
+                                <h4 class="elder-name">Dr Adedayo</h4>
+                               <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
+                                <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
+                                <div class="elder-rating">
+                                    <span class="star">&#9733;</span> 4.7 (41 reviews)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="card-item">
+                    <div class="elder-profile">
+                        <div class="elder-card">
+                            <div class="elder-img-container">
+                                <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
+                                <span class="top-rated-badge">Top Rated</span>
+                            </div>
+                            <div class="elder-info">
+                                <h4 class="elder-name">emmy pro</h4>
+                               <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
+                                <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
+                                <div class="elder-rating">
+                                    <span class="star">&#9733;</span> 4.7 (41 reviews)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                <div class="card-item  ">
+                    <div class="elder-profile">
+                           <div class="elder-card">
+                               <div class="elder-img-container">
+                                   <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
+                                   <span class="top-rated-badge">Top Rated</span>
+                                  </div>
+                                    <div class="elder-info">
+                                   <h4 class="elder-name">John Doe</h4>
+                                  <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
+                                   <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
+                                   <div class="elder-rating">
+                                       <span class="star">&#9733;</span> 4.7 (41 reviews)
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+   
+                   <div class="card-item">
+                       <div class="elder-profile">
+                           <div class="elder-card">
+                            <div class="elder-img-container">
+                                <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
+                                <span class="top-rated-badge">Top Rted</span>
+                            </div>
+                               <div class="elder-info">
+                                   <h4 class="elder-name">John Doe</h4>
+                                  <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
+                                   <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
+                                   <div class="elder-rating">
+                                       <span class="star">&#9733;</span> 4.7 (41 reviews)
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+    -->
+                   
+   
+                   <!-- <div class="card-item">
+                       <div class="elder-profile">
+                           <div class="elder-card">
+                               <div class="elder-img-container">
+                                   <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
+                                   <span class="top-rated-badge">Top Rted</span>
+                               </div>
+                               <div class="elder-info">
+                                   <h4 class="elder-name">emmy pro</h4>
+                                  <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
+                                   <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
+                                   <div class="elder-rating">
+                                       <span class="star">&#9733;</span> 4.7 (41 reviews)
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div> -->
+            </div>
+            </div>
+         
+
+            <section class="feedback-section">
+                <h3 style="color: #b22222;">Feedback on Completed Sessions</h3>
+                <div class="feedback-list" id="feedbackList">
+                    <div class="feedback-card">
+                        <p><strong>Elder:</strong> Dr Adedayo</p>
+                        <p><strong>Topic:</strong> History of Ancient Medicine</p>
+                        <p class="feedback-text">"This session was incredibly insightful and informative. I learned a lot!"</p>
+                        <p class="feedback-date">Submitted on: Dec 5, 2024</p>
+                        <button class="delete-feedback-btn" style="float: right;">Delete</button>
+                    </div>
+                    <div class="feedback-card">
+                        <p><strong>Elder:</strong> Odumodu</p>
+                        <p><strong>Topic:</strong> Leadership Strategies</p>
+                        <p class="feedback-text">"Very practical and inspiring advice on leadership and teamwork!"</p>
+                        <p class="feedback-date">Submitted on: Nov 28, 2024</p>
+                        <button class="delete-feedback-btn" style="float: right;">Delete</button>
+                    </div>
+                </div>
+
+                <div id="confirmationModal" class="custom-modal">
+                    <div class="modal-content">
+                      <p>Do you want to delete this feedback?</p>
+                      <button id="confirmDeleteButton" class="btn">Yes</button>
+                      <button id="cancelDeleteButton" class="btn">No</button>
+                    </div>
+                  </div>
+                
+                <button type="button" class="submit-feedback-btn" id="openModalButton">Give Feedback</button>
+            </section>
+            
+
+            
+
+
+                    <div class="custom-modal" id="feedbackModal">
+                    <div class="modal-content">
+                        <span class="close-button" id="closeModalButton">&times;</span>
+                        <h2>Submit Your Feedback</h2>
+                        <form id="feedbackForm">
+                        <div class="form-group">
+                            <label for="elderName">Elder's Name</label>
+                            <select id="elderName" class="form-control focus">
+                            <option selected disabled>Choose an Elder...</option>
+                            <option value="elder1" class="hv">Elder 1</option>
+                            <option value="elder2"  class="hv">Elder 2</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="topic">Session Topic</label>
+                            <input type="text" id="topic" class="form-control focus" placeholder="Enter the session topic"  required >
+                        </div>
+                        <div class="form-group">
+                            <label for="feedbackText">Feedback</label>
+                            <textarea id="feedbackText" class="form-control focus" rows="4" placeholder="Write your feedback" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating (Optional)</label>
+                            <input type="number" id="rating" class="form-control focus" min="1" max="5" placeholder="Rate 1-5">
+                        </div>
+                        <button type="submit" class="submit-feedback-btn">Submit Feedback</button>
+                        </form>
+                          
+                    </div>
+                    </div>
+
+            </div>
+            <section id="home-playbooks" class="playbook-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Expert Playbook</h2>
+                        <a href="#" class="explore-link">Explore</a>
+                    </div>
+                    
+                    <div class="playbook-grid">
+                        <!-- Row 1 -->
+                        <div class="playbook-row">
+                            <div class="playbook-card">
+                               
+                                <h3 class="playbook-title">What can we learn from ancient self-care practices?</h3>
+                                <div class="playbook-header">
+                                    <div class="comment-profiles">
+                                        <div class="comment-profiles">
+                                            <a  class="view-playbook-btn">
+                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
+                                                 View Playbook
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="playbook-answer">
+                                    Ancient self-care practices, like herbal baths and meditation, were seen as holistic ways to maintain physical and mental health.
+                                </p>
+                              
+                                <div class="comment-meta">
+                                    <p class="comment-time">10 months ago</p>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
+                                    </a>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-chat"></i> Comment
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="playbook-card">
+                                
+                                <h3 class="playbook-title">What is the significance of storytelling in our culture?</h3>
+                                <div class="playbook-header">
+                                    <div class="comment-profiles">
+                                        <div class="comment-profiles">
+                                            <a  class="view-playbook-btn">
+                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
+                                                 View Playbook
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="playbook-answer">
+                                    Storytelling is a powerful tradition that passes on knowledge, morals, and heritage from generation to generation.
+                                </p>
+                                
+                              
+                                <div class="comment-meta">
+                                    <p class="comment-time">10 months ago</p>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
+                                    </a>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-chat"></i> Comment
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Row 2 -->
+                        <div class="playbook-row">
+                            <div class="playbook-card">
+                                
+                                <h3 class="playbook-title">How did ancient communities deal with natural disasters?</h3>
+                                <div class="playbook-header">
+                                    <div class="comment-profiles">
+                                        <div class="comment-profiles">
+                                            <a  class="view-playbook-btn">
+                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
+                                                 View Playbook
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="playbook-answer">
+                                    They often relied on communal efforts, built resilient shelters, and used early warning signs in nature to prepare.
+                                </p>
+                               
+                                <div class="comment-meta">
+                                    <p class="comment-time">10 months ago</p>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
+                                    </a>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-chat"></i> Comment
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="playbook-card">
+                              
+                                <h3 class="playbook-title">How do we preserve ancient arts and crafts?</h3>
+                                <div class="playbook-header">
+                                    <div class="comment-profiles">
+                                        <div class="comment-profiles">
+                                            <a  class="view-playbook-btn">
+                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
+                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
+                                                 View Playbook
+                                        </a>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                                <p class="playbook-answer">
+                                    Preservation can involve workshops, documentation, and using modern technology to reach more people.
+                                </p>
+                               
+                                <div class="comment-meta">
+                                    
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
+                                    </a>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-chat"></i> Comment
+                                    </a>
+                                    <p class="comment-time">10 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Row 3 -->
+                        <div class="playbook-row">
+                            <div class="playbook-card">
+                                
+                                <h3 class="playbook-title">What role did trade play in ancient societies?</h3>
+                                <div class="playbook-header">
+                                    <div class="comment-profiles">
+                                        <div class="comment-profiles">
+                                        <a  class="view-playbook-btn">
+                                        <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
+                                        <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
+                                        <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
+                                             View Playbook
+                                    </a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <p class="playbook-answer">
+                                    Trade was crucial for resource distribution, cultural exchange, and economic stability in many ancient civilizations.
+                                </p>
+                            
+                                
+                                <div class="comment-meta">
+                                    <p class="comment-time">10 months ago</p>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
+                                    </a>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-chat"></i> Comment
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="playbook-card">
+                                <h3 class="playbook-title">What was the role of music in community gatherings?</h3>
+                                <div class="playbook-header">
+                                    <div class="comment-profiles">
+                                        <a  class="view-playbook-btn">
+                                        <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
+                                        <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
+                                        <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
+                                             View Playbook
+                                    </a>
+                                    </div>
+                                </div>
+                                <p class="playbook-answer">
+                                    Music played a role in rituals, celebrations, and communal bonding, often acting as a unifying force.
+                                </p>
+                                
+                                <div class="comment-meta">
+                                    <p class="comment-time">10 months ago</p>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
+                                    </a>
+                                    <a class="upvote-btn">
+                                        <i class="bi bi-chat"></i> Comment
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>'
+            
+            <div class="tips-container">
+                <div class="tip-header">
+                    <h2 id="tip-title">#1 Tips for Success</h2>
+                    <div class="navigation-arrows">
+                        <i id="prev-tip"  class="bi bi-chevron-left arrow"></i>
+                        <i id="next-tip" class="bi bi-chevron-right arrow"></i>
+                    </div>
+                </div>
+                <h3 id="tip-topic">How to prepare for your first meeting?</h3>
+                <p id="tip-text">
+                    Plan an agenda! Plan out the questions and topics you'd like to discuss. If you'd like to work together on long-term goals, set some time to discuss expectations for each other.
+                </p>
+            </div>
+        </div>
             </div>
 
-            <!-- Contact Section -->
-            <div class="col-md-4 fade-in-delay-2 ">
-                <h5 class="mb-4 footer-header">Contact Us</h5>
-                <p>Email: info@wisdomconnect.com</p>
-                <p>Phone:+234 9117942751</p>
-                <div class="social-icons-footer">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+    <div class="col-12 col-lg-3  p-4 right-column" id="sidebar">
+        <a href="#" class="profile-strength-container">
+            <div class="profile-strength">
+                <small class="strength-title">Your Profile Strength</small>
+                <p id="strength-name">Youngling</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
             </div>
+        </a>
+
+
+        <div class="calendar-container">
+            <!-- Week Navigation -->
+            <div class="week-nav">
+                <button class="arrow-btn" id="prev-week">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="week-range" id="week-range"></div>
+                <button class="arrow-btn" id="next-week">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            <hr />
+        
+            <!-- Calendar Grid -->
+            <div class="calendar-grid" id="calendar-grid"></div>
+
+            <hr>
+
+            <div class="session-container">
+                <div class="info">
+                    <div class="iconbg">
+                    <i class="bi bi-calendar2-event-fill session-icon"></i>
+                </div>
+                    <div class="text-container">
+                        <p class="session-text">You have no upcoming sessions</p>
+                        <a href="#" class="book-session-link">Book a Session</a>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-        <hr class="bg-light">
-        <div class="text-center fade-in-delay">
-            <p>&copy; 2024 WisdomConnect. All Rights Reserved.</p>
+
+
+
+     <div class="recent-activities">
+    <h3>Recent Activities</h3>
+    <ul class="activities-list">
+        <li>
+            <div class="activity-icon"><i class="bi bi-person-check"></i></div>
+            <div class="activity-details">
+                <p><strong>Completed profile setup</strong></p>
+                <small>1 week ago</small>
+            </div>
+        </li>
+        <li>
+            <div class="activity-icon"><i class="bi bi-award-fill"></i></div>
+            <div class="activity-details">
+                <p><strong>Earned "First Session" badge</strong></p>
+                <small>2 weeks ago</small>
+            </div>
+        </li>
+        <li>
+            <div class="activity-icon"><i class="bi bi-calendar-event"></i></div>
+            <div class="activity-details">
+                <p><strong>Attended a session on Ancient Medicine</strong></p>
+                <small>3 weeks ago</small>
+            </div>
+        </li>
+    </ul>
+    <a href="#" class="view-all-link">View All</a>
+</div>
+
+<div class="achievements-badges">
+    <h3>Achievements & Badges</h3>
+    <div class="achievements-list">
+        <div class="achievement-item">
+            <div class="badge-icon"><i class="bi bi-award"></i></div>
+            <div class="achievement-details">
+                <p><strong>Completed Profile</strong></p>
+                <small>Earned on: Dec 12, 2024</small>
+            </div>
+        </div>
+        <div class="achievement-item">
+            <div class="badge-icon"><i class="bi bi-trophy"></i></div>
+            <div class="achievement-details">
+                <p><strong>First Session Attended</strong></p>
+                <small>Earned on: Nov 25, 2024</small>
+            </div>
+        </div>
+        <div class="achievement-item">
+            <div class="badge-icon"><i class="bi bi-emoji-smile"></i></div>
+            <div class="achievement-details">
+                <p><strong>Positive Feedback</strong></p>
+                <small>Received on: Oct 18, 2024</small>
+            </div>
         </div>
     </div>
-</footer>
-
-<a href="#" class="scroll-up" id="scrollUpButton">
-    <i class="bi bi-chevron-up"></i>
-</a>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/scrollreveal"></script>
-<script src="js/home.js"></script>
+    <a href="#" class="view-all-link">View All Achievements</a>
+</div>
 
 
+
+
+        
+        
+
+        <!-- <div class="recent-activities">
+            <h3>Recent Activities</h3>
+            <ul>
+                <li>Joined a session on Ancient Medicine - 2 days ago</li>
+                <li>Completed profile setup - 1 week ago</li>
+                <li>Added "Public Speaking" skill - 3 weeks ago</li>
+            </ul>
+        </div>
+        
+        <div class="achievements">
+            <h3>Achievements</h3>
+            <div class="badge2">🏆 Completed Profile</div>
+            <div class="badge2">🎉 First Session Booked</div>
+        </div>
+        
+        <div class="opportunities">
+            <h3>Explore Opportunities</h3>
+            <p>Check out trending topics and upcoming sessions.</p>
+        </div>
+        
+         -->
+
+    </div>
+
+      </div>
+    </div>
+    </div>
+
+
+    <script src="js/youthDashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
-
 </html>

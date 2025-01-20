@@ -144,6 +144,8 @@ body{
     color: #555;
     line-height: 30px;
     font-family: 'Poppins', sans-serif;
+    text-align: left;
+    padding-left: 10px;
 
   }
 
@@ -151,12 +153,15 @@ body{
     border-radius: 10px; 
     display: block; 
     max-width: 100%;
-    height: 450px; 
+    height: 400px; 
     filter: brightness(0.4);
 }
 
 .about-section h3{
   color: #b22222;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
           
 }
 
