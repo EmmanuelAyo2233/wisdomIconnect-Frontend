@@ -50,43 +50,43 @@ function getVisibleCardsCount() {
     }
 }
 
-function updateVisibleCards() {
-    visibleCards = getVisibleCardsCount(); 
+// function updateVisibleCards() {
+//     visibleCards = getVisibleCardsCount(); 
 
-    cardItems.forEach((card, index) => {
-        if (index >= currentIndex && index < currentIndex + visibleCards - 1) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
+//     cardItems.forEach((card, index) => {
+//         if (index >= currentIndex && index < currentIndex + visibleCards - 1) {
+//             card.style.display = 'block';
+//         } else {
+//             card.style.display = 'none';
+//         }
+//     });
 
     
-    cardItems[0].style.display = 'block';
+//     cardItems[0].style.display = 'block';
 
-    prevArrow.classList.toggle('disabled', currentIndex === 0);
-    nextArrow.classList.toggle('disabled', currentIndex >= cardItems.length - (visibleCards - 1));
-}
+//     prevArrow.classList.toggle('disabled', currentIndex === 0);
+//     nextArrow.classList.toggle('disabled', currentIndex >= cardItems.length - (visibleCards - 1));
+// }
 
-function changeCards(direction) {
-    const slideCount = visibleCards - 1; 
+// function changeCards(direction) {
+//     const slideCount = visibleCards - 1; 
 
-    if (direction === 'next' && currentIndex < cardItems.length - slideCount) {
-        currentIndex += slideCount;
-    } else if (direction === 'prev' && currentIndex > 0) {
-        currentIndex -= slideCount;
-    }
+//     if (direction === 'next' && currentIndex < cardItems.length - slideCount) {
+//         currentIndex += slideCount;
+//     } else if (direction === 'prev' && currentIndex > 0) {
+//         currentIndex -= slideCount;
+//     }
 
-    updateVisibleCards();
-}
+//     updateVisibleCards();
+// }
 
-prevArrow.addEventListener('click', () => changeCards('prev'));
-nextArrow.addEventListener('click', () => changeCards('next'));
+// prevArrow.addEventListener('click', () => changeCards('prev'));
+// nextArrow.addEventListener('click', () => changeCards('next'));
 
 
-window.addEventListener('resize', updateVisibleCards);
+// window.addEventListener('resize', updateVisibleCards);
 
-window.addEventListener('load', updateVisibleCards);
+// window.addEventListener('load', updateVisibleCards);
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -387,29 +387,45 @@ hoverMenu.addEventListener('click', (e) => {
 });
 
 // JavaScript to toggle active state and line visibility
-const wisdomKeepersLink = document.getElementById('wisdom-keepers-link');
-const groupSessionsLink = document.getElementById('group-sessions-link');
-const wisdomLine = document.getElementById('wisdom-keepers-line');
-const groupLine = document.getElementById('group-sessions-line');
+// const wisdomKeepersLink = document.getElementById('wisdom-keepers-link');
+// const groupSessionsLink = document.getElementById('group-sessions-link');
+// const wisdomLine = document.getElementById('wisdom-keepers-line');
+// const groupLine = document.getElementById('group-sessions-line');
 
-// Set initial active state
-wisdomKeepersLink.classList.add('active');
-wisdomLine.style.width = '50%';
-groupLine.style.width = '0';
+// // Set initial active state
+// wisdomKeepersLink.classList.add('active');
+// wisdomLine.style.width = '50%';
+// groupLine.style.width = '0';
 
-// Add event listeners for both links
-wisdomKeepersLink.addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent the default behavior (page refresh)
-  wisdomKeepersLink.classList.add('active');
-  groupSessionsLink.classList.remove('active');
-  wisdomLine.style.width = '50%';
-  groupLine.style.width = '0';
+// // Add event listeners for both links
+// wisdomKeepersLink.addEventListener('click', (e) => {
+//   e.preventDefault(); // Prevent the default behavior (page refresh)
+//   wisdomKeepersLink.classList.add('active');
+//   groupSessionsLink.classList.remove('active');
+//   wisdomLine.style.width = '50%';
+//   groupLine.style.width = '0';
+// });
+
+// groupSessionsLink.addEventListener('click', (e) => {
+//   e.preventDefault(); // Prevent the default behavior (page refresh)
+//   groupSessionsLink.classList.add('active');
+//   wisdomKeepersLink.classList.remove('active');
+//   groupLine.style.width = '50%';
+//   wisdomLine.style.width = '0';
+// });
+
+
+
+document.getElementById("notificationIcon").addEventListener("click", function (event) {
+    let dropdown = document.getElementById("notiDropdown");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    event.stopPropagation();
 });
 
-groupSessionsLink.addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent the default behavior (page refresh)
-  groupSessionsLink.classList.add('active');
-  wisdomKeepersLink.classList.remove('active');
-  groupLine.style.width = '50%';
-  wisdomLine.style.width = '0';
+document.addEventListener("click", function (event) {
+    let dropdown = document.getElementById("notiDropdown");
+    if (!dropdown.contains(event.target) && event.target.id !== "notificationIcon") {
+        dropdown.style.display = "none";
+    }
 });
+        

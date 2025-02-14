@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EXPLORE</title>
+    <link rel="icon" href="css/img/LOGO.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/Explore.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <div class="container-fluid">
+        <div class="container-fluid headlogo">
             <div class="logo">
-                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
+                <a href="#" class="navbar-brand"><img src="css/img/LOGO.jpg" alt="">Wisdom<span>Connect</span></a>
             </div>
             <div class="menu-button">
                 <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
@@ -30,12 +32,39 @@
                 </div>
             </div>
             <div class="header-icons">
-                <div class="noti">
-                    <i class="bi bi-bell notification"></i>
-                    <span class="badge" id="notificationCount">4</span>
-                </div>
-                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="#">Book A Session</a></button>
-            </div>
+              <div class="noti">
+                  <i class="bi bi-bell notification" id="notificationIcon"></i>
+                  <span class="badge" id="notificationCount">4</span>
+              </div>
+              <div class="noti-dropdown" id="notiDropdown">
+                  <ul>
+                      <li>
+                          <div class="notif">
+                              <i class="bi bi-bell notification"></i>
+                          </div>
+                      </i><strong>Notification:</strong> <i class="bi bi-calendar-event-fill before-icon"></i> Your upcoming session with <b>Dr. Adebayo</b> is scheduled for tomorrow at 10 AM. <a href="#">View details</a></li>
+                      <li>
+                          <div class="notif">
+                              <i class="bi bi-bell notification"></i>
+                          </div>
+                          <strong>Notification:</strong> <i class="bi bi-check-circle-fill before-icon" ></i> Your session with <b>Prof. Williams</b> has been marked as completed. <a href="#">See summary</a></li>
+                      <li>
+                          <div class="notif">
+                              <i class="bi bi-bell notification"></i>
+                          </div>
+                          <strong>Notification:</strong> <i class="bi bi-clock-history before-icon"></i> You have a pending session with <b>Mrs. Johnson</b>. Confirm now. <a href="#">Confirm</a></li>
+                      <li>
+                          <div class="notif">
+                              <i class="bi bi-bell notification"></i>
+                          </div>
+                          <strong>Notification:</strong> <i class="bi bi-x-circle-fill before-icon"></i> Your session with <b>Mr. Ola</b> has been canceled. <a href="#">Check details</a></li>
+                  </ul>
+                  <div class="for-center">
+                      <a href="notification.html" class="all">view all Notification</a>
+                  </div>
+              </div>
+              <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="#">Book A Session</a></button>
+          </div>
         </div>
     </header>
 
@@ -64,7 +93,7 @@
                 <span class="menu-description">Track your home page and connections</span>
             </li>
             <li>
-                <a href="Explore.html" class="res">
+                <a href="message.html" class="res">
                     <i class="bx bx-message-alt-detail"></i> Messages 
                 </a>
                 <span class="menu-description">View your messages and stay updated</span>
@@ -76,7 +105,7 @@
                 <span class="menu-description">Manage your personal connections</span>
             </li>
             <li>
-                <a href="#" class="res">
+                <a href="bookings.html" class="res">
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
@@ -104,8 +133,8 @@
         <ul class="nav-list">
             <li><a href="index.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
             <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
-            <li><a href="#"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
-            <li><a href="#"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
+            <li><a href="message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
+            <li><a href="bookings.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
             <li><a href="#"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
         </ul>
     
@@ -145,19 +174,23 @@
     <ul class="nav-list">
         <li><a href="index.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
         <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li>
-        <li><a href="#" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
-        <li><a href="#" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="bookings.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
         <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
     </ul>
-</div>
+</div>  
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
+
+  <div class="container">
     <div class="welcome-message">
       <h1 class="typewriter">Welcome to WisdomConnect</h1>
       <p class="typewriter-subtitle">Discover Knowledge, Share Stories, Build Connections.</p>
     </div>
+  </div>
   
     <!-- Navigation Bar -->
+     <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -170,7 +203,7 @@
         </li>
       </ul>
     </nav>
-
+  </div>
    <section class="search-section py-4">
     <div class="container">
       <div class="row justify-content-center">
@@ -235,56 +268,606 @@
   
   <section class="filter-section">
     <div class="container">
-      <div class="filter-grid">
-        <!-- Individual Filter Items -->
+      <div class="filter-wrapper">
+
+        <button class="arrow-btn back-arrow" aria-label="Previous Filters"  style="display: none;">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+  
+      <div class="filter-grid"> 
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-funnel filter-icon"></i>
           <p class="filter-title">All Filters</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-calendar-check filter-icon"></i>
           <p class="filter-title">Available ASAP</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-star filter-icon"></i>
           <p class="filter-title">Recommended</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-people filter-icon"></i>
           <p class="filter-title">Soft Skills</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-pencil filter-icon"></i>
           <p class="filter-title">Content Writing</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-graph-up filter-icon"></i>
           <p class="filter-title">Data Science</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-calendar-check filter-icon"></i>
           <p class="filter-title">Available ASAP</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-star filter-icon"></i>
           <p class="filter-title">Recommended</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-people filter-icon"></i>
           <p class="filter-title">Soft Skills</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-pencil filter-icon"></i>
           <p class="filter-title">Content Writing</p>
+        </a>
         </div>
         <div class="filter-item">
+          <a href="#">
           <i class="bi bi-graph-up filter-icon"></i>
           <p class="filter-title">Data Science</p>
+        </a>
         </div>  
-        <!-- Add more items as needed -->
       </div>
+      <button class="arrow-btn front-arrow" aria-label="Next Filters">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
     </div>
   </section>
+
+  <section class="container elders-profile-section">
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/emma.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/PROGRAM.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/MARTIN.png" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/emma.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  </section>
+
+  
+  <section class="container elders-profile-section">
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/emma.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/adetola.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/MARTIN.png" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/MARTIN.png" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  </section>
+  
+
+  <section class="container elders-profile-section">
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/MARTIN.png" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/PROGRAM.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/PROGRAM.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/adetola.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  </section>
+  
+
+  <section class="container elders-profile-section">
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/PROGRAM.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/PROGRAM.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/MARTIN.png" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a href="#" class="card-link">
+    <div class=" elder-card">
+      <div class="elder-card-header">
+        <img src="css/img/adetola.jpg" alt="Elder's Photo" class="elder-photo" />
+      </div>
+      <div class="elder-card-body">
+        <h3 class="elder-name">
+          <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+        </h3>
+        <p class="elder-offers">
+          <i class="fas fa-clipboard-list"></i> History, Politics
+        </p>
+        <p class="elder-sessions">
+          <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+        </p>
+      </div>
+      <div class="elder-card-footer">
+        <div class="experience">
+          <p>Experience</p>
+          <span>8 years</span>
+        </div>
+        <div class="attendance">
+          <p>Avg. Attendance</p>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  </section>
+  
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-left">
+        <h2 class="footer-logo">WisdomConnect</h2>
+        <p class="footer-bio">Connecting generations to share wisdom and preserve knowledge for the future.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  
+    <hr class="footer-divider" />
+  
+    <div class="container footer-links">
+      <div class="footer-nav">
+        <a href="#" class="footer-link">Home</a>
+        <a href="#" class="footer-link">Message</a>
+        <a href="#" class="footer-link">Connections</a>
+        <a href="#" class="footer-link">Explore</a>
+      </div>
+      <div class="footer-support">
+        <a href="#" class="footer-link">Join ADPList</a>
+        <a href="#" class="footer-link">FAQs</a>
+        <a href="#" class="footer-link">Help Center</a>
+        <a href="#" class="footer-link">Partnerships</a>
+      </div>
+    </div>
+  
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        <p>&copy; 2025 - WisdomConnect</p>
+      </div>
+      <div class="footer-legal">
+        <a href="#" class="footer-link">Contact Us</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Use</a>
+        <a href="#" class="footer-link">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+  
   
   </div>
 <script src="js/explore.js"></script>

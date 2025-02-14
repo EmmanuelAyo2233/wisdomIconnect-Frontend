@@ -66,3 +66,78 @@ document.querySelectorAll('.filter-item').forEach(item => {
     });
   });
   
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterGrid = document.querySelector(".filter-grid");
+    const backArrow = document.querySelector(".back-arrow");
+    const frontArrow = document.querySelector(".front-arrow");
+  
+    // Function to update arrow visibility
+    const updateArrows = () => {
+      const scrollLeft = filterGrid.scrollLeft;
+      const maxScrollLeft = filterGrid.scrollWidth - filterGrid.clientWidth;
+  
+      backArrow.style.display = scrollLeft > 0 ? "block" : "none";
+      frontArrow.style.display = scrollLeft < maxScrollLeft ? "block" : "none";
+    };
+  
+    // Scroll actions
+    const scrollAmount = 200; // Adjust the scrolling amount as needed
+    backArrow.addEventListener("click", () => {
+      filterGrid.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      updateArrows();
+    });
+    frontArrow.addEventListener("click", () => {
+      filterGrid.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      updateArrows();
+    });
+  
+    // Update arrows on scroll and on page load
+    filterGrid.addEventListener("scroll", updateArrows);
+    updateArrows();
+  });
+
+  
+  // Select all filter items
+const filterItems = document.querySelectorAll('.filter-item');
+
+// Add click event listeners
+filterItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Remove 'active' class from all items
+    filterItems.forEach(i => i.classList.remove('active'));
+
+    // Add 'active' class to the clicked item
+    item.classList.add('active');
+  });
+});
+
+
+// Show full country name on hover
+document.querySelectorAll('.elder-name span').forEach((country) => {
+  country.addEventListener('mouseover', () => {
+    const tooltip = country.querySelector('.tooltip');
+    if (tooltip) tooltip.style.display = 'inline-block';
+  });
+
+  country.addEventListener('mouseout', () => {
+    const tooltip = country.querySelector('.tooltip');
+    if (tooltip) tooltip.style.display = 'none';
+  });
+});
+
+
+document.getElementById("notificationIcon").addEventListener("click", function (event) {
+  let dropdown = document.getElementById("notiDropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  event.stopPropagation();
+});
+
+document.addEventListener("click", function (event) {
+  let dropdown = document.getElementById("notiDropdown");
+  if (!dropdown.contains(event.target) && event.target.id !== "notificationIcon") {
+      dropdown.style.display = "none";
+  }
+});
+  
+  

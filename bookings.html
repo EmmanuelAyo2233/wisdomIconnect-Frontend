@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookings</title>
+    <title>Bookings  </title>
+    <link rel="icon" href="css/img/LOGO.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/bookings.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -27,8 +28,35 @@
             </div>
             <div class="header-icons">
                 <div class="noti">
-                    <i class="bi bi-bell notification"></i>
+                    <i class="bi bi-bell notification" id="notificationIcon"></i>
                     <span class="badge" id="notificationCount">4</span>
+                </div>
+                <div class="noti-dropdown" id="notiDropdown">
+                    <ul>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                        </i><strong>Notification:</strong> <i class="bi bi-calendar-event-fill before-icon"></i> Your upcoming session with <b>Dr. Adebayo</b> is scheduled for tomorrow at 10 AM. <a href="#">View details</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-check-circle-fill before-icon" ></i> Your session with <b>Prof. Williams</b> has been marked as completed. <a href="#">See summary</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-clock-history before-icon"></i> You have a pending session with <b>Mrs. Johnson</b>. Confirm now. <a href="#">Confirm</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-x-circle-fill before-icon"></i> Your session with <b>Mr. Ola</b> has been canceled. <a href="#">Check details</a></li>
+                    </ul>
+                    <div class="for-center">
+                        <a href="notification.html" class="all">view all Notification</a>
+                    </div>
                 </div>
                 <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="#">Book A Session</a></button>
             </div>
@@ -72,7 +100,7 @@
                 <span class="menu-description">Manage your personal connections</span>
             </li>
             <li>
-                <a href="#" class="res">
+                <a href="bookings.html" class="res">
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
@@ -147,10 +175,71 @@
     </ul>
 </div>
 
-    
+<div class="container">
+    <h2 class="booking-header">Bookings</h2>
+    <p class="sub-til">The session timings are following your local timezone Africa/Lagos Update</p>
+    <!-- Custom Navigation -->
+    <div class="booking-nav">
+      <a href="#" class="booking-tab active" data-section="upcoming">Upcoming</a>
+      <a href="#" class="booking-tab" data-section="pending">Pending</a>
+      <a href="#" class="booking-tab" data-section="history">History</a>
+    </div>
+  
+    <!-- Booking Content -->
+    <div id="upcoming" class="booking-content">
+        <div class="upcoming-session">
+            <div class="session-header">
+              <span class="status">Scheduled</span>
+              <span class="cancel-icon" onclick="cancelSession()">&#10006;</span>
+            </div>
+            <p><strong>Topic:</strong> The Wisdom of Ancient Healing</p>
+            <p><strong>Mentor:</strong> Dr. Adebayo Olufemi</p>
+            <p><strong>Time:</strong> Feb 20, 3:00 PM</p>
+            <p class="user">👤 Emmanuel Ayobami</p>
+          </div>
+          
+          
+    </div>
+    <div id="pending" class="booking-content hidden">
+        <!-- You have no pending bookings - start sharing a conversation with a mentor. -->
+        <div class="pending-session">
+            <div class="session-header">
+              <span class="status pending">Pending Approval</span>
+              <span class="cancel-icon" onclick="cancelPendingSession()">&#10006;</span>
+            </div>
+            <p><strong>Topic:</strong> The Power of Storytelling</p>
+            <p><strong>Mentor:</strong> Mrs. Aisha Ibrahim</p>
+            <p><strong>Time:</strong> Feb 25, 5:00 PM</p>
+            <p class="user">👤 Emmanuel Ayobami</p>
+          </div>
+          
+    </div>
+    <div id="history" class="booking-content hidden">
+        <div class="history-session">
+            <div class="session-header">
+              <span class="status history">Completed</span>
+            </div>
+            <p><strong>Topic:</strong> Leadership in African Cultures</p>
+            <p><strong>Mentor:</strong> Prof. Chinedu Okafor</p>
+            
+            <div class="session-time">
+              <p>🕒 <strong>Duration:</strong> 2 hours</p>
+              <p>📅 <strong>Start:</strong> Jan 15, 2:00 PM</p>
+              <p>⏳ <strong>End:</strong> Jan 15, 4:00 PM</p>
+            </div>
+            
+            <p class="user">👤 Emmanuel Ayobami</p>
+          </div>
+          
+        <!-- You have no history bookings - start sharing a conversation with a mentor. -->
+    </div>
+
+    <a href="#" class="explore-btn">Explore Mentors</a>
+  </div>
+  
 
 
 
-<script src="js/header.js"></script>
+<script src="js/booking.js"></script>
 </body>
 </html>

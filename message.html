@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookings</title>
+    <title>Message</title>
+    <link rel="icon" href="css/img/LOGO.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/message.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <div class="container-fluid">
             <div class="logo">
-                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
+                <a href="#" class="navbar-brand"><img src="css/img/LOGO.jpg" alt="">Wisdom<span>Connect</span></a>
             </div>
             <div class="menu-button">
                 <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
@@ -27,10 +29,39 @@
             </div>
             <div class="header-icons">
                 <div class="noti">
-                    <i class="bi bi-bell notification"></i>
+                    <i class="bi bi-bell notification" id="notificationIcon"></i>
                     <span class="badge" id="notificationCount">4</span>
                 </div>
+                <div class="noti-dropdown" id="notiDropdown">
+                    <ul>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                        </i><strong>Notification:</strong> <i class="bi bi-calendar-event-fill before-icon"></i> Your upcoming session with <b>Dr. Adebayo</b> is scheduled for tomorrow at 10 AM. <a href="#">View details</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-check-circle-fill before-icon" ></i> Your session with <b>Prof. Williams</b> has been marked as completed. <a href="#">See summary</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-clock-history before-icon"></i> You have a pending session with <b>Mrs. Johnson</b>. Confirm now. <a href="#">Confirm</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-x-circle-fill before-icon"></i> Your session with <b>Mr. Ola</b> has been canceled. <a href="#">Check details</a></li>
+                    </ul>
+                    <div class="for-center">
+                        <a href="#" class="all">view all Notification</a>
+                    </div>
+                </div>
                 <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="#">Book A Session</a></button>
+            </div>
+            
             </div>
         </div>
     </header>
@@ -72,7 +103,7 @@
                 <span class="menu-description">Manage your personal connections</span>
             </li>
             <li>
-                <a href="#" class="res">
+                <a href="bookings.html" class="res">
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
@@ -149,8 +180,79 @@
 
     
 
+<div class="message-page">
+    <!-- Sidebar -->
+    <aside class="message-sidebar">
+        <div class="message-header">
+            <span class="title-text">Messages</span>
+            <div class="title-icons">
+                <a href="#"><i class="fas fa-user-plus add-person-btn"></i></a>
+                <div class="menu">
+                    <a href="#"><i class="fas fa-ellipsis-v menu-btn"></i></a>
+
+                    <div class="menu-options">
+                        <button class="options-btn">Inbox</button>
+                        <button class="options-btn">Unread</button>
+                        <button class="options-btn">Archived</button>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+
+        <div class="message-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search messages...">
+        </div>
+
+        <!-- Chat List -->
+        <ul class="chat-list">
+            <li class="chat-item" data-name="John Doe" data-avatar="css/img/user1.jpg">
+                <img src="css/img/emma.jpg" alt="User 1" class="chat-avatar" />
+                <div class="chat-info">
+                    <p class="chat-name">Adetutu</p>
+                    <p class="chat-preview">Hey there! 👋 I’d love to connect with you........vHey there! 👋 I’d love to connect with you........</p>
+                </div>
+            </li>
+            <li class="chat-item" data-name="Jane Smith" data-avatar="css/img/user2.jpg">
+                <img src="css/img/PROGRAM.jpg" alt="User 2" class="chat-avatar" />
+                <div class="chat-info">
+                    <p class="chat-name">Ikeade</p>
+                    <p class="chat-preview">Hey there! 👋 I’d love to connect with you.....</p>
+                </div>
+            </li>
+        </ul>
+        
+    </aside>
+
+    <!-- Chat Area -->
+<div class="chat-area">
+    <div class="chat-header">
+        <h3 class="chat-username">Select a chat</h3>
+    </div>
+    <div class="chat-messages">
+        <div class="default-message">
+            <i class="bi bi-chat-left-text big-icon"></i>
+            <h2>Start a new message</h2>
+            <p>Messages sent after connecting with a mentee/mentor will appear here.</p>
+        </div>
+    </div>
+
+    <div class="chat-input" style="display: none;">
+        <textarea placeholder="Type a message..."></textarea>
+        <button class="send-button"><i class="bi bi-send"></i></button>
+    </div>
+</div>
+
+    
+</div>
 
 
-<script src="js/header.js"></script>
-</body>
+  
+  
+
+
+<script src="js/message.js"></script>
+</body> 
 </html>
