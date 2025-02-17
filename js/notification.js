@@ -52,3 +52,36 @@ document.addEventListener('click', () => {
 hoverMenu.addEventListener('click', (e) => {
     e.stopPropagation();
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const readMoreLinks = document.querySelectorAll(".read-more");
+
+    readMoreLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const hiddenText = this.previousElementSibling;
+            
+            if (hiddenText.style.display === "none" || hiddenText.style.display === "") {
+                hiddenText.style.display = "block"; // Show extra details
+                this.textContent = "Read Less";
+            } else {
+                hiddenText.style.display = "none"; // Hide extra details
+                this.textContent = "Read More";
+            }
+        });
+    });
+});
+
+
+
+document.getElementById("show-more-btn").addEventListener("click", function() {
+    let hiddenNotifications = document.querySelectorAll(".hidden-notification");
+
+    hiddenNotifications.forEach(function(notification) {
+        notification.style.display = "block";
+    });
+
+    // Hide the button after clicking
+    this.style.display = "none";
+});

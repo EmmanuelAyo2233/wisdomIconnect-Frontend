@@ -752,3 +752,93 @@ body{
     margin-right: 10px; 
     border-radius: 5px; 
   }
+
+  .noti-header {
+    font-size: 30px;
+    padding-top: 35px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.notification-container ul {
+    padding: 0;
+}
+
+.notification-container ul li {
+    list-style-type: none;
+    padding: 15px 20px;
+}
+
+.notification-container ul li > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Ensures text goes to the next line */
+}
+
+.notification-container .notif {
+    background: #4d4d4d;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.notification-container .notif .notification {
+    font-size: 20px;
+    color: white;
+}
+
+.notification-container strong {
+    font-size: 16px;
+}
+
+.notification-container .before-icon {
+    margin-left: 5px; 
+    color: #b22222;
+    font-size: 17px;
+}
+
+.hidden-text {
+    display: none;
+    font-size: 16px;
+    color: #555;
+    width: 100%; /* Ensures the text appears on the next line */
+    margin-top: 5px;
+}
+
+.read-more {
+    display: block;
+    color: #b22222;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+
+
+/* Hide notifications beyond the first 5 */
+.hidden-notification {
+    display: none;
+}
+
+/* Styling the Show More button */
+#show-more-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 15px;
+    background-color: #b22222;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#show-more-btn:hover {
+    background-color: #8b0000;
+}
