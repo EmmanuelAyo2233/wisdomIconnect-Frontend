@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message -WisdomConnect</title>
+    <title>Connections -WisdomConnect</title>
     <link rel="icon" href="css/img/LOGO.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/message.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/connection.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <div class="container-fluid">
             <div class="logo">
-                <a href="#" class="navbar-brand"><img src="css/img/LOGO.jpg" alt="">Wisdom<span>Connect</span></a>
+                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
             </div>
             <div class="menu-button">
                 <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
@@ -61,8 +60,6 @@
                 </div>
                 <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="#">Book A Session</a></button>
             </div>
-            
-            </div>
         </div>
     </header>
 
@@ -103,7 +100,7 @@
                 <span class="menu-description">Manage your personal connections</span>
             </li>
             <li>
-                <a href="bookings.html" class="res">
+                <a href="#" class="res">
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
@@ -179,80 +176,174 @@
 </div>
 
     
+<div class="container">
+   <div class="connections">
+    <p class="title">My Connections</p>
+    <p class="sub-title">Community members you've met and connected with will appear here. Click the profile to view your journey with a <br> member.</p>
+   </div>
 
-<div class="message-page">
-    <!-- Sidebar -->
-    <aside class="message-sidebar">
-        <div class="message-header">
-            <span class="title-text">Messages</span>
-            <div class="title-icons">
-                <a href="#"><i class="fas fa-user-plus add-person-btn"></i></a>
-                <div class="menu">
-                    <a href="#"><i class="fas fa-ellipsis-v menu-btn"></i></a>
+   <div class="connection-nav">
+    <a href="#" class="connection-tab active" data-section="upcoming">Mentors</a>
+  </div>
 
-                    <div class="menu-options">
-                        <button class="options-btn">Inbox</button>
-                        <button class="options-btn">Unread</button>
-                        <button class="options-btn">Archived</button>
-                    </div>
-                </div>
-
-               
-            </div>
+  <div class="connection-header">
+    <div class="search-bar2">
+        <div class="search-input2">
+            <i class="bi bi-search" ></i>
+            <input type="text" placeholder="Search Wise Mentor" >
         </div>
+    </div>
 
-        <div class="message-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search messages...">
-        </div>
-
-        <!-- Chat List -->
-        <ul class="chat-list">
-            <li class="chat-item" data-name="John Doe" data-avatar="css/img/user1.jpg">
-                <img src="css/img/emma.jpg" alt="User 1" class="chat-avatar" />
-                <div class="chat-info">
-                    <p class="chat-name">Adetutu</p>
-                    <p class="chat-preview">Hey there! 👋 I’d love to connect with you........vHey there! 👋 I’d love to connect with you........</p>
-                </div>
-            </li>
-            <li class="chat-item" data-name="Jane Smith" data-avatar="css/img/user2.jpg">
-                <img src="css/img/PROGRAM.jpg" alt="User 2" class="chat-avatar" />
-                <div class="chat-info">
-                    <p class="chat-name">Ikeade</p>
-                    <p class="chat-preview">Hey there! 👋 I’d love to connect with you.....</p>
-                </div>
-            </li>
+    <div class="dropdown">
+        <button class="dropdown-btn" id="sortBtn"><i class="bi bi-sort-down"></i>Sort by</button>
+        <ul class="dropdown-menu" id="sortMenu">
+            <li data-value="all">Show all</li>
+            <li data-value="recent">Recently met</li>
+            <li data-value="most">Most met</li>
+            <li data-value="not-met">Haven't met in a while</li>
         </ul>
-        
-    </aside>
-
-    <!-- Chat Area -->
-<div class="chat-area">
-    <div class="chat-header">
-        <h3 class="chat-username">Select a chat</h3>
     </div>
-    <div class="chat-messages">
-        <div class="default-message">
-            <i class="bi bi-chat-left-text big-icon"></i>
-            <h2>Start a new message</h2>
-            <p>Messages sent after connecting with a mentee/mentor will appear here.</p>
+
+    <div class="dropdown">
+        <button class="dropdown-btn" id="filterBtn"><i class="bi bi-filter"></i>Filter</button>
+        <ul class="dropdown-menu" id="filterMenu">
+            <li data-value="following">Following</li>
+            <li data-value="all">Show all</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <div class="connection-empty">
+        <p class="add">Add a mentor</p>
+        <p class="empty-text">You haven't connected with any mentors yet. <br> Click the button below to start connecting.</p>
+        <div class="connection-btn">
+            <a href="Explore.html" >Discover Mentors</a>
         </div>
     </div>
-
-    <div class="chat-input" style="display: none;">
-        <textarea placeholder="Type a message..."></textarea>
-        <button class="send-button"><i class="bi bi-send"></i></button>
-    </div>
-</div>
-
+    <section class="container elders-profile-section">
+        <a href="#" class="card-link">
+        <div class=" elder-card">
+          <div class="elder-card-header">
+            <img src="css/img/emma.jpg" alt="Elder's Photo" class="elder-photo" />
+          </div>
+          <div class="elder-card-body">
+            <h3 class="elder-name">
+              <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+            </h3>
+            <p class="elder-offers">
+              <i class="fas fa-clipboard-list"></i> History, Politics
+            </p>
+            <p class="elder-sessions">
+              <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+            </p>
+          </div>
+          <div class="elder-card-footer">
+            <div class="experience">
+              <p>Experience</p>
+              <span>8 years</span>
+            </div>
+            <div class="attendance">
+              <p>Avg. Attendance</p>
+              <span>100%</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      
+      <a href="#" class="card-link">
+        <div class=" elder-card">
+          <div class="elder-card-header">
+            <img src="css/img/PROGRAM.jpg" alt="Elder's Photo" class="elder-photo" />
+          </div>
+          <div class="elder-card-body">
+            <h3 class="elder-name">
+              <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+            </h3>
+            <p class="elder-offers">
+              <i class="fas fa-clipboard-list"></i> History, Politics
+            </p>
+            <p class="elder-sessions">
+              <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+            </p>
+          </div>
+          <div class="elder-card-footer">
+            <div class="experience">
+              <p>Experience</p>
+              <span>8 years</span>
+            </div>
+            <div class="attendance">
+              <p>Avg. Attendance</p>
+              <span>100%</span>
+            </div>
+          </div>
+        </div>
+      </a>
     
+        <a href="#" class="card-link">
+        <div class=" elder-card">
+          <div class="elder-card-header">
+            <img src="css/img/MARTIN.png" alt="Elder's Photo" class="elder-photo" />
+          </div>
+          <div class="elder-card-body">
+            <h3 class="elder-name">
+              <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+            </h3>
+            <p class="elder-offers">
+              <i class="fas fa-clipboard-list"></i> History, Politics
+            </p>
+            <p class="elder-sessions">
+              <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+            </p>
+          </div>
+          <div class="elder-card-footer">
+            <div class="experience">
+              <p>Experience</p>
+              <span>8 years</span>
+            </div>
+            <div class="attendance">
+              <p>Avg. Attendance</p>
+              <span>100%</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    
+        <a href="#" class="card-link">
+        <div class=" elder-card">
+          <div class="elder-card-header">
+            <img src="css/img/emma.jpg" alt="Elder's Photo" class="elder-photo" />
+          </div>
+          <div class="elder-card-body">
+            <h3 class="elder-name">
+              <span class="country-code" data-tooltip="Nigeria">NG</span> Emmanuel Ayobami
+            </h3>
+            <p class="elder-offers">
+              <i class="fas fa-clipboard-list"></i> History, Politics
+            </p>
+            <p class="elder-sessions">
+              <i class="fas fa-calendar-check"></i> 16 sessions (6 reviews)
+            </p>
+          </div>
+          <div class="elder-card-footer">
+            <div class="experience">
+              <p>Experience</p>
+              <span>8 years</span>
+            </div>
+            <div class="attendance">
+              <p>Avg. Attendance</p>
+              <span>100%</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      </section>
 </div>
 
 
-  
-  
+</div>
 
 
-<script src="js/message.js"></script>
-</body> 
+<script src="js/connection.js"></script>
+</body>
 </html>
