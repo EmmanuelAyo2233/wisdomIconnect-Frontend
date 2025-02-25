@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookings</title>
+    <title>Profile -WisdomConnect </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/AdultProfile.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <div class="container-fluid">
+        <div class="container-fluid header-container">
             <div class="logo">
                 <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
             </div>
@@ -84,8 +84,8 @@
         <div class="cancel-btn" id="cancelBtn">
             <i class="bx bx-x"></i>
         </div>
-        
-        
+
+
         <!-- Profile Section -->
         <div class="profile-section">
             <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
@@ -192,10 +192,78 @@
     </ul>
 </div>
 
+
+
+<div class="conatiner-fluid">
+
+<div class="user-profile-container">
+    <div class="user-profile-bg"></div>
+
+    <div class="profile-wrapper">
+        <div class="user-profile-img">
+            <img src="css/img/adult.webp" alt="User Profile">
+        </div>
+
+        <div class="user-info">
+            <div class="user-name">Joy Nwaiwu 🇳🇬</div>
+            <div class="user-role">Community Manager at 3MTT</div>
+        </div>
+
+        <!-- ICONS -->
+        <div class="profile-icons">
+            <div class="icon-box message-icon">
+                <i class="bi bi-chat-dots-fill"></i>
+            </div>
+
+            <div class="icon-box love-icon">
+                <i class="bi bi-heart"></i>
+            </div>
+
+            <div class="icon-box menu-icon">
+                <i class="bi bi-three-dots-vertical"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Message Request Box -->
+<div class="message-box">
+    <span class="close-btn">&times;</span> <!-- Close Button -->
+    <h4>Message Request</h4>
+    <p>This is the beginning of your conversation with <b>Joy Nwaiwu</b>.  
+    This first message will be treated as a request. Until the mentor accepts,  
+    you won’t be able to send any more messages.</p>
+
+    <p><strong>Here are some tips to help you introduce yourself best to the mentor:</strong></p>
+
+    <textarea placeholder="Your message..."></textarea>
+    <button class="send-btn">Send</button>
+</div>
+
+
+<!-- Menu Box (Hidden by Default) -->
+<div class="menu-box">
+    <p>Report Account</p>
+</div>
     
+    </div>
 
 
 
-<script src="js/header.js"></script>
+<script src="js/AdultProfile.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+<!-- <div class="user-profile-container">
+        <div class="user-profile-bg"></div>  
+        <div class="user-profile-img">
+            <img id="userProfilePic" src="css/img/emma.jpg" alt="Profile Picture">
+            <input type="file" id="uploadUserProfile" accept="image/*">
+        </div>
+    </div>
+         -->

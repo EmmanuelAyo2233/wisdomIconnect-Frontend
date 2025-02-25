@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 *{
     margin:0 ;
@@ -47,7 +46,7 @@ body{
     width: 100%;
 }
 
-.container-fluid {
+.header-container {
     display: flex;
     width: 100%;
     align-items: center;
@@ -281,7 +280,6 @@ body{
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
     padding: 10px 0;
     z-index: 999;
-    height: 70px;
 }
 
 .bottom-nav .nav-list {
@@ -614,7 +612,7 @@ body{
 }
 
 
-/*  */
+
 /* Sidebar profile container */
 .profile-container {
     position: absolute;
@@ -654,6 +652,7 @@ body{
     opacity: 1;
 }
 
+
 .profile-link {
     display: flex;
     align-items: center;
@@ -682,6 +681,7 @@ body{
     font-weight: bold;
 }
 
+
 .hover-options ul {
     list-style: none;
     padding: 0;
@@ -700,6 +700,7 @@ body{
     border-top: 1px solid #777;
     margin: 15px 0;
 }
+
 
 .hover-options ul li {
     margin: 1px 10px;
@@ -723,6 +724,7 @@ body{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
 }
 
+
 .hover-options ul li a i {
     font-size: 1rem; 
     color: #fff;
@@ -740,261 +742,7 @@ body{
 
 
 
-
-
-/* Ensure content doesn't overlap sidebar */
-.booking-header {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    padding-left: 20px;
-    padding-top: 35px;
-    font-size: 30px;
-  }
-  
-  /* Booking Navigation */
-  .booking-nav {
-    display: flex;
-    gap: 20px;
-    border-bottom: 1px solid #ddd;
-    padding: 0px 20px;
-  }
-  
-  .booking-tab {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    padding-bottom: 5px;
-    position: relative;
-    font-size: 1em;  /* Make the first letter bigger */
-    font-variant: small-caps;
-
-  }
-  
-  .booking-tab:hover,
-  .booking-tab.active {
-    color: #b22222;
-    text-decoration: none;
-  }
-  
-  .booking-tab.active::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background-color: #b22222;
-    bottom: -2px;
-    left: 0;
-  }
-  
-  /* Booking Content */
-  .booking-content {
-    margin-top: 20px;
-    padding: 20px;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .booking-header,
-    .booking-nav {
-      padding-left: 10px;
-    }
-  }
-  
-
-  .explore-btn{
-    margin-left: 20px;
-    background-color: #b22222;
-    color: #fff;
-    padding: 18px 20px;
-    border-radius: 7px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 20px;
-    display: inline-block;
-    text-decoration: none;
-  }
-
-    .explore-btn:hover{
-        background-color: #4d4d4d;
-        color: #fff;
-        text-decoration: none;
-    }
-
-
-.sub-til{
-    font-size: 12pxpx;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-left: 20px;
-}
-
-
-
-
-
-.upcoming-session {
-    background: #fff5f5;
-    border-left: 4px solid #B22222;
-    padding: 12px 15px;
-    margin-top: 15px;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    position: relative;
-  }
-  
-  .session-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .status {
-    background: #B22222;
-    color: white;
-    padding: 3px 8px;
-    font-size: 12px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  
-  .cancel-icon {
-    color: #B22222;
-    font-size: 16px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .cancel-icon:hover {
-    color: darkred;
-  }
-  
-  .upcoming-session p {
-    margin: 0;
-    font-size: 14px;
-  }
-  
-  .user {
-    font-style: italic;
-    font-size: 13px;
-    color: #B22222;
-    text-align: right;
-  }
-
-  
-  .pending-session {
-    background: #f8f8f8;  /* Light gray to indicate pending status */
-    border-left: 4px solid #B22222;
-    padding: 12px 15px;
-    margin-top: 15px;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    position: relative;
-  }
-  
-  .session-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .status.pending {
-    background: gray;  /* Gray status for pending */
-    color: white;
-    padding: 3px 8px;
-    font-size: 12px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  
-  .cancel-icon {
-    color: #B22222;
-    font-size: 16px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .cancel-icon:hover {
-    color: darkred;
-  }
-  
-  .pending-session p {
-    margin: 0;
-    font-size: 14px;
-  }
-  
-  .user {
-    font-style: italic;
-    font-size: 13px;
-    color: #B22222;
-    text-align: right;
-  }
-
-  
-  .history-session {
-    background: #f1f1f1;  
-    border-left: 4px solid #4CAF50;
-    padding: 12px 15px;
-    margin-top: 15px;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    opacity: 0.85; 
-  }
-  
-  .session-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .status.history {
-    background: #4CAF50; 
-    color: white;
-    padding: 3px 8px;
-    font-size: 12px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  
-  .history-session p {
-    margin: 0;
-    font-size: 14px;
-    color: #6c757d; 
-  }
-  
-  .session-time {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background: #e8e8e8;
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 13px;
-  }
-  
-  .user {
-    font-style: italic;
-    font-size: 13px;
-    color: #4CAF50;
-    text-align: right;
-  }
-  
-
-  .noti-dropdown {
+.noti-dropdown {
     position: absolute;
     top: 60px;
     right: 0; 
@@ -1108,127 +856,181 @@ body{
 }
 
 
-@media screen and (max-width: 1024px) {
-    .bookings{
-      margin-bottom: 70px;
-    }
+/* */
+  
+  
+  .user-profile-container {
+    width: 100%;
+    max-width: 100%; /* Ensures it takes full width */
+    margin: auto;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+}
 
+.user-profile-bg {
+    width: 100%;
+    height: 170px; 
+    background-image: url('img/bloga.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
+.profile-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 13%; 
+    position: relative;
+    margin-top: -30px; 
+}
 
-
-.message-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: #B22222;
-    color: white;
+.user-profile-img {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-}
-
-.message-btn:hover {
-    transform: scale(1.1);
-}
-
-
-.message-box {
-    position: fixed;
-    bottom: 80px;
-    right: 40px;
-    width: 350px;
-    height:500px;
+    overflow: hidden;
+    border: 4px solid white;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: none;
-    z-index: 9999;
-    overflow-y: auto;
-    opacity: 0;
-    transform: translateY(10px); 
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    display: none;
-}   
+}
 
-.message-box.show {
-    opacity: 1;
-    transform: translateY(0);
+.user-profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
-.message-header {
-    background: #B22222;
-    color: white;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
+.user-info {
+    margin-left: 10px; 
+    text-align: left;
+}
+
+.user-name {
+    font-size: 30px;
     font-weight: bold;
-    gap: 8px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    color: #333;
+    font-family: 'Poppins', sans-serif; 
+}
+
+.user-role {
+    font-size: 17px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif; 
 }
 
 
-.message-content {
-    background: white;
-    padding:5px;
-    padding-top:100px;
-    font-size: 16px;
-    color: gray;
-    border-bottom-left-radius: 8px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border-bottom-right-radius: 8px;
+.user-info span{
+    font-size: 15px;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif; 
 }
 
 
-.message-content p{
-    font-size:14px;
-    color: gray;
-    padding-top: 10px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+
+/* Profile Icons Box */
+.profile-icons {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 12px;
 }
 
+/* Individual Icon Boxes */
+.icon-box {
+    background: #fff;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-.message-content i{
+.icon-box i {
     font-size: 20px;
-    color: #000;
-    padding-top: 10px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    color: #555;
+    transition: 0.3s;
+}
+
+/* Love Icon (Wishlist) */
+.love-icon.active i::before {
+    content: "\F415"; /* Filled Heart */
+    color: red;
+}
+
+/* Message Request Box */
+/* Message Request Box (Now properly positioned) */
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 999; /* Ensure it's above everything */
+}
+
+/* Close button for message box */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
 }
 
 
+.message-box h4 {
+    margin-bottom: 10px;
+}
 
-  /* Hide on small screens (below 1024px) */
-  @media screen and (max-width: 1024px) {
-    .message-btn {
-        position: fixed;
-        margin-bottom: 60px;
-    }
+.message-box textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
 
+.message-box .send-btn {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+}
 
-    .message-box {
-        position: fixed;
-        bottom:140px;
-        right: 35px;
-        width: 350px;
-        height:450px;
-    }
-    
+/* Menu Box */
+.menu-box {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    width: 150px;
+}
 
+.menu-box p {
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-box p:hover {
+    background: #f5f5f5;
 }

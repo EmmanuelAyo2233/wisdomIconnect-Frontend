@@ -737,3 +737,235 @@ body{
 .profile-container:hover .hover-options {
     display: block;
 }
+
+
+
+.noti-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0; 
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    width: 300px; 
+    font-size: 12px;
+    z-index: 1000; 
+    display: none;
+}
+
+.noti {
+    position: relative; 
+    display: inline-block;
+}
+
+.noti-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.noti-dropdown ul li {
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px; 
+    padding: 10px 12px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 6px;
+    line-height: 1.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; 
+    position: relative;
+    padding-left: 10px; 
+}
+.noti-dropdown ul li i {
+    flex-shrink: 0;
+}
+
+.noti-dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+.noti-dropdown ul li .before-icon {
+    font-size: 16px; 
+    color: #b22222;
+    flex-shrink: 0;
+}
+
+.noti-dropdown ul li strong {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    flex-shrink: 0;
+    left: 10px;
+}
+
+.noti-dropdown ul li a {
+    color: #b22222;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap; 
+}
+
+.noti-dropdown .for-center {
+    text-decoration: none;
+    text-align: center;
+    color: #b22222;
+    background-color: #f5f5f5;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    border-radius: 15px;
+}
+
+
+.noti-dropdown .for-center a {
+    text-decoration: none;
+    color: #b22222;
+    font-size: 15px;
+    bottom: 0
+    ;
+    padding-top: 200px;
+}
+
+.noti-dropdown .for-center a:hover {
+    text-decoration: underline;
+}
+
+
+.notif {
+    position: relative;
+    display: inline-block;
+    background-color: beige;
+    border-radius: 50%;
+    height: auto;
+    width: 40px;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.notif i{
+    font-size: 22px;
+    color: #4a4a4a;
+    padding: 10px;
+}
+
+
+
+.message-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #B22222;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+  }
+  
+  .message-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  
+  .message-box {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    width: 350px;
+    height:500px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 9999;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(10px); 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: none;
+  }   
+  
+  .message-box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  
+  .message-header {
+    background: #B22222;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    gap: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  
+  .message-content {
+    background: white;
+    padding:5px;
+    padding-top:100px;
+    font-size: 16px;
+    color: gray;
+    border-bottom-left-radius: 8px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 8px;
+  }
+  
+  
+  .message-content p{
+    font-size:14px;
+    color: gray;
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .message-content i{
+    font-size: 20px;
+    color: #000;
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  
+  /* Hide on small screens (below 1024px) */
+  @media screen and (max-width: 1024px) {
+    .message-btn {
+        position: fixed;
+        margin-bottom: 60px;
+    }
+  
+  
+    .message-box {
+        position: fixed;
+        bottom:140px;
+        right: 35px;
+        width: 350px;
+        height:450px;
+    }
+    
+  
+  }

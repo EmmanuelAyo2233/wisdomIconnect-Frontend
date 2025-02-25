@@ -5,6 +5,7 @@
 }
 
 
+
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -49,7 +50,6 @@ body{
     display: flex;
     width: 100%;
     align-items: center;
-    padding: 0 2rem;
     box-sizing: border-box; 
 }
 
@@ -262,63 +262,6 @@ body{
 
 
 
-/* .sidebar .profile-content{
-    position: absolute;
-    color: #fff;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #4d4d4d;
-}
-
-.sidebar .profile-content .profile{
-    position: relative;
-    padding: 10px 6px;
-    height: 60px;
-}
-
-.profile-content .profile .profile-details{
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    white-space: nowrap;
-}
-
-
-
-.profile .profile-details img{
-    height: 45px;
-    width: 45px;
-    object-fit:cover ;
-    border-radius: 12px;
-}
-
-.profile .profile-details .Name-job{
-    margin-left: 10px;
-}
-
-.profile .profile-details .name{
-    font-size: 15px;
-    font-weight: 400;
-
-}
-
-.profile .profile-details .job{
-    font-size: 12px;
-}
-
-.profile #log-out{
-    position: absolute;
-    left: 50%;
-    bottom: 2px;
-    transform: translateX(-25%);
-    min-width: 50px;
-    line-height: 50px;
-    font-size: 20px;
-    border-radius: 12px;
-    text-align: center ;
-} */
 
 
 /*botton nav start */
@@ -339,6 +282,7 @@ body{
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
     padding: 10px 0;
     z-index: 999;
+    height: 70px;
 }
 
 .bottom-nav .nav-list {
@@ -468,11 +412,7 @@ body{
 
 /* bottom nav end*/
 
-.home-content {
-    width: 100%;
-    transition: all 0.5s ease;
-    align-items: center;
-}
+
 
 .home-content .text {
     font-size: 2.2rem;
@@ -545,9 +485,6 @@ body{
 @media (max-width: 576px) {
     .fast-link .card {
         font-size: 14px; 
-    }
-    .container {
-        padding: 10px;  
     }
 }
 
@@ -773,70 +710,43 @@ body{
         width: 25%;
     }
 
-    @media (min-width: 768px) {
-        .card-item {
-            width: calc(100% / 2); 
-        }
+   /* Hide on small screens (below 1024px) */
+@media screen and (max-width: 1024px) {
+    .card-item{
+        display: none !important;
+    }
+    .mentor-card{
+      width: auto;
+      height: auto;
     }
 
-    @media (min-width: 1024px) {
-        .card-item {
-            width: calc(100% / 4);
-        }
+    .card-img-top {
+        width: 100%; 
+        height: 200px;
+        object-fit: cover; 
+        object-position: center; 
+        display: block;
     }
 
+    .arrow-controls{
+        display: none;
+    }
 
+    .main-container{
+        margin-bottom: 100px;
+        margin-left: 0 !important; 
+    }
 
+  
 
-/* 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: white;
-    border-bottom: 1px solid #ddd;
+    .left-column {
+        padding: 0 !important;
+    }
+    
+
 }
 
-.logo a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-}
 
-
-.search-bar,
-.header-icons {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar {
-    flex-grow: 1;
-    margin: 0 20px;
-}
-
-.search-bar input {
-    border: 1px solid #ccc;
-    width: 100%;
-}
-
-.header-icons .noti {
-    position: relative;
-    margin-right: 10px;
-}
-
-.header-icons .noti .badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 5px;
-    font-size: 0.8rem;
-} */
 
 .header-icons .noti {
     position: relative;
@@ -1229,7 +1139,7 @@ body{
 
 .container {
     width: 100%; 
-    overflow-x: auto;
+   
 }
 
 .section-title {
@@ -1699,8 +1609,8 @@ hr {
 .left-column,.right-column {
     display: flex;
     width: 100%;
-    align-items: flex-start; /* Align content to the left */
-    gap: 20px; /* Space between items */
+    align-items: flex-start; 
+    gap: 20px; 
 }
 
 .recent-activities {
@@ -2086,3 +1996,120 @@ hr {
     color: #4a4a4a;
     padding: 10px;
 }
+
+
+.message-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #B22222;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.message-btn:hover {
+    transform: scale(1.1);
+}
+
+
+.message-box {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    width: 350px;
+    height:500px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 9999;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(10px); 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: none;
+}   
+
+.message-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.message-header {
+    background: #B22222;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    gap: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+
+.message-content {
+    background: white;
+    padding:5px;
+    padding-top:100px;
+    font-size: 16px;
+    color: gray;
+    border-bottom-left-radius: 8px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 8px;
+}
+
+
+.message-content p{
+    font-size:14px;
+    color: gray;
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.message-content i{
+    font-size: 20px;
+    color: #000;
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+  /* Hide on small screens (below 1024px) */
+  @media screen and (max-width: 1024px) {
+    .message-btn {
+        position: fixed;
+        margin-bottom: 60px;
+    }
+
+
+    .message-box {
+        position: fixed;
+        bottom:140px;
+        right: 35px;
+        width: 350px;
+        height:450px;
+    }
+    
+
+}
+

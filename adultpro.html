@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/adultpro.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <div class="container-fluid">
+        <div class="container-fluid header-container">
             <div class="logo">
                 <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
             </div>
@@ -141,7 +141,7 @@
     </div>
     
     
-    <div class="sidebar">
+ <div class="sidebar">
         <ul class="nav-list">
             <li><a href="index.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
             <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
@@ -193,9 +193,64 @@
 </div>
 
     
+    <div class="user-profile-container">
+        <div class="user-profile-bg"></div>
 
+        <div class="profile-wrapper">
+            <!-- Profile Info (Image & Name) -->
+            <div class="profile-info">
+                <div class="user-profile-img">
+                    <img src="css/img/emma.jpg" alt="User Profile">
+                </div>
 
+                <div class="user-info">
+                    <div class="user-name">Joy Nwaiwu 🇳🇬</div>
+                    <div class="user-role">Community Manager at 3MTT</div>
+                </div>
+            </div>
 
-<script src="js/header.js"></script>
+            <!-- Icons Section -->
+            <div class="profile-actions">
+                <!-- Message Icon -->
+                <div class="icon-container message-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+
+                <!-- Love (Wishlist) Icon -->
+                <div class="icon-container love-icon">
+                    <i class="bi bi-heart"></i>
+                </div>
+
+                <!-- Menu Icon -->
+                <div class="icon-container menu-icon">
+                    <i class="bi bi-three-dots"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown for menu -->
+        <div class="menu-box">
+            <p class="report-account"><i class="bi bi-linkedin"></i>Share on LinkedIn</p>
+            <p class="report-account"><i class="bi bi-twitter"></i>Tweet this profile</p>
+            <p class="report-account"><i class="bi bi-flag"></i> Report Account</p>
+        </div>
+
+        <!-- Message Request Popup -->
+        <div class="custom-message-box">
+            <span class="close-btn">&times;</span>
+            <h4 style="font-size: 20px; padding-bottom: 13px; font-weight: bold;">Message Request</h4>
+            <p class="text-message">This is the beginning of your conversation with <b>Joy Nwaiwu</b>.  
+            This first message will be treated as a request. Until the mentor accepts,  
+            you won’t be able to send any more messages.</p>
+
+            <p class="instruc"><strong>Your Messages</strong></p>
+
+            <textarea placeholder="Your message..."></textarea>
+            <button class="send-btn">Send</button>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+<script src="js/adultpro.js"></script>
 </body>
 </html>

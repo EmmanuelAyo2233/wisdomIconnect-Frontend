@@ -278,6 +278,7 @@ body{
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
     padding: 10px 0;
     z-index: 999;
+    height: 70px;
 }
 
 .bottom-nav .nav-list {
@@ -841,4 +842,130 @@ body{
 
 #show-more-btn:hover {
     background-color: #8b0000;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .notification-container{
+      margin-bottom: 140px;
+    }
+
+}
+
+
+
+
+.message-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #B22222;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.message-btn:hover {
+    transform: scale(1.1);
+}
+
+
+.message-box {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    width: 350px;
+    height:500px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 9999;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(10px); 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: none;
+}   
+
+.message-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.message-header {
+    background: #B22222;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    gap: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+
+.message-content {
+    background: white;
+    padding:5px;
+    padding-top:100px;
+    font-size: 16px;
+    color: gray;
+    border-bottom-left-radius: 8px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 8px;
+}
+
+
+.message-content p{
+    font-size:14px;
+    color: gray;
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.message-content i{
+    font-size: 20px;
+    color: #000;
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+  /* Hide on small screens (below 1024px) */
+  @media screen and (max-width: 1024px) {
+    .message-btn {
+        position: fixed;
+        margin-bottom: 60px;
+    }
+
+
+    .message-box {
+        position: fixed;
+        bottom:140px;
+        right: 35px;
+        width: 350px;
+        height:450px;
+    }
+    
+
 }

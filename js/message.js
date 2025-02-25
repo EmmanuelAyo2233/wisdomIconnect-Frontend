@@ -283,3 +283,38 @@ document.addEventListener("click", function (event) {
     }
 });
     
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let messageBox = document.getElementById("messageBox");
+    let messageIcon = document.getElementById("messageIcon");
+
+    if (messageBox && messageIcon) {
+        function toggleMessageBox(event) {
+            event.stopPropagation();
+            if (messageBox.classList.contains("show")) {
+                messageBox.classList.remove("show");
+                setTimeout(() => {
+                    messageBox.style.display = "none";
+                }, 300); // Wait for animation to finish
+            } else {
+                messageBox.style.display = "block";
+                setTimeout(() => {
+                    messageBox.classList.add("show");
+                }, 10); // Slight delay for smooth effect
+            }
+        }
+
+        messageIcon.addEventListener("click", toggleMessageBox);
+
+        document.addEventListener("click", function (event) {
+            if (!messageBox.contains(event.target) && event.target !== messageIcon) {
+                messageBox.classList.remove("show");
+                setTimeout(() => {
+                    messageBox.style.display = "none";
+                }, 300);
+            }
+        });
+    }
+});

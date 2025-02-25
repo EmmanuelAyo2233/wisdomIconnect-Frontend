@@ -31,6 +31,7 @@ body.addEventListener('click', (event) => {
         slidingMenu.classList.remove('active'); 
     }
 });
+
 const prevArrow = document.getElementById('prevArrow');
 const nextArrow = document.getElementById('nextArrow');
 const cardContainer = document.querySelector('.card-container');
@@ -50,43 +51,43 @@ function getVisibleCardsCount() {
     }
 }
 
-// function updateVisibleCards() {
-//     visibleCards = getVisibleCardsCount(); 
+function updateVisibleCards() {
+    visibleCards = getVisibleCardsCount(); 
 
-//     cardItems.forEach((card, index) => {
-//         if (index >= currentIndex && index < currentIndex + visibleCards - 1) {
-//             card.style.display = 'block';
-//         } else {
-//             card.style.display = 'none';
-//         }
-//     });
+    cardItems.forEach((card, index) => {
+        if (index >= currentIndex && index < currentIndex + visibleCards - 1) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 
     
-//     cardItems[0].style.display = 'block';
+    cardItems[0].style.display = 'block';
 
-//     prevArrow.classList.toggle('disabled', currentIndex === 0);
-//     nextArrow.classList.toggle('disabled', currentIndex >= cardItems.length - (visibleCards - 1));
-// }
+    prevArrow.classList.toggle('disabled', currentIndex === 0);
+    nextArrow.classList.toggle('disabled', currentIndex >= cardItems.length - (visibleCards - 1));
+}
 
-// function changeCards(direction) {
-//     const slideCount = visibleCards - 1; 
+function changeCards(direction) {
+    const slideCount = visibleCards - 1; 
 
-//     if (direction === 'next' && currentIndex < cardItems.length - slideCount) {
-//         currentIndex += slideCount;
-//     } else if (direction === 'prev' && currentIndex > 0) {
-//         currentIndex -= slideCount;
-//     }
+    if (direction === 'next' && currentIndex < cardItems.length - slideCount) {
+        currentIndex += slideCount;
+    } else if (direction === 'prev' && currentIndex > 0) {
+        currentIndex -= slideCount;
+    }
 
-//     updateVisibleCards();
-// }
+    updateVisibleCards();
+}
 
-// prevArrow.addEventListener('click', () => changeCards('prev'));
-// nextArrow.addEventListener('click', () => changeCards('next'));
+prevArrow.addEventListener('click', () => changeCards('prev'));
+nextArrow.addEventListener('click', () => changeCards('next'));
 
 
-// window.addEventListener('resize', updateVisibleCards);
+window.addEventListener('resize', updateVisibleCards);
 
-// window.addEventListener('load', updateVisibleCards);
+window.addEventListener('load', updateVisibleCards);
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     adjustLayout();
     window.addEventListener('resize', adjustLayout);
 });
+
 
 
 // Modal Elements
@@ -415,17 +417,55 @@ hoverMenu.addEventListener('click', (e) => {
 // });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    let messageBox = document.getElementById("messageBox");
+    let messageIcon = document.getElementById("messageIcon");
 
-document.getElementById("notificationIcon").addEventListener("click", function (event) {
-    let dropdown = document.getElementById("notiDropdown");
-    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-    event.stopPropagation();
-});
+    if (messageBox && messageIcon) {
+        function toggleMessageBox(event) {
+            event.stopPropagation();
+            if (messageBox.classList.contains("show")) {
+                messageBox.classList.remove("show");
+                setTimeout(() => {
+                    messageBox.style.display = "none";
+                }, 300); // Wait for animation to finish
+            } else {
+                messageBox.style.display = "block";
+                setTimeout(() => {
+                    messageBox.classList.add("show");
+                }, 10); // Slight delay for smooth effect
+            }
+        }
 
-document.addEventListener("click", function (event) {
-    let dropdown = document.getElementById("notiDropdown");
-    if (!dropdown.contains(event.target) && event.target.id !== "notificationIcon") {
-        dropdown.style.display = "none";
+        messageIcon.addEventListener("click", toggleMessageBox);
+
+        document.addEventListener("click", function (event) {
+            if (!messageBox.contains(event.target) && event.target !== messageIcon) {
+                messageBox.classList.remove("show");
+                setTimeout(() => {
+                    messageBox.style.display = "none";
+                }, 300);
+            }
+        });
     }
 });
-        
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let notificationIcon = document.getElementById("notificationIcon");
+    let dropdown = document.getElementById("notiDropdown");
+
+    // Toggle visibility on click
+    notificationIcon.addEventListener("click", function (event) {
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        event.stopPropagation();
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!dropdown.contains(event.target) && event.target !== notificationIcon) {
+            dropdown.style.display = "none";
+        }
+    });
+});
