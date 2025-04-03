@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mentor-setting.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
+            </div>
+            <div class="menu-button">
+                <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
+            </div>
+            <div class="search-bar">
+                <div class="search-input">
+                    <i class="bi bi-search" id="searchIcon"></i>
+                    <input type="text" placeholder="Search Wise Mentor" id="searchInput">
+                </div>
+            </div>
+            <div class="header-icons">
+                <div class="noti">
+                    <i class="bi bi-bell notification" id="notificationIcon"></i>
+                    <span class="badge" id="notificationCount">4</span>
+                </div>
+                <div class="noti-dropdown" id="notiDropdown">
+                    <ul>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                        </i><strong>Notification:</strong> <i class="bi bi-calendar-event-fill before-icon"></i> Your upcoming session with <b>Dr. Adebayo</b> is scheduled for tomorrow at 10 AM. <a href="#">View details</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-check-circle-fill before-icon" ></i> Your session with <b>Prof. Williams</b> has been marked as completed. <a href="#">See summary</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-clock-history before-icon"></i> You have a pending session with <b>Mrs. Johnson</b>. Confirm now. <a href="#">Confirm</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-x-circle-fill before-icon"></i> Your session with <b>Mr. Ola</b> has been canceled. <a href="#">Check details</a></li>
+                    </ul>
+                    <div class="for-center">
+                        <a href="mentor-notification.html" class="all">view all Notification</a>
+                    </div>
+                </div>
+                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="mentor-booking.html">Book A Session</a></button>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <div class="message-btn" id="messageIcon">
+        <i class="bi bi-chat-dots-fill"></i>
+    </div>
+
+    <!-- Message Box -->
+    <div class="message-box" id="messageBox">
+        <div class="message-header">
+            <i class="bi bi-chat-dots-fill"></i> Messages
+        </div>
+        <div class="message-content">
+            <i class="  bx bx-message-alt-detail"></i><br>
+            No messages
+            <p>Messages from the team will be shown here.</p>
+        </div>
+    </div>
+
+    <div class="sliding-menu" id="slidingMenu">
+        <!-- Cancel Icon -->
+        <div class="cancel-btn" id="cancelBtn">
+            <i class="bx bx-x"></i>
+        </div>
+        
+        
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <div class="profile-info">
+                <p class="profile-name">Emmanuel Ayobami</p>
+                <a href="mentor-profile-edit.html" class="view-profile">View Profile</a>
+            </div>
+        </div>
+        
+        <hr>
+        <!-- Main Navigation -->
+        <ul class="nav-list">
+            <li>
+                <a href="mentor-dashboard.html" class="res">
+                    <i class="bi bi-house-door"></i> Home 
+                </a>
+                <span class="menu-description">Track your home page and connections</span>
+            </li>
+            <li>
+                <a href="mentor-message.html" class="res">
+                    <i class="bx bx-message-alt-detail"></i> Messages 
+                </a>
+                <span class="menu-description">View your messages and stay updated</span>
+            </li>
+            <li>
+                <a href="mentor-connection.html" class="res">
+                    <i class="bx bx-user"></i> My Connections 
+                </a>
+                <span class="menu-description">Manage your personal connections</span>
+            </li>
+            <li>
+                <a href="mentor-booking.html" class="res">
+                    <i class="bx bxs-calendar-alt"></i> Booking  </a>
+                    <span class="menu-description">Book your sessions with mentors</span>
+            </li>
+        </ul>
+        <hr>
+
+        
+        <ul class="nav-list">
+            <li><a href="mentor-booking.html" class="res"><i class="bi bi-calendar-plus"></i> Book a Session </a></li>
+            <li><a href="#"  class="res"><i class="bi bi-bell"></i> Notifications </a></li>
+            <li><a href="#"  class="res"><i class="bx bx-mentor"></i> Become a Mentor </a></li>
+        </ul>
+        <hr>
+    
+ 
+        <ul class="nav-list">
+            <li><a href="mentor-setting.html"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
+            <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
+            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+        </ul>
+    </div>
+    
+    
+    <div class="sidebar">
+        <ul class="nav-list">
+            <li><a href="index.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
+            <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
+            <li><a href="message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
+            <li><a href="bookings.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
+            <li><a href="#"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
+        </ul>
+    
+        <div class="profile-container">
+            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <div class="hover-options" id="hoverMenu" data-visible="false">
+                <a href="mentor-profile-edit.html" class="profile-link">
+                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <div>
+                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="view-profile">View Profile</span>
+                    </div>
+                </a>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-calendar-check"></i> Connect your calendar</a></li>
+                    <li><a href="#"><i class="bi bi-award"></i> Quality</a></li>
+                    <li><a href="#"><i class="bi bi-heart"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="bi bi-people"></i> Get A Match</a></li>
+                    <li><a href="#"><i class="bi bi-person"></i> Become a Mentor</a></li>
+                </ul>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
+                    <li><a href="mentor-setting.html"><i class="bi bi-gear"></i> Settings</a></li>
+                    <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
+                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <!-- Bottom Navigation for Mobile and Tablet -->
+<div class="bottom-nav">
+    <ul class="nav-list">
+        <li><a href="mentor-dashboard.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
+        <!-- <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li> -->
+        <li><a href="mentor-message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="mentor-booking.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="mentor-connection.html" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
+    </ul>
+</div>
+
+
+<div class="container">
+<div class="settings-container">
+    <h2 class="mb-3">Settings</h2>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs" id="settingsTabs">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#menteeProfile">Mentee Profile</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#personalInfo">Personal Info</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#loginSecurity">Login & Security</a></li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content mt-3">
+
+        <!-- MENTEE PROFILE -->
+        <div id="menteeProfile" class="tab-pane fade show active">
+            <div class="section">
+                <p>Expertise <button class="edit-btn">Edit</button></p>
+                <div class="dropdown-container">
+                    <input type="text" id="expertiseInput" placeholder="Select Expertise" class="hidden-input">
+                    <div id="expertiseDropdown" class="dropdown">
+                        <div class="dropdown-option">Content Writing</div>
+                        <div class="dropdown-option">UI/UX Design</div>
+                        <div class="dropdown-option">Software Development</div>
+                        <div class="dropdown-option">Marketing</div>
+                        <div class="dropdown-option">Finance</div>
+                        <div class="dropdown-option">Data Science</div>
+                        <div class="dropdown-option">Cybersecurity</div>
+                        <div class="dropdown-option">SEO</div>
+                        <div class="dropdown-option">Public Speaking</div>
+                        <div class="dropdown-option">Leadership</div>
+                        <div class="dropdown-option">AI & ML</div>
+                        <div class="dropdown-option">Cloud Computing</div>
+                        <div class="dropdown-option">Game Development</div>
+                        <div class="dropdown-option">Photography</div>
+                        <div class="dropdown-option">Product Management</div>
+                        <div class="dropdown-option">Video Editing</div>
+                        <div class="dropdown-option">E-commerce</div>
+                        <div class="dropdown-option">Python Programming</div>
+                        <div class="dropdown-option">JavaScript Development</div>
+                        <div class="dropdown-option">Social Media Strategy</div>
+                    </div>
+                    <div id="expertiseSelected" class="selected-options"></div>
+                </div>
+                <hr>
+            </div>
+            
+            <div class="section">
+                <p>Discipline <button class="edit-btn">Edit</button></p>
+                <div class="dropdown-container">
+                    <input type="text" id="disciplineInput" placeholder="Select Discipline" class="hidden-input">
+                    <div id="disciplineDropdown" class="dropdown">
+                        <div class="dropdown-option">Social Media Writing</div>
+                        <div class="dropdown-option">Content Marketing</div>
+                        <div class="dropdown-option">Event Marketing</div>
+                        <div class="dropdown-option">Customer Success</div>
+                        <div class="dropdown-option">Community Management</div>
+                        <div class="dropdown-option">Product Marketing</div>
+                        <div class="dropdown-option">Program Management</div>
+                        <div class="dropdown-option">Project Management</div>
+                        <div class="dropdown-option">UX Research</div>
+                        <div class="dropdown-option">Brand Management</div>
+                        <div class="dropdown-option">Digital Marketing</div>
+                        <div class="dropdown-option">Sales</div>
+                        <div class="dropdown-option">Human Resources</div>
+                        <div class="dropdown-option">Web Development</div>
+                        <div class="dropdown-option">Mobile App Development</div>
+                        <div class="dropdown-option">Game Design</div>
+                        <div class="dropdown-option">Artificial Intelligence</div>
+                        <div class="dropdown-option">Machine Learning</div>
+                        <div class="dropdown-option">Blockchain</div>
+                        <div class="dropdown-option">Business Analysis</div>
+                        
+                    </div>
+                    
+                    <div id="disciplineSelected" class="selected-options"></div>
+                </div>
+                <hr>
+            </div>
+            
+
+            <div class="section">
+                <p>Company  <button class="edit-btn">Edit</button></p>
+                <p class="info">Kidstech</p>
+                <input type="text" class="hidden-input">
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+
+            <div class="section">
+                <p>Role <button class="edit-btn">Edit</button>
+                <p class="info">Product Designer</p>
+                <input type="text" class="hidden-input">
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+
+            <div class="section">
+                <p>LinkedIn Profile<button class="edit-btn">Edit</button></p>
+                <p class="info">N/A</p>
+                <input type="text" class="hidden-input">
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+
+            <div class="section">
+                <p>X Profile<button class="edit-btn">Edit</button></p>
+                <p class="info">N/A</p>
+                <input type="text" class="hidden-input">
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+        </div>
+
+        <!-- PERSONAL INFO -->
+        <div id="personalInfo" class="tab-pane fade">
+            <!-- Profile Picture Section -->
+            <div class="profile-section2">
+                <div class="profile-container2">
+                    <img src="css/img/default-profile.png" alt="Profile Picture" id="profileImage">
+                    <button class="edit-btn" id="profileEditBtn">✎</button>
+                </div>
+                <input type="file" id="profileInput" accept="image/*" class="hidden-input">
+            </div>
+        
+            <div class="section">
+                <p>Name <button class="edit-btn">Edit</button></p>
+                <p class="info">Emmanuel Ayobami</p>
+                <input type="text" class="hidden-input">
+                <hr>
+            </div>
+        
+            <div class="section">
+                <p>Gender <button class="edit-btn">Edit</button></p>
+                <p class="info">Male</p>
+                <input type="text" class="hidden-input">
+                <hr>
+            </div>
+        
+            <div class="section">
+                <p>Country <button class="edit-btn">Edit</button></p>
+                <p class="info">🇳🇬 Nigeria</p>
+                <input type="text" class="hidden-input">
+                <hr>
+            </div>
+        
+            <div class="section">
+                <p>Timezone <button class="edit-btn">Edit</button></p>
+                <p class="info">Africa/Lagos</p>
+                <input type="text" class="hidden-input">
+                <hr>
+            </div>
+        
+            <div class="section">
+                <p>About <button class="edit-btn">Edit</button></p>
+                <p class="info">I'm a tech enthusiast. Passionate about solving real-life problems with tech. I love coding!</p>
+                <input type="text" class="hidden-input">
+                <hr>
+            </div>
+        </div>
+        
+        <!-- LOGIN & SECURITY -->
+        <div id="loginSecurity" class="tab-pane fade">
+            <div class="section">
+                <p>Email <button class="edit-btn">Edit</button></p>
+                <p class="info">emmypro@example.com</p>
+                <input type="email" class="hidden-input">
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+
+            <div class="section">
+                <p>Password <button class="edit-btn">Edit</button></p>
+                <p class="info">********</p>
+                <input type="password" class="hidden-input">
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+
+            <div class="section">
+                <p>Phone Number <button class="edit-btn">Edit</button></p>
+                <p class="info">+234 09117942751</p>
+                <input type="text" class="hidden-input">
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+
+            <div class="section">
+                <p>Two-Factor Authentication<button class="edit-btn">Edit</button></p>
+                <p class="info">Disabled</p>
+                <button class="save-btn hidden">Save</button>
+                <hr>
+            </div>
+
+            <div class="section">
+                <button class="delete-btn">Delete Account</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/mentor-setting.js"></script>
+</body>
+</html>

@@ -469,177 +469,82 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    let timeSlots = document.querySelector(".time-slots");
-    let leftArrow = document.querySelector(".arrow-left");
-    let rightArrow = document.querySelector(".arrow-right");
-    let maxVisible = 6; // Max slots visible before scroll
-    let startIndex = 0;
-
-    function updateArrows() {
-        leftArrow.classList.toggle("disabled", startIndex === 0);
-        rightArrow.classList.toggle("disabled", startIndex + maxVisible >= timeSlots.children.length);
-    }
-
-    function shiftSlots(direction) {
-        let totalSlots = timeSlots.children.length;
-        if (direction === "right" && startIndex + maxVisible < totalSlots) {
-            startIndex += 3;
-        } else if (direction === "left" && startIndex > 0) {
-            startIndex -= 3;
-        }
-
-        let translateValue = -startIndex * 80 + "px";
-        timeSlots.style.transform = `translateX(${translateValue})`;
-        updateArrows();
-    }
-
-    leftArrow.addEventListener("click", () => shiftSlots("left"));
-    rightArrow.addEventListener("click", () => shiftSlots("right"));
-
-    // Initial check
-    updateArrows();
-});
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const desktopModal = document.getElementById("viewAllModal");
-//     const mobileModal = document.getElementById("mobileViewAllModal"); // Mobile modal
-//     const closeDesktopModalBtn = document.querySelector(".close");
-//     const closeMobileModalBtn = document.querySelector(".close-mobile");
-//     const checkAvailabilityBtn = document.getElementById("checkAvailability"); // Updated button target
-
-//     // Open correct modal based on screen size
-//     checkAvailabilityBtn.addEventListener("click", () => {
-//         if (window.innerWidth <= 768) {
-//             mobileModal.style.display = "flex";
-//         } else {
-//             desktopModal.style.display = "flex";
-//         }
-//     });
-
-//     // Close desktop modal
-//     closeDesktopModalBtn.addEventListener("click", () => {
-//         desktopModal.style.display = "none";
-//     });
-
-//     // Close mobile modal
-//     closeMobileModalBtn.addEventListener("click", () => {
-//         mobileModal.style.display = "none";
-//     });
-
-//     // Close modal when clicking outside the content
-//     desktopModal.addEventListener("click", (event) => {
-//         if (event.target === desktopModal) {
-//             desktopModal.style.display = "none";
-//         }
-//     });
-
-//     mobileModal.addEventListener("click", (event) => {
-//         if (event.target === mobileModal) {
-//             mobileModal.style.display = "none";
-//         }
-//     });
-// });
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("viewAllModal");
     const closeModalBtn = document.querySelector(".close");
     const viewAllLink = document.querySelector(".view-all2");
     const calendarContainer = document.getElementById("calendar");
     const timeSlotsContainer = document.getElementById("timeSlots");
     const continueBtn = document.getElementById("continueBtn");
-    const bookingSection = document.getElementById("bookingSection");
+    const saveAvailabilityBtn = document.createElement("button");
     const prevMonthBtn = document.getElementById("prevMonth");
     const nextMonthBtn = document.getElementById("nextMonth");
-    const confirmBtn = document.getElementById("confirmBookingBtn");
-    const bookingDate = document.getElementById("bookingDate");
-    // const bookingTime = document.getElementById("bookingTime");
     const monthTitle = document.getElementById("monthTitle"); 
     const timeSelection = document.getElementById("timeSelectionSection");
 
-
-    let currentMonth = 3; // March
+    let currentMonth = 2; // March
     let currentYear = 2025;
     let selectedDate = "";
-    let selectedTime = "";
-    const availableDates = {
-        "2025-03-06": ["4:30 PM", "6:00 PM"],
-        "2025-03-10": ["11:30 AM", "4:00 PM"],
-        "2025-03-12": ["10:00 AM", "2:30 PM"],
-        "2025-03-15": ["9:00 AM", "1:00 PM"],
-        "2025-03-19": ["9:00 AM", "1:00 PM"],
-        "2025-03-20": ["10:00 AM", "1:00 PM"],
-        "2025-03-23": ["12:00 AM", "8:00 PM"],
-        "2025-03-24": ["12:00 AM", "4:00 PM"],
-        "2025-03-26": ["12:00 AM", "8:00 PM"],
-        "2025-03-27": ["12:00 AM", "4:00 PM"],
-        "2025-04-02": ["12:00 AM", "4:00 PM"], // Fixed leading zero
-        "2025-04-03": ["12:00 AM", "4:00 PM"],
-        "2025-04-04": ["12:00 AM", "4:00 PM"]
-    };
+    let availableDates = {}; // Store mentor's available dates and slots
+
+    saveAvailabilityBtn.textContent = "Save Availability";
+    saveAvailabilityBtn.classList.add("hidden");
+
     // Open modal
     viewAllLink.addEventListener("click", () => {
         modal.style.display = "flex";
-        resetToCalendar();  
+        resetToCalendar();
         timeSelection.classList.remove("hidden");
     });
-    
 
     closeModalBtn.addEventListener("click", () => {
         modal.style.display = "none";
     });
-    
+
     modal.addEventListener("click", (event) => {
         if (event.target === modal) {
             modal.style.display = "none";
         }
     });
 
-    // Show calendar
     function showCalendar() {
         calendarContainer.innerHTML = "";
         timeSlotsContainer.classList.add("hidden");
-        bookingSection.classList.add("hidden");
         continueBtn.classList.add("hidden");
         calendarContainer.classList.remove("hidden");
         prevMonthBtn.classList.remove("hidden");
         nextMonthBtn.classList.remove("hidden");
-    
-        const monthNames = ["January", "February", "March", "April"];
+
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",];
         monthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-    
+
         prevMonthBtn.disabled = true;
         nextMonthBtn.disabled = true;
-    
+
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-        
-        // Get today's date
+
         const today = new Date();
         const todayYear = today.getFullYear();
         const todayMonth = today.getMonth();
         const todayDate = today.getDate();
-    
+
         const calendarTable = document.createElement("table");
         calendarTable.innerHTML = `
             <tr>
                 <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
             </tr>
         `;
-    
+
         let row = document.createElement("tr");
         for (let i = 0; i < firstDay; i++) {
             row.appendChild(document.createElement("td"));
         }
-    
+
         for (let day = 1; day <= daysInMonth; day++) {
             const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
             const cell = document.createElement("td");
             cell.textContent = day;
-    
-            // Disable past dates automatically
+
             if (
                 (currentYear < todayYear) ||  
                 (currentYear === todayYear && currentMonth < todayMonth) ||  
@@ -647,32 +552,21 @@ document.addEventListener("DOMContentLoaded", function () {
             ) {
                 cell.classList.add("disabled"); 
             } else {
-            
                 cell.classList.add("enabled"); 
-            
-               
-                if (availableDates[dateKey]) {
-                    cell.classList.add("available");
-                    cell.addEventListener("click", () => showTimeSlots(dateKey));
-                }
+                cell.addEventListener("click", () => showTimeSlots(dateKey));
             }
             
-    
             row.appendChild(cell);
-    
+
             if ((firstDay + day) % 7 === 0) {
                 calendarTable.appendChild(row);
                 row = document.createElement("tr");
             }
         }
-    
+
         calendarTable.appendChild(row);
         calendarContainer.appendChild(calendarTable);
     }
-    
-
-
-
 
     function showTimeSlots(date) {
         selectedDate = date;
@@ -682,78 +576,74 @@ document.addEventListener("DOMContentLoaded", function () {
         prevMonthBtn.classList.add("hidden");
         nextMonthBtn.classList.add("hidden");
 
-
-        monthTitle.innerHTML = `<strong>Available time slots</strong>`;
-       
-
-        const dayName = new Date(date).toLocaleDateString("en-US", { weekday: "long" });
-
+        monthTitle.innerHTML = `<strong>Add Available Time Slots</strong>`;
         timeSlotsContainer.innerHTML = `
-            <p><strong>${dayName}, ${date.split("-").reverse().join(" ")}</strong> 
+            <p><strong>${selectedDate}</strong> 
             <a href="#" id="changeLink">Change</a></p>
+            <input type="time" id="timeInput" min="06:00" max="22:00">
+            <button id="addTimeSlot">Add Slot</button>
+            <div id="mentorSlots"></div>
         `;
 
-        availableDates[date].forEach(time => {
-            const slotButton = document.createElement("button");
-            slotButton.textContent = time;
-            slotButton.classList.add("slot-btn");
-
-            slotButton.addEventListener("click", () => {
-                document.querySelectorAll(".slot-btn").forEach(btn => btn.classList.remove("selected"));
-                slotButton.classList.add("selected");
-                selectedTime = time;
-                continueBtn.disabled = false;
-                continueBtn.classList.add("active-btn")
-                
-            });
-
-            timeSlotsContainer.appendChild(slotButton);
-        });
-
         document.getElementById("changeLink").addEventListener("click", resetToCalendar);
+        document.getElementById("addTimeSlot").addEventListener("click", addTimeSlot);
+
+        displaySelectedSlots();
     }
 
-    
+    function addTimeSlot() {
+        const timeInput = document.getElementById("timeInput").value;
+        if (!timeInput) return;
+
+        if (!availableDates[selectedDate]) {
+            availableDates[selectedDate] = [];
+        }
+
+        if (!availableDates[selectedDate].includes(timeInput)) {
+            availableDates[selectedDate].push(timeInput);
+        }
+
+        displaySelectedSlots();
+    }
+
+    function displaySelectedSlots() {
+        const slotContainer = document.getElementById("mentorSlots");
+        slotContainer.innerHTML = "";
+
+        if (availableDates[selectedDate] && availableDates[selectedDate].length > 0) {
+            availableDates[selectedDate].forEach(time => {
+                const slotDiv = document.createElement("div");
+                slotDiv.textContent = time;
+                slotDiv.classList.add("slot-item");
+
+                const removeBtn = document.createElement("button");
+                removeBtn.textContent = "x";
+                removeBtn.addEventListener("click", () => {
+                    availableDates[selectedDate] = availableDates[selectedDate].filter(t => t !== time);
+                    displaySelectedSlots();
+                });
+
+                slotDiv.appendChild(removeBtn);
+                slotContainer.appendChild(slotDiv);
+            });
+
+            saveAvailabilityBtn.classList.remove("hidden");
+        } else {
+            saveAvailabilityBtn.classList.add("hidden");
+        }
+    }
+
+    saveAvailabilityBtn.addEventListener("click", () => {
+        alert("Availability saved successfully!");
+        console.log("Mentor's Available Dates:", availableDates);
+        modal.style.display = "none";
+    });
+
+    timeSlotsContainer.appendChild(saveAvailabilityBtn);
+
     function resetToCalendar() {
         showCalendar();
     }
-
-    
-// Continue to booking section
-continueBtn.addEventListener("click", () => {
-    if (selectedDate && selectedTime) {
-        timeSlotsContainer.classList.add("hidden");
-        continueBtn.classList.add("hidden");
-        bookingSection.classList.remove("hidden");
-        timeSelection.classList.add("hidden");
-
-        bookingDate.innerHTML = `<i class="bi bi-calendar-date"></i> ${selectedDate}  
-                                 <i class="bi bi-clock"></i> ${selectedTime} 
-                                 <a href="#" id="changeBooking" style="margin-left: 10px; ">Change</a>`;
-
-        document.getElementById("changeBooking").addEventListener("click", (e) => {
-            e.preventDefault();
-            resetToCalendar();
-            timeSelection.classList.remove("hidden");
-            bookingSection.classList.add("hidden"); 
-        });
-    }
-});
-
-
-
-
-function resetToCalendar() {
-    showCalendar();
-}
-
-
-
-
-    confirmBtn.addEventListener("click", () => {
-        alert(`Booking confirmed for ${selectedDate} at ${selectedTime}`);
-    });
-
 
     prevMonthBtn.addEventListener("click", () => {
         if (currentMonth > 2) {
@@ -769,290 +659,25 @@ function resetToCalendar() {
         }
     });
 
-
-    
+    showCalendar();
 });
-
-
-
-
 
 
 document.getElementById("load-more-btn").addEventListener("click", function() {
     document.getElementById("more-comments").style.display = "block";
     this.style.display = "none"; // Hide the button after clicking
   });
+  
 
 
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const checkAvailabilityBtn = document.getElementById("checkAvailability");
-//     const viewAllModal = document.getElementById("viewAllModal");
-//     const mobileViewAllModal = document.getElementById("mobileViewAllModal");
-//     const closeModalBtns = document.querySelectorAll(".close"); // Select all close buttons
-
-//     // Modal Open and Close Handling
-//     checkAvailabilityBtn.addEventListener("click", () => {
-//         if (window.innerWidth <= 768) {
-//             mobileViewAllModal.style.display = "flex"; // Show mobile modal
-//         } else {
-//             viewAllModal.style.display = "flex"; // Show desktop modal
-//         }
-//     });
-
-//     // Close modals when clicking close buttons
-//     closeModalBtns.forEach(btn => {
-//         btn.addEventListener("click", () => {
-//             viewAllModal.style.display = "none";
-//             mobileViewAllModal.style.display = "none";
-//         });
-//     });
-
-//     // Close modal when clicking outside content
-//     window.addEventListener("click", (event) => {
-//         if (event.target === viewAllModal) {
-//             viewAllModal.style.display = "none";
-//         }
-//         if (event.target === mobileViewAllModal) {
-//             mobileViewAllModal.style.display = "none";
-//         }
-//     });
-
-    // Mobile Modal Calendar
-
-   
-
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("viewAllModal2");
-    const closeModalBtn = document.querySelector(".close2");
-    const viewAllLink = document.querySelector(".view-all3");
-    const calendarContainer = document.getElementById("calendar2");
-    const timeSlotsContainer = document.getElementById("timeSlots2");
-    const continueBtn = document.getElementById("continueBtn2");
-    const bookingSection = document.getElementById("bookingSection2");
-    const prevMonthBtn = document.getElementById("prevMonth2");
-    const nextMonthBtn = document.getElementById("nextMonth2");
-    const confirmBtn = document.getElementById("confirmBookingBtn2");
-    const bookingDate = document.getElementById("bookingDate2");
-    // const bookingTime = document.getElementById("bookingTime");
-    const monthTitle = document.getElementById("monthTitle2"); 
-    const timeSelection = document.getElementById("timeSelectionSection2");
-
-
-    let currentMonth = 3; // March
-    let currentYear = 2025;
-    let selectedDate = "";
-    let selectedTime = "";
-    const availableDates = {
-        "2025-03-06": ["4:30 PM", "6:00 PM"],
-        "2025-03-10": ["11:30 AM", "4:00 PM"],
-        "2025-03-12": ["10:00 AM", "2:30 PM"],
-        "2025-03-15": ["9:00 AM", "1:00 PM"],
-        "2025-03-19": ["9:00 AM", "1:00 PM"],
-        "2025-03-20": ["10:00 AM", "1:00 PM"],
-        "2025-03-23": ["12:00 AM", "8:00 PM"],
-        "2025-03-24": ["12:00 AM", "4:00 PM"],
-        "2025-03-26": ["12:00 AM", "8:00 PM"],
-        "2025-03-27": ["12:00 AM", "4:00 PM"],
-        "2025-04-02": ["12:00 AM", "4:00 PM"], // Fixed leading zero
-        "2025-04-03": ["12:00 AM", "4:00 PM"],
-        "2025-04-04": ["12:00 AM", "4:00 PM"]
-    };
-    // Open modal
-    viewAllLink.addEventListener("click", () => {
-        modal.style.display = "flex";
-        resetToCalendar();  
-        timeSelection.classList.remove("hidden");
-    });
-    
-
-    closeModalBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-    
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-
-    // Show calendar
-    function showCalendar() {
-        calendarContainer.innerHTML = "";
-        timeSlotsContainer.classList.add("hidden");
-        bookingSection.classList.add("hidden");
-        continueBtn.classList.add("hidden");
-        calendarContainer.classList.remove("hidden");
-        prevMonthBtn.classList.remove("hidden");
-        nextMonthBtn.classList.remove("hidden");
-    
-        const monthNames = ["January", "February", "March", "April"];
-        monthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-    
-        prevMonthBtn.disabled = true;
-        nextMonthBtn.disabled = true;
-    
-        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-        
-        // Get today's date
-        const today = new Date();
-        const todayYear = today.getFullYear();
-        const todayMonth = today.getMonth();
-        const todayDate = today.getDate();
-    
-        const calendarTable = document.createElement("table");
-        calendarTable.innerHTML = `
-            <tr>
-                <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
-            </tr>
-        `;
-    
-        let row = document.createElement("tr");
-        for (let i = 0; i < firstDay; i++) {
-            row.appendChild(document.createElement("td"));
-        }
-    
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-            const cell = document.createElement("td");
-            cell.textContent = day;
-    
-            // Disable past dates automatically
-            if (
-                (currentYear < todayYear) ||  
-                (currentYear === todayYear && currentMonth < todayMonth) ||  
-                (currentYear === todayYear && currentMonth === todayMonth && day < todayDate)  
-            ) {
-                cell.classList.add("disabled"); 
-            } else {
-            
-                cell.classList.add("enabled"); 
-            
-               
-                if (availableDates[dateKey]) {
-                    cell.classList.add("available");
-                    cell.addEventListener("click", () => showTimeSlots(dateKey));
-                }
-            }
-            
-    
-            row.appendChild(cell);
-    
-            if ((firstDay + day) % 7 === 0) {
-                calendarTable.appendChild(row);
-                row = document.createElement("tr");
-            }
-        }
-    
-        calendarTable.appendChild(row);
-        calendarContainer.appendChild(calendarTable);
-    }
-    
-
-
-
-
-    function showTimeSlots(date) {
-        selectedDate = date;
-        calendarContainer.classList.add("hidden");
-        timeSlotsContainer.classList.remove("hidden");
-        continueBtn.classList.remove("hidden");
-        prevMonthBtn.classList.add("hidden");
-        nextMonthBtn.classList.add("hidden");
-
-
-        monthTitle.innerHTML = `<strong>Available time slots</strong>`;
-       
-
-        const dayName = new Date(date).toLocaleDateString("en-US", { weekday: "long" });
-
-        timeSlotsContainer.innerHTML = `
-            <p><strong>${dayName}, ${date.split("-").reverse().join(" ")}</strong> 
-            <a href="#" id="changeLink">Change</a></p>
-        `;
-
-        availableDates[date].forEach(time => {
-            const slotButton = document.createElement("button");
-            slotButton.textContent = time;
-            slotButton.classList.add("slot-btn");
-
-            slotButton.addEventListener("click", () => {
-                document.querySelectorAll(".slot-btn").forEach(btn => btn.classList.remove("selected"));
-                slotButton.classList.add("selected");
-                selectedTime = time;
-                continueBtn.disabled = false;
-                continueBtn.classList.add("active-btn")
-                
-            });
-
-            timeSlotsContainer.appendChild(slotButton);
-        });
-
-        document.getElementById("changeLink").addEventListener("click", resetToCalendar);
-    }
-
-    
-    function resetToCalendar() {
-        showCalendar();
-    }
-
-    
-// Continue to booking section
-continueBtn.addEventListener("click", () => {
-    if (selectedDate && selectedTime) {
-        timeSlotsContainer.classList.add("hidden");
-        continueBtn.classList.add("hidden");
-        bookingSection.classList.remove("hidden");
-        timeSelection.classList.add("hidden");
-
-        bookingDate.innerHTML = `<i class="bi bi-calendar-date"></i> ${selectedDate}  
-                                 <i class="bi bi-clock"></i> ${selectedTime} 
-                                 <a href="#" id="changeBooking" style="margin-left: 10px; ">Change</a>`;
-
-        document.getElementById("changeBooking").addEventListener("click", (e) => {
-            e.preventDefault();
-            resetToCalendar();
-            timeSelection.classList.remove("hidden");
-            bookingSection.classList.add("hidden"); 
-        });
-    }
-});
-
-
-
-
-function resetToCalendar() {
-    showCalendar();
+  function showTimeSlots(card) {
+    document.getElementById("timeSlotsContainer").classList.remove("hidden");
 }
 
+function openModal() {
+    document.getElementById("viewAllModal").style.display = "block";
+}
 
-
-
-    confirmBtn.addEventListener("click", () => {
-        alert(`Booking confirmed for ${selectedDate} at ${selectedTime}`);
-    });
-
-
-    prevMonthBtn.addEventListener("click", () => {
-        if (currentMonth > 2) {
-            currentMonth--;
-            showCalendar();
-        }
-    });
-
-    nextMonthBtn.addEventListener("click", () => {
-        if (currentMonth < 3) {
-            currentMonth++;
-            showCalendar();
-        }
-    });
-
-
-    
-});
-
-
-
-
-
+function closeModal() {
+    document.getElementById("viewAllModal").style.display = "none";
+}

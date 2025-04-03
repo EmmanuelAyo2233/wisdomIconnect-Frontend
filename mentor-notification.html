@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="css/mentor-nofication.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -31,7 +31,7 @@
                     <i class="bi bi-bell notification"></i>
                     <span class="badge" id="notificationCount">4</span>
                 </div>
-                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="Explore.html">Book A Session</a></button>
+                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="mentor-booking.html">Book A Session</a></button>
             </div>
         </div>
     </header>
@@ -63,7 +63,7 @@
             <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
             <div class="profile-info">
                 <p class="profile-name">Emmanuel Ayobami</p>
-                <a href="Member-profile.html" class="view-profile">View Profile</a>
+                <a href="mentor-profile-edit.html" class="view-profile">View Profile</a>
             </div>
         </div>
         
@@ -71,25 +71,25 @@
         <!-- Main Navigation -->
         <ul class="nav-list">
             <li>
-                <a href="index.html" class="res">
+                <a href="mentor-dashboard.html" class="res">
                     <i class="bi bi-house-door"></i> Home 
                 </a>
                 <span class="menu-description">Track your home page and connections</span>
             </li>
             <li>
-                <a href="message.html" class="res">
+                <a href="mentor-message.html" class="res">
                     <i class="bx bx-message-alt-detail"></i> Messages 
                 </a>
                 <span class="menu-description">View your messages and stay updated</span>
             </li>
             <li>
-                <a href="connection.html" class="res">
+                <a href="mentor-connection.html" class="res">
                     <i class="bx bx-user"></i> My Connections 
                 </a>
                 <span class="menu-description">Manage your personal connections</span>
             </li>
             <li>
-                <a href="#" class="res">
+                <a href="mentor-booking.html" class="res">
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
@@ -106,7 +106,7 @@
     
  
         <ul class="nav-list">
-            <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
+            <li><a href="mentor-setting.html"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
             <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
             <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
         </ul>
@@ -115,11 +115,11 @@
     
     <div class="sidebar">
         <ul class="nav-list">
-            <li><a href="index.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
-            <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
-            <li><a href="message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
-            <li><a href="bookings.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
-            <li><a href="connection.html"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
+            <li><a href="mentor-dashboard.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
+            <!-- <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li> -->
+            <li><a href="mentor-message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
+            <li><a href="mentor-booking.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
+            <li><a href="mentor-connection.html"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
         </ul>
     
         <div class="profile-container">
@@ -143,7 +143,7 @@
                 <hr class="divider" />
                 <ul>
                     <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
-                    <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                    <li><a href="mentor-setting.html"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
                     <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
@@ -156,10 +156,10 @@
     <!-- Bottom Navigation for Mobile and Tablet -->
 <div class="bottom-nav">
     <ul class="nav-list">
-        <li><a href="index.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
-        <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li>
-        <li><a href="message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
-        <li><a href="bookings.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="mentor-dashboard.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
+        <!-- <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li> -->
+        <li><a href="mentor-message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="mentor-booking.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
         <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
     </ul>
 </div>
@@ -351,6 +351,6 @@
 
 
 
-<script src="js/notification.js"></script>
+<script src="js/mentor-notification.js"></script>
 </body>
 </html>
