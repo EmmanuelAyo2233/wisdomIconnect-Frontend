@@ -1,0 +1,286 @@
+
+.nav1 {
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 3px solid #B22222;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    text-align: center !important;
+    cursor: pointer;
+    
+}
+
+.logo {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    color: #fff; 
+    text-decoration: none !important;
+    color: #555;
+    text-align: center !important;
+}
+
+
+.logo:hover{
+    color: black;
+}
+        .text-center {
+            text-align: center;
+            margin-top: 20px; 
+         }
+
+    .tagline p {
+        color: #4B3D29; 
+        font-size: 1.1rem; 
+        margin: 5px 0; 
+    }
+
+    .tagline p strong {
+        font-size: 1.3rem;
+        color: #B22222; 
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+    }
+
+    .tagline {
+        border-top: 1px solid #ddd;
+        padding-top: 15px; 
+        margin-top: 20px; 
+    }
+
+        form {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            margin-top: 20px;
+
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #B22222;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        /* .form-control {
+            border: none;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0;
+            padding-left: 10px;
+            padding-right: 30px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom: 1px solid #B22222;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #B22222;
+        }
+
+        .form-check-label {
+            font-size: 16px;
+            margin-left: 5px;
+        }
+
+        .form-check {
+            margin-bottom: 10px;
+        }
+
+        .form-check .form-check-input:focus{
+            outline: none;
+            box-shadow: none;
+        }
+
+        .form-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-danger {
+            background-color: #B22222; 
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 24px;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #4B3D29;
+        }
+        
+.text-center a {
+    color: #B22222;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.text-center a:hover {
+    color: #4B3D29;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 20px; 
+}    */
+
+
+.scroll-up {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; 
+    background-color: #B22222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.scroll-up:hover {
+    background-color: #4B3D29;
+    color:#fff;
+}
+
+
+
+.registration-form {
+    padding: 2rem;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+
+.registration-form {
+    padding: 2rem;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  input, textarea, select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    border-color: #B22222;
+    outline: none;
+  }
+  
+  button {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    background: #B22222;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 5px;
+  }
+  
+  .selected-tags .tag {
+    background: #b22222;
+    color: white;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-size: 0.9rem;
+    position: relative;
+  }
+  
+  .selected-tags .tag span {
+    margin-left: 5px;
+    cursor: pointer;
+    color: white;
+  }
+  
+
+
+  .experience-group,
+.education-group {
+  margin-bottom: 1rem;
+}
+
+.experience-group input,
+.education-group input {
+  margin-bottom: 0.5rem;
+}
+
+
+.monkey-icon {
+    font-size: 20px;
+    user-select: none;
+  }
+  
+
+  .adultreg .register {
+    margin-top: 20px;
+    width: 100%;
+    background: #b22222;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+
+  /* Styling the select dropdown */
+.scrollable-dropdown {
+  width: 100%;  /* Ensure it takes full width */
+  height: auto;  /* Let it expand based on content */
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+/* Adding max height to make the dropdown scrollable */
+.scrollable-dropdown {
+  max-height: 250px;  /* Limit the dropdown height */
+  overflow-y: auto;  /* Add scroll bar if content exceeds max-height */
+}

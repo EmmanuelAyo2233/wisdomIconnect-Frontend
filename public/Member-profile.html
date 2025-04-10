@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/Member-profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
+            </div>
+            <div class="menu-button">
+                <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
+            </div>
+            <div class="search-bar">
+                <div class="search-input">
+                    <i class="bi bi-search" id="searchIcon"></i>
+                    <input type="text" placeholder="Search Wise Mentor" id="searchInput">
+                </div>
+            </div>
+            <div class="header-icons">
+                <div class="noti">
+                    <i class="bi bi-bell notification" id="notificationIcon"></i>
+                    <span class="badge" id="notificationCount">4</span>
+                </div>
+                <div class="noti-dropdown" id="notiDropdown">
+                    <ul>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                        </i><strong>Notification:</strong> <i class="bi bi-calendar-event-fill before-icon"></i> Your upcoming session with <b>Dr. Adebayo</b> is scheduled for tomorrow at 10 AM. <a href="#">View details</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-check-circle-fill before-icon" ></i> Your session with <b>Prof. Williams</b> has been marked as completed. <a href="#">See summary</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-clock-history before-icon"></i> You have a pending session with <b>Mrs. Johnson</b>. Confirm now. <a href="#">Confirm</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-x-circle-fill before-icon"></i> Your session with <b>Mr. Ola</b> has been canceled. <a href="#">Check details</a></li>
+                    </ul>
+                    <div class="for-center">
+                        <a href="notification.html" class="all">view all Notification</a>
+                    </div>
+                </div>
+                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="Explore.html">Book A Session</a></button>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <div class="message-btn" id="messageIcon">
+        <i class="bi bi-chat-dots-fill"></i>
+    </div>
+
+    <!-- Message Box -->
+    <div class="message-box" id="messageBox">
+        <div class="message-header">
+            <i class="bi bi-chat-dots-fill"></i> Messages
+        </div>
+        <div class="message-content">
+            <i class="  bx bx-message-alt-detail"></i><br>
+            No messages
+            <p>Messages from the team will be shown here.</p>
+        </div>
+    </div>
+
+    <div class="sliding-menu" id="slidingMenu">
+        <!-- Cancel Icon -->
+        <div class="cancel-btn" id="cancelBtn">
+            <i class="bx bx-x"></i>
+        </div>
+        
+        
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-img" id="update-res">
+            <div class="profile-info">
+                <p class="profile-name">Emmanuel Ayobami</p>
+                <a href="#" class="view-profile">View Profile</a>
+            </div>
+        </div>
+        
+        <hr>
+        <!-- Main Navigation -->
+        <ul class="nav-list">
+            <li>
+                <a href="index.html" class="res">
+                    <i class="bi bi-house-door"></i> Home 
+                </a>
+                <span class="menu-description">Track your home page and connections</span>
+            </li>
+            <li>
+                <a href="message.html" class="res">
+                    <i class="bx bx-message-alt-detail"></i> Messages 
+                </a>
+                <span class="menu-description">View your messages and stay updated</span>
+            </li>
+            <li>
+                <a href="#" class="res">
+                    <i class="bx bx-user"></i> My Connections 
+                </a>
+                <span class="menu-description">Manage your personal connections</span>
+            </li>
+            <li>
+                <a href="#" class="res">
+                    <i class="bx bxs-calendar-alt"></i> Booking  </a>
+                    <span class="menu-description">Book your sessions with mentors</span>
+            </li>
+        </ul>
+        <hr>
+
+        
+        <ul class="nav-list">
+            <li><a href="#" class="res"><i class="bi bi-calendar-plus"></i> Book a Session </a></li>
+            <li><a href="#"  class="res"><i class="bi bi-bell"></i> Notifications </a></li>
+            <li><a href="#"  class="res"><i class="bx bx-mentor"></i> Become a Mentor </a></li>
+        </ul>
+        <hr>
+    
+ 
+        <ul class="nav-list">
+            <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
+            <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
+            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+        </ul>
+    </div>
+    
+    
+    <div class="sidebar">
+        <ul class="nav-list">
+            <li><a href="index.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
+            <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
+            <li><a href="message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
+            <li><a href="bookings.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
+            <li><a href="connection.html"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
+        </ul>
+
+
+
+    
+        <div class="profile-container">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-pic1" id="sideNavPic">
+            <div class="hover-options" id="hoverMenu" data-visible="false">  
+                <a href="Member-profile.html" class="profile-link">
+                    <img src="css/img/default-profile.png" alt="Profile" class="hover-profile-pic" id="update-profile">
+                    <div>
+                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="view-profile">View Profile</span>
+                    </div>
+                </a>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-calendar-check"></i> Connect your calendar</a></li>
+                    <li><a href="#"><i class="bi bi-award"></i> Quality</a></li>
+                    <li><a href="#"><i class="bi bi-heart"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="bi bi-people"></i> Get A Match</a></li>
+                    <li><a href="#"><i class="bi bi-person"></i> Become a Mentor</a></li>
+                </ul>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
+                    <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                    <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
+                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <!-- Bottom Navigation for Mobile and Tablet -->
+<div class="bottom-nav">
+    <ul class="nav-list">
+        <li><a href="index.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
+        <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="bookings.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
+    </ul>
+</div>
+
+
+
+<div class="user-profile-container">
+    <div class="user-profile-bg"></div>
+
+    <div class="profile-wrapper">
+        <!-- Profile Info (Image & Name) -->
+        <div class="profile-info">
+            <div class="profile-pic-container">
+                <label for="profileUpload" class="user-profile-img">
+                    <img id="profilePic" src="css/img/default-profile.png" alt="User Profile">
+                </label>
+                <input type="file" id="profileUpload" accept="image/*">
+    
+                <!-- Edit Profile Button -->
+                <button id="editProfileBtn" class="edit-profile">
+                    <i class="bi bi-pencil"></i> Edit
+                </button>
+            </div>
+    
+            <!-- User Info (Name & Role) -->
+            <div class="user-details">
+                <div class="user-name">Emmanuel Ayobami 🇳🇬</div>
+                <div class="user-role">
+                    Front-End Developer | UI/UX Designer | Graphics Designer at LloydBanks Digital Services & DVA Bootcamp
+                </div>
+            
+                <!-- Correct "Edit Profile" button placement -->
+                <button id="openEditProfile">
+                    <i class="bi bi-pencil"></i> Edit Profile
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+
+   
+<section class="about">
+    <div class="tab-container">
+        <div class="tab active" data-target="overview">Overview</div>
+        <div class="tab" data-target="achievements">Commendations</div>
+        <div class="tab" data-target="sessions">My Mentors</div>
+        <div class="underline"></div>
+    </div>
+
+
+      <!-- Split Page Layout -->
+      <div class="content-container">
+        <div class="left-content">
+            <div class="content active" id="overview-left">
+                <div class="community-stats-hidden">
+                  
+                    <div class="community-header ">
+                        <h3>Community Statistics</h3>
+                       
+                    </div>
+                
+                    <!-- Community Statistics -->
+                    <div class="community-stats">
+                        <div class="stat-row">
+                            <div class="stat-item">
+                                <div class="stat-top">
+                                    <div class="stat-icon" style="background-color: #ffdddd; color: red;"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                                    <div class="stat-info">
+                                        <span class="stat-value">0 mins</span>
+                                        <p class="stat-text">Session Time</p>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-top">
+                                    <div class="stat-icon" style="background-color: #ddeeff; color: blue;"><i class="bi bi-stars"></i></div>
+                                    <div class="stat-info">
+                                        <span class="stat-value">0</span>
+                                        <p class="stat-text">Sessions Completed</p>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                
+                     
+                        <div class="more-stats">
+                            <div class="stat-row">
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ffeedc; color: orange;">
+                                            <i class="bi bi-bookmark-check-fill"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">0%</span>
+                                            <p class="stat-text">Average Attendance</p>
+                                            <span class="info-icon" data-tooltip="Calculated as (Total sessions attended / Total sessions) × 100">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ddffdd; color: green;">
+                                            <i class="bi bi-heart-fill"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">0</span>
+                                            <p class="stat-text">Karma Points</p>
+                                            <span class="info-icon" data-tooltip="Earned based on session participation and contributions">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+
+                        </div>
+                        </div>
+                
+                   
+                <div class="about-content">
+                    <p class="short-text">
+                        Web Developer Specialist with 1+ years of experience designing and implementing responsive and user-friendly websites.
+                         Proficient in front-end and product designs, 
+                        with a passion for staying updated on emerging trends in web development. I enjoy solving
+                    </p>
+                    <p class="long-text hidden">
+                        problems, researching and developing new strategies for products better performance.
+                    </p>
+                    <a class="read-more">Read More</a>
+
+                    
+
+
+                      <div class="expertise-container">
+                        <!-- Expertise Section -->
+                        <div class="expertise">
+                          <h3>Expertise</h3>
+                          <div class="expertise-grid">
+                            <span class="expertise-item design">Design</span>
+                            <span class="expertise-item marketing">Marketing</span>
+                            <span class="expertise-item nocode">No/Low Code</span>
+                            <span class="expertise-item product">Product</span>
+                            <span class="expertise-item research">Product Research</span>
+                          </div>
+                        </div>
+                      
+                        <!-- Language Section -->
+                        <div class="language">
+                          <h3>Fluent in</h3>
+                          <span class="language-item">English</span>
+                        </div>
+                      </div>
+
+                      <div  class="experiecew">
+                        <h3>Experience w/ industries</h3>
+                        <div class="inline">
+                          <p class="experiecew-item">Tech</p>
+                          <p class="experiecew-item">Fintech</p>
+                        </div>
+                      </div>
+                     
+                      <div class="experience-container">
+                        <h3>Experience</h3>
+                        <div class="experience-item">
+                          <i class="bi bi-briefcase experience-icon"></i> <!-- Industry Icon -->
+                          <div class="experience-details">
+                            <p class="experience-title">Front-End Developer | UI/UX Designer | Graphics Designer</p>
+                            <p class="experience-company">LloydBanks Digital Services & DVA Bootcamp</p>
+                          </div>
+                          <span class="experience-present">Present</span>
+                        </div>
+                      </div>
+
+
+                      <div class="achievement"> 
+                        <h3>Achievements</h3>
+                        <p>Coming Soon</p>
+                      </div>
+
+ <!-- 🔹 Edit Profile Overlay -->
+<div class="profile-edit-overlay" id="profileEditOverlay">
+    <div class="profile-edit-modal">
+        <button class="close-edit" id="closeEdit">X</button>
+        <h2>Edit Profile</h2>
+
+        <label for="editBio">Bio:</label>
+        <textarea id="editBio"></textarea>
+
+        <label for="editExperience">Experience:</label>
+        <input type="text" id="editExperience" />
+
+        <!-- 🔹 Expertise Selection (Scrollable) -->
+        <label for="editExpertise">Expertise (Select up to 5):</label>
+        <div class="expertise-select-container">
+            <select id="editExpertise">
+                <option value="design">Design</option>
+                <option value="marketing">Marketing</option>
+                <option value="nocode">No/Low Code</option>
+                <option value="product">Product</option>
+                <option value="research">Product Research</option>
+                <option value="writing">Writing</option>
+                <option value="uiux">UI/UX</option>
+                <option value="seo">SEO</option>
+                <option value="frontend">Frontend Development</option>
+                <option value="backend">Backend Development</option>
+                <option value="fullstack">Fullstack Development</option>
+                <option value="mobile">Mobile App Development</option>
+                <option value="data">Data Analysis</option>
+                <option value="cybersecurity">Cybersecurity</option>
+                <option value="ai">AI & Machine Learning</option>
+                <option value="blockchain">Blockchain</option>
+                <option value="business">Business Strategy</option>
+                <option value="sales">Sales & Growth</option>
+                <option value="leadership">Leadership</option>
+                <option value="publicspeaking">Public Speaking</option>
+            </select>
+        </div>
+        <!-- 🔹 Selected Expertise Tags -->
+        <div class="selected-expertise-container" id="selectedExpertiseContainer"></div>
+
+        <!-- 🔹 Language Selection -->
+        <label for="editLanguage">Languages (Select up to 2):</label>
+        <div class="language-select-container">
+            <select id="editLanguage">
+                <option value="english">English</option>
+                <option value="french">French</option>
+                <option value="spanish">Spanish</option>
+                <option value="german">German</option>
+                <option value="chinese">Chinese</option>
+                <option value="arabic">Arabic</option>
+                <option value="hindi">Hindi</option>
+                <option value="portuguese">Portuguese</option>
+            </select>
+        </div>
+        <!-- Add this div for displaying selected languages -->
+        <div id="languageDisplay"></div>
+        
+        <!-- 🔹 Selected Languages Tags -->
+       
+
+        <!-- 🔹 Industry Selection -->
+        <label for="editIndustry">Industries:</label>
+        <select id="editIndustry">
+            <option value="">Select Industry</option>
+            <option value="tech">Tech</option>
+            <option value="fintech">Fintech</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="education">Education</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="realestate">Real Estate</option>
+        </select>
+        <div class="selected-industries-container" id="selectedIndustriesContainer"></div>
+
+        <input type="text" id="customIndustry" placeholder="Or type new industry and press Enter" />
+        <!-- 🔹 Selected Industries Tags -->
+        <div class="selected-industries-container" id="selectedIndustriesContainer"></div>
+
+        <button class="save-profile-btn" id="saveProfile">Save Changes</button>
+    </div>
+</div>
+
+<!-- 🔹 Edit Button -->
+
+
+
+
+                      
+                      
+                </div>
+            </div>
+
+               
+
+
+            <div class="content" id="achievements-left">
+                <h3 style="color: #b22222; font-size: 16px; text-align: center; align-items: center; padding-top: 100px;"  >
+                     Member has no commendations</h3>
+             
+            </div>
+
+            <div class="content" id="sessions-left">
+                <h3>My Mentors</h3>
+                <p>This is the left content for My Mentors</p>
+            </div>
+
+
+        </div>
+           
+
+            
+
+            <div class="right-content">
+                <!-- strat over-view right -->
+                <div class="content active" id="overview-right">
+                    <div class="community-stats-container">
+                  
+                        <div class="community-header">
+                            <h3>Community Statistics</h3>
+                           
+                        </div>
+                    
+                        <!-- Community Statistics -->
+                        <div class="community-stats">
+                            <div class="stat-row">
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ffdddd; color: red;"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">0 mins</span>
+                                            <p class="stat-text">Session Time</p>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ddeeff; color: blue;"><i class="bi bi-stars"></i></div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">0</span>
+                                            <p class="stat-text">Sessions Completed</p>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                    
+                         
+                            <div class="more-stats">
+                                <div class="stat-row">
+                                    <div class="stat-item">
+                                        <div class="stat-top">
+                                            <div class="stat-icon" style="background-color: #ffeedc; color: orange;">
+                                                <i class="bi bi-bookmark-check-fill"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <span class="stat-value">0%</span>
+                                                <p class="stat-text">Average Attendance</p>
+                                                <span class="info-icon" data-tooltip="Calculated as (Total sessions attended / Total sessions) × 100">
+                                                    <i class="bi bi-info-circle-fill"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-top">
+                                            <div class="stat-icon" style="background-color: #ddffdd; color: green;">
+                                                <i class="bi bi-heart-fill"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <span class="stat-value">0</span>
+                                                <p class="stat-text">power Points</p>
+                                                <span class="info-icon" data-tooltip="Earned based on session participation and contributions">
+                                                    <i class="bi bi-info-circle-fill"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+    
+                            </div>
+                        </div>
+                </div>
+
+                    <div class="content" id="achievements-right">
+                       
+                    </div>
+                    <div class="content" id="sessions-right">
+                        <!-- <h3>Group Sessions (Right)</h3>
+                        <p>This is the right content for Group Sessions.</p> -->
+                    </div>
+               
+            </div>
+        </div>
+        
+        </section>
+        
+        </div>
+    
+    </section>
+
+
+
+        
+
+    
+
+
+
+<script src="js/Member-profile.js"></script>
+</body>
+</html>
