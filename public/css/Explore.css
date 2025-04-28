@@ -1681,7 +1681,16 @@ body{
       width: 350px;
       height:450px;
   }
+
+
+  .welcome-message h1{
+    font-size: 16px;
+  }
   
+
+  .welcome-message p{
+    font-size: 12px;
+  }
 
 }
 
