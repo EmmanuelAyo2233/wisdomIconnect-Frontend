@@ -1,18 +1,10 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: 'localhost',
   user: 'root', // change if your MySQL username is different
   password: '', // change if you have a password
-  database: 'wisdomconnect'
-});
-
-db.connect(err => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err);
-    return;
-  }
-  console.log('Connected to MySQL Database');
+  database: 'wizdombridge'
 });
 
 module.exports = db;

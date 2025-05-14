@@ -1,25 +1,26 @@
 const express = require('express');
+const cors = require('cors');
+const path = require('path');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware to parse JSON data
+// Middleware
+app.use(cors());
 app.use(express.json());
 
-// Basic test route
+// 👉 Serve frontend files
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Import routes
+const authRoutes = require('./routes/auth');
+app.use('/api', authRoutes);
+
+// Test route
 app.get('/', (req, res) => {
-  res.send('Welcome to the WisdomConnect backend!');
+  res.send('Backend is working!');
 });
 
-// Users route
-app.get('/users', (req, res) => {
-    const users = [
-      { id: 1, name: 'John Doe', role: 'Mentor' },
-      { id: 2, name: 'Jane Smith', role: 'Mentee' }
-    ];
-    res.json(users);
-});
-
-// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
