@@ -534,6 +534,18 @@ body{
     align-items: center;
 }
 
+.nav-list li .logout-btn {
+    text-decoration: none;
+    color: #4d4d4d;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: 600;
+    padding-top: 6px;
+    align-items: center;
+}
+
 .nav-list li a i {
     font-size: 25px; 
     margin-right: 10px;
@@ -2202,6 +2214,7 @@ th, td {
     padding: 10px;
     background: #f8f9fa;
     border-top: 1px solid #ddd;
+    z-index: 999;
 }
 
 #nextAvailable {
@@ -2225,7 +2238,7 @@ th, td {
         bottom: 0;
         left: 0;
         background: white;
-        z-index: 1000;
+         z-index: 999;
         padding: 12px;
         box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
     }
@@ -2914,3 +2927,6 @@ button:disabled {
         transform: scale(1);
     }
 }
+
+
+

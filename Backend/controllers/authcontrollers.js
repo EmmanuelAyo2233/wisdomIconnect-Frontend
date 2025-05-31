@@ -223,13 +223,30 @@ const loginElder = async (req, res) => {
     res.status(500).json({ message: 'Server error during login' });
   }
 };
+const updateYouthProfile = (req, res) => {
+  console.log("Update route hit!"); // ✅ Add this
+  console.log("Request Body:", req.body); // ✅ Check if body arrives
+const { id, name, role, bio, experienceDescription, expertise, fluentIn, industry } = req.body;
 
+  const sql = `
+    UPDATE youth_users
+    SET name = ?, role = ?, bio = ?, experienceDescription = ?, expertise = ?, fluentIn = ?, industry = ?
+    WHERE id = ?
+  `;
 
+  db.query(sql, [name, role, bio, experienceDescription, expertise, fluentIn, industry, id], (err, result) => {
+    if (err) {
+      console.error('Error updating profile:', err);
+      return res.status(500).json({ error: 'Failed to update profile' });
+    }
+    return res.status(200).json({ message: 'Profile updated successfully' });
+  });
+};
 
   module.exports = {
-    registerYouth,
-    loginYouth,
-    registerElder,
-    loginElder,
-  };
-  
+  registerYouth,
+  loginYouth,
+  registerElder,
+  loginElder,
+  updateYouthProfile, // ✅ add this
+};

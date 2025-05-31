@@ -610,8 +610,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         monthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
     
-        prevMonthBtn.disabled = true;
-        nextMonthBtn.disabled = true;
+   
     
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -621,6 +620,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const todayYear = today.getFullYear();
         const todayMonth = today.getMonth();
         const todayDate = today.getDate();
+
+
+        const isTodayOrFuture = currentYear > todayYear || (currentYear === todayYear && currentMonth >= todayMonth);
+const isNotFuture = currentYear < todayYear || (currentYear === todayYear && currentMonth <= todayMonth);
+
+// Disable prev button if viewing current month or earlier
+prevMonthBtn.disabled = !isTodayOrFuture;
+// Disable next button if too far ahead (optional, like only allowing 12 months ahead)
+nextMonthBtn.disabled = false; // or set a limit
+
+
+
     
         const calendarTable = document.createElement("table");
         calendarTable.innerHTML = `
@@ -669,6 +680,28 @@ document.addEventListener("DOMContentLoaded", function () {
         calendarTable.appendChild(row);
         calendarContainer.appendChild(calendarTable);
     }
+    
+
+
+    nextMonthBtn.addEventListener("click", () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    showCalendar();
+});
+
+prevMonthBtn.addEventListener("click", () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    showCalendar();
+});
+
+
     
 
 
@@ -839,8 +872,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const timeSelection = document.getElementById("timeSelectionSection2");
 
 
-    let currentMonth = 3; // March
-    let currentYear = 2025;
+    const today = new Date();
+    let currentMonth = today.getMonth(); // 0 = January
+    let currentYear = today.getFullYear();
     let selectedDate = "";
     let selectedTime = "";
     const availableDates = {
@@ -886,11 +920,15 @@ document.addEventListener("DOMContentLoaded", function () {
         prevMonthBtn.classList.remove("hidden");
         nextMonthBtn.classList.remove("hidden");
     
-        const monthNames = ["January", "February", "March", "April"];
+       const monthNames = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
         monthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
     
-        prevMonthBtn.disabled = true;
-        nextMonthBtn.disabled = true;
+
+
     
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -900,6 +938,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const todayYear = today.getFullYear();
         const todayMonth = today.getMonth();
         const todayDate = today.getDate();
+
+        const isTodayOrFuture = currentYear > todayYear || (currentYear === todayYear && currentMonth >= todayMonth);
+        const isNotFuture = currentYear < todayYear || (currentYear === todayYear && currentMonth <= todayMonth);
+
+        // Disable prev button if viewing current month or earlier
+        prevMonthBtn.disabled = !isTodayOrFuture;
+        // Disable next button if too far ahead (optional, like only allowing 12 months ahead)
+        nextMonthBtn.disabled = false; // or set a limit
+
+
+
     
         const calendarTable = document.createElement("table");
         calendarTable.innerHTML = `
@@ -914,7 +963,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     
         for (let day = 1; day <= daysInMonth; day++) {
-            const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+            const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(day).padStart(1, "0")}`;
             const cell = document.createElement("td");
             cell.textContent = day;
     
@@ -948,6 +997,27 @@ document.addEventListener("DOMContentLoaded", function () {
         calendarTable.appendChild(row);
         calendarContainer.appendChild(calendarTable);
     }
+
+
+
+    nextMonthBtn.addEventListener("click", () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    showCalendar();
+});
+
+prevMonthBtn.addEventListener("click", () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    showCalendar();
+});
+
     
 
 

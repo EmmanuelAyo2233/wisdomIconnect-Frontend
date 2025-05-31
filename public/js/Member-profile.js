@@ -215,7 +215,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const bioText = document.querySelector(".short-text");
   const experienceText = document.querySelector(".experience-title");
-
+   const editBioInput = document.getElementById("editBio");
+    const editNameInput = document.getElementById("editName");
+    const editRoleInput = document.getElementById("editRole");
+       const editExperienceInput = document.getElementById("editExperience");
   const editExpertise = document.getElementById("editExpertise");
   const selectedExpertiseContainer = document.getElementById("selectedExpertiseContainer");
   const editLanguage = document.getElementById("editLanguage");
@@ -227,24 +230,58 @@ document.addEventListener("DOMContentLoaded", function () {
   let selectedLanguages = [];
   let selectedIndustries = [];
 
+
+
+
+  
+
   // Open modal
-  openEditProfile.addEventListener("click", function () {
-      const editBioInput = document.getElementById("editBio");
-      const editExperienceInput = document.getElementById("editExperience");
+ openEditProfile.addEventListener("click", function () {
+  const editBioInput = document.getElementById("editBio");
+  const editExperienceInput = document.getElementById("editExperience");
+  const editNameInput = document.getElementById("editName");
+  const editRoleInput = document.getElementById("editRole");
 
-      if (editBioInput && editExperienceInput) {
-          editBioInput.value = bioText ? bioText.innerText.trim() : "";
-          editExperienceInput.value = experienceText ? experienceText.innerText.trim() : "";
-   
-        }
+  // 🔹 Define name and role from the page
+  const nameDisplay = document.querySelector(".user-name");
+  const roleDisplay = document.querySelector(".user-role");
 
-      profileEditOverlay.style.display = "flex";
-  });
+  if (editBioInput && editExperienceInput) {
+    editBioInput.value = bioText ? bioText.innerText.trim() : "";
+    editExperienceInput.value = experienceText ? experienceText.innerText.trim() : "";
+  }
+
+  if (editNameInput && nameDisplay) {
+    editNameInput.value = nameDisplay.innerText.trim();
+  }
+
+  if (editRoleInput && roleDisplay) {
+    editRoleInput.value = roleDisplay.innerText.trim();
+  }
+
+  profileEditOverlay.style.display = "flex";
+});
+
 
   // Close modal
   closeEdit.addEventListener("click", function () {
       profileEditOverlay.style.display = "none";
   });
+
+
+   if (editBioInput && editExperienceInput && editNameInput && editRoleInput) {
+        editBioInput.value = bioText ? bioText.innerText.trim() : "";
+        editExperienceInput.value = experienceText ? experienceText.innerText.trim() : "";
+
+        // Grab current name and role text from your HTML
+        const currentName = document.querySelector(".user-name")?.innerText.trim() || "";
+        const currentRole = document.querySelector(".user-role")?.innerText.trim() || "";
+
+        editNameInput.value = currentName;
+        editRoleInput.value = currentRole;
+`x`
+    }
+
 
   // Add expertise
   if (editExpertise) {
@@ -349,47 +386,31 @@ if (editIndustry) {
 }
 
 
-// ✅ Remove industry when clicking "✖"
-if (selectedIndustryContainer) {
-    selectedIndustryContainer.addEventListener("click", function (e) {
-        if (e.target.tagName === "SPAN") {
-            selectedIndustries = selectedIndustries.filter(ind => ind !== e.target.dataset.value);
-            updateIndustryDisplay();
-        }
-    });
-}
-
-
-
-
-  // Remove items
-  if (selectedExpertiseContainer) {
-      selectedExpertiseContainer.addEventListener("click", function (e) {
-          if (e.target.tagName === "SPAN") {
-              selectedExpertise = selectedExpertise.filter(exp => exp !== e.target.dataset.value);
-              updateExpertiseDisplay();
-          }
-      });
-  }
-
-// ✅ Remove language when clicking "✖"
-languageDisplay.addEventListener("click", function (e) {
-    if (e.target.tagName === "SPAN") {
-        selectedLanguages = selectedLanguages.filter(lang => lang !== e.target.dataset.value);
-        updateLanguageDisplay();
-    }
-});
-
-  if (selectedIndustryContainer) {
-      selectedIndustryContainer.addEventListener("click", function (e) {
-          if (e.target.tagName === "SPAN") {
-              selectedIndustries = selectedIndustries.filter(ind => ind !== e.target.dataset.value);
-              updateIndustryDisplay();
-          }
-      });
-  }
+  
   saveProfile.addEventListener("click", function () {
     // Update Bio (Only if Edited)
+
+    if (editNameInput && editRoleInput) {
+        const newName = editNameInput.value.trim();
+        const newRole = editRoleInput.value.trim();
+
+        // Update profile display
+        const nameDisplay = document.querySelector(".user-name");
+        const roleDisplay = document.querySelector(".user-role");
+
+        if (nameDisplay) nameDisplay.innerText = newName;
+        if (roleDisplay) roleDisplay.innerText = newRole;
+
+        // Optionally update other fields and/or send updated data to backend here
+
+        
+    }
+        
+    
+
+  
+
+
     if (editBio.value.trim()) {
         bioText.innerText = editBio.value.trim();
     }
@@ -555,3 +576,228 @@ languageDisplay.addEventListener("click", function (e) {
 //   // Ensure display container is visible initially if there are selected languages
 //   updateLanguageDisplay();
 // });
+
+
+
+
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const user = JSON.parse(localStorage.getItem("youthUser"));
+  if (!user) return;
+
+  // 🔤 Name & Role
+  document.querySelector(".user-name").textContent = `${user.name} 🇳🇬`;
+  document.querySelector(".user-role").textContent = user.role || "No role provided";
+
+  // 📝 Bio
+  const fullBio = user.bio || "No bio provided.";
+  const sentences = fullBio.split(/\.\s+/);
+  document.querySelector(".short-text").textContent = sentences.slice(0, 2).join(". ") + ".";
+  document.querySelector(".long-text").textContent = sentences.slice(2).join(". ") + ".";
+
+const expertiseList = JSON.parse(user.expertise || "[]");
+const expertiseGrid = document.querySelector(".expertise-grid");
+expertiseGrid.innerHTML = "";
+
+// Map expertise text to class names
+const colors = ['#3498db', '#e67e22', '#2ecc71', '#9b59b6', '#34495e', '#1abc9c'];
+
+expertiseList.forEach((exp, i) => {
+  const cleanExp = exp.replace(" ×", "").trim();
+  const span = document.createElement("span");
+  span.className = "expertise-item";
+  span.textContent = cleanExp;
+  // assign color by index
+  span.style.backgroundColor = colors[i % colors.length];
+  span.style.color = 'white';
+  expertiseGrid.appendChild(span);
+});
+
+
+  // 🌍 Fluent In (Max 2 shown, rest as +n)
+  const fluentList = JSON.parse(user.fluentIn || "[]");
+  const languageSection = document.querySelector(".language");
+  languageSection.innerHTML = '<h3>Fluent in</h3>';
+  fluentList.slice(0, 2).forEach((lang) => {
+    const span = document.createElement("span");
+    span.className = "language-item";
+    span.textContent = lang.replace(" ×", "");
+    languageSection.appendChild(span);
+  });
+  if (fluentList.length > 2) {
+    const more = document.createElement("span");
+    more.className = "language-item";
+    more.textContent = `+${fluentList.length - 2}`;
+    languageSection.appendChild(more);
+  }
+
+  // 🏢 Industries
+  const industryContainer = document.querySelector(".experiecew .inline");
+  industryContainer.innerHTML = "";
+  const industries = (user.industry || "").split(",").map(i => i.trim());
+  industries.forEach((ind) => {
+    const p = document.createElement("p");
+    p.className = "experiecew-item";
+    p.textContent = ind.replace(" ×", "");
+    industryContainer.appendChild(p);
+  });
+
+
+  const experienceDetails = document.querySelector(".experience-details");
+  experienceDetails.querySelector(".experience-title").textContent = user.role || "No title provided";
+  experienceDetails.querySelector(".experience-company").textContent = user.experienceDescription || "No experience description.";
+
+  const expPresent = document.querySelector(".experience-present");
+  if (user.endDate === null || user.endDate.toLowerCase().includes("present")) {
+    expPresent.textContent = "Present";
+  } else {
+    expPresent.textContent = new Date(user.endDate).toLocaleDateString();
+  }
+});
+
+let selectedExpertise = [];
+let selectedLanguages = [];
+let selectedIndustries = [];
+
+// Create tag with cancel button
+function createTag(containerId, value, className) {
+  const container = document.getElementById(containerId);
+
+  // Prevent duplicate tags in DOM
+  if (Array.from(container.children).some(el => el.dataset.value === value)) return;
+
+  const tag = document.createElement("span");
+  tag.className = className;
+  tag.dataset.value = value;
+  tag.style.margin = "4px";
+  tag.style.padding = "4px 8px";
+  tag.style.borderRadius = "8px";
+  tag.style.display = "inline-block";
+
+  if (className === "expertise-tag") {
+    tag.style.backgroundColor = "#3498db";
+    tag.style.color = "#fff";
+  } else if (className === "language-tag") {
+    tag.style.backgroundColor = "#ccc";
+    tag.style.color = "#000";
+  } else if (className === "industry-tag") {
+    tag.style.backgroundColor = "#8e44ad";
+    tag.style.color = "#fff";
+  }
+
+  tag.textContent = value;
+
+  const cancelBtn = document.createElement("span");
+  cancelBtn.innerHTML = " ×";
+  cancelBtn.style.cursor = "pointer";
+  cancelBtn.style.marginLeft = "6px";
+  cancelBtn.addEventListener("click", function () {
+    tag.remove();
+
+    if (className === "expertise-tag") {
+      selectedExpertise = selectedExpertise.filter(item => item !== value);
+    } else if (className === "language-tag") {
+      selectedLanguages = selectedLanguages.filter(item => item !== value);
+    } else if (className === "industry-tag") {
+      selectedIndustries = selectedIndustries.filter(item => item !== value);
+    }
+  });
+
+  tag.appendChild(cancelBtn);
+  container.appendChild(tag);
+}
+
+// Load from localStorage on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const storedUser = JSON.parse(localStorage.getItem("youthUser"));
+  if (!storedUser) return;
+
+  // Fill input fields
+  document.getElementById("editName").value = storedUser.name || "";
+  document.getElementById("editRole").value = storedUser.role || "";
+  document.getElementById("editBio").value = storedUser.bio || "";
+  document.getElementById("editExperience").value = storedUser.experienceDescription || "";
+
+  // Clear existing tag displays
+  document.getElementById("selectedExpertiseContainer").innerHTML = "";
+  document.getElementById("languageDisplay").innerHTML = "";
+  document.getElementById("selectedIndustriesContainer").innerHTML = "";
+
+  // Parse and load stored tags
+  selectedExpertise = JSON.parse(storedUser.expertise || "[]");
+  selectedLanguages = JSON.parse(storedUser.fluentIn || "[]");
+  selectedIndustries = JSON.parse(storedUser.industry || "[]");
+
+  selectedExpertise.forEach(item => createTag("selectedExpertiseContainer", item, "expertise-tag"));
+  selectedLanguages.forEach(item => createTag("languageDisplay", item, "language-tag"));
+  selectedIndustries.forEach(item => createTag("selectedIndustriesContainer", item, "industry-tag"));
+});
+
+// Tag adding handlers
+document.addEventListener("DOMContentLoaded", () => {
+  // Expertise
+  document.getElementById("editExpertise").addEventListener("change", function () {
+    const val = this.value.trim();
+    if (!val || selectedExpertise.includes(val)) return;
+    if (selectedExpertise.length >= 5) return alert("You can select up to 5 expertise");
+
+    selectedExpertise.push(val);
+    createTag("selectedExpertiseContainer", val, "expertise-tag");
+  });
+
+  // Languages
+  document.getElementById("editLanguage").addEventListener("change", function () {
+    const val = this.value.trim();
+    if (!val || selectedLanguages.includes(val)) return;
+    if (selectedLanguages.length >= 2) return alert("You can select up to 2 languages");
+
+    selectedLanguages.push(val);
+    createTag("languageDisplay", val, "language-tag");
+  });
+
+  // Industries
+  document.getElementById("editIndustry").addEventListener("change", function () {
+    const val = this.value.trim();
+    if (!val || selectedIndustries.includes(val)) return;
+
+    selectedIndustries.push(val);
+    createTag("selectedIndustriesContainer", val, "industry-tag");
+  });
+
+  // Save Profile
+  document.getElementById("saveProfile").addEventListener("click", async () => {
+    const storedUser = JSON.parse(localStorage.getItem("youthUser"));
+    if (!storedUser || !storedUser.id) return alert("User ID not found");
+
+    const updatedData = {
+      id: storedUser.id,
+      name: document.getElementById("editName").value.trim(),
+      role: document.getElementById("editRole").value.trim(),
+      bio: document.getElementById("editBio").value.trim(),
+      experienceDescription: document.getElementById("editExperience").value.trim(),
+      expertise: JSON.stringify(selectedExpertise),
+      fluentIn: JSON.stringify(selectedLanguages),
+      industry: JSON.stringify(selectedIndustries)
+    };
+
+    try {
+      const response = await fetch("/api/update-profile/youth", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData)
+      });
+
+      const result = await response.json();
+      if (!response.ok) return alert("❌ " + (result.error || "Update failed"));
+
+      // Update local storage
+      localStorage.setItem("youthUser", JSON.stringify({ ...storedUser, ...updatedData }));
+      alert("✅ Profile updated!");
+    } catch (err) {
+      console.error(err);
+      alert("❌ Error updating profile");
+    }
+  });
+});

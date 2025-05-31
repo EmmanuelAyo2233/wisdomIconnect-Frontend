@@ -23,7 +23,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
         if (response.ok) {
             // Redirect to dashboard with user data (optional: store in localStorage/session)
-            localStorage.setItem("user", JSON.stringify(result.user));
+            localStorage.setItem("youthUser", JSON.stringify(result.user)); 
             window.location.href = "/index.html";
         } else {
             showError(result.message || "Login failed. Please try again.");

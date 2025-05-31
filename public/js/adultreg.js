@@ -52,6 +52,8 @@
     div.className = "experience-group";
     div.innerHTML = `
       <input type="text" placeholder="Describe your experience" />
+      <textarea name="details[]" placeholder="e.g. Managed online communities"></textarea>
+      <textarea name="details[]" placeholder="e.g. Hosted monthly events"></textarea>   
       <input type="date" />
       <input type="date" />
       <button type="button" onclick="this.parentElement.remove()">Remove</button>
@@ -65,6 +67,7 @@
     div.className = "education-group";
     div.innerHTML = `
       <input type="text" placeholder="Institution or Certificate" />
+      <input type="text" name="degree" placeholder="e.g. B.Sc. in Computer Science">
       <input type="date" />
       <input type="date" />
       <button type="button" onclick="this.parentElement.remove()">Remove</button>
@@ -147,24 +150,31 @@ document.querySelector('.register').addEventListener('click', async function (e)
   const fluentTags = Array.from(document.querySelectorAll('#fluentTags .tag')).map(tag => tag.textContent.trim());
 
   // Experience
-  const experiences = Array.from(document.querySelectorAll('#experienceContainer .experience-group')).map(group => {
-    const inputs = group.querySelectorAll('input');
-    return {
-      description: inputs[0].value,
-      startDate: inputs[1].value,
-      endDate: inputs[2].value
-    };
-  });
+const experiences = Array.from(document.querySelectorAll('#experienceContainer .experience-group')).map(group => {
+  const inputs = group.querySelectorAll('input');
+  const detailsInput = group.querySelector('textarea'); // Or however you're collecting details
+
+  return {
+    description: inputs[0].value,
+    startDate: inputs[1].value,
+    endDate: inputs[2].value,
+    details: detailsInput ? detailsInput.value.split('\n').filter(line => line.trim() !== '') : []
+  };
+});
+
 
   // Education
-  const education = Array.from(document.querySelectorAll('#educationContainer .education-group')).map(group => {
-    const inputs = group.querySelectorAll('input');
-    return {
-      institution: inputs[0].value,
-      startDate: inputs[1].value,
-      endDate: inputs[2].value
-    };
-  });
+ const education = Array.from(document.querySelectorAll('#educationContainer .education-group')).map(group => {
+  const inputs = group.querySelectorAll('input');
+
+  return {
+    institution: inputs[0].value,
+    degree: inputs[1].value, // New degree input (must be added to the form)
+    startDate: inputs[2].value,
+    endDate: inputs[3].value
+  };
+});
+
 
 
   if (!fullName) {
@@ -275,7 +285,9 @@ education.forEach((edu, index) => {
 
     if (res.ok) {
       alert('Elder registered successfully!');
-      // Redirect or clear form
+      setTimeout(() => {
+        window.location.href = "/adultlog.html";
+      }, 500);
     } else {
       alert('Error: ' + data.message || 'Registration failed');
     }

@@ -515,12 +515,10 @@ document.addEventListener("DOMContentLoaded", function () {
         prevMonthBtn.classList.remove("hidden");
         nextMonthBtn.classList.remove("hidden");
 
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",];
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         monthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
-        prevMonthBtn.disabled = true;
-        nextMonthBtn.disabled = true;
-
+       
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
@@ -528,6 +526,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const todayYear = today.getFullYear();
         const todayMonth = today.getMonth();
         const todayDate = today.getDate();
+
+
+        const isCurrentOrFutureMonth = currentYear > today.getFullYear() || 
+  (currentYear === today.getFullYear() && currentMonth >= today.getMonth());
+
+prevMonthBtn.disabled = !isCurrentOrFutureMonth;
+nextMonthBtn.disabled = false; // Always allow going forward
+
+
 
         const calendarTable = document.createElement("table");
         calendarTable.innerHTML = `
@@ -568,6 +575,31 @@ document.addEventListener("DOMContentLoaded", function () {
         calendarTable.appendChild(row);
         calendarContainer.appendChild(calendarTable);
     }
+
+
+    nextMonthBtn.addEventListener("click", () => {
+    if (currentMonth === 11) {
+        currentMonth = 0;
+        currentYear++;
+    } else {
+        currentMonth++;
+    }
+    showCalendar(); // Refresh the calendar view
+});
+
+prevMonthBtn.addEventListener("click", () => {
+    if (currentMonth === 0) {
+        currentMonth = 11;
+        currentYear--;
+    } else {
+        currentMonth--;
+    }
+    showCalendar(); // Refresh the calendar view
+});
+
+
+
+
 
     function showTimeSlots(date) {
         selectedDate = date;
@@ -701,8 +733,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const monthTitle = document.getElementById("monthTitle2"); 
     const timeSelection = document.getElementById("timeSelectionSection2");
 
-    let currentMonth = 3; // March
-    let currentYear = 2025;
+    const today = new Date();
+    let currentMonth = today.getMonth(); // 0 = January
+    let currentYear = today.getFullYear();
     let selectedDate = "";
     let availableDates = {}; // Store mentor's available dates and slots
 
@@ -734,11 +767,11 @@ document.addEventListener("DOMContentLoaded", function () {
         prevMonthBtn.classList.remove("hidden");
         nextMonthBtn.classList.remove("hidden");
 
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",];
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         monthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
-        prevMonthBtn.disabled = true;
-        nextMonthBtn.disabled = true;
+        // prevMonthBtn.disabled = true;
+        // nextMonthBtn.disabled = true;
 
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -747,6 +780,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const todayYear = today.getFullYear();
         const todayMonth = today.getMonth();
         const todayDate = today.getDate();
+
+        const isCurrentOrFutureMonth = currentYear > today.getFullYear() || 
+  (currentYear === today.getFullYear() && currentMonth >= today.getMonth());
+
+prevMonthBtn.disabled = !isCurrentOrFutureMonth;
+nextMonthBtn.disabled = false; // Always allow going forward
+
+
+
+        
 
         const calendarTable = document.createElement("table");
         calendarTable.innerHTML = `
@@ -787,6 +830,28 @@ document.addEventListener("DOMContentLoaded", function () {
         calendarTable.appendChild(row);
         calendarContainer.appendChild(calendarTable);
     }
+
+
+    prevMonthBtn.addEventListener("click", () => {
+    if (currentMonth === 0) {
+        currentMonth = 11;
+        currentYear--;
+    } else {
+        currentMonth--;
+    }
+    showCalendar();
+});
+
+nextMonthBtn.addEventListener("click", () => {
+    if (currentMonth === 11) {
+        currentMonth = 0;
+        currentYear++;
+    } else {
+        currentMonth++;
+    }
+    showCalendar();
+});
+
 
     function showTimeSlots(date) {
         selectedDate = date;
@@ -907,26 +972,250 @@ function setupDropdown(id, limit = 2) {
 }
 
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     const user = JSON.parse(localStorage.getItem('elderUser'));
+    // window.addEventListener('DOMContentLoaded', () => {
+    //     const user = JSON.parse(localStorage.getItem('elderUser'));
+    
+    //     if (!user) {
+    //     window.location.href = 'login.html'; // redirect if not logged in
+    //     return;
+    //     }
+    
+    //     // 🌍 Name + Role + Flag
+    //     // document.getElementById('userName').textContent = `${user.full_name} 🇳🇬`;
+    //     // document.getElementById('userRole').textContent = user.role || 'No role provided';
+    
+    //     // ✍️ Bio
+    //     const fullBio = user.bio || 'No bio added yet';
+    //     const sentences = fullBio.split('. ');
+    //     document.getElementById('shortBio').textContent = sentences.slice(0, 2).join('. ') + '.';
+    //     document.getElementById('longBio1').textContent = sentences.slice(2, 4).join('. ') + '.';
+    //     document.getElementById('longBio2').textContent = sentences.slice(4, 6).join('. ') + '.';
+    //     document.getElementById('longBio3').textContent = sentences.slice(6).join('. ') + '.';
+    
+    // });
+
+    
+    
+    
+    
+
+    window.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('elderUser'));
+  if (!user) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  // 🌍 Name + Role + Flag
+  document.getElementById('userName').textContent = `${user.full_name} 🇳🇬`;
+  document.getElementById('userRole').textContent = user.role || 'No role provided';
+
+  // ✍️ Bio
+  const fullBio = user.bio || 'No bio added yet';
+  const sentences = fullBio.split('. ');
+  document.getElementById('shortBio').textContent = sentences.slice(0, 2).join('. ') + '.';
+  document.getElementById('longBio1').textContent = sentences.slice(2, 4).join('. ') + '.';
+  document.getElementById('longBio2').textContent = sentences.slice(4, 6).join('. ') + '.';
+  document.getElementById('longBio3').textContent = sentences.slice(6).join('. ') + '.';
+
+ 
+  // 🗣️ Fluent In
+  const languages = JSON.parse(user.fluent_in || '[]');
+  const langContainer = document.querySelector('.category.fluent .tags') || document.querySelectorAll('.category')[2].querySelector('.tags');
+  languages.forEach(l => {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = l.replace(' ×', '');
+    langContainer.appendChild(tag);
+  });
+
+
+   // 💡 Expertise
+  const expertiseList = JSON.parse(user.expertise || '[]');
+  const expertiseContainer = document.querySelector('.category.expertise .tags') || document.querySelector('.category .tags');
+  expertiseList.forEach((item, i) => {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = item.replace(' ×', '');
+    tag.style.backgroundColor = '#fde2e2';
+    tag.style.color = '#d32f2f';
+    tag.style.border = '1px solid #d32f2f';
+    expertiseContainer.appendChild(tag);
+  });
+
+  // 📘 Disciplines
+  const disciplines = JSON.parse(user.disciplines || '[]');
+  const disciplineContainer = document.querySelector('.category.disciplines .tags') || document.querySelectorAll('.category')[1].querySelector('.tags');
+  disciplines.forEach(d => {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = d.replace(' ×', '');
+    disciplineContainer.appendChild(tag);
+  });
+
+
   
-//     if (!user) {
-//       window.location.href = 'login.html'; // redirect if not logged in
-//       return;
-//     }
-  
-//     // 🌍 Name + Role + Flag
-//     document.getElementById('userName').textContent = `${user.full_name} 🇳🇬`;
-//     document.getElementById('userRole').textContent = user.role || 'No role provided';
-  
-//     // ✍️ Bio
-//     const fullBio = user.bio || 'No bio added yet';
-//     const sentences = fullBio.split('. ');
-//     document.getElementById('shortBio').textContent = sentences.slice(0, 2).join('. ') + '.';
-//     document.getElementById('longBio1').textContent = sentences.slice(2, 4).join('. ') + '.';
-//     document.getElementById('longBio2').textContent = sentences.slice(4, 6).join('. ') + '.';
-//     document.getElementById('longBio3').textContent = sentences.slice(6).join('. ') + '.';
-  
-// });
-  
-  
+
+
+
+
+
+    const experiences = user.experience ? JSON.parse(user.experience) : [];
+    const firstExpContainer = document.querySelector('.experience1 .experience-header');
+    const expBag = document.querySelector('.experience1 .bag');
+    const viewMoreBtn = document.getElementById('view-experience');
+    const moreExpWrapper = document.getElementById('more-experience');
+
+    // Show experience count
+    expBag.textContent = experiences.length;
+
+    // Show first experience in static block
+    if (experiences.length > 0) {
+        const first = experiences[0];
+        firstExpContainer.querySelector('h3').textContent = first.description || 'No Title';
+        firstExpContainer.querySelector('.company').textContent = user.role || '';
+        firstExpContainer.querySelector('.timeframe').textContent = `${first.startDate} - ${first.endDate}`;
+    } else {
+        document.querySelector('.experience1').remove();
+    }
+
+    // Clear the full experience container
+    moreExpWrapper.innerHTML = '';
+
+    // Add all experiences to the View All section
+    experiences.forEach(exp => {
+        const div = document.createElement('div');
+        div.className = 'experience';
+        div.innerHTML = `
+            <div class="experience-header">
+                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+                <div class="title">
+                    <h3>${exp.description}</h3>
+                    <p class="company">${user.role || ''}</p>
+                </div>
+                <p class="timeframe">${exp.startDate} - ${exp.endDate}</p>
+            </div>
+            <ul class="experience-details">
+                ${(exp.details || [])
+                    .map(detail => `<li>${detail}</li>`)
+                    .join('')}
+            </ul>
+            <span class="view-more" onclick="toggleDetails(this)">View More</span>
+        `;
+        moreExpWrapper.appendChild(document.createElement('hr'));
+        moreExpWrapper.appendChild(div);
+    });
+
+    // Initially hide the full section
+    moreExpWrapper.classList.add('hidden');
+
+
+    const educationList = user.education ? JSON.parse(user.education) : [];
+    const eduBag = document.querySelector('.education-section .bag');
+    const staticEdu = document.querySelector('.education-section .education'); // the first block
+    const viewEduBtn = document.getElementById('view-education');
+    const moreEduWrapper = document.createElement('div');
+    moreEduWrapper.id = 'more-education';
+    moreEduWrapper.classList.add('hidden');
+    staticEdu.insertAdjacentElement('afterend', moreEduWrapper);
+
+    // Update badge count
+    eduBag.textContent = educationList.length;
+
+    // Render static education (first one)
+    if (educationList.length > 0) {
+        const first = educationList[0];
+        staticEdu.querySelector('h3').textContent = first.degree || 'No Degree';
+        staticEdu.querySelector('.institution').textContent = first.institution || 'No Institution';
+        staticEdu.querySelector('.duration').textContent = `${first.startDate} - ${first.endDate}`;
+    } else {
+        staticEdu.remove(); // if there's nothing, remove static
+    }
+
+    // Render the remaining education items (if any)
+    educationList.slice(1).forEach(edu => {
+        const div = document.createElement('div');
+        div.className = 'education';
+        div.innerHTML = `
+            <div class="education-header">
+                <div class="education-title">
+                    <i class="bi bi-mortarboard icon"></i>
+                    <div class="title2">
+                        <h3>${edu.degree || 'No Degree'}</h3>
+                        <p class="institution">${edu.institution || 'No Institution'}</p>
+                    </div>
+                </div>
+                <p class="duration">${edu.startDate} - ${edu.endDate}</p>
+            </div>
+        `;
+        moreEduWrapper.appendChild(document.createElement('hr'));
+        moreEduWrapper.appendChild(div);
+    });
+
+    // If only one education, auto-show and remove View All button
+    if (educationList.length <= 1) {
+        viewEduBtn?.remove();
+        moreEduWrapper.classList.remove('hidden');
+    }
+
+ const logoutButtons = document.querySelectorAll('.logout-btn');
+
+logoutButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      localStorage.removeItem('elderUser');
+      window.location.href = 'adultlog.html';
+    }
+  });
+});
+
+
+});
+
+// Toggle function (can be shared with experience)
+function toggleSection(sectionId, btnId) {
+    const section = document.getElementById(sectionId);
+    const button = document.getElementById(btnId);
+
+    if (section.classList.contains('hidden')) {
+        section.classList.remove('hidden');
+        button.textContent = 'Hide';
+    } else {
+        section.classList.add('hidden');
+        button.textContent = 'View All';
+    }
+}
+
+
+
+
+// Toggle show/hide for experience list
+function toggleSection(sectionId, btnId) {
+    const section = document.getElementById(sectionId);
+    const button = document.getElementById(btnId);
+
+    if (section.classList.contains('hidden')) {
+        section.classList.remove('hidden');
+        button.textContent = 'Hide';
+    } else {
+        section.classList.add('hidden');
+        button.textContent = 'View All';
+    }
+}
+
+// Toggle show/hide for experience details
+function toggleDetails(el) {
+    const details = el.previousElementSibling;
+    if (details.style.display === 'none' || details.style.display === '') {
+        details.style.display = 'block';
+        el.textContent = 'Hide Details';
+    } else {
+        details.style.display = 'none';
+        el.textContent = 'View More';
+    }
+}
+
+
+

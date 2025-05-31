@@ -26,6 +26,9 @@ router.post('/login/youth', authController.loginYouth);
 
 router.post('/register/elder', authController.registerElder);
 router.post('/login/elder', authController.loginElder);
+// Update Youth Profile
+router.put('/update-profile/youth', authController.updateYouthProfile);
+
 
 
 

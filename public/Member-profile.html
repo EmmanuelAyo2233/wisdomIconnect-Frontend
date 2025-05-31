@@ -334,34 +334,36 @@
 
                     
 
+<div class="expertise-container">
+  <!-- Expertise Section -->
+  <div class="expertise">
+    <h3>Expertise</h3>
+    <div id="expertiseContainer" class="expertise-grid">
+      <span class="expertise-item design">Design</span>
+      <span class="expertise-item marketing">Marketing</span>
+      <span class="expertise-item nocode">No/Low Code</span>
+      <span class="expertise-item product">Product</span>
+      <span class="expertise-item research">Product Research</span>
+    </div>
+  </div>
 
-                      <div class="expertise-container">
-                        <!-- Expertise Section -->
-                        <div class="expertise">
-                          <h3>Expertise</h3>
-                          <div class="expertise-grid">
-                            <span class="expertise-item design">Design</span>
-                            <span class="expertise-item marketing">Marketing</span>
-                            <span class="expertise-item nocode">No/Low Code</span>
-                            <span class="expertise-item product">Product</span>
-                            <span class="expertise-item research">Product Research</span>
-                          </div>
-                        </div>
-                      
-                        <!-- Language Section -->
-                        <div class="language">
-                          <h3>Fluent in</h3>
-                          <span class="language-item">English</span>
-                        </div>
-                      </div>
+  <!-- Language Section -->
+  <div class="language">
+    <h3>Fluent in</h3>
+    <div id="languageContainer">
+      <span class="language-item">English</span>
+    </div>
+  </div>
+</div>
 
-                      <div  class="experiecew">
-                        <h3>Experience w/ industries</h3>
-                        <div class="inline">
-                          <p class="experiecew-item">Tech</p>
-                          <p class="experiecew-item">Fintech</p>
-                        </div>
-                      </div>
+<div class="experiecew">
+  <h3>Experience w/ industries</h3>
+  <div id="industryContainer" class="inline">
+    <p class="experiecew-item">Tech</p>
+    <p class="experiecew-item">Fintech</p>
+  </div>
+</div>
+
                      
                       <div class="experience-container">
                         <h3>Experience</h3>
@@ -386,6 +388,12 @@
     <div class="profile-edit-modal">
         <button class="close-edit" id="closeEdit">X</button>
         <h2>Edit Profile</h2>
+
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" />
+
+        <label for="editRole">Role:</label>
+        <textarea id="editRole" rows="3"></textarea>
 
         <label for="editBio">Bio:</label>
         <textarea id="editBio"></textarea>
@@ -455,7 +463,7 @@
         </select>
         <div class="selected-industries-container" id="selectedIndustriesContainer"></div>
 
-        <input type="text" id="customIndustry" placeholder="Or type new industry and press Enter" />
+       
         <!-- 🔹 Selected Industries Tags -->
         <div class="selected-industries-container" id="selectedIndustriesContainer"></div>
 
@@ -583,14 +591,16 @@
         </div>
     
     </section>
-
-
-
-        
-
-    
-
-
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 WisdomConnect. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+            </ul>
+        </div>
 
 <script src="js/Member-profile.js"></script>
 </body>

@@ -169,7 +169,9 @@
                 <label>Experience</label>
                 <div class="experience-group">
                   <input type="text" placeholder="Describe your experience" />
-                
+                  <label>Details:</label>
+                  <textarea name="details[]" placeholder="e.g. Managed online communities"></textarea>
+                  <textarea name="details[]" placeholder="e.g. Hosted monthly events"></textarea>   
                   <input type="date" />
                   <input type="date" />
                   <small id="experienceError" class="error-message"></small>
@@ -183,7 +185,8 @@
                 <label>Education</label>
                 <div class="education-group">
                   <input type="text" placeholder="Institution or Certificate" />
-          
+                  <label>Degree:</label>
+                  <input type="text" name="degree" placeholder="e.g. B.Sc. in Computer Science">
                   <input type="date" />
                   <input type="date" />
                   <small id="educationError" class="error-message"></small>
