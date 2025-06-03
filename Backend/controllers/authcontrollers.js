@@ -1,252 +1,238 @@
-const bcrypt = require('bcryptjs');
-const db = require('../config/db');
+const { User, Mentee, Mentor } = require("../models");
+const {
+    bcrypt,
+    EMAIL_REGEX,
+    salt,
+    SECRET_KEY,
+    jwt,
+    Op,
+} = require("../config/reuseablePackages");
 
-// Youth Registration
-const registerYouth = async (req, res) => {
+const signup = async (req, res) => {
     try {
-      const {
-        name, email, password, role, bio,
-        expertise, fluentIn, industry, experienceDescription,
-        startDate, endDate, phone
-      } = req.body;
-  
-      if (!name || !email || !password || !phone) {
-        return res.status(400).json({ message: 'Name, email, password, and phone are required.' });
-      }
-  
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        return res.status(400).json({ message: 'Invalid email format.' });
-      }
-  
-      if (password.length < 8) {
-        return res.status(400).json({ message: 'Password must be at least 8 characters.' });
-      }
-  
-      if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
-        return res.status(400).json({ message: 'End date cannot be before start date.' });
-      }
-  
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      const query = `
-        INSERT INTO youth_users 
-        (name, email, password, role, bio, expertise, fluentIn, industry, experienceDescription, startDate, endDate, phone) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  
-      const values = [
-        name,
-        email,
-        hashedPassword,
-        role || 'youth',
-        bio || '',
-        JSON.stringify(expertise) || '[]',
-        JSON.stringify(fluentIn) || '[]',
-        industry || '',
-        experienceDescription || '',
-        startDate || null,
-        endDate || null,
-        phone
-      ];
-  
-      const [result] = await db.query(query, values);
-  
-      res.status(201).json({
-        message: 'Youth registered successfully!',
-        userId: result.insertId
-      });
-  
+        const body = req.body;
+
+        // Check if all fields are present
+        if (
+            !body.name ||
+            !body.email ||
+            !body.userType ||
+            !body.password ||
+            !body.confirmPassword
+        ) {
+            return res
+                .status(400)
+                .json({ status: "fail", message: "fields are required" });
+        }
+
+        // Check if email pattern matches
+        if (!EMAIL_REGEX.test(body.email)) {
+            return res.status(404).json({
+                status: "fail",
+                message: "Invalid email address",
+            });
+        }
+
+        // Check if valid userType was selected
+        if (!["mentor", "mentee"].includes(body.userType)) {
+            return res.status(400).json({
+                status: "fail",
+                message: "Invalid user type",
+            });
+        }
+
+        //Check if user exist
+        const existingUser = await User.findOne({
+            where: { email: body.email },
+        });
+
+        if (existingUser) {
+            return res.status(400).json({
+                status: "fail",
+                message: "User already exist",
+            });
+        }
+
+        // Check if the confirm password is a match with password
+        if (body.confirmPassword !== body.password) {
+            return res.status(400).json({
+                status: "fail",
+                message: "Confirm password not match with password",
+            });
+        }
+
+        // hash Password
+        const hashedPassword = await bcrypt.hash(body.password, salt);
+
+        const newUser = await User.create({
+            name: body.name,
+            email: body.email,
+            userType: body.userType,
+            password: hashedPassword,
+        });
+
+        if (!newUser || !newUser.id) {
+            return res.status(500).json({ message: "User creation failed" });
+        }
+
+        // Create Profile based o userType Detected
+        if (body.userType === "mentor") {
+            await Mentor.create({ user_id: newUser.id });
+        }
+
+        if (body.userType === "mentee") {
+            await Mentee.create({ user_id: newUser.id });
+        }
+
+        const responsData = {
+            name: newUser.name,
+            email: newUser.email,
+            userType: newUser.userType,
+        };
+
+        return res.status(201).json({
+            status: "success",
+            message: "Registration successful",
+            data: responsData,
+        });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error.' });
+        console.error("User registration error", error);
+        res.status(500).json({
+            message: "Failed to register user",
+            error: error.message,
+        });
     }
-  };
-  
-// Youth Login
-const loginYouth = async (req, res) => {
+};
+
+const login = async (req, res) => {
     try {
-      const { email, password } = req.body;
-      if (!email || !password) {
-        return res.status(400).json({ message: 'Email and password are required.' });
-      }
-  
-      const [results] = await db.query('SELECT * FROM youth_users WHERE email = ?', [email]);
-      if (results.length === 0) {
-        return res.status(401).json({ message: 'Invalid email or password.' });
-      }
-  
-      const user = results[0];
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-        return res.status(401).json({ message: 'Invalid email or password.' });
-      }
-  
-      delete user.password;
-      res.status(200).json({ message: 'Login successful', user });
-  
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: 'Server error.' });
+        const body = req.body;
+
+        // Check if all fields are present
+        if (!body.email || !body.password) {
+            return res
+                .status(400)
+                .json({ status: "fail", message: "fields are required" });
+        }
+
+        // Check if email pattern matches
+        if (!EMAIL_REGEX.test(body.email)) {
+            return res.status(404).json({
+                status: "fail",
+                message: "Invalid email address",
+            });
+        }
+
+        //Check if user does't exist
+        const user = await User.findOne({ where: { email: body.email } });
+
+        if (!user) {
+            return res.status(404).json({
+                status: "fail",
+                message: "User not found",
+            });
+        }
+
+        // Check if password is match
+        const isPasswordMatch = await bcrypt.compare(
+            body.password,
+            user.password
+        );
+
+        if (!isPasswordMatch) {
+            return res.status(400).json({
+                status: "fail",
+                message: "Password incorrect",
+            });
+        }
+
+        // Sign jwt token
+
+        const userSig = {
+            id: user.id,
+            email: user.email,
+        };
+        const token = jwt.sign(userSig, SECRET_KEY, { expiresIn: "1d" });
+
+        return res.status(201).json({
+            status: "fail",
+            message: "Login successful",
+            token: token,
+            token_type: "berear",
+        });
+    } catch (error) {
+        console.error("User login error", error);
+        res.status(500).json({
+            message: "Failed to login user",
+            error: error.message,
+        });
     }
-  };
-  
-
-
-// Register Elder
-const registerElder = async (req, res) => {
-  const {
-    fullName,
-    email,
-    password,
-    bio,
-    role,
-    expertise,
-    discipline,
-    fluentIn,
-    experience,
-    education
-  } = req.body;
-
-  // === BASIC VALIDATION ===
-  if (!fullName || !email || !password) {
-    return res.status(400).json({ message: 'Full name, email, and password are required.' });
-  }
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    return res.status(400).json({ message: 'Invalid email format.' });
-  }
-
-  if (password.length < 8) {
-    return res.status(400).json({ message: 'Password must be at least 8 characters.' });
-  }
-
-  if (!Array.isArray(expertise) || expertise.length < 1) {
-    return res.status(400).json({ message: 'Select at least one expertise field.' });
-  }
-
-  if (!Array.isArray(discipline) || discipline.length < 1) {
-    return res.status(400).json({ message: 'Select at least one discipline.' });
-  }
-
-  if (!Array.isArray(fluentIn) || fluentIn.length < 1) {
-    return res.status(400).json({ message: 'Select at least one language you’re fluent in.' });
-  }
-
-  // === DATE VALIDATION for EXPERIENCE & EDUCATION ===
-  const isValidDateRange = (entries) => {
-    if (!Array.isArray(entries)) return false;
-    for (const entry of entries) {
-      const { startDate, endDate, present } = entry;
-      const start = new Date(startDate);
-      const end = present ? new Date() : new Date(endDate);
-
-      if (isNaN(start) || isNaN(end) || start > end) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  if (experience && !isValidDateRange(experience)) {
-    return res.status(400).json({ message: 'Experience dates are invalid.' });
-  }
-
-  if (education && !isValidDateRange(education)) {
-    return res.status(400).json({ message: 'Education dates are invalid.' });
-  }
-
-  try {
-    // Check for existing elder
-    const [existingElder] = await db.query('SELECT * FROM elder_users WHERE email = ?', [email]);
-    if (existingElder.length > 0) {
-      return res.status(400).json({ message: 'Elder already exists' });
-    }
-
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Insert into DB
-    await db.query(
-      `INSERT INTO elder_users 
-        (full_name, email, password, bio, role, expertise, disciplines, fluent_in, experience, education) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        fullName,
-        email,
-        hashedPassword,
-        bio || '',
-        role || '',
-        JSON.stringify(expertise),
-        JSON.stringify(discipline),
-        JSON.stringify(fluentIn),
-        JSON.stringify(experience || []),
-        JSON.stringify(education || [])
-      ]
-    );
-
-    res.status(201).json({ message: 'Elder registered successfully' });
-  } catch (error) {
-    console.error('Elder registration error:', error);
-    res.status(500).json({ message: 'Server error during elder registration' });
-  }
 };
 
+const authentication = async (req, res, next) => {
+    try {
+        // Get the token fro headers
+        let idToken = "";
+        if (
+            req.headers.authorization &&
+            req.headers.authorization.startsWith("Bearer ")
+        ) {
+            idToken = req.headers.authorization.split(" ")[1];
+        }
 
-// Elder Login
-const loginElder = async (req, res) => {
-  const { email, password } = req.body;
+        if (!idToken) {
+            return res.status(401).json({
+                status: "fail",
+                message: "please login to get access",
+            });
+        }
+        // Token verificattion
+        const tokenDetails = jwt.verify(idToken, SECRET_KEY);
 
-  try {
-    const [results] = await db.query('SELECT * FROM elder_users WHERE email = ?', [email]);
+        // get the user details from database and add to rquest
+        const freshUser = await User.findOne({
+            where: {
+                [Op.or]: [
+                    { id: tokenDetails.id },
+                    { email: tokenDetails.email },
+                ],
+            },
+            include: [
+                { model: Mentor, as: "mentor", required: false },
+                { model: Mentee, as: "mentee", required: false },
+            ],
+            attributes: { exclude: ["password"] },
+        });
 
-    if (results.length === 0) {
-      return res.status(401).json({ message: 'Invalid email or password.' });
+        if (!freshUser) {
+            return res
+                .status(400)
+                .json({ status: "fail", message: "User no longer exist" });
+        }
+
+        req.user = freshUser;
+        next();
+    } catch (error) {
+        console.error("Auth error:", error);
+        return res.status(401).json({
+            status: "fail",
+            message: "Invalid or expired token",
+        });
     }
-
-    const elder = results[0];
-
-    const match = await bcrypt.compare(password, elder.password);
-    if (!match) {
-      return res.status(401).json({ message: 'Invalid email or password.' });
-    }
-
-    // Don’t send password back
-    delete elder.password;
-
-    return res.status(200).json({
-      message: 'Login successful',
-      user: elder
-    });
-  } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: 'Server error during login' });
-  }
-};
-const updateYouthProfile = (req, res) => {
-  console.log("Update route hit!"); // ✅ Add this
-  console.log("Request Body:", req.body); // ✅ Check if body arrives
-const { id, name, role, bio, experienceDescription, expertise, fluentIn, industry } = req.body;
-
-  const sql = `
-    UPDATE youth_users
-    SET name = ?, role = ?, bio = ?, experienceDescription = ?, expertise = ?, fluentIn = ?, industry = ?
-    WHERE id = ?
-  `;
-
-  db.query(sql, [name, role, bio, experienceDescription, expertise, fluentIn, industry, id], (err, result) => {
-    if (err) {
-      console.error('Error updating profile:', err);
-      return res.status(500).json({ error: 'Failed to update profile' });
-    }
-    return res.status(200).json({ message: 'Profile updated successfully' });
-  });
 };
 
-  module.exports = {
-  registerYouth,
-  loginYouth,
-  registerElder,
-  loginElder,
-  updateYouthProfile, // ✅ add this
+const restrictTo = (...userType) => {
+    const checkPermission = (req, res, next) => {
+        if (!userType.includes(req.user.userType)) {
+            return res.status(400).json({
+                status: "fail",
+                message: `You don't have permission to perform this acction as a ${req.user.userType}`,
+            });
+        }
+        return next();
+    };
+
+    return checkPermission;
 };
+
+module.exports = { signup, login, authentication, restrictTo };

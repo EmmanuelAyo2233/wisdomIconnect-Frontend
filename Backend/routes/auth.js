@@ -1,36 +1,13 @@
-// const express = require('express');
-// const router = express.Router();
+const {express} = require('../config/reuseablePackages')
+const {signup, login} = require('../controllers/authcontrollers')
 
-// // Temporary test route
-// router.get('/users', (req, res) => {
-//   const users = [
-//     { id: 1, name: 'John Doe', role: 'Mentor' },
-//     { id: 2, name: 'Jane Smith', role: 'Mentee' }
-//   ];
-//   res.json(users);
-// });
+const router = express.Router()
 
-// module.exports = router;
+// Sigup
+router.route('/register').post(signup)
+
+// Login
+router.route('/login').post(login)
 
 
-
-const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/authcontrollers'); // Path is correct
-
-// Youth registration
-router.post('/register/youth', authController.registerYouth);
-
-// Youth login ✅ Add this
-router.post('/login/youth', authController.loginYouth);
-
-router.post('/register/elder', authController.registerElder);
-router.post('/login/elder', authController.loginElder);
-// Update Youth Profile
-router.put('/update-profile/youth', authController.updateYouthProfile);
-
-
-
-
-module.exports = router;
-
+module.exports = router
