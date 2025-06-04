@@ -1,9 +1,11 @@
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-    async up(queryInterface, Sequelize) {
+    // Creates database tables: user, mentee, mentor, appointment
+    async up( queryInterface, Sequelize )
+    {
         // Create user Table
-        await queryInterface.createTable("user", {
+        await queryInterface.createTable( "user", {
             id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
@@ -24,7 +26,7 @@ module.exports = {
                 allowNull: false,
             },
             userType: {
-                type: Sequelize.ENUM("mentee", "mentor"),
+                type: Sequelize.ENUM( "mentee", "mentor" ),
                 allowNull: false,
             },
             picture: {
@@ -39,10 +41,10 @@ module.exports = {
                 type: Sequelize.DATEONLY,
                 allowNull: true,
             },
-        });
+        } );
 
         // Create menteeProfile Table
-        await queryInterface.createTable("mentee", {
+        await queryInterface.createTable( "mentee", {
             id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
@@ -101,16 +103,16 @@ module.exports = {
             },
             createdAt: {
                 type: Sequelize.DATE,
-                defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+                defaultValue: Sequelize.literal( "CURRENT_TIMESTAMP" ),
             },
             updatedAt: {
                 type: Sequelize.DATE,
-                defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+                defaultValue: Sequelize.literal( "CURRENT_TIMESTAMP" ),
             },
-        });
+        } );
 
         // Create mentorProfile Table
-        await queryInterface.createTable("mentor", {
+        await queryInterface.createTable( "mentor", {
             id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
@@ -177,16 +179,16 @@ module.exports = {
             },
             createdAt: {
                 type: Sequelize.DATE,
-                defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+                defaultValue: Sequelize.literal( "CURRENT_TIMESTAMP" ),
             },
             updatedAt: {
                 type: Sequelize.DATE,
-                defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+                defaultValue: Sequelize.literal( "CURRENT_TIMESTAMP" ),
             },
-        });
+        } );
 
         // Create Appointment Table
-        await queryInterface.createTable("appointment", {
+        await queryInterface.createTable( "appointment", {
             id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
@@ -225,12 +227,22 @@ module.exports = {
                 type: Sequelize.STRING,
                 defaultValue: null, // e.g. booked, cancelled, completed
             },
-        });
+            createdAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.literal( "CURRENT_TIMESTAMP" ),
+            },
+            updatedAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.literal( "CURRENT_TIMESTAMP" ),
+            },
+        } );
     },
-    async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable("user");
-        await queryInterface.dropTable("mentee");
-        await queryInterface.dropTable("mentor");
-        await queryInterface.dropTable("appointment");
+    // Drops database tables: appointment, mentee, mentor, user
+    async down( queryInterface, Sequelize )
+    {
+        await queryInterface.dropTable( "appointment" );
+        await queryInterface.dropTable( "mentee" );
+        await queryInterface.dropTable( "mentor" );
+        await queryInterface.dropTable( "user" );
     },
 };

@@ -8,6 +8,7 @@ const {
     Op,
 } = require("../config/reuseablePackages");
 
+// Handles new user registration
 const signup = async (req, res) => {
     try {
         const body = req.body;
@@ -104,6 +105,7 @@ const signup = async (req, res) => {
     }
 };
 
+// Handles user login
 const login = async (req, res) => {
     try {
         const body = req.body;
@@ -169,6 +171,7 @@ const login = async (req, res) => {
     }
 };
 
+// Middleware to authenticate users using JWT
 const authentication = async (req, res, next) => {
     try {
         // Get the token fro headers
@@ -221,7 +224,9 @@ const authentication = async (req, res, next) => {
     }
 };
 
+// Middleware factory to restrict access based on user type (role)
 const restrictTo = (...userType) => {
+    // Inner middleware function that performs the permission check
     const checkPermission = (req, res, next) => {
         if (!userType.includes(req.user.userType)) {
             return res.status(400).json({

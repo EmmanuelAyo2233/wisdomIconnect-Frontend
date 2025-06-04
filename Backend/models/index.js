@@ -55,7 +55,7 @@ User.hasOne(Mentee, { foreignKey: "user_id", as: "mentee" });
 Mentee.belongsTo(User, { foreignKey: "user_id", as: "user" });
 
 Mentor.hasMany(Appointment, { foreignKey: "mentorId", as: "appointment" });
-Appointment.belongsTo(Mentor, { foreignKey: "mentorId", as: "metor" });
+Appointment.belongsTo(Mentor, { foreignKey: "mentorId", as: "mentor" });
 
 Mentee.hasMany(Appointment, { foreignKey: "menteeId", as: "appointment" });
 Appointment.belongsTo(Mentee, { foreignKey: "menteeId", as: "mentee" });

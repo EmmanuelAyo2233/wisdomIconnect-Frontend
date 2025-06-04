@@ -62,6 +62,7 @@ const Mentee = sequelize.define(
     {
         freezeTableName: true,
         modelName: "mentee",
+        timestamps: true,
     }
 );
 
