@@ -69,6 +69,7 @@ const Mentor = sequelize.define(
     {
         freezeTableName: true,
         modelName: "mentor",
+        timestamps: true,
     }
 );
 

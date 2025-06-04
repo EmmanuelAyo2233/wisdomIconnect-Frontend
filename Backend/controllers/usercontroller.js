@@ -1,5 +1,6 @@
 const { User, Mentee, Mentor } = require("../models");
 
+// Retrieves details of the authenticated user
 const getdetails = async (req, res) => {
     return res.status(200).json({
         status: "success",
@@ -8,12 +9,14 @@ const getdetails = async (req, res) => {
     });
 };
 
+// Placeholder for updating user details (TODO: Implement)
 const updateDetails = async (req, res) => {
     return res
         .status(201)
         .json({ status: "success", message: "Details updated successfully" });
 };
 
+// Placeholder for uploading/updating profile picture (TODO: Implement)
 const uploadprofilePicture = async (req, res) => {
     return res.status(201).json({
         status: "sucess",
@@ -21,6 +24,7 @@ const uploadprofilePicture = async (req, res) => {
     });
 };
 
+// Deletes the authenticated user's account
 const deleteAccount = async (req, res) => {
     try {
         const user = await User.findOne({

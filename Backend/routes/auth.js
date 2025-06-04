@@ -3,10 +3,10 @@ const {signup, login} = require('../controllers/authcontrollers')
 
 const router = express.Router()
 
-// Sigup
+// Route for user registration
 router.route('/register').post(signup)
 
-// Login
+// Route for user login
 router.route('/login').post(login)
 
 

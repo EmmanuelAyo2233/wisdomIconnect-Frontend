@@ -1,4 +1,5 @@
+// Test setup for User model tests
 process.env.NODE_ENV = 'test';
 
-const sequelize = require('../config/reuseable_modules')
-const {User} = require('../models/user.model')
+const sequelize = require('../config/db');
+const { User } = require('../models');
