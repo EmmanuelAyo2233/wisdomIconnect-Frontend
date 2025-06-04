@@ -1,10 +1,7 @@
-const mysql = require('mysql2/promise');
+const { Sequelize } = require("sequelize");
+const env = process.env.NODE_ENV || "test"; // default to development if NODE_ENV is not set
+const config = require("./config");
 
-const db = mysql.createPool({
-  host: 'localhost',
-  user: 'root', // change if your MySQL username is different
-  password: '', // change if you have a password
-  database: 'wizdombridge'
-});
+const sequelize = new Sequelize(config[env]);
 
-module.exports = db;
+module.exports = sequelize;
