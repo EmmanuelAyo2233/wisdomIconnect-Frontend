@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
         });
     });
-});
+});  
 
 const menuToggle = document.getElementById('menuToggle');
 const slidingMenu = document.getElementById('slidingMenu');
@@ -20,12 +20,12 @@ menuToggle.addEventListener('click', () => {
     slidingMenu.classList.toggle('active');
     body.classList.toggle('dimmed');
 });
-
-cancelBtn.addEventListener('click', () => {
-        slidingMenu.classList.remove('active');
+``
+cancelBtn.```addEventListener('click', () => {
+        s```lidingMenu.classList.remove('active');
     });
 
-
+``
 body.addEventListener('click', (event) => {
     if (!slidingMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         slidingMenu.classList.remove('active'); 
