@@ -20,18 +20,16 @@ menuToggle.addEventListener('click', () => {
     slidingMenu.classList.toggle('active');
     body.classList.toggle('dimmed');
 });
-``
-cancelBtn.```addEventListener('click', () => {
-        s```lidingMenu.classList.remove('active');
-    });
 
-``
+cancelBtn.addEventListener('click', () => {
+    slidingMenu.classList.remove('active');
+});
+
 body.addEventListener('click', (event) => {
     if (!slidingMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         slidingMenu.classList.remove('active'); 
     }
 });
-
 
 
 const profilePic = document.getElementById('profilePic');
