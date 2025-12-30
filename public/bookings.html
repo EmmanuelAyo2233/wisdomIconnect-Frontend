@@ -87,10 +87,10 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-img">
             <div class="profile-info">
-                <p class="profile-name">Emmanuel Ayobami</p>
-                <a href="Member-profile.html" class="view-profile">View Profile</a>
+                <p class="profile-name">loading.....</p>
+                <a href="css/img/default-profile.png" class="view-profile">View Profile</a>
             </div>
         </div>
         
@@ -135,7 +135,7 @@
         <ul class="nav-list">
             <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
             <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
-            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+            <li><a href="#" class="res" id="logout"><i class="bx bx-log-out"></i> Logout </a></li>
         </ul>
     </div>
     
@@ -150,12 +150,12 @@
         </ul>
     
         <div class="profile-container">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-pic1" id="profilePic">
             <div class="hover-options" id="hoverMenu" data-visible="false">
                 <a href="Member-profile.html" class="profile-link">
-                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <img src="css/img/default-profile.png" alt="Profile" class="hover-profile-pic">
                     <div>
-                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="hover-profile-name">loading.....</span>
                         <span class="view-profile">View Profile</span>
                     </div>
                 </a>
@@ -172,7 +172,7 @@
                     <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
                     <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
-                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                      <li><a href="#" class="res" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -190,72 +190,80 @@
         <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
     </ul>
 </div>
-
 <div class="container bookings">
-    <h2 class="booking-header">Bookings</h2>
-    <p class="sub-til">The session timings are following your local timezone Africa/Lagos Update</p>
-    <!-- Custom Navigation -->
-    <div class="booking-nav">
-      <a href="#" class="booking-tab active" data-section="upcoming">Upcoming</a>
-      <a href="#" class="booking-tab" data-section="pending">Pending</a>
-      <a href="#" class="booking-tab" data-section="history">History</a>
-    </div>
-  
-    <!-- Booking Content -->
-    <div id="upcoming" class="booking-content">
-        <div class="upcoming-session">
-            <div class="session-header">
-              <span class="status">Scheduled</span>
-              <span class="cancel-icon" onclick="cancelSession()">&#10006;</span>
-            </div>
-            <p><strong>Topic:</strong> The Wisdom of Ancient Healing</p>
-            <p><strong>Mentor:</strong> Dr. Adebayo Olufemi</p>
-            <p><strong>Time:</strong> Feb 20, 3:00 PM</p>
-            <p class="user">👤 Emmanuel Ayobami</p>
-          </div>
-          
-          
-    </div>
-    <div id="pending" class="booking-content hidden">
-        <!-- You have no pending bookings - start sharing a conversation with a mentor. -->
-        <div class="pending-session">
-            <div class="session-header">
-              <span class="status pending">Pending Approval</span>
-              <span class="cancel-icon" onclick="cancelPendingSession()">&#10006;</span>
-            </div>
-            <p><strong>Topic:</strong> The Power of Storytelling</p>
-            <p><strong>Mentor:</strong> Mrs. Aisha Ibrahim</p>
-            <p><strong>Time:</strong> Feb 25, 5:00 PM</p>
-            <p class="user">👤 Emmanuel Ayobami</p>
-          </div>
-          
-    </div>
-    <div id="history" class="booking-content hidden">
-        <div class="history-session">
-            <div class="session-header">
-              <span class="status history">Completed</span>
-            </div>
-            <p><strong>Topic:</strong> Leadership in African Cultures</p>
-            <p><strong>Mentor:</strong> Prof. Chinedu Okafor</p>
-            
-            <div class="session-time">
-              <p>🕒 <strong>Duration:</strong> 2 hours</p>
-              <p>📅 <strong>Start:</strong> Jan 15, 2:00 PM</p>
-              <p>⏳ <strong>End:</strong> Jan 15, 4:00 PM</p>
-            </div>
-            
-            <p class="user">👤 Emmanuel Ayobami</p>
-          </div>
-          
-        <!-- You have no history bookings - start sharing a conversation with a mentor. -->
-    </div>
+  <h2 class="booking-header">Bookings</h2>
+  <p class="sub-til">The session timings are following your local timezone Africa/Lagos Update</p>
 
-    <a href="Explore.html" class="explore-btn">Explore Mentors</a>
+  <!-- Custom Navigation -->
+  <div class="booking-nav">
+    <a href="#" class="booking-tab active" data-section="upcoming">Upcoming</a>
+    <a href="#" class="booking-tab" data-section="pending">Pending</a>
+    <a href="#" class="booking-tab" data-section="history">History</a>
   </div>
+
+  <!-- Booking Content -->
+  <div id="upcoming" class="booking-content">
+
+  <!-- Loader -->
+  <div id="loader" class="loader-container">
+    <div class="loader"></div>
+    <p>Loading your upcoming session...</p>
+  </div>
+
+  <!-- Actual session (hidden initially) -->
+  <div id="sessionContent" class="upcoming-session" style="display: none;">
+    <div class="session-header">
+      <span class="status">Scheduled</span>
+      <button class="cancel-btn" onclick="cancelSession()">Cancel</button>
+    </div>
+    <p><strong>Topic:</strong> <span id="topic">Loading...</span></p>
+    <p><strong>Mentor:</strong> <span id="mentorName">Loading...</span></p>
+    <p><strong>Time:</strong> <span id="time">Loading...</span></p>
+    <button class="call-btn" onclick="joinCall()">Join Call</button>
+    <p class="user">👤 <span id="menteeName">Loading...</span></p>
+  </div>
+
+</div>
+
+  <div id="pending" class="booking-content hidden">
+    <div class="pending-session">
+      <div class="session-header">
+        <span class="status pending">Pending Approval</span>
+        <button class="cancel-btn" onclick="cancelPendingSession()">Cancel</button>
+      </div>
+      <p><strong>Topic:</strong> The Power of Storytelling</p>
+      <p><strong>Mentor:</strong> Mrs. Aisha Ibrahim</p>
+      <p><strong>Time:</strong> Feb 25, 5:00 PM</p>
+      <p class="user">👤 Emmanuel Ayobami</p>
+    </div>
+  </div>
+
+  <div id="history" class="booking-content hidden">
+    <div class="history-session">
+      <div class="session-header">
+        <!-- <span class="status history">Completed</span> -->
+      </div>
+      <p><strong>Topic:</strong> Leadership in African Cultures</p>
+      <p><strong>Mentor:</strong> Prof. Chinedu Okafor</p>
+
+      <div class="session-time">
+        <p>🕒 <strong>Duration:</strong> 2 hours</p>
+        <p>📅 <strong>Start:</strong> Jan 15, 2:00 PM</p>
+        <p>⏳ <strong>End:</strong> Jan 15, 4:00 PM</p>
+      </div>
+
+      <p class="user">👤 Emmanuel Ayobami</p>
+    </div>
+  </div>
+
+  <a href="Explore.html" class="explore-btn">Explore Mentors</a>
+</div>
+
   
 
 
 
 <script src="js/booking.js"></script>
+<script src="js/mentee-logout.js"></script>
 </body>
 </html>

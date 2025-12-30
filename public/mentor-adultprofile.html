@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mentor-adultpro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container-fluid header-container">
+            <div class="logo">
+                <a href="#" class="navbar-brand">Wisdom<span>Connect</span></a>
+            </div>
+            <div class="menu-button">
+                <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile -->
+            </div>
+            <div class="search-bar">
+                <div class="search-input">
+                    <i class="bi bi-search" id="searchIcon"></i>
+                    <input type="text" placeholder="Search Wise Mentor" id="searchInput">
+                </div>
+            </div>
+            <div class="header-icons">
+                <div class="noti">
+                    <i class="bi bi-bell notification" id="notificationIcon"></i>
+                    <span class="badge" id="notificationCount">4</span>
+                </div>
+                <div class="noti-dropdown" id="notiDropdown">
+                    <ul>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                        </i><strong>Notification:</strong> <i class="bi bi-calendar-event-fill before-icon"></i> Your upcoming session with <b>Dr. Adebayo</b> is scheduled for tomorrow at 10 AM. <a href="#">View details</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-check-circle-fill before-icon" ></i> Your session with <b>Prof. Williams</b> has been marked as completed. <a href="#">See summary</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-clock-history before-icon"></i> You have a pending session with <b>Mrs. Johnson</b>. Confirm now. <a href="#">Confirm</a></li>
+                        <li>
+                            <div class="notif">
+                                <i class="bi bi-bell notification"></i>
+                            </div>
+                            <strong>Notification:</strong> <i class="bi bi-x-circle-fill before-icon"></i> Your session with <b>Mr. Ola</b> has been canceled. <a href="#">Check details</a></li>
+                    </ul>
+                    <div class="for-center">
+                        <a href="mentor-notification.html" class="all">view all Notification</a>
+                    </div>
+                </div>
+                <!-- <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="Explore.html">Book A Session</a></button> -->
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <div class="message-btn" id="messageIcon">
+        <i class="bi bi-chat-dots-fill"></i>
+    </div>
+
+    <!-- Message Box -->
+    <div class="message-box" id="messageBox">
+        <div class="message-header">
+            <i class="bi bi-chat-dots-fill"></i> Messages
+        </div>
+        <div class="message-content">
+            <i class="  bx bx-message-alt-detail"></i><br>
+            No messages
+            <p>Messages from the team will be shown here.</p>
+        </div>
+    </div>
+
+    <div class="sliding-menu" id="slidingMenu">
+        <!-- Cancel Icon -->
+        <div class="cancel-btn" id="cancelBtn">
+            <i class="bx bx-x"></i>
+        </div>
+        
+        
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="css/img/adult.webp" alt="Profile" class="profile-img">
+            <div class="profile-info">
+                <p class="profile-name">Emmanuel Ayobami</p>
+                <a href="#" class="view-profile">View Profile</a>
+            </div>
+        </div>
+        
+        <hr>
+        <!-- Main Navigation -->
+        <ul class="nav-list">
+            <li>
+                <a href="index.html" class="res">
+                    <i class="bi bi-house-door"></i> Home 
+                </a>
+                <span class="menu-description">Track your home page and connections</span>
+            </li>
+            <li>
+                <a href="message.html" class="res">
+                    <i class="bx bx-message-alt-detail"></i> Messages 
+                </a>
+                <span class="menu-description">View your messages and stay updated</span>
+            </li>
+            <li>
+                <a href="mentor-connection.html" class="res">
+                    <i class="bx bx-user"></i> My Connections 
+                </a>
+                <span class="menu-description">Manage your personal connections</span>
+            </li>
+            <li>
+                <a href="mentor-booking.html" class="res">
+                    <i class="bx bxs-calendar-alt"></i> Booking  </a>
+                    <span class="menu-description">Book your sessions with mentors</span>
+            </li>
+        </ul>
+        <hr>
+
+        
+        <ul class="nav-list">
+            <li><a href="#" class="res"><i class="bi bi-calendar-plus"></i> Book a Session </a></li>
+            <li><a href="#"  class="res"><i class="bi bi-bell"></i> Notifications </a></li>
+            <li><a href="#"  class="res"><i class="bx bx-mentor"></i> Become a Mentor </a></li>
+        </ul>
+        <hr>
+    
+ 
+        <ul class="nav-list">
+            <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
+            <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
+            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+        </ul>
+    </div>
+    
+    
+ <div class="sidebar">
+        <ul class="nav-list">
+            <li><a href="mentor-dashboard.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
+            <li><a href="mentor-explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li>
+            <li><a href="mentor-message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
+            <li><a href="mentor-booking.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
+            <li><a href="mentor-connection.html"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
+        </ul>
+    
+        <div class="profile-container">
+            <img src="css/img/adult.webp" alt="Profile" class="profile-pic1" id="profilePic">
+            <div class="hover-options" id="hoverMenu" data-visible="false">
+                <a href="/profile" class="profile-link">
+                    <img src="css/img/adult.webp" alt="Profile" class="hover-profile-pic">
+                    <div>
+                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="view-profile">View Profile</span>
+                    </div>
+                </a>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-calendar-check"></i> Connect your calendar</a></li>
+                    <li><a href="#"><i class="bi bi-award"></i> Quality</a></li>
+                    <li><a href="#"><i class="bi bi-heart"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="bi bi-people"></i> Get A Match</a></li>
+                    <li><a href="#"><i class="bi bi-person"></i> Become a Mentor</a></li>
+                </ul>
+                <hr class="divider" />
+                <ul>
+                    <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
+                    <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                    <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
+                      <li><a href="#" class="res"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <!-- Bottom Navigation for Mobile and Tablet -->
+<!-- <div class="bottom-nav">
+    <ul class="nav-list">
+        <li><a href="index.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
+        <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="bookings.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
+        <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
+    </ul>
+</div> -->
+
+
+
+    
+    <div class="user-profile-container">
+        <div class="user-profile-bg"></div>
+
+        <div class="profile-wrapper">
+            <!-- Profile Info (Image & Name) -->
+            <div class="profile-info">
+               <div class="user-profile-img">
+    <img src="css/img/adult.webp" alt="User Profile">
+            <div class="availability-indicator">
+                <span class="availability-circle available"></span>
+            </div>
+        </div>
+  
+
+
+                <div class="user-info">
+                    <div class="user-name">Emmanuel Ayobami 🇳🇬</div>
+                    <div class="user-role">Community Manager at a comapny</div>
+                </div>
+            </div>
+
+                    <div class="availability-big">
+                        Available
+                    </div>
+
+
+                    <!-- <div class="availability-big unavailable">
+                    Unavailable
+                </div> -->
+                                    
+            <!-- Icons Section -->
+            <div class="profile-actions">
+                <!-- Message Icon -->
+                <div class="icon-container message-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+
+                <!-- Love (Wishlist) Icon -->
+                <div class="icon-container love-icon">
+                    <i class="bi bi-heart"></i>
+                </div>
+
+                <!-- Menu Icon -->
+                <div class="icon-container menu-icon">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown for menu -->
+        <div class="menu-box">
+            <p class="report-account"><i class="bi bi-linkedin"></i>Share on LinkedIn</p>
+            <p class="report-account"><i class="bi bi-twitter"></i>Tweet this profile</p>
+            <p class="report-account"><i class="bi bi-flag"></i> Report Account</p>
+        </div>
+
+        <!-- Message Request Popup -->
+        <div class="custom-message-box">
+            <span class="close-btn">&times;</span>
+            <h4 style="font-size: 20px; padding-bottom: 13px; font-weight: bold;">Message Request</h4>
+            <p class="text-message">This is the beginning of your conversation with <b>Emmanuel Ayobami</b>.  
+            This first message will be treated as a request.</p>
+
+            <p class="instruc"><strong>Your Messages</strong></p>
+
+            <textarea placeholder="Your message..."></textarea>
+            <button class="send-btn">Send</button>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <section class="about">
+    <div class="tab-container">
+        <div class="tab active" data-target="overview">Overview</div>
+        <div class="tab" data-target="reviews">Reviews 28</div>
+        <div class="tab" data-target="achievements">Achievements</div>
+        <div class="tab" data-target="sessions">Group Sessions 1</div>
+        <div class="underline"></div>
+    </div>
+    
+    
+    <!-- Split Page Layout -->
+    <div class="content-container">
+        <div class="left-content">
+            <div class="content active" id="overview-left">
+
+                
+            <div class="session-info">
+                <span id="nextAvailable">Next available: <strong>12 Mar 2025, 3:00pm</strong></span>
+                <button class="view-all3">Check Availability</button>
+            </div>
+
+   
+            <div id="viewAllModal2" class="modal2">
+                <div class="modal-content2">
+                    <span class="close2">&times;</span>
+                    <div class="modal-body2">
+                        <div class="downward">
+                            <div class="elder-profile2">
+                                <img src="css/img/emma.jpg" alt="Elder Profile">
+                                <div class="elder-text">
+                                    <h6>Emmanuel Ayobami</h6>
+                                    <p>Community Manager a company</p>
+                                </div>
+                            </div>
+                        
+                            <hr>
+                        
+                            <div class="elder-details">
+                                <p class="head-mentors">Mentorship Session</p>
+                                <p class="session-dur">Session Duration: <br><span>60 minutes</span></p>
+                                <p class="session-dur">About: <br><span>Mentorship session</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="upward">
+                            <div id="timeSelectionSection2">
+                                <p class="choose2">Select date and time</p>
+                                <p class="choose-below2">In your local timezone (Africa/Lagos) <a href="#">Update</a></p>
+                          
+
+                            <div class="calendar-header2">
+                                <i class="bi bi-chevron-left" id="prevMonth2"></i>
+                                <h3 id="monthTitle2"></h3>
+                                <i class="bi bi-chevron-right" id="nextMonth2"></i>
+                            </div>
+                            <hr class="hr-line">
+                            <div id="calendar2"></div>
+                        </div>
+                        
+                            <button id="backBtn2" class="hidden">Back</button>
+                            <div id="timeSlots2" class="hidden"></div>
+                            <button id="continueBtn2" class="hidden">Continue</button>
+            
+                            <!-- Booking Section -->
+                            <div id="timeSlots2" class="hidden"></div> <!-- Time slots container -->
+
+                            <button id="continueBtn2" class="hidden">Continue</button> <!-- Continue Button -->
+                            
+                            <div id="bookingSection2" class="hidden">
+                                <h3>Confirm Your Booking</h3>
+                                <p><strong id="bookingDate2"></strong></p>
+                                <p><i class="fa-solid fa-clock"></i> <span id="bookingTime2"></span></p>
+                            
+                                <label>Select Main Topic</label>
+                                <select id="sessionTopic2" style="max-height: 120px; overflow-y: auto;">
+                                    <option>🌱 Managing Burnout</option>
+                                    <option>📖 Effective Learning</option>
+                                    <option>🎯 Career Advice</option>
+                                    <option>💡 Entrepreneurship</option>
+                                    <option>🌿 Ancient Medicine</option>
+                                    <option>🌾 Traditional Farming</option>
+                                    <option>📚 History & Culture</option>
+                                    <option>🧘 Self-Care & Mindfulness</option>
+                                    <option>🏛️ Leadership & Governance</option>
+                                    <option>💰 Financial Wisdom</option>
+                                    <option>🌱 Managing Burnout</option>
+                                    <option>📖 Effective Learning</option>
+                                    <option>🎯 Career Advice</option>
+                                    <option>💡 Entrepreneurship</option>
+                                    <option>🌿 Ancient Medicine</option>
+                                    <option>🌾 Traditional Farming</option>
+                                    <option>📚 History & Culture</option>
+                                    <option>🧘 Self-Care & Mindfulness</option>
+                                    <option>🏛️ Leadership & Governance</option>
+                                    <option>💰 Financial Wisdom</option>
+                                </select>
+                                
+                                
+                                <label>What are you looking to get out of this session? (Required)</label>
+                                <textarea id="sessionGoals2" rows="4" placeholder="Type here..."  required></textarea>
+                            
+                                <button id="backToSlots2" class="hidden">Back</button> <!-- Back Button -->
+                                <button id="confirmBookingBtn2">Confirm Booking</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+       
+            
+                  
+                <div class="community-stats-hidden">
+                    <div class="community-header2">
+                        <h3>Community Statistics</h3>
+                    </div>
+                    <!-- Community Statistics -->
+                    <div class="community-stats2">
+                        <div class="stat-row">
+                            <div class="stat-item">
+                                <div class="stat-top">
+                                    <div class="stat-icon" style="background-color: #ffdddd; color: red;"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                                    <div class="stat-info">
+                                        <span class="stat-value">2,850 mins</span>
+                                        <p class="stat-text">Session Time</p>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-top">
+                                    <div class="stat-icon" style="background-color: #ddeeff; color: blue;"><i class="bi bi-stars"></i></div>
+                                    <div class="stat-info">
+                                        <span class="stat-value">48</span>
+                                        <p class="stat-text">Sessions Completed</p>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                
+                        <!-- Hidden Stats -->
+                        <div class="more-stats2 ">
+                            <div class="stat-row">
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ffeedc; color: orange;">
+                                            <i class="bi bi-bookmark-check-fill"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">100%</span>
+                                            <p class="stat-text">Average Attendance</p>
+                                            <span class="info-icon" data-tooltip="Calculated as (Total sessions attended / Total sessions) × 100">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ddffdd; color: green;">
+                                            <i class="bi bi-heart-fill"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">148</span>
+                                            <p class="stat-text">Karma Points</p>
+                                            <span class="info-icon" data-tooltip="Earned based on session participation and contributions">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                            <!-- Top Areas of Impact (Initially Hidden) -->
+                            <div class="top-impact2 ">
+                                <h3>Top Areas of Impact</h3>
+                                <p>Highly discussed topics during sessions</p>
+                                <div class="impact-list">
+                                    <div class="impact-item">General Mentorship</div>
+                                    <div class="impact-item">Resume and Portfolio Review</div>
+                                    <div class="impact-item">Design Career Path</div>
+
+                                    <div class="more-impact2 hidden">
+                                        <div class="impact-item">Leadership Development</div>
+                                        <div class="impact-item">Freelancing & Entrepreneurship</div>
+                                        <div class="impact-item">Technical Interviews</div>
+                                        <div class="impact-item">Networking & Personal Branding</div>
+                                    </div>
+                                </div>
+                                <a class="toggle-impact2" onclick="toggleImpact2()">+4 Others <i class="arrow-icon down"></i></a>
+                            </div>
+                        </div>
+                    </div>
+              
+               
+
+                <div class="about-content">
+                    <p class="short-text">
+                        Hi, Emmanuel! I’m a content writer and community management professional with over 5 years of experience. 
+                        I specialize in crafting compelling content that resonates with diverse audiences and driving brand advocacy 
+                        through effective community management.
+                    </p>
+                    <p class="long-text hidden">
+                        I've had the pleasure of working with both international companies in Silicon Valley and local brands. 
+                        One of my key strengths is cultivating and nurturing vibrant communities, both online and offline. 
+                        I’ve managed communities ranging from fewer than 100 to over 10,000 members across platforms like Slack, 
+                        Discord, Telegram, and Facebook.
+                    </p>
+                    <p class="long-text hidden">
+                        As a Meta Certified Community Manager, I bring a data-driven approach to everything I do—whether it’s 
+                        developing community guidelines, leading teams, creating content calendars, organizing engaging events, 
+                        or measuring the impact of strategies to make informed decisions.
+                    </p>
+                    <p class="long-text hidden">
+                        Outside of work, I love public speaking, moderating events, and reading books. I also enjoy sketching 
+                        and painting to tap into my creative side. If you're interested in content creation, community building, 
+                        or just want to chat about books or art, I’m here to help!
+                    </p>
+                    <a class="read-more">Read More</a>
+
+                    <div class="social-icons1">
+                        <div class="social-icons"><a href="#"><i class="bi bi-linkedin"></i></a></div>
+                        <div class="social-icons"><a href="#"><i class="bi bi-twitter"></i></a></div>
+                    </div>
+
+                    <div class="background-section">
+                        <div class="category">
+                            <span class="title">Expertise:</span>
+                            <div class="tags">
+                                <span class="tag"  style=" background-color: #fde2e2;  color: #d32f2f; border: 1px #d32f2f solid;">Content Writing</span>
+                                <span class="tag" style="background-color: #e2f7e2;   color: #388e3c; border: 1px #388e3c solid;">Marketing</span>
+                                <span class="more-btn" onclick="toggleDropdown('expertise-more', event)">+1</span>
+                            </div>
+                        </div>
+                        <div class="dropdown" id="expertise-more">
+                            <ul>
+                                <li class="dropdown-tag" style="background-color: #e2f7e2;   color: #388e3c; border: 1px #388e3c solid;">SEO</li>
+                                <!-- <li class="dropdown-tag">Brand Strategy</li>
+                                <li class="dropdown-tag">Copywriting</li> -->
+                            </ul>
+                        </div>
+                    
+                        <div class="category">
+                            <span class="title">Disciplines:</span>
+                            <div class="tags">
+                                <span class="tag">Customer Experience (CX)</span>
+                                <span class="tag">Technical Writing</span>
+                                <span class="more-btn" onclick="toggleDropdown('disciplines-more', event)">+3</span>
+                            </div>
+                        </div>
+                        <div class="dropdown2" id="disciplines-more">
+                            <ul>
+                                <li class="dropdown-tag">User Research</li>
+                                <li class="dropdown-tag">Content Strategy</li>
+                                <li class="dropdown-tag">Market Analysis</li>
+                            </ul>
+                        </div>
+                    
+                        <div class="category">
+                            <span class="title">Fluent In:</span>
+                            <div class="tags">
+                                <span class="tag">English</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="experience-section">
+                        <div class="experience1">
+                            
+                        <div class="header2">
+                            <h2>Experience <span class="bag">5</span></h2>
+                            <span id="view-experience" class="view-all" onclick="toggleSection('more-experience', 'view-experience')">View All</span>
+                        </div>
+                       
+
+                            <div class="experience-header">
+                                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+                                <div class="title">
+                                    <h3>Community Manager at 3MTT</h3>
+                                    <p class="company">3MTT Organization</p>
+                                </div>
+                                <p class="timeframe">Feb 2022 - May 2024</p>
+                            </div>
+                        </div>
+                       
+
+                        <div id="more-experience" class="hidden">
+                            <hr>
+
+                        <div class="experience">
+                            <div class="experience-header">
+                                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+                                <div class="title">
+                                    <h3>Community Manager</h3>
+                                    <p class="company">3MTT Organization</p>
+                                </div>
+                                <p class="timeframe">Feb 2022 - May 2024</p>
+                            </div>
+                            <ul class="experience-details">
+                                <li>Managed online communities across multiple platforms.</li>
+                                <li>Developed engagement strategies to foster growth.</li>
+                                <li>Organized and moderated community events.</li>
+                            </ul>
+                            <span class="view-more" onclick="toggleDetails(this)">View More</span>
+                        </div>
+                        <hr>
+                        <div class="experience">
+                            <div class="experience-header">
+                                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+                                <div class="title">
+                                    <h3>Content Writer </h3>
+                                    <p class="company">TechWorld Inc.</p>
+                                </div>
+                                <p class="timeframe">June 2021 - Present</p>
+                            </div>
+                            <ul class="experience-details">
+                                <li>Wrote and edited articles on technology trends.</li>
+                                <li>Conducted research to produce high-quality content.</li>
+                                <li>Collaborated with designers for engaging blog visuals.</li>
+                            </ul>
+                            <span class="view-more" onclick="toggleDetails(this)">View More</span>
+                        </div>
+                        <hr>
+                        <div class="experience">
+                            <div class="experience-header">
+                                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+                                <div class="title">
+                                    <h3>Social Media Manager </h3>
+                                    <p class="company">GrowthHub Digital</p>
+                                </div>
+                                <p class="timeframe">Jan 2020 - Dec 2021</p>
+                            </div>
+                            <ul class="experience-details">
+                                <li>Managed social media accounts and campaigns.</li>
+                                <li>Analyzed metrics to improve engagement rates.</li>
+                                <li>Created content strategies to increase brand visibility.</li>
+                            </ul>
+                            <span class="view-more" onclick="toggleDetails(this)">View More</span>
+                        </div>
+                        <hr>
+                        <div class="experience">
+                            <div class="experience-header">
+                                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+                                <div class="title">
+                                    <h3>Event Coordinator</h3>
+                                    <p class="company">Global Connect Events</p>
+                                </div>
+                                <p class="timeframe">Mar 2018 - Nov 2019</p>
+                            </div>
+                            <ul class="experience-details">
+                                <li>Planned and executed corporate networking events.</li>
+                                <li>Managed event logistics and vendor coordination.</li>
+                                <li>Ensured smooth operations during live events.</li>
+
+                            </ul>
+                            <span class="view-more" onclick="toggleDetails(this)">View More</span>
+                        </div>
+                        <hr>
+                        <div class="experience">
+                            <div class="experience-header">
+                                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+                                <div class="title">
+                                    <h3>Customer Support Rep </h3>
+                                    <p class="company">HelpDesk Co.</p>
+                                </div>
+                                <p class="timeframe">July 2016 - Feb 2018</p>
+                            </div>
+                            <ul class="experience-details">
+                                <li>Assisted customers with product-related inquiries.</li>
+                                <li>Provided technical support and troubleshooting.</li>
+                                <li>Maintained high customer satisfaction ratings.</li>
+                            </ul>
+                            <span class="view-more" onclick="toggleDetails(this)">View More</span>
+                        </div>
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="education-section">
+                        <div class="education-header">
+                            <h2>Education <span class="bag">3</span></h2>
+                            <span id="view-education" class="view-all" onclick="toggleSection('more-education', 'view-education')">View All</span>
+                        </div>
+                
+                        <div class="education">
+                            <div class="education-header">
+                                <div class="education-title">
+                                    <i class="bi bi-mortarboard icon"></i>
+                                    <div class="title2">
+                                        <h3>BSc in Computer Science</h3>
+                                        <p class="institution">University of Oxford</p>
+                                    </div>
+                                </div>
+                                <p class="duration">2019 - 2023</p>
+                            </div>
+                        </div>
+                
+                        <div id="more-education" class="hidden">
+                            <hr>
+                            <div class="education">
+                                <div class="education-header">
+                                    <div class="education-title">
+                                        <i class="bi bi-mortarboard icon"></i>
+                                        <div class="title2">
+                                            <h3>MSc in AI & Data Science</h3>
+                                            <p class="institution">Stanford University</p>
+                                        </div>
+                                    </div>
+                                    <p class="duration">2024 - Present</p>
+                                </div>
+                            </div>
+                
+                            <hr>
+                            <div class="education">
+                                <div class="education-header">
+                                    <div class="education-title">
+                                        <i class="bi bi-mortarboard icon"></i>
+                                        <div class="title2">
+                                            <h3>Diploma in IT</h3>
+                                            <p class="institution">Harvard Online</p>
+                                        </div>
+                                    </div>
+                                    <p class="duration">2018 - 2019</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            
+            <div class="content" id="reviews-left">
+                <div class="container">
+                    <!-- First row of progress bars -->
+                    <div class="progress-container">
+                      <div class="progress-bar-wrapper">
+                        <label for="communication" class="progress-label">Communication (99%)</label>
+                        <div class="progress-bar">
+                          <div class="progress-fill communication" style="width: 99%;"></div>
+                        </div>
+                      </div>
+                      <div class="progress-bar-wrapper">
+                        <label for="motivational" class="progress-label">Motivational (97%)</label>
+                        <div class="progress-bar">
+                          <div class="progress-fill motivational" style="width: 97%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <!-- Second row of progress bars -->
+                    <div class="progress-container">
+                      <div class="progress-bar-wrapper">
+                        <label for="problem-solving" class="progress-label">Problem Solving (99%)</label>
+                        <div class="progress-bar">
+                          <div class="progress-fill problem-solving" style="width: 99%;"></div>
+                        </div>
+                      </div>
+                      <div class="progress-bar-wrapper">
+                        <label for="subject-knowledge" class="progress-label">Subject Knowledge (100%)</label>
+                        <div class="progress-bar">
+                          <div class="progress-fill subject-knowledge" style="width: 100%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                
+                 <p class="often">People Often Say</p>
+                    <p class="real">Real experiences with mentor</p>
+
+                   <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Alex was extremely helpful and provided clear, actionable steps to improve my skills. 
+                        His advice on personal branding and networking was especially valuable. 
+                        I left the session feeling more confident and prepared for my next career move!
+                      </p>
+                    </div>
+                  </div>
+
+
+                  <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                        <div class="mentee-info">
+                          <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                          <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                        </div>
+                        <div class="mentee-badge">Mentee</div>
+                      </div>
+    
+                
+                      <hr>
+
+
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                    <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                    <div class="mentee-info">
+                      <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                      <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                    </div>
+                    <div class="mentee-badge">Mentee</div>
+                  </div>
+                  <hr>
+
+
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                    <div class="mentee-info">
+                      <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                      <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                    </div>
+                    <div class="mentee-badge">Mentee</div>
+                  </div>
+                  <hr>
+
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                    <div class="mentee-info">
+                      <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                      <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                    </div>
+                    <div class="mentee-badge">Mentee</div>
+                  </div>
+            
+      
+
+
+                  <div id="more-comments" style="display: none;">
+                    <hr>
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                    <div class="mentee-info">
+                      <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                      <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                    </div>
+                    <div class="mentee-badge">Mentee</div>
+                  </div>
+                  <hr>
+
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                    <div class="mentee-info">
+                      <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                      <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                    </div>
+                    <div class="mentee-badge">Mentee</div>
+                  </div>
+                  <hr>
+
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                    <div class="mentee-info">
+                      <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                      <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                    </div>
+                    <div class="mentee-badge">Mentee</div>
+                  </div>
+                  <hr>
+
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="#">
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                        <div class="mentee-info">
+                          <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                          <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                        </div>
+                        <div class="mentee-badge">Mentee</div>
+                      </div>
+
+                    <hr>
+
+
+
+
+                  <div class="comment-section"> 
+                    <div class="comment-date">March 10, 2025</div>
+                    <div class="comment-content">
+                      <p class="comment-text">
+                        Meeting with Alex was an incredibly insightful experience. He took the time to understand 
+                        my goals and challenges before offering well-thought-out guidance tailored to my needs. 
+                        His expertise in career growth and industry trends was evident in the practical steps he provided to help me stand out in my field. 
+                        Beyond technical advice, Alex emphasized the importance of personal branding, networking, and strategic decision-making, 
+                        which made a huge impact on my perspective. He was patient, thorough, and genuinely invested in my success. 
+                        I left our session feeling more empowered, with a clear roadmap for advancing in my career. Highly recommended!
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="mentee.html" >
+                    <div class="mentee-profile">
+                        <img src="css/img/emma.jpg" alt="Mentee Profile" class="profile-img">
+                    </a>
+                    <div class="mentee-info">
+                      <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
+                      <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
+                    </div>
+                    <div class="mentee-badge">Mentee</div>
+                  </div>
+                  </div>
+                  <hr>
+                  </div>
+                  <button id="load-more-btn">Load More</button>                  
+
+            </div>
+            <div class="content" id="achievements-left">
+                <h3>Achievements (Left)</h3>
+                <p>This is the left content for Achievements.</p>
+            </div>
+            <div class="content" id="sessions-left">
+                <h3>Group Sessions (Left)</h3>
+                <p>This is the left content for Group Sessions.</p>
+            </div>
+
+
+            
+        </div>
+    
+        <!-- Right Side -->
+        <div class="right-content">
+            <!-- strat over-view right -->
+            <div class="content active" id="overview-right">
+                <div class="community-stats-container">
+                  
+                    <div class="community-header">
+                        <h3>Community Statistics</h3>
+                        <a class="toggle-stats" onclick="toggleStats()">See More <i class="bi bi-chevron-down"></i></i></a>
+                    </div>
+                
+                    <!-- Community Statistics -->
+                    <div class="community-stats">
+                        <div class="stat-row">
+                            <div class="stat-item">
+                                <div class="stat-top">
+                                    <div class="stat-icon" style="background-color: #ffdddd; color: red;"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                                    <div class="stat-info">
+                                        <span class="stat-value">2,850 mins</span>
+                                        <p class="stat-text">Session Time</p>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-top">
+                                    <div class="stat-icon" style="background-color: #ddeeff; color: blue;"><i class="bi bi-stars"></i></div>
+                                    <div class="stat-info">
+                                        <span class="stat-value">48</span>
+                                        <p class="stat-text">Sessions Completed</p>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                
+                        <!-- Hidden Stats -->
+                        <div class="more-stats hidden">
+                            <div class="stat-row">
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ffeedc; color: orange;">
+                                            <i class="bi bi-bookmark-check-fill"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">100%</span>
+                                            <p class="stat-text">Average Attendance</p>
+                                            <span class="info-icon" data-tooltip="Calculated as (Total sessions attended / Total sessions) × 100">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-top">
+                                        <div class="stat-icon" style="background-color: #ddffdd; color: green;">
+                                            <i class="bi bi-heart-fill"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">148</span>
+                                            <p class="stat-text">Karma Points</p>
+                                            <span class="info-icon" data-tooltip="Earned based on session participation and contributions">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                            <!-- Top Areas of Impact (Initially Hidden) -->
+                            <div class="top-impact hidden">
+                                <h3>Top Areas of Impact</h3>
+                                <p>Highly discussed topics during sessions</p>
+                                <div class="impact-list">
+                                    <div class="impact-item">General Mentorship</div>
+                                    <div class="impact-item">Resume and Portfolio Review</div>
+                                    <div class="impact-item">Design Career Path</div>
+                                    <div class="more-impact hidden">
+                                        <div class="impact-item">Leadership Development</div>
+                                        <div class="impact-item">Freelancing & Entrepreneurship</div>
+                                        <div class="impact-item">Technical Interviews</div>
+                                        <div class="impact-item">Networking & Personal Branding</div>
+                                    </div>
+                                </div>
+                                <a class="toggle-impact" onclick="toggleImpact()">+4 Others <i class="arrow-icon down"></i></a>
+                            </div>
+                        </div>
+                    </div>
+              
+                <div class="available-sessions">
+                    <h3>Available Sessions</h3>
+                    <p>Book 1:1 sessions from the options based on your needs</p>
+                    
+                    <div class="session-cards">
+                        <div class="session-card" data-date="2025-03-01">
+                            <span class="day">Sat</span>
+                            <span class="month">01 Mar</span>
+                            <span class="slots">4 slots</span>
+                        </div>
+                        <div class="session-card" data-date="2025-03-02">
+                            <span class="day">Sun</span>
+                            <span class="month">02 Mar</span>
+                            <span class="slots">3 slots</span>
+                        </div>
+                        <div class="session-card" data-date="2025-03-03">
+                            <span class="day">Mon</span>
+                            <span class="month">03 Mar</span>
+                            <span class="slots">5 slots</span>
+                        </div>
+                        <div class="session-card" data-date="2025-03-04">
+                            <span class="day">Tue</span>
+                            <span class="month">04 Mar</span>
+                            <span class="slots">2 slots</span>
+                        </div>
+
+                        <a class="view-all2">View All <i class="bi bi-chevron-right"></i></a>
+
+                        <div id="viewAllModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div class="modal-body">
+                                    <div class="left-section">
+                                        <img src="css/img/emma.jpg" alt="Elder Profile" class="elder-profile">
+                                        <h6>Emmanuel Ayobami</h6>
+                                        <p>Community Manager at 3MTT</p>
+                                        <hr>
+                        
+                                        <p class="head-mentors">Mentorship Session</p>
+                        
+                                        <p class="session-dur">Session Duration: <br>
+                                            <span>60 minutes</span></p>
+                                        <p class="session-dur">About: <br> <span>Mentorship session</span></p>
+                                    </div>
+                        
+                                    <div class="right-section">
+                                        <div id="timeSelectionSection">
+                                            <p class="choose">Select date and time</p>
+                                            <p class="choose-below">In your local timezone (Africa/Lagos) <a href="#">Update</a></p>
+                                      
+
+                                        <div class="calendar-header">
+                                            <i class="bi bi-chevron-left" id="prevMonth"></i>
+                                            <h3 id="monthTitle"></h3>
+                                            <i class="bi bi-chevron-right" id="nextMonth"></i>
+                                        </div>
+                                        <hr class="hr-line">
+                                        <div id="calendar"></div>
+                                    </div>
+                                    
+                                        <button id="backBtn" class="hidden">Back</button>
+                                        <div id="timeSlots" class="hidden"></div>
+                                        <button id="continueBtn" class="hidden">Continue</button>
+                        
+                                        <!-- Booking Section -->
+                                        <div id="timeSlots" class="hidden"></div> <!-- Time slots container -->
+
+                                        <button id="continueBtn" class="hidden">Continue</button> <!-- Continue Button -->
+                                        
+                                        <div id="bookingSection" class="hidden">
+                                            <h3>Confirm Your Booking</h3>
+                                            <p><strong id="bookingDate"></strong></p>
+                                            <p><i class="fa-solid fa-clock"></i> <span id="bookingTime"></span></p>
+                                        
+                                            <label>Select Main Topic</label>
+                                            <select id="sessionTopic" style="max-height: 120px; overflow-y: auto;">
+                                                <option>🌱 Managing Burnout</option>
+                                                <option>📖 Effective Learning</option>
+                                                <option>🎯 Career Advice</option>
+                                                <option>💡 Entrepreneurship</option>
+                                                <option>🌿 Ancient Medicine</option>
+                                                <option>🌾 Traditional Farming</option>
+                                                <option>📚 History & Culture</option>
+                                                <option>🧘 Self-Care & Mindfulness</option>
+                                                <option>🏛️ Leadership & Governance</option>
+                                                <option>💰 Financial Wisdom</option>
+                                                <option>🌱 Managing Burnout</option>
+                                                <option>📖 Effective Learning</option>
+                                                <option>🎯 Career Advice</option>
+                                                <option>💡 Entrepreneurship</option>
+                                                <option>🌿 Ancient Medicine</option>
+                                                <option>🌾 Traditional Farming</option>
+                                                <option>📚 History & Culture</option>
+                                                <option>🧘 Self-Care & Mindfulness</option>
+                                                <option>🏛️ Leadership & Governance</option>
+                                                <option>💰 Financial Wisdom</option>
+                                            </select>
+                                            
+                                            
+                                            <label>What are you looking to get out of this session? (Required)</label>
+                                            <textarea id="sessionGoals" rows="4" placeholder="Type here..."  required></textarea>
+                                        
+                                            <button id="backToSlots" class="hidden">Back</button> <!-- Back Button -->
+                                            <button id="confirmBookingBtn">Confirm Booking</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                   
+                    
+                    <div class="time-slot-container">
+                       
+                        <div class="time-slot-header">
+                            <div class="avaialble-slots"><p>Available time slots</p></div>
+                            <div class="time-slot-controls">
+                                <i class="bi bi-chevron-left arrow arrow-left"></i>
+                                <i class="bi bi-chevron-right arrow arrow-right"></i>
+                            </div>
+                        </div>
+                        <hr>
+                    
+                        <div class="time-slots-wrapper">
+                            <div class="time-slots">
+                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="book-session" disabled>Book Session</button>
+                </div>
+                
+            </div>
+
+            <!-- end of over-view -->
+            <div class="content" id="reviews-right">
+                <h3>Reviews (Right)</h3>
+                <p>This is the right content for Reviews.</p>
+            </div>
+            <div class="content" id="achievements-right">
+                <h3>Achievements (Right)</h3>
+                <p>This is the right content for Achievements.</p>
+            </div>
+            <div class="content" id="sessions-right">
+                <h3>Group Sessions (Right)</h3>
+                <p>This is the right content for Group Sessions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</section>
+
+    
+<script src="js/mentor-adultprofile.js"></script>
+<script src="js/mentor-logout.js"></script>
+</body>
+</html>

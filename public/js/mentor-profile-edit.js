@@ -69,57 +69,9 @@ document.getElementById("notificationIcon").addEventListener("click", function (
 
 
 
-    
-document.addEventListener("DOMContentLoaded", function () {
-    let messageBox = document.getElementById("messageBox");
-    let messageIcon = document.getElementById("messageIcon");
   
-    if (messageBox && messageIcon) {
-        function toggleMessageBox(event) {
-            event.stopPropagation();
-            if (messageBox.classList.contains("show")) {
-                messageBox.classList.remove("show");
-                setTimeout(() => {
-                    messageBox.style.display = "none";
-                }, 300); // Wait for animation to finish
-            } else {
-                messageBox.style.display = "block";
-                setTimeout(() => {
-                    messageBox.classList.add("show");
-                }, 10); // Slight delay for smooth effect
-            }
-        }
-  
-        messageIcon.addEventListener("click", toggleMessageBox);
-  
-        document.addEventListener("click", function (event) {
-            if (!messageBox.contains(event.target) && event.target !== messageIcon) {
-                messageBox.classList.remove("show");
-                setTimeout(() => {
-                    messageBox.style.display = "none";
-                }, 300);
-            }
-        });
-    }
-  });
-    
 
 
-
-  const loveIcon = document.querySelector(".love-icon i");
-const menuIcon = document.querySelector(".menu-icon");
-const menuBox = document.querySelector(".menu-box");
-
-// Wishlist Toggle (Filled Heart)
-document.querySelector(".love-icon").addEventListener("click", function() {
-    if (loveIcon.classList.contains("bi-heart")) {
-        loveIcon.classList.replace("bi-heart", "bi-heart-fill");
-        loveIcon.style.color = "red";
-    } else {
-        loveIcon.classList.replace("bi-heart-fill", "bi-heart");
-        loveIcon.style.color = "#555";
-    }
-});
 
 
 // Show/Hide Menu Box
@@ -142,42 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const messageIcon = document.querySelector(".message-icon");
-    const messageBox = document.querySelector(".custom-message-box");
-    const closeBtn = document.querySelector(".close-btn");
-    const overlay = document.querySelector(".overlay");
-
-  
-    messageIcon.addEventListener("click", function () {
-        messageBox.style.display = "block";
-        overlay.style.display = "block"; 
-    });
-
-  
-    closeBtn.addEventListener("click", function () {
-        messageBox.style.display = "none";
-        overlay.style.display = "none"; 
-    });
-
-
-    overlay.addEventListener("click", function () {
-        messageBox.style.display = "none";
-        overlay.style.display = "none"; 
-    });
-    
-    document.querySelector(".message-icon").addEventListener("click", function() {
-        document.querySelector(".custom-message-box").classList.add("show");
-    });
-    
-    document.querySelector(".close-btn").addEventListener("click", function() {
-        document.querySelector(".custom-message-box").classList.remove("show");
-    });
-    
-    
-});
 
 
 
@@ -972,250 +888,801 @@ function setupDropdown(id, limit = 2) {
 }
 
 
-    // window.addEventListener('DOMContentLoaded', () => {
-    //     const user = JSON.parse(localStorage.getItem('elderUser'));
-    
-    //     if (!user) {
-    //     window.location.href = 'login.html'; // redirect if not logged in
-    //     return;
-    //     }
-    
-    //     // 🌍 Name + Role + Flag
-    //     // document.getElementById('userName').textContent = `${user.full_name} 🇳🇬`;
-    //     // document.getElementById('userRole').textContent = user.role || 'No role provided';
-    
-    //     // ✍️ Bio
-    //     const fullBio = user.bio || 'No bio added yet';
-    //     const sentences = fullBio.split('. ');
-    //     document.getElementById('shortBio').textContent = sentences.slice(0, 2).join('. ') + '.';
-    //     document.getElementById('longBio1').textContent = sentences.slice(2, 4).join('. ') + '.';
-    //     document.getElementById('longBio2').textContent = sentences.slice(4, 6).join('. ') + '.';
-    //     document.getElementById('longBio3').textContent = sentences.slice(6).join('. ') + '.';
-    
-    // });
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("editProfileModal");
+  const openBtn = document.getElementById("editProfileBtn");
+  const closeBtn = document.getElementById("modalCloseBtn");
+  const cancelBtn = document.getElementById("cancelBtn3"); 
+  const form = document.getElementById("mentorEditForm");
 
-    
-    
-    
-    
+  const userNameEl = document.getElementById("userName");
+  const userRoleEl = document.getElementById("userRole");
+  const linkedinLink = document.getElementById("linkedin-link");
 
-    window.addEventListener('DOMContentLoaded', () => {
-  const user = JSON.parse(localStorage.getItem('elderUser'));
-  if (!user) {
-    window.location.href = 'login.html';
+  const fullNameInput = document.getElementById("fullName");
+  const yearsOfExperienceInput = document.getElementById("yearsOfExperience");
+  const roleInput = document.getElementById("headlineRole");
+  const bioInput = document.getElementById("bio");
+  const linkedinInput = document.getElementById("linkedinUrl");
+  const expertiseSelect = document.getElementById("expertiseSelect");
+  const expertiseTagsEl = document.getElementById("expertiseTags");
+  const disciplineInput = document.getElementById("disciplineInput");
+  const disciplineTagsEl = document.getElementById("disciplineTags");
+  const languageInput = document.getElementById("languageInput");
+  const languageTagsEl = document.getElementById("languageTags");
+  const addExperienceBtn = document.getElementById("addExperienceBtn");
+  const experienceList = document.getElementById("experienceList");
+  const addEducationBtn = document.getElementById("addEducationBtn");
+  const educationList = document.getElementById("educationList");
+
+  let expertiseList = [];
+  let disciplineList = [];
+  let languageList = [];
+  let experiences = [];
+  let education = [];
+  let profileData = {}; 
+
+  function renderTagsWithOverflow(container, list, maxVisible = 3, type) {
+  container.innerHTML = "";
+  if (!Array.isArray(list)) return;
+
+  const visibleTags = list.slice(0, maxVisible);
+  const hiddenTags = list.slice(maxVisible);
+
+  // Render visible tags
+  visibleTags.forEach((txt, idx) => {
+    const span = document.createElement("span");
+    span.className = "profile-ui-tag";
+    span.innerHTML = `${txt} <button type="button" data-type="${type}" data-index="${idx}">&times;</button>`;
+    container.appendChild(span);
+  });
+
+  if (hiddenTags.length > 0) {
+    const moreSpan = document.createElement("span");
+    moreSpan.className = "profile-ui-tag more";
+    moreSpan.textContent = `+${hiddenTags.length} more`;
+    moreSpan.style.cursor = "pointer";
+    moreSpan.style.position = "relative";
+
+    const dropdown = document.createElement("div");
+    dropdown.className = "profile-ui-dropdown";
+    dropdown.style.display = "none";
+    dropdown.style.position = "absolute";
+    dropdown.style.top = "100%";
+    dropdown.style.left = "0";
+    dropdown.style.background = "#fff";
+    dropdown.style.border = "1px solid #ccc";
+    dropdown.style.padding = "5px";
+    dropdown.style.boxShadow = "0 2px 5px rgba(0,0,0,0.2)";
+    dropdown.style.zIndex = "1000";
+
+    hiddenTags.forEach((txt, idx) => {
+      const span = document.createElement("span");
+      span.className = "profile-ui-tag";
+      span.style.display = "block";
+      span.style.marginBottom = "3px";
+      span.textContent = txt;
+
+      // Optional remove button
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.style.marginLeft = "5px";
+      btn.textContent = "×";
+      btn.addEventListener("click", () => {
+        const hiddenIndex = maxVisible + idx;
+        removeTag(type, hiddenIndex);
+      });
+
+      span.appendChild(btn);
+      dropdown.appendChild(span);
+    });
+
+    moreSpan.appendChild(dropdown);
+
+    moreSpan.addEventListener("click", (e) => {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", () => {
+      dropdown.style.display = "none";
+    });
+
+    container.appendChild(moreSpan);
+  }
+}
+
+// Example usage for disciplines:
+
+
+
+// --- Tag Rendering Functions ---
+function renderTagsWithOverflow(container, list, maxVisible = 3, type) {
+  container.innerHTML = "";
+
+  const visibleTags = list.slice(0, maxVisible);
+  const hiddenTags = list.slice(maxVisible);
+
+  // Render visible tags
+  visibleTags.forEach((txt, idx) => {
+    const span = document.createElement("span");
+    span.className = "tag";
+    span.innerHTML = `${txt} <button type="button" aria-label="Remove" data-type="${type}" data-index="${idx}">&times;</button>`;
+    container.appendChild(span);
+  });
+
+  // If there are hidden tags, add a "+N more" button
+  if (hiddenTags.length > 0) {
+    const moreSpan = document.createElement("span");
+    moreSpan.className = "tag more";
+    moreSpan.textContent = `+${hiddenTags.length} more`;
+    moreSpan.style.cursor = "pointer";
+    moreSpan.addEventListener("click", () => {
+      // Show hidden tags inline
+      hiddenTags.forEach((txt, idx) => {
+        const span = document.createElement("span");
+        span.className = "tag";
+        const realIdx = idx + maxVisible;
+        span.innerHTML = `${txt} <button type="button" aria-label="Remove" data-type="${type}" data-index="${realIdx}">&times;</button>`;
+        container.insertBefore(span, moreSpan);
+      });
+      moreSpan.remove();
+    });
+    container.appendChild(moreSpan);
+  }
+}
+
+// Normal tag rendering (for discipline and language)
+function renderTags(container, list, type) {
+  container.innerHTML = "";
+  if (!Array.isArray(list)) return;
+  list.forEach((txt, idx) => {
+    const span = document.createElement("span");
+    span.className = "tag";
+    span.innerHTML = `${txt} <button type="button" data-type="${type}" data-index="${idx}">&times;</button>`;
+    container.appendChild(span);
+  });
+}
+
+
+// --- Remove Tag Handler ---
+function removeTag(type, index) {
+  if (type === "expertise") {
+    expertiseList.splice(index, 1);
+    renderTagsWithOverflow(expertiseTagsEl, expertiseList, 3, "expertise");
+  }
+disciplineTagsEl.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
+    const index = Number(e.target.dataset.index);
+    disciplineList.splice(index, 1);
+    renderTags(disciplineTagsEl, disciplineList, "discipline");
+  }
+});
+  if (type === "language") {
+    languageList.splice(index, 1);
+    renderTags(languageTagsEl, languageList, "language");
+  }
+}
+
+// --- Event Listeners for Remove Buttons ---
+[expertiseTagsEl, disciplineTagsEl, languageTagsEl].forEach((container) => {
+  container.addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON")
+      removeTag(e.target.dataset.type, Number(e.target.dataset.index));
+  });
+});
+
+
+function renderExpertiseUI(container, list, maxVisible = 3) {
+  container.innerHTML = "";
+  if (!Array.isArray(list)) return;
+
+  const visibleTags = list.slice(0, maxVisible);
+  const hiddenTags = list.slice(maxVisible);
+
+  visibleTags.forEach((txt) => {
+    const span = document.createElement("span");
+    span.className = "profile-ui-tag"; // smaller style for UI
+    span.textContent = txt;
+    container.appendChild(span);
+  });
+
+  if (hiddenTags.length > 0) {
+    const moreSpan = document.createElement("span");
+    moreSpan.className = "profile-ui-tag more";
+    moreSpan.textContent = `+${hiddenTags.length} more`;
+    moreSpan.style.cursor = "pointer";
+    moreSpan.style.position = "relative";
+
+    const dropdown = document.createElement("div");
+    dropdown.className = "profile-ui-dropdown";
+    dropdown.style.display = "none";
+    dropdown.style.position = "absolute";
+    dropdown.style.top = "100%";
+    dropdown.style.left = "0";
+    dropdown.style.background = "#fff";
+    dropdown.style.border = "1px solid #ccc";
+    dropdown.style.padding = "3px";
+    dropdown.style.boxShadow = "0 2px 5px rgba(0,0,0,0.2)";
+    dropdown.style.zIndex = "1000";
+
+    hiddenTags.forEach(txt => {
+      const span = document.createElement("span");
+      span.className = "profile-ui-tag";
+      span.style.display = "block";
+      span.style.marginBottom = "2px";
+      span.textContent = txt;
+      dropdown.appendChild(span);
+    });
+
+    moreSpan.appendChild(dropdown);
+
+    moreSpan.addEventListener("click", (e) => {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", () => {
+      dropdown.style.display = "none";
+    });
+
+    container.appendChild(moreSpan);
+  }
+}
+
+
+function openModal() {
+  modal.style.display = "flex";
+
+  fullNameInput.value = profileData.name || "";
+  roleInput.value = profileData.role || "";
+  bioInput.value = profileData.bio || "";
+  linkedinInput.value = profileData.linkedinUrl || "";
+
+  // Always read from plural 'disciplines'
+expertiseList = Array.isArray(profileData.expertise) ? profileData.expertise : [];
+disciplineList = Array.isArray(profileData.discipline) ? profileData.discipline : [];
+languageList = Array.isArray(profileData.fluentIn) ? profileData.fluentIn : [];
+experiences = Array.isArray(profileData.experience) ? profileData.experience : [];
+education = Array.isArray(profileData.education) ? profileData.education : [];
+
+
+  renderTags(expertiseTagsEl, expertiseList, "expertise");
+renderTags(disciplineTagsEl, disciplineList, "discipline");
+  renderTags(languageTagsEl, languageList, "language");
+
+  // Optionally, show first discipline in the input for quick edit
+  disciplineInput.value = disciplineList[0] || "";
+
+  // Experience
+  experienceList.innerHTML = "";
+  experiences.forEach((exp) => experienceList.appendChild(createExperienceCard(exp)));
+
+  // Education
+  educationList.innerHTML = "";
+  education.forEach((ed) => educationList.appendChild(createEducationCard(ed)));
+}
+
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  openBtn?.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  cancelBtn.addEventListener("click", closeModal);
+  window.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+  window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  expertiseSelect.addEventListener("change", () => {
+    const val = expertiseSelect.value;
+    if (!val || expertiseList.includes(val)) return;
+    if (expertiseList.length >= 5) {
+      alert("Max 5 expertise allowed");
+      return;
+    }
+    expertiseList.push(val);
+    renderTags(expertiseTagsEl, expertiseList, "expertise");
+    expertiseSelect.value = "";
+  });
+
+  disciplineInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const val = disciplineInput.value.trim();
+      if (!val || disciplineList.includes(val)) return;
+      disciplineList.push(val);
+      renderTags(disciplineTagsEl, disciplineList, "discipline");
+      disciplineInput.value = "";
+    }
+  });
+
+  languageInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const val = languageInput.value.trim();
+      if (!val || languageList.includes(val)) return;
+      if (languageList.length >= 2) { alert("Max 2 languages"); return; }
+      languageList.push(val);
+      renderTags(languageTagsEl, languageList, "language");
+      languageInput.value = "";
+    }
+  });
+
+  function createExperienceCard(data = {}) {
+    const wrap = document.createElement("div");
+    wrap.className = "card";
+    wrap.innerHTML = `
+      <div class="row">
+        <div class="col-6"><label>Title / Role</label><input type="text" name="exp_title" value="${data.title || ""}" /></div>
+        <div class="col-6"><label>Company</label><input type="text" name="exp_company" value="${data.company || ""}" /></div>
+        <div class="col-4"><label>Start Date</label><input type="date" name="exp_start" value="${data.startDate || ""}" /></div>
+        <div class="col-4"><label>End Date</label><input type="date" name="exp_end" value="${data.endDate || ""}" ${data.present ? "disabled" : ""} /></div>
+        <div class="col-4 inline"><label><input type="checkbox" name="exp_present" ${data.present ? "checked" : ""}/> Present</label> <button type="button" class="remove">Remove</button></div>
+        <div class="col-12"><label>Description</label><textarea name="exp_desc">${data.description || ""}</textarea></div>
+      </div>
+    `;
+    const present = wrap.querySelector('input[name="exp_present"]');
+    const endDate = wrap.querySelector('input[name="exp_end"]');
+    present.addEventListener("change", () => { endDate.disabled = present.checked; if(present.checked) endDate.value = ""; });
+    wrap.querySelector(".remove").addEventListener("click", () => wrap.remove());
+    return wrap;
+  }
+
+  function createEducationCard(data = {}) {
+    const wrap = document.createElement("div");
+    wrap.className = "card";
+    wrap.innerHTML = `
+      <div class="row">
+        <div class="col-6"><label>Institution</label><input type="text" name="edu_school" value="${data.school || ""}" /></div>
+        <div class="col-6"><label>Degree</label><input type="text" name="edu_degree" value="${data.degree || ""}" /></div>
+        <div class="col-6"><label>Start Date</label><input type="date" name="edu_start" value="${data.startDate || ""}" /></div>
+        <div class="col-6"><label>End Date</label><input type="date" name="edu_end" value="${data.endDate || ""}" /></div>
+        <div class="col-12 inline"><button type="button" class="remove">Remove</button></div>
+      </div>
+    `;
+    wrap.querySelector(".remove").addEventListener("click", () => wrap.remove());
+    return wrap;
+  }
+
+  addExperienceBtn.addEventListener("click", () => experienceList.appendChild(createExperienceCard()));
+  addEducationBtn.addEventListener("click", () => educationList.appendChild(createEducationCard()));
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const expCards = Array.from(experienceList.querySelectorAll(".card"));
+    const experiences = expCards.map(card => ({
+      title: card.querySelector('input[name="exp_title"]').value.trim(),
+      company: card.querySelector('input[name="exp_company"]').value.trim(),
+      startDate: card.querySelector('input[name="exp_start"]').value,
+      endDate: card.querySelector('input[name="exp_end"]').value,
+      present: card.querySelector('input[name="exp_present"]').checked,
+      description: card.querySelector('textarea[name="exp_desc"]').value.trim(),
+    }));
+
+    const eduCards = Array.from(educationList.querySelectorAll(".card"));
+    const education = eduCards.map(card => ({
+      school: card.querySelector('input[name="edu_school"]').value.trim(),
+      degree: card.querySelector('input[name="edu_degree"]').value.trim(),
+      startDate: card.querySelector('input[name="edu_start"]').value,
+      endDate: card.querySelector('input[name="edu_end"]').value,
+    }));
+
+const payload = {
+  name: fullNameInput.value.trim() || profileData.name,
+  role: roleInput.value.trim() || profileData.role,
+  bio: bioInput.value.trim() || profileData.bio,
+  linkedinUrl: linkedinInput.value.trim() || profileData.linkedinUrl,
+  expertise: expertiseList,
+  disciplines: disciplineList.length ? disciplineList : profileData.disciplines || [], // 🔹 fixed naming
+  fluentIn: languageList,
+  experience: experiences,
+  education: education,
+  yearsOfExperience: yearsOfExperienceInput?.value || profileData.yearsOfExperience || 0,
+};
+ console.log("Payload to save:", payload);
+
+   try {
+  // use mentor token
+  const token = localStorage.getItem("mentorToken"); 
+
+  const res = await fetch("http://localhost:5000/api/v1/user/me/update", {
+    method: "PATCH",
+     credentials: "include",
+    headers: { 
+      "Content-Type": "application/json", 
+      Authorization: `Bearer ${token}` 
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const result = await res.json();
+
+  if (!res.ok) { 
+    console.error(result); 
+    alert("Failed to save profile: " + result.message); 
+    return; 
+  }
+
+  profileData = result.data || payload;
+  updateTemplateUI(profileData);
+  closeModal();
+  alert("Profile updated successfully!");
+} catch(err) {
+  console.error("Network error:", err);
+  alert("Failed to save profile. See console.");
+}
+  });
+function updateTemplateUI(data) {
+  console.log("Profile data received from backend:", data);
+  userNameEl.textContent = data.name || "";
+  userRoleEl.textContent = data.role || "";
+
+  // Bio
+ const bioPreview = document.getElementById("bioPreview");
+const bioRest = document.getElementById("bioRest");
+const readMoreBtn = document.getElementById("readMoreBtn");
+
+const bioText = data.bio || "";
+const previewLength = 150;
+
+// Find the last space before 150 characters (so we don't cut mid-word)
+let cutoff = bioText.slice(0, previewLength).lastIndexOf(" ");
+cutoff = cutoff > 0 ? cutoff : previewLength;
+
+if (bioText.length > previewLength) {
+  bioPreview.textContent = bioText.slice(0, cutoff) + "... ";
+  bioRest.textContent = bioText.slice(cutoff);
+  readMoreBtn.style.display = "inline";
+} else {
+  bioPreview.textContent = bioText;
+  readMoreBtn.style.display = "none";
+}
+
+// Toggle show/hide
+if (readMoreBtn) {
+  readMoreBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    bioRest.classList.toggle("hidden");
+
+    if (bioRest.classList.contains("hidden")) {
+      readMoreBtn.textContent = "Read More";
+    } else {
+      readMoreBtn.textContent = "Read Less";
+    }
+  });
+}
+
+
+  // LinkedIn
+  if (data.linkedinUrl && /^https?:\/\//i.test(data.linkedinUrl)) {
+    linkedinLink.setAttribute("href", data.linkedinUrl);
+    linkedinLink.classList.remove("disabled");
+  } else {
+    linkedinLink.setAttribute("href", "#");
+    linkedinLink.classList.add("disabled");
+  }
+
+  // Helper to find container by title text
+  function findCategoryContainer(titleText) {
+  const category = Array.from(document.querySelectorAll(".category")).find(
+    (cat) =>
+      cat.querySelector(".title")?.textContent.replace(":", "").trim() ===
+      titleText
+  );
+  return category?.querySelector(".tags");
+}
+
+// Update tags
+const expertiseContainer = findCategoryContainer("Expertise");
+const disciplineContainer = findCategoryContainer("Disciplines");
+const languageContainer = findCategoryContainer("Fluent In");
+
+// Expertise
+if (expertiseContainer) {
+  expertiseContainer.classList.add("profile-ui-taglist");
+  renderExpertiseUI(expertiseContainer, data.expertise || [], 3);
+}
+
+// Disciplines
+if (disciplineContainer) {
+  const disciplineArray = Array.isArray(data.disciplines)
+    ? data.disciplines
+    : Array.isArray(data.discipline)
+    ? data.discipline
+    : JSON.parse(data.discipline || "[]");
+
+  disciplineContainer.innerHTML = "";
+  disciplineArray.forEach((item) => {
+    const span = document.createElement("span");
+    span.className = "tag discipline-tag";
+    span.textContent = item;
+    disciplineContainer.appendChild(span);
+  });
+}
+
+// Languages
+if (languageContainer) {
+  languageContainer.innerHTML = "";
+  (data.fluentIn || []).forEach((lang) => {
+    const span = document.createElement("span");
+    span.className = "tag language-tag";
+    span.textContent = lang;
+    languageContainer.appendChild(span);
+  });
+}
+
+const experienceContainer = document.querySelector(".experience-section .experience1");
+const moreExperienceContainer = document.getElementById("more-experience");
+
+// Safe parser for experience
+function safeParseExperience(exp) {
+  try {
+    if (!exp) return [];
+    return typeof exp === "string" ? JSON.parse(exp) : exp;
+  } catch {
+    return [];
+  }
+}
+
+if (experienceContainer && moreExperienceContainer) {
+  // ✅ Try multiple fields (mentor vs mentee)
+  const experiences = safeParseExperience(data.experience || data.experiences || []);
+
+  const count = experiences.length;
+
+  // Header
+  experienceContainer.innerHTML = `
+    <div class="header2">
+      <h2>Experience <span class="bag">${count}</span></h2>
+      ${count > 0 ? `<span id="view-experience" class="view-all" onclick="toggleSection('more-experience', 'view-experience')">View All</span>` : ""}
+    </div>
+  `;
+
+  moreExperienceContainer.innerHTML = "";
+
+  // --- first experience ---
+  if (count > 0) {
+    const firstExp = experiences[0];
+    experienceContainer.innerHTML += `
+      <div class="experience">
+        <div class="experience-header">
+          <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+          <div class="title">
+            <h3>${firstExp.title || ""}</h3>
+            <p class="company">${firstExp.company || ""}</p>
+          </div>
+          <p class="timeframe">${firstExp.startDate || ""} - ${firstExp.present ? "Present" : firstExp.endDate || ""}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  // --- all experiences ---
+  experiences.forEach(exp => {
+    moreExperienceContainer.innerHTML += `
+      <hr>
+      <div class="experience">
+        <div class="experience-header">
+          <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
+          <div class="title">
+            <h3>${exp.title || ""}</h3>
+            <p class="company">${exp.company || ""}</p>
+          </div>
+          <p class="timeframe">${exp.startDate || ""} - ${exp.present ? "Present" : exp.endDate || ""}</p>
+        </div>
+        ${exp.description ? `<ul class="experience-details">${exp.description.split("\n").map(d => `<li>${d}</li>`).join("")}</ul>` : ""}
+      </div>
+    `;
+  });
+}
+
+
+// --- EDUCATION ---
+const educationContainer = document.querySelector(".education-section");
+const moreEducationContainer = document.getElementById("more-education");
+
+if (educationContainer && moreEducationContainer) {
+  const education = data.education || [];
+  const count = education.length;
+
+  const eduHeader = educationContainer.querySelector(".education-header h2 span.bag");
+  if (eduHeader) eduHeader.textContent = count;
+
+  moreEducationContainer.innerHTML = "";
+
+  education.forEach((edu, idx) => {
+    const eduHTML = `
+      <div class="education">
+        <div class="education-header">
+          <div class="education-title">
+            <i class="bi bi-mortarboard icon"></i>
+            <div class="title2">
+              <h3>${edu.degree || ""}</h3>
+              <p class="institution">${edu.school || ""}</p>
+            </div>
+          </div>
+          <p class="duration">${edu.startDate || ""} - ${edu.endDate || ""}</p>
+        </div>
+      </div>
+    `;
+
+    if (idx === 0) {
+      const firstEduDiv = educationContainer.querySelector(".education");
+      if (firstEduDiv) firstEduDiv.replaceWith(document.createRange().createContextualFragment(eduHTML));
+    } else {
+      moreEducationContainer.innerHTML += `<hr>${eduHTML}`;
+    }
+  });
+}
+}
+async function fetchProfile() {
+  try {
+    const token = localStorage.getItem("mentorToken"); // use mentorToken
+
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      method: "GET",
+       credentials: "include",
+      headers: { 
+        "Content-Type": "application/json", 
+        Authorization: `Bearer ${token}` 
+      },
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch profile");
+    
+    const response = await res.json();
+    profileData = response.data || {};
+    updateTemplateUI(profileData);
+  } catch(err) {
+    console.error("Error fetching profile:", err);
+  }
+}
+
+fetchProfile();
+});
+
+// --- Elements ---
+const profileInput = document.querySelector("#profileInput"); // hidden file input
+const pencilIcon   = document.querySelector(".profile-img-pencil");
+
+const API_BASE = "http://localhost:5000/api/v1/user";
+const token    = localStorage.getItem("mentorToken");
+
+// Grab ALL profile images in the UI (main profile, sidenav, mobile, etc.)
+const profileImgs = document.querySelectorAll(
+  ".user-profile-img img, .profile-pic1, .profile-img, .hover-profile-pic"
+);
+
+// --- Helpers ---
+function bumpVersion() {
+  const v = Date.now().toString();
+  localStorage.setItem("pf_ver", v);
+  return v;
+}
+function currentVersion() {
+  return localStorage.getItem("pf_ver") || "";
+}
+function withBust(url) {
+  if (!url) return url;
+  const sep = url.includes("?") ? "&" : "?";
+  const v = currentVersion();
+  return v ? `${url}${sep}v=${v}` : url;
+}
+
+// Apply new image to ALL profile images
+function applyProfileImg(url) {
+  profileImgs.forEach((img) => {
+    if (url) {
+      img.src = withBust(url);
+    } else {
+      img.src = "default-profile.jpg"; // fallback
+    }
+  });
+}
+
+// --- Load fresh user ---
+async function loadUser() {
+  try {
+    const res = await fetch(`${API_BASE}/me`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const json = await res.json();
+    const pic = json?.data?.picture || null;
+    console.log("User data (on load):", json);
+    applyProfileImg(pic);
+  } catch (e) {
+    console.error("Failed to load user:", e);
+  }
+}
+
+// --- Events ---
+// Pencil click → open file picker
+if (pencilIcon && profileInput) {
+  pencilIcon.addEventListener("click", () => profileInput.click());
+}
+
+// File input → upload picture
+if (profileInput) {
+  profileInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("picture", file);
+
+    try {
+      const res = await fetch(`${API_BASE}/me/picture`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        console.error("Upload failed payload:", data);
+        throw new Error(data.message || "Upload failed");
+      }
+
+      console.log("Upload success:", data);
+
+      bumpVersion();
+      if (data.imageUrl) {
+        applyProfileImg(data.imageUrl); // ✅ update all profile images
+      }
+
+      await loadUser(); // refresh from API
+    } catch (err) {
+      console.error("Upload error:", err);
+      alert("Failed to upload profile picture.");
+    } finally {
+      profileInput.value = "";
+    }
+  });
+}
+
+// Initial load
+loadUser();
+
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("mentorToken");
+
+  if (!token) {
+    window.location.href = "/public/login.html";
     return;
   }
 
-  // 🌍 Name + Role + Flag
-  document.getElementById('userName').textContent = `${user.full_name} 🇳🇬`;
-  document.getElementById('userRole').textContent = user.role || 'No role provided';
-
-  // ✍️ Bio
-  const fullBio = user.bio || 'No bio added yet';
-  const sentences = fullBio.split('. ');
-  document.getElementById('shortBio').textContent = sentences.slice(0, 2).join('. ') + '.';
-  document.getElementById('longBio1').textContent = sentences.slice(2, 4).join('. ') + '.';
-  document.getElementById('longBio2').textContent = sentences.slice(4, 6).join('. ') + '.';
-  document.getElementById('longBio3').textContent = sentences.slice(6).join('. ') + '.';
-
- 
-  // 🗣️ Fluent In
-  const languages = JSON.parse(user.fluent_in || '[]');
-  const langContainer = document.querySelector('.category.fluent .tags') || document.querySelectorAll('.category')[2].querySelector('.tags');
-  languages.forEach(l => {
-    const tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = l.replace(' ×', '');
-    langContainer.appendChild(tag);
-  });
-
-
-   // 💡 Expertise
-  const expertiseList = JSON.parse(user.expertise || '[]');
-  const expertiseContainer = document.querySelector('.category.expertise .tags') || document.querySelector('.category .tags');
-  expertiseList.forEach((item, i) => {
-    const tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = item.replace(' ×', '');
-    tag.style.backgroundColor = '#fde2e2';
-    tag.style.color = '#d32f2f';
-    tag.style.border = '1px solid #d32f2f';
-    expertiseContainer.appendChild(tag);
-  });
-
-  // 📘 Disciplines
-  const disciplines = JSON.parse(user.disciplines || '[]');
-  const disciplineContainer = document.querySelector('.category.disciplines .tags') || document.querySelectorAll('.category')[1].querySelector('.tags');
-  disciplines.forEach(d => {
-    const tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = d.replace(' ×', '');
-    disciplineContainer.appendChild(tag);
-  });
-
-
-  
-
-
-
-
-
-    const experiences = user.experience ? JSON.parse(user.experience) : [];
-    const firstExpContainer = document.querySelector('.experience1 .experience-header');
-    const expBag = document.querySelector('.experience1 .bag');
-    const viewMoreBtn = document.getElementById('view-experience');
-    const moreExpWrapper = document.getElementById('more-experience');
-
-    // Show experience count
-    expBag.textContent = experiences.length;
-
-    // Show first experience in static block
-    if (experiences.length > 0) {
-        const first = experiences[0];
-        firstExpContainer.querySelector('h3').textContent = first.description || 'No Title';
-        firstExpContainer.querySelector('.company').textContent = user.role || '';
-        firstExpContainer.querySelector('.timeframe').textContent = `${first.startDate} - ${first.endDate}`;
-    } else {
-        document.querySelector('.experience1').remove();
-    }
-
-    // Clear the full experience container
-    moreExpWrapper.innerHTML = '';
-
-    // Add all experiences to the View All section
-    experiences.forEach(exp => {
-        const div = document.createElement('div');
-        div.className = 'experience';
-        div.innerHTML = `
-            <div class="experience-header">
-                <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
-                <div class="title">
-                    <h3>${exp.description}</h3>
-                    <p class="company">${user.role || ''}</p>
-                </div>
-                <p class="timeframe">${exp.startDate} - ${exp.endDate}</p>
-            </div>
-            <ul class="experience-details">
-                ${(exp.details || [])
-                    .map(detail => `<li>${detail}</li>`)
-                    .join('')}
-            </ul>
-            <span class="view-more" onclick="toggleDetails(this)">View More</span>
-        `;
-        moreExpWrapper.appendChild(document.createElement('hr'));
-        moreExpWrapper.appendChild(div);
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
     });
 
-    // Initially hide the full section
-    moreExpWrapper.classList.add('hidden');
+    const result = await res.json();
+    console.log("User API result:", result);
 
+    if (res.ok && result.status === "success") {
+      const user = result.data;
+      const fullName = user.name || "Unknown User";
 
-    const educationList = user.education ? JSON.parse(user.education) : [];
-    const eduBag = document.querySelector('.education-section .bag');
-    const staticEdu = document.querySelector('.education-section .education'); // the first block
-    const viewEduBtn = document.getElementById('view-education');
-    const moreEduWrapper = document.createElement('div');
-    moreEduWrapper.id = 'more-education';
-    moreEduWrapper.classList.add('hidden');
-    staticEdu.insertAdjacentElement('afterend', moreEduWrapper);
+      // Replace text in both sidebar + mobile
+      const profileNameEls = document.querySelectorAll(".profile-name");
+      const hoverProfileNameEls = document.querySelectorAll(".hover-profile-name");
 
-    // Update badge count
-    eduBag.textContent = educationList.length;
-
-    // Render static education (first one)
-    if (educationList.length > 0) {
-        const first = educationList[0];
-        staticEdu.querySelector('h3').textContent = first.degree || 'No Degree';
-        staticEdu.querySelector('.institution').textContent = first.institution || 'No Institution';
-        staticEdu.querySelector('.duration').textContent = `${first.startDate} - ${first.endDate}`;
+      profileNameEls.forEach(el => el.textContent = fullName);
+      hoverProfileNameEls.forEach(el => el.textContent = fullName);
     } else {
-        staticEdu.remove(); // if there's nothing, remove static
+      console.error("Failed to fetch user details:", result.message);
     }
-
-    // Render the remaining education items (if any)
-    educationList.slice(1).forEach(edu => {
-        const div = document.createElement('div');
-        div.className = 'education';
-        div.innerHTML = `
-            <div class="education-header">
-                <div class="education-title">
-                    <i class="bi bi-mortarboard icon"></i>
-                    <div class="title2">
-                        <h3>${edu.degree || 'No Degree'}</h3>
-                        <p class="institution">${edu.institution || 'No Institution'}</p>
-                    </div>
-                </div>
-                <p class="duration">${edu.startDate} - ${edu.endDate}</p>
-            </div>
-        `;
-        moreEduWrapper.appendChild(document.createElement('hr'));
-        moreEduWrapper.appendChild(div);
-    });
-
-    // If only one education, auto-show and remove View All button
-    if (educationList.length <= 1) {
-        viewEduBtn?.remove();
-        moreEduWrapper.classList.remove('hidden');
-    }
-
- const logoutButtons = document.querySelectorAll('.logout-btn');
-
-logoutButtons.forEach((button) => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault();
-    const confirmLogout = confirm("Are you sure you want to logout?");
-    if (confirmLogout) {
-      localStorage.removeItem('elderUser');
-      window.location.href = 'adultlog.html';
-    }
-  });
+  } catch (err) {
+    console.error("Error fetching user details:", err);
+  }
 });
-
-
-});
-
-// Toggle function (can be shared with experience)
-function toggleSection(sectionId, btnId) {
-    const section = document.getElementById(sectionId);
-    const button = document.getElementById(btnId);
-
-    if (section.classList.contains('hidden')) {
-        section.classList.remove('hidden');
-        button.textContent = 'Hide';
-    } else {
-        section.classList.add('hidden');
-        button.textContent = 'View All';
-    }
-}
-
-
-
-
-// Toggle show/hide for experience list
-function toggleSection(sectionId, btnId) {
-    const section = document.getElementById(sectionId);
-    const button = document.getElementById(btnId);
-
-    if (section.classList.contains('hidden')) {
-        section.classList.remove('hidden');
-        button.textContent = 'Hide';
-    } else {
-        section.classList.add('hidden');
-        button.textContent = 'View All';
-    }
-}
-
-// Toggle show/hide for experience details
-function toggleDetails(el) {
-    const details = el.previousElementSibling;
-    if (details.style.display === 'none' || details.style.display === '') {
-        details.style.display = 'block';
-        el.textContent = 'Hide Details';
-    } else {
-        details.style.display = 'none';
-        el.textContent = 'View More';
-    }
-}
-
-
-

@@ -1148,13 +1148,16 @@ body{
     color: #4d4d4d  ; 
   }
 
+.explore {
+  margin-left: 100px; /* width of your sidenav */
+  padding: 20px;
+  width: calc(100% - 100px); /* keep space for sidebar */
+  box-sizing: border-box;
+}
 
   /* Elder Profile Section */
-.elders-profile-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px;
-    padding: 20px;
+#mentor-cards-container{
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px;
 
   }
   
@@ -1563,6 +1566,7 @@ body{
 @media screen and (max-width: 1024px) {
   .explore{
     margin-bottom: 350px;
+    margin-left: 40px;
   }
 
 }

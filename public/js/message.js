@@ -318,3 +318,93 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+
+// Utility: Update all profile images across dashboard
+function updateDashboardProfileImages(imageUrl) {
+  const profileImgs = document.querySelectorAll(
+    ".profile-pic1, .profile-img, .hover-profile-pic"
+  );
+
+  profileImgs.forEach((img) => {
+    img.src = `${imageUrl}?t=${Date.now()}`; // prevent caching old one
+  });
+}
+
+// On Page Load
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("menteeToken"); // 👈 mentee token
+  let userData = JSON.parse(localStorage.getItem("menteeData")); // 👈 cache key
+
+  // If we already cached profile
+  if (userData?.picture) {
+    updateDashboardProfileImages(userData.picture);
+  }
+
+  // Fetch fresh from backend
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const data = await res.json();
+    if (data.status === "success") {
+      userData = data.data;
+
+      // Save in localStorage for next reload
+      localStorage.setItem("menteeData", JSON.stringify(userData));
+
+      // Update everywhere
+      if (userData.picture) {
+        updateDashboardProfileImages(userData.picture);
+      }
+    }
+  } catch (err) {
+    console.error("Failed to fetch mentee data for dashboard:", err);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("menteeToken");
+
+  if (!token) {
+    window.location.href = "/public/login.html";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const result = await res.json();
+    console.log("Mentee profile result:", result);
+
+    if (res.ok && result.status === "success") {
+      const user = result.data;
+      const fullName = user.name || "Unknown User";
+
+      // Update sidebar name
+      document.querySelectorAll(".profile-name").forEach(el => {
+        el.textContent = fullName;
+      });
+
+      // Update mobile/hover name
+      document.querySelectorAll(".hover-profile-name").forEach(el => {
+        el.textContent = fullName;
+      });
+
+    } else {
+      console.error("Failed to fetch mentee details:", result.message);
+      localStorage.removeItem("menteeToken");
+    }
+  } catch (err) {
+    console.error("Error fetching mentee details:", err);
+    localStorage.removeItem("menteeToken");
+  }
+});

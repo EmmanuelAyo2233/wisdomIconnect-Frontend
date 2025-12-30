@@ -19,12 +19,31 @@
             <div class="menu-button">
                 <i class="bi bi-list" id="menuToggle"></i> <!-- Menu button for mobile --> 
             </div>
+
+    
+
             <div class="search-bar">
                 <div class="search-input">
                     <i class="bi bi-search" id="searchIcon"></i>
                     <input type="text" placeholder="Search Wise Mentor" id="searchInput">
                 </div>
+
+                  <!-- <div class="browse-dropdown">
+  <button class="dropdown-btn"><span class="arrow">▼</span> Browse</button>
+  <ul class="dropdown-menu">
+    <li>History</li>
+    <li>Self-Care</li>
+    <li>Agriculture</li>
+    <li>Ancient Medicine</li>
+  </ul>
+</div> -->
+
+
+                
             </div>
+
+      
+
             <div class="header-icons">
                 <div class="noti">
                     <i class="bi bi-bell notification" id="notificationIcon"></i>
@@ -57,7 +76,6 @@
                         <a href="mentor-notification.html" class="all">view all Notification</a>
                     </div>
                 </div>
-                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="mentor-booking.html">Book A Session</a></button>
             </div>
         </div>
     </header>
@@ -86,9 +104,9 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <img src="css/img/adult.webp" alt="Profile" class="profile-img">
             <div class="profile-info">
-                <p class="profile-name">Emmanuel Ayobami</p>
+                <p class="profile-name">loading.....</p>
                 <a href="mentor-profile-edit.html" class="view-profile">View Profile</a>
             </div>
         </div>
@@ -119,6 +137,13 @@
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
+
+            <li>
+                <a href="mentor-availabity.html" class="res">
+                    <i class="bi bi-calendar-plus"></i> Availability 
+                </a>
+                <span class="menu-description">Set your available times for sessions</span>
+                </li>
         </ul>
         <hr>
 
@@ -134,7 +159,7 @@
         <ul class="nav-list">
             <li><a href="mentor-setting.html"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
             <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
-            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+            <li><a href="#" class="res" id="logout"><i class="bx bx-log-out"></i> Logout </a></li>
         </ul>
     </div>
     
@@ -142,19 +167,24 @@
     <div class="sidebar">
         <ul class="nav-list">
             <li><a href="mentor-dashboard.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
-            <!-- <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li> -->
+           <li>
+  <a href="mentor-availabity.html">
+    <i class="bi bi-calendar-plus icon"></i>
+    <span class="link-name">Availability</span>
+  </a>
+</li>
             <li><a href="mentor-message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
             <li><a href="mentor-booking.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
             <li><a href="mentor-connection.html"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
         </ul>
     
         <div class="profile-container">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <img src="css/img/adult.webp" alt="Profile" class="profile-pic1" id="profilePic">
             <div class="hover-options" id="hoverMenu" data-visible="false">
                 <a href="mentor-profile-edit.html" class="profile-link">
-                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <img src="css/img/adult.webp" alt="Profile" class="hover-profile-pic">
                     <div>
-                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="hover-profile-name">loading.....</span>
                         <span class="view-profile">View Profile</span>
                     </div>
                 </a>
@@ -171,7 +201,7 @@
                     <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
                     <li><a href="mentor-setting.html"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
-                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                     <li><a href="#" class="res" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -183,7 +213,7 @@
 <div class="bottom-nav">
     <ul class="nav-list">
         <li><a href="mentor-dashboard.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
-        <!-- <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li> -->
+        <li><a href="mentor-availabity.html" class="explore-link"><i class="bi bi-calendar-plus icon"></i><span class="active-dot"></span></a></li>
         <li><a href="mentor-message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
         <li><a href="mentor-booking.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
         <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
@@ -197,9 +227,17 @@
                 <div class="col-12 col-lg-9  p-4 left-column " id="main-content">
                     <div class="left-side">
             <div class="home-content">
+             <div id="banner" style="display:none; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px; font-family: Arial, sans-serif; align-items: center; gap: 10px; display:flex;">
+  <span id="banner-icon" style="font-size:18px;"></span>
+  <span id="banner-text" style="flex:1;"></span>
+  <button id="banner-close">&times;</button>
+</div>
+
+
+
                 <div class="welcome">
                 <img src="css/img/adult.webp" alt="Welcome Image" class="welcome-image">
-                <div class="text">Welcome👋</div>
+                <div class="text"  id="welcome-text">Welcome👋</div>
             </div>
             <p class="notice">You have no upcoming sessions.</p>
             </div>
@@ -211,7 +249,7 @@
                     <div class="card shadow-sm p-4 fast-link">
                         <div class="card-body ">
                             <h5 class="card-title"><a href="#">Upcoming Sessions</a></h5>
-                            <p class="card-text">Check out your booked sessions with elders here.</p>
+                            <p class="card-text">View your scheduled sessions with mentees.</p>
                         </div>
                     </div>
                 </div>
@@ -219,8 +257,8 @@
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm p-4 fast-link">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="#">Explore Topics</a></h5>
-                            <p class="card-text">Dive into different topics like history, self-care, and more.</p>
+                            <h5 class="card-title"><a href="mentor-connection.html">My Mentees / Bookings</a></h5>
+                            <p class="card-text">See all mentees who have booked sessions with you.</p>
                         </div>
                     </div>
                 </div>
@@ -228,8 +266,8 @@
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm p-4 fast-link">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="#">Notifications</a></h5>
-                            <p class="card-text">Stay updated on new messages and booking reminders.</p>
+                            <h5 class="card-title"><a href="mentor-notification.html">Notifications</a></h5>
+                            <p class="card-text">Get updates on new bookings, messages, and reminders.</p>
                         </div>
                     </div>
                 </div>
@@ -237,8 +275,8 @@
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm p-4 fast-link">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="#">Explore Topics</a></h5>
-                            <p class="card-text">Read articles shared by elders on various knowledge areas.</p>
+                            <h5 class="card-title"><a href="#">Availability</a></h5>
+                            <p class="card-text">Update your expertise topics and available times for sessions.</p>
                         </div>
                     </div>
                 </div>
@@ -246,433 +284,50 @@
             </div>
         </div>
 
+<section class="feedback-section">
+  <h3>Feedback on Completed Sessions</h3>
 
-        <div class=" showless">
-            <div class="arro-container position-relative">
-            <div class="arrow-controls">
-                <button id="prevArrow" class="arrow-btn">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                <button id="nextArrow" class="arrow-btn">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
+  <div class="feedback-list" id="feedbackList">
+    <!-- Feedback Card 1 -->
+    <div class="feedback-card">
+      <div class="feedback-header">
+        <span class="mentor-name"><strong>Mentor:</strong> Dr Adedayo</span>
+        <span class="feedback-date">Dec 5, 2024</span>
+      </div>
+      <p class="feedback-topic"><strong>Topic:</strong> History of Ancient Medicine</p>
+      <p class="feedback-text">
+        "This session was incredibly insightful and informative. I learned a lot!"
+      </p>
+    </div>
+
+    <!-- Feedback Card 2 -->
+    <div class="feedback-card">
+      <div class="feedback-header">
+        <span class="mentor-name"><strong>Mentor:</strong> Odumodu</span>
+        <span class="feedback-date">Nov 28, 2024</span>
+      </div>
+      <p class="feedback-topic"><strong>Topic:</strong> Leadership Strategies</p>
+      <p class="feedback-text">
+        "Very practical and inspiring advice on leadership and teamwork!"
+      </p>
+    </div>
+  </div>
+</section>
+
+            
+            
+
+
+                   
+
             </div>
-        </div>
-
-        <div class="card-wrapper">
-            <div class="row card-container position-relative ">
-                <div class="col-lg-3">
-                    <div class="card text-light mentor-card">
-                        <img src="css/img/mentor.webp" class="card-img-top" alt="Mentor Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Discover mentors</h5>
-                            <p class="card-text">Explore from over 1K mentors</p>
-                           <button class="discover"><a href="Explore.html" class="btn2">Discover Mentors</a></button>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="card-item  ">
-                 <div class="elder-profile">
-                         <div class="elder-card">
-                            <div class="elder-img-container">
-                                <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
-                                <span class="top-rated-badge">Top Rated</span>
-                               </div>
-                            <div class="elder-info">
-                                <h4 class="elder-name">John Doe</h4>
-                               <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
-                                <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
-                                <div class="elder-rating">
-                                    <span class="star">&#9733;</span> 4.7 (41 reviews)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="card-item">
-                    <div class="elder-profile">
-                        <div class="elder-card">
-                            <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
-                            <div class="elder-info">
-                                <h4 class="elder-name">Dr Adedayo</h4>
-                               <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
-                                <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
-                                <div class="elder-rating">
-                                    <span class="star">&#9733;</span> 4.7 (41 reviews)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-
-                <div class="card-item">
-                    <div class="elder-profile">
-                        <div class="elder-card">
-                            <div class="elder-img-container">
-                                <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
-                                <span class="top-rated-badge">Top Rated</span>
-                            </div>
-                            <div class="elder-info">
-                                <h4 class="elder-name">emmy pro</h4>
-                               <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
-                                <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
-                                <div class="elder-rating">
-                                    <span class="star">&#9733;</span> 4.7 (41 reviews)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                
-                <div class="card-item  ">
-                    <div class="elder-profile">
-                           <div class="elder-card">
-                               <div class="elder-img-container">
-                                   <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
-                                   <span class="top-rated-badge">Top Rated</span>
-                                  </div>
-                                    <div class="elder-info">
-                                   <h4 class="elder-name">John Doe</h4>
-                                  <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
-                                   <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
-                                   <div class="elder-rating">
-                                       <span class="star">&#9733;</span> 4.7 (41 reviews)
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
+            
+            
    
-                   <div class="card-item">
-                       <div class="elder-profile">
-                           <div class="elder-card">
-                            <div class="elder-img-container">
-                                <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
-                                <span class="top-rated-badge">Top Rted</span>
-                            </div>
-                               <div class="elder-info">
-                                   <h4 class="elder-name">John Doe</h4>
-                                  <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
-                                   <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
-                                   <div class="elder-rating">
-                                       <span class="star">&#9733;</span> 4.7 (41 reviews)
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-
-
-       <div class="card-item">
-                       <div class="elder-profile">
-                           <div class="elder-card">
-                               <div class="elder-img-container">
-                                   <img src="css/img/emma.jpg" alt="Elder's Profile Picture" class="elder-img">
-                                   <span class="top-rated-badge">Top Rted</span>
-                               </div>
-                               <div class="elder-info">
-                                   <h4 class="elder-name">emmy pro</h4>
-                                  <p class="elder-title"><i class="bi bi-briefcase"></i> Lead Product Designer at Epidemic Sound</p>
-                                   <p class="elder-sessions"><i class="bi bi-person-check"></i> 130 sessions (41 reviews)</p>
-                                   <div class="elder-rating">
-                                       <span class="star">&#9733;</span> 4.7 (41 reviews)
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div> 
-            </div>
-            </div>
-         
-
-            <section class="feedback-section">
-                <h3 style="color: #b22222;">Feedback on Completed Sessions</h3>
-                <div class="feedback-list" id="feedbackList">
-                    <div class="feedback-card">
-                        <p><strong>Elder:</strong> Dr Adedayo</p>
-                        <p><strong>Topic:</strong> History of Ancient Medicine</p>
-                        <p class="feedback-text">"This session was incredibly insightful and informative. I learned a lot!"</p>
-                        <p class="feedback-date">Submitted on: Dec 5, 2024</p>
-                        <button class="delete-feedback-btn" style="float: right;">Delete</button>
-                    </div>
-                    <div class="feedback-card">
-                        <p><strong>Elder:</strong> Odumodu</p>
-                        <p><strong>Topic:</strong> Leadership Strategies</p>
-                        <p class="feedback-text">"Very practical and inspiring advice on leadership and teamwork!"</p>
-                        <p class="feedback-date">Submitted on: Nov 28, 2024</p>
-                        <button class="delete-feedback-btn" style="float: right;">Delete</button>
-                    </div>
-                </div>
-
-                <div id="confirmationModal" class="custom-modal">
-                    <div class="modal-content">
-                      <p>Do you want to delete this feedback?</p>
-                      <button id="confirmDeleteButton" class="btn">Yes</button>
-                      <button id="cancelDeleteButton" class="btn">No</button>
-                    </div>
-                  </div>
-                
-                <button type="button" class="submit-feedback-btn" id="openModalButton">Give Feedback</button>
-            </section>
-            
-
-            
-
-
-                    <div class="custom-modal" id="feedbackModal">
-                    <div class="modal-content">
-                        <span class="close-button" id="closeModalButton">&times;</span>
-                        <h2>Submit Your Feedback</h2>
-                        <form id="feedbackForm">
-                        <div class="form-group">
-                            <label for="elderName">Elder's Name</label>
-                            <select id="elderName" class="form-control focus">
-                            <option selected disabled>Choose an Elder...</option>
-                            <option value="elder1" class="hv">Elder 1</option>
-                            <option value="elder2"  class="hv">Elder 2</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="topic">Session Topic</label>
-                            <input type="text" id="topic" class="form-control focus" placeholder="Enter the session topic"  required >
-                        </div>
-                        <div class="form-group">
-                            <label for="feedbackText">Feedback</label>
-                            <textarea id="feedbackText" class="form-control focus" rows="4" placeholder="Write your feedback" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="rating">Rating (Optional)</label>
-                            <input type="number" id="rating" class="form-control focus" min="1" max="5" placeholder="Rate 1-5">
-                        </div>
-                        <button type="submit" class="submit-feedback-btn">Submit Feedback</button>
-                        </form>
-                          
-                    </div>
-                    </div>
-
-            </div>
-            <section id="home-playbooks" class="playbook-section">
-                <div class="playbook">
-                    <div class="section-header">
-                        <h2>Expert Playbook</h2>
-                        <a href="#" class="explore-link">Explore</a>
-                    </div>
-                    
-                    <div class="playbook-grid">
-                        <!-- Row 1 -->
-                        <div class="playbook-row">
-                            <div class="playbook-card">
-                               
-                                <h3 class="playbook-title">What can we learn from ancient self-care practices?</h3>
-                                <div class="playbook-header">
-                                    <div class="comment-profiles">
-                                        <div class="comment-profiles">
-                                            <a  class="view-playbook-btn">
-                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
-                                                 View Playbook
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="playbook-answer">
-                                    Ancient self-care practices, like herbal baths and meditation, were seen as holistic ways to maintain physical and mental health.
-                                </p>
-                              
-                                <div class="comment-meta">
-                                    <p class="comment-time">10 months ago</p>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
-                                    </a>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-chat"></i> Comment
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="playbook-card">
-                                
-                                <h3 class="playbook-title">What is the significance of storytelling in our culture?</h3>
-                                <div class="playbook-header">
-                                    <div class="comment-profiles">
-                                        <div class="comment-profiles">
-                                            <a  class="view-playbook-btn">
-                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
-                                                 View Playbook
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="playbook-answer">
-                                    Storytelling is a powerful tradition that passes on knowledge, morals, and heritage from generation to generation.
-                                </p>
-                                
-                              
-                                <div class="comment-meta">
-                                    <p class="comment-time">10 months ago</p>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
-                                    </a>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-chat"></i> Comment
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Row 2 -->
-                        <div class="playbook-row">
-                            <div class="playbook-card">
-                                
-                                <h3 class="playbook-title">How did ancient communities deal with natural disasters?</h3>
-                                <div class="playbook-header">
-                                    <div class="comment-profiles">
-                                        <div class="comment-profiles">
-                                            <a  class="view-playbook-btn">
-                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
-                                                 View Playbook
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="playbook-answer">
-                                    They often relied on communal efforts, built resilient shelters, and used early warning signs in nature to prepare.
-                                </p>
-                               
-                                <div class="comment-meta">
-                                    <p class="comment-time">10 months ago</p>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
-                                    </a>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-chat"></i> Comment
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="playbook-card">
-                              
-                                <h3 class="playbook-title">How do we preserve ancient arts and crafts?</h3>
-                                <div class="playbook-header">
-                                    <div class="comment-profiles">
-                                        <div class="comment-profiles">
-                                            <a  class="view-playbook-btn">
-                                            <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
-                                            <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
-                                                 View Playbook
-                                        </a>
-                                        </div>
-                                    </div>
-        
-                                </div>
-                                <p class="playbook-answer">
-                                    Preservation can involve workshops, documentation, and using modern technology to reach more people.
-                                </p>
-                               
-                                <div class="comment-meta">
-                                    
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
-                                    </a>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-chat"></i> Comment
-                                    </a>
-                                    <p class="comment-time">10 months ago</p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Row 3 -->
-                        <div class="playbook-row">
-                            <div class="playbook-card">
-                                
-                                <h3 class="playbook-title">What role did trade play in ancient societies?</h3>
-                                <div class="playbook-header">
-                                    <div class="comment-profiles">
-                                        <div class="comment-profiles">
-                                        <a  class="view-playbook-btn">
-                                        <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
-                                        <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
-                                        <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
-                                             View Playbook
-                                    </a>
-                                    </div>
-                                    </div>
-                                </div>
-                                <p class="playbook-answer">
-                                    Trade was crucial for resource distribution, cultural exchange, and economic stability in many ancient civilizations.
-                                </p>
-                            
-                                
-                                <div class="comment-meta">
-                                    <p class="comment-time">10 months ago</p>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
-                                    </a>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-chat"></i> Comment
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="playbook-card">
-                                <h3 class="playbook-title">What was the role of music in community gatherings?</h3>
-                                <div class="playbook-header">
-                                    <div class="comment-profiles">
-                                        <a  class="view-playbook-btn">
-                                        <img src="css/img/emma.jpg" alt="Commenter 3" class="profile-pic">
-                                        <img src="css/img/emma.jpg" alt="Commenter 1" class="profile-pic">
-                                        <img src="css/img/emma.jpg" alt="Commenter 2" class="profile-pic">
-                                             View Playbook
-                                    </a>
-                                    </div>
-                                </div>
-                                <p class="playbook-answer">
-                                    Music played a role in rituals, celebrations, and communal bonding, often acting as a unifying force.
-                                </p>
-                                
-                                <div class="comment-meta">
-                                    <p class="comment-time">10 months ago</p>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-hand-thumbs-up"></i> Upvote
-                                    </a>
-                                    <a class="upvote-btn">
-                                        <i class="bi bi-chat"></i> Comment
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>'
-            
-            <div class="tips-container">
-                <div class="tip-header">
-                    <h2 id="tip-title">#1 Tips for Success</h2>
-                    <div class="navigation-arrows">
-                        <i id="prev-tip"  class="bi bi-chevron-left arrow"></i>
-                        <i id="next-tip" class="bi bi-chevron-right arrow"></i>
-                    </div>
-                </div>
-                <h3 id="tip-topic">How to prepare for your first meeting?</h3>
-                <p id="tip-text">
-                    Plan an agenda! Plan out the questions and topics you'd like to discuss. If you'd like to work together on long-term goals, set some time to discuss expectations for each other.
-                </p>
-            </div>
-        </div>
-            </div>
+</div>
 
     <div class="col-12 col-lg-3  p-4 right-column" id="sidebar">
-        <a href="#" class="profile-strength-container">
+  <a href="mentor-profile-edit.html" class="profile-strength-container">
             <div class="profile-strength">
                 <small class="strength-title">Your Profile Strength</small>
                 <p id="strength-name">Youngling</p>
@@ -778,7 +433,7 @@
 
         
         
-
+</div>
         <!-- <div class="recent-activities">
             <h3>Recent Activities</h3>
             <ul>
@@ -809,6 +464,7 @@
 
 
     <script src="js/mentor-dashboard.js"></script>
+    <script src="js/mentor-logout.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

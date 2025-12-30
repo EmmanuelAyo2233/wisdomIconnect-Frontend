@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WisdomIConnect Platform Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/Registration.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+  
+</head>
+<body class="min-h-screen ">
+  <nav>
+        <div class="nav1">
+        
+            <a class="logo text-center">Wisdom<span style="color: #B22222;">Connect</span></a>
+        </div>
+            
+    </nav>
+    <div class="max-w-2xl mx-auto p-5">
+        <!-- Progress Bar -->
+        <div class="mb-8">
+            <div class="flex justify-between text-sm font-medium mb-2">
+                <span id="step-text">Step 1 of 3</span>
+                <span id="progress-percent">33%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 33%"></div>
+            </div>
+        </div>
+
+     <!-- Step 0: Role Selection -->
+<div id="step-0" class="card p-8">
+    <h1 class="text-3xl font-bold text-center mb-2">Welcome to WisdomIConnect</h1>
+    <p class="text-center text-lg mb-8 text-gray-600">Are you a Mentor or a Mentee?</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="role-option" data-role="mentor">
+            <div class="text-4xl mb-4">👨‍🏫</div>
+            <h3 class="text-xl font-semibold mb-2">Mentor</h3>
+            <p class="text-gray-600">Share your expertise and guide others on their journey</p>
+        </div>
+        
+        <div class="role-option" data-role="mentee">
+            <div class="text-4xl mb-4">🎓</div>
+            <h3 class="text-xl font-semibold mb-2">Mentee</h3>
+            <p class="text-gray-600">Learn from experienced professionals and grow your skills</p>
+        </div>
+    </div>
+
+    <!-- ADD THIS HIDDEN INPUT -->
+    <input type="hidden" name="userType" id="userType">
+
+    <div class="flex justify-center mt-8">
+        <button class="btn-primary" id="role-next" disabled>Continue</button>
+    </div>
+</div>
+
+        <!-- Step 1: Common Info -->
+        <div id="step-1" class="card p-8 hidden">
+            <h2 class="text-2xl font-bold mb-6">Let's get started with some basic information</h2>
+            
+            <form id="common-form" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium mb-2">Full Name *</label>
+                    <input type="text" id="name" name="name" class="input-field" required>
+                    <div class="error-message hidden" id="name-error"></div>
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-2">Email Address *</label>
+                    <input type="email" id="email" name="email" class="input-field" required>
+                    <div class="error-message hidden" id="email-error"></div>
+                </div>
+                
+                <div>
+                    <label for="password" class="block text-sm font-medium mb-2">Password *</label>
+                    <input type="password" id="password" name="password" class="input-field" required minlength="8">
+                    <div class="error-message hidden" id="password-error"></div>
+                    <p class="text-sm text-gray-500 mt-1">Minimum 8 characters</p>
+                </div>
+                
+                <div>
+                    <label for="confirm-password" class="block text-sm font-medium mb-2">Confirm Password *</label>
+                    <input type="password" id="confirm-password" name="confirmPassword" class="input-field" required>
+                    <div class="error-message hidden" id="confirm-password-error"></div>
+                </div>
+            </form>
+            
+            <div class="flex justify-between mt-8">
+                <button class="btn-secondary" id="step1-back">Previous</button>
+                <button class="btn-primary" id="step1-next" disabled>Next</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Role-specific Details -->
+        <div id="step-2" class="card p-8 hidden">
+            <!-- Mentor Form -->
+            <div id="mentor-form" class="hidden">
+                <h2 class="text-2xl font-bold mb-6">Tell us about your expertise</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="mentor-bio" class="block text-sm font-medium mb-2">Short Bio *</label>
+                        <textarea id="mentor-bio" name="bio" rows="4" class="input-field" placeholder="Tell us about your background and experience..." maxlength="1000" required></textarea>
+                        <div class="flex justify-between text-sm text-gray-500 mt-1">
+                            <span>Maximum 200 words</span>
+                            <span id="mentor-bio-count">0/200 words</span>
+                        </div>
+                        <div class="error-message hidden" id="mentor-bio-error"></div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Topics/Expertise (Select up to 3) *</label>
+                        <div class="multi-select" id="mentor-topics">
+                            <!-- Topics will be populated by JavaScript -->
+                        </div>
+                        <div class="selected-items" id="mentor-selected-topics"></div>
+                        <div class="error-message hidden" id="mentor-topics-error"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="experience" class="block text-sm font-medium mb-2">Years of Experience *</label>
+                        <select id="experience" name="experience" class="input-field" required>
+                            <option value="">Select experience level</option>
+                            <option value="6-months">6 months</option>
+                            <option value="1-year">1 year</option>
+                            <option value="2-years">2 years</option>
+                            <option value="3-years">3 years</option>
+                            <option value="4-years">4 years</option>
+                            <option value="5-years">5 years</option>
+                            <option value="6-plus">6+ years</option>
+                        </select>
+                        <div class="error-message hidden" id="experience-error"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="linkedin" class="block text-sm font-medium mb-2">LinkedIn URL (Optional)</label>
+                        <input type="url" id="linkedin" name="linkedin" class="input-field" placeholder="https://linkedin.com/in/yourprofile">
+                        <div class="error-message hidden" id="linkedin-error"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mentee Form -->
+            <div id="mentee-form" class="hidden">
+                <h2 class="text-2xl font-bold mb-6">Tell us about your interests</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Interests (Select up to 5) *</label>
+                        <div class="multi-select" id="mentee-interests">
+                            <!-- Interests will be populated by JavaScript -->
+                        </div>
+                        <div class="selected-items" id="mentee-selected-interests"></div>
+                        <div class="error-message hidden" id="mentee-interests-error"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="mentee-bio" class="block text-sm font-medium mb-2">Short Bio (Optional)</label>
+                        <textarea id="mentee-bio" name="bio" rows="4" class="input-field" placeholder="Tell us about yourself and what you hope to achieve..." maxlength="1000"></textarea>
+                        <div class="flex justify-between text-sm text-gray-500 mt-1">
+                            <span>Maximum 200 words</span>
+                            <span id="mentee-bio-count">0/200 words</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-between mt-8">
+                <button class="btn-secondary" id="step2-back">Previous</button>
+                <button class="btn-primary" id="step2-submit" disabled>Complete Registration</button>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-message" class="card p-8 text-center hidden">
+            <div class="text-6xl mb-4">🎉</div>
+            <h2 class="text-2xl font-bold mb-4">Registration Complete!</h2>
+            <p class="text-lg text-gray-600 mb-6">Welcome to WisdomIConnect! Your profile has been created successfully.</p>
+            <button class="btn-primary" onclick="window.location.reload()">Start Over</button>
+        </div>
+    </div>
+
+    <script src="js/registration.js"></script>
+</body>
+</html>

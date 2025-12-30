@@ -1237,3 +1237,246 @@ body{
 body{
     margin-bottom: 150px;
 }
+
+
+
+
+
+
+
+
+/* Sessions */
+.booking-content {
+  margin: 20px 0;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  background: #007bff;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.status.pending {
+  background: #ffb84d;
+  color: #333;
+}
+
+.status.history {
+  background: #28a745;
+}
+
+.cancel-icon {
+  cursor: pointer;
+  color: #dc3545;
+  font-size: 18px;
+}
+
+/* Buttons */
+.pending-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.accept-btn,
+.reject-btn,
+.reschedule-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.accept-btn {
+  background: #28a745;
+  color: #fff;
+}
+
+.reject-btn {
+  background: #dc3545;
+  color: #fff;
+}
+
+.reschedule-btn {
+  background: #ffc107;
+  color: #000;
+}
+
+.accept-btn:hover {
+  background: #218838;
+}
+
+.reject-btn:hover {
+  background: #c82333;
+}
+
+.reschedule-btn:hover {
+  background: #e0a800;
+}
+
+.accept-btn:focus,
+.reject-btn:focus,
+.reschedule-btn:focus{
+    border-color: #b22222;
+    box-shadow: 0 0 8px rgba(167, 5, 59, 0.3);
+    outline: none;
+}
+
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #fff;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Modal Inputs */
+.modal-box input,
+.modal-box textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-btn,
+.save-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.cancel-btn {
+  background: #eee;
+  color: #333;
+}
+
+.save-btn {
+  background: #007bff;
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background: #ddd;
+}
+
+.save-btn:hover {
+  background: #0056b3;
+}
+
+
+
+
+
+/* preloader container */
+.preloader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;            /* ensures vertical space while loading */
+  gap: 10px;
+  color: #666;
+  text-align: center;
+}
+
+/* spinner */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 5px solid rgba(0,0,0,0.08);
+  border-top-color: #007bff;
+  animation: spin 1s linear infinite;
+  box-sizing: border-box;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* preloader text */
+.preloader-text {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* helper to hide actual content until ready */
+.content-hidden { display: none; }
+
+/* keep your existing classes for buttons and sessions */
+.pending-actions { margin-top: 12px; display:flex; gap: 10px; }
+.accept-btn, .reject-btn, .reschedule-btn {
+  padding: 6px 14px; border-radius: 8px; border: none; cursor:pointer;
+}
+.accept-btn { background:#28a745; color:#fff; }
+.reject-btn { background:#dc3545; color:#fff; }
+.reschedule-btn { background:#ffc107; color:#111; }
+
+/* responsive tweak */
+@media (max-width:600px){
+  .preloader { min-height: 160px; }
+  .spinner { width:36px; height:36px; border-width:4px; }
+}
+
+
+
+.call-btn {
+  background: #b22222;
+  border: none;
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px rgba(178, 34, 34, 0.3);
+}
+
+.call-btn:hover {
+  background: #a11d1d;
+  box-shadow: 0 4px 12px rgba(178, 34, 34, 0.4);
+}

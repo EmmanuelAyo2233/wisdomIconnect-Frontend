@@ -92,9 +92,9 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-img">
             <div class="profile-info">
-                <p class="profile-name">Emmanuel Ayobami</p>
+                <p class="profile-name">loading......</p>
                 <a href="Member-profile.html" class="view-profile">View Profile</a>
             </div>
         </div>
@@ -140,7 +140,7 @@
         <ul class="nav-list">
             <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
             <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
-            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+            <li><a href="#" class="res" id="logout"><i class="bx bx-log-out"></i> Logout </a></li>
         </ul>
     </div>
     
@@ -155,12 +155,12 @@
         </ul>
     
         <div class="profile-container">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-pic1" id="profilePic">
             <div class="hover-options" id="hoverMenu" data-visible="false">
                 <a href="Member-profile.html" class="profile-link">
-                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <img src="css/img/default-profile.png" alt="Profile" class="hover-profile-pic">
                     <div>
-                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="hover-profile-name">loading.....</span>
                         <span class="view-profile">View Profile</span>
                     </div>
                 </a>
@@ -177,7 +177,7 @@
                     <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
                     <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
-                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                   <li><a href="#" class="res" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -284,7 +284,6 @@
       </div>
     </div>
   </section>
-  
   <section class="filter-section">
     <div class="container">
       <div class="filter-wrapper">
@@ -293,74 +292,211 @@
           <i class="bi bi-chevron-left"></i>
         </button>
   
-      <div class="filter-grid"> 
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-funnel filter-icon"></i>
-          <p class="filter-title">All Filters</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-calendar-check filter-icon"></i>
-          <p class="filter-title">Available ASAP</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-star filter-icon"></i>
-          <p class="filter-title">Recommended</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-people filter-icon"></i>
-          <p class="filter-title">Soft Skills</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-pencil filter-icon"></i>
-          <p class="filter-title">Content Writing</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-graph-up filter-icon"></i>
-          <p class="filter-title">Data Science</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-calendar-check filter-icon"></i>
-          <p class="filter-title">Available ASAP</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-star filter-icon"></i>
-          <p class="filter-title">Recommended</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-people filter-icon"></i>
-          <p class="filter-title">Soft Skills</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-pencil filter-icon"></i>
-          <p class="filter-title">Content Writing</p>
-        </a>
-        </div>
-        <div class="filter-item">
-          <a href="#">
-          <i class="bi bi-graph-up filter-icon"></i>
-          <p class="filter-title">Data Science</p>
-        </a>
-        </div>  
-      </div>
+<div class="filter-grid"> 
+   <div class="filter-item active" data-expertise="all">
+    <a href="#">
+      <i class="bi bi-stars filter-icon"></i>
+      <p class="filter-title">All</p>
+    </a>
+  </div>
+  
+  <div class="filter-item" data-expertise="Career Development">
+    <a href="#">
+      <i class="bi bi-briefcase filter-icon"></i>
+      <p class="filter-title">Career Development</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Mental Health & Well-Being">
+    <a href="#">
+      <i class="bi bi-heart filter-icon"></i>
+      <p class="filter-title">Mental Health & Well-Being</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Technology & Innovation">
+    <a href="#">
+      <i class="bi bi-lightning-charge filter-icon"></i>
+      <p class="filter-title">Technology & Innovation</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Personal Growth">
+    <a href="#">
+      <i class="bi bi-arrow-up-circle filter-icon"></i>
+      <p class="filter-title">Personal Growth</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Social & Community Issues">
+    <a href="#">
+      <i class="bi bi-people filter-icon"></i>
+      <p class="filter-title">Social & Community Issues</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Job Search Strategies">
+    <a href="#">
+      <i class="bi bi-search filter-icon"></i>
+      <p class="filter-title">Job Search Strategies</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Resume Building">
+    <a href="#">
+      <i class="bi bi-file-text filter-icon"></i>
+      <p class="filter-title">Resume Building</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Interview Skills">
+    <a href="#">
+      <i class="bi bi-chat-dots filter-icon"></i>
+      <p class="filter-title">Interview Skills</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Networking">
+    <a href="#">
+      <i class="bi bi-link-45deg filter-icon"></i>
+      <p class="filter-title">Networking</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Time Management">
+    <a href="#">
+      <i class="bi bi-clock filter-icon"></i>
+      <p class="filter-title">Time Management</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Public Speaking">
+    <a href="#">
+      <i class="bi bi-mic filter-icon"></i>
+      <p class="filter-title">Public Speaking</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Project Management">
+    <a href="#">
+      <i class="bi bi-kanban filter-icon"></i>
+      <p class="filter-title">Project Management</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Leadership">
+    <a href="#">
+      <i class="bi bi-person-badge filter-icon"></i>
+      <p class="filter-title">Leadership</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Self-Worth">
+    <a href="#">
+      <i class="bi bi-star filter-icon"></i>
+      <p class="filter-title">Self-Worth</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Goal-Setting">
+    <a href="#">
+      <i class="bi bi-bullseye filter-icon"></i>
+      <p class="filter-title">Goal-Setting</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Handling Failures">
+    <a href="#">
+      <i class="bi bi-emoji-frown filter-icon"></i>
+      <p class="filter-title">Handling Failures</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Building Resilience">
+    <a href="#">
+      <i class="bi bi-shield-check filter-icon"></i>
+      <p class="filter-title">Building Resilience</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Starting a Side Hustle">
+    <a href="#">
+      <i class="bi bi-rocket filter-icon"></i>
+      <p class="filter-title">Starting a Side Hustle</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Financial Literacy">
+    <a href="#">
+      <i class="bi bi-cash-coin filter-icon"></i>
+      <p class="filter-title">Financial Literacy</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Client Management">
+    <a href="#">
+      <i class="bi bi-people-fill filter-icon"></i>
+      <p class="filter-title">Client Management</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Scaling Ideas">
+    <a href="#">
+      <i class="bi bi-graph-up filter-icon"></i>
+      <p class="filter-title">Scaling Ideas</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Study Techniques">
+    <a href="#">
+      <i class="bi bi-book filter-icon"></i>
+      <p class="filter-title">Study Techniques</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="College Applications">
+    <a href="#">
+      <i class="bi bi-mortarboard filter-icon"></i>
+      <p class="filter-title">College Applications</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="STEM Subjects">
+    <a href="#">
+      <i class="bi bi-cpu filter-icon"></i>
+      <p class="filter-title">STEM Subjects</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Lifelong Learning">
+    <a href="#">
+      <i class="bi bi-infinity filter-icon"></i>
+      <p class="filter-title">Lifelong Learning</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Stress Management">
+    <a href="#">
+      <i class="bi bi-emoji-smile filter-icon"></i>
+      <p class="filter-title">Stress Management</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Work-Life Balance">
+    <a href="#">
+      <i class="bi bi-sun filter-icon"></i>
+      <p class="filter-title">Work-Life Balance</p>
+    </a>
+  </div>
+
+  <div class="filter-item" data-expertise="Building Positive Habits">
+    <a href="#">
+      <i class="bi bi-check2-circle filter-icon"></i>
+      <p class="filter-title">Building Positive Habits</p>
+    </a>
+  </div>
+</div>
+
       <button class="arrow-btn front-arrow" aria-label="Next Filters">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -368,6 +504,9 @@
     </div>
   </section>
 
+
+  <div id="mentor-cards-container"></div>
+<!-- 
   <section class="container elders-profile-section">
     <a href="adultpro.html" class="card-link">
     <div class=" elder-card">
@@ -755,7 +894,7 @@
     </div>
   </a>
   
-  <a href="adultpro.html" class="card-link">
+  <a href="AdultProfile.html" class="card-link">
     <div class=" elder-card">
       <div class="elder-card-header">
         <img src="css/img/PROGRAM.jpg" alt="Elder's Photo" class="elder-photo" />
@@ -772,7 +911,7 @@
         </p>
       </div>
       <div class="elder-card-footer">
-        <div class="experience">
+        <div class="experience">  
           <p>Experience</p>
           <span>8 years</span>
         </div>
@@ -842,7 +981,7 @@
     </div>
   </a>
   </section>
-  
+   -->
   <footer class="footer">
     <div class="container footer-top">
       <div class="footer-left">
@@ -890,6 +1029,7 @@
   
   </div>
 <script src="js/explore.js"></script>
+<script src="js/mentee-logout.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

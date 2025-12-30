@@ -1463,3 +1463,65 @@ body{
 
 }
 
+
+
+
+/* Browse Dropdown Styles */
+.browse-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 20px;
+  height: 55px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  outline: none;             /* remove outline */
+  box-shadow: none;          /* remove focus shadow/glow */
+}
+
+.dropdown-btn:focus {
+  outline: none;
+  box-shadow: none;          /* ensures no border/glow on focus */
+}
+
+
+.arrow {
+  font-size: 12px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f0f0f0;
+  min-width: 160px;
+  border-radius: 5px;
+  padding: 0;
+  margin: 5px 0 0 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #dcdcdc;
+}
+
+.dropdown-menu.show {
+  display: block;
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-user-shield"></i> Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="pending-mentor.html"><i class="fas fa-clock"></i> Pending Mentors</a></li>
+                <li><a href="approved-mentors.html"><i class="fas fa-check-circle"></i> Approved Mentors</a></li>
+                <li><a href="rejected-mentors.html"><i class="fas fa-times-circle"></i> Rejected Mentors</a></li>
+                <li><a href="mentees.html"><i class="fas fa-users"></i> Mentees</a></li>
+                <li><a href="settings.html" class="active"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1>Settings</h1>
+                <div class="admin-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin User</span>
+                </div>
+            </header>
+
+            <!-- Settings Content -->
+            <div class="content-section">
+                <div class="settings-container">
+                    <!-- Profile Settings -->
+                    <div class="settings-card">
+                        <h3><i class="fas fa-user"></i> Profile Settings</h3>
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label for="admin-name">Full Name</label>
+                                <input type="text" id="admin-name" value="Admin User" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-email">Email Address</label>
+                                <input type="email" id="admin-email" value="admin@company.com" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-role">Role</label>
+                                <input type="text" id="admin-role" value="System Administrator" class="form-input" readonly>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="resetProfileForm()">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Password Settings -->
+                    <div class="settings-card">
+                        <h3><i class="fas fa-lock"></i> Change Password</h3>
+                        <form id="password-form">
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm New Password</label>
+                                <input type="password" id="confirm-password" class="form-input" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-key"></i> Update Password
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="settings-card">
+                        <h3><i class="fas fa-bell"></i> Notification Preferences</h3>
+                        <form id="notification-form">
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="email-notifications" checked>
+                                    <span class="checkmark"></span>
+                                    Email notifications for new mentor applications
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="daily-summary" checked>
+                                    <span class="checkmark"></span>
+                                    Daily summary reports
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="system-alerts">
+                                    <span class="checkmark"></span>
+                                    System maintenance alerts
+                                </label>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Preferences
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- System Settings -->
+                    <div class="settings-card">
+                        <h3><i class="fas fa-cogs"></i> System Settings</h3>
+                        <div class="system-info">
+                            <div class="info-row">
+                                <span class="info-label">System Version:</span>
+                                <span class="info-value">v2.1.0</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Last Backup:</span>
+                                <span class="info-value">2024-01-15 03:00 AM</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Database Status:</span>
+                                <span class="info-value status-online">Online</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="exportData()">
+                                <i class="fas fa-download"></i> Export Data
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="clearCache()">
+                                <i class="fas fa-trash"></i> Clear Cache
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="admin.js"></script>
+    <script>
+        // Additional styles for settings page
+        const settingsStyles = `
+            .settings-container {
+                display: grid;
+                gap: 30px;
+                max-width: 800px;
+            }
+            
+            .settings-card {
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .settings-card h3 {
+                color: #b22222;
+                margin-bottom: 20px;
+                font-size: 1.3rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+                color: #333;
+            }
+            
+            .form-input {
+                width: 100%;
+                padding: 10px 15px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
+                transition: border-color 0.3s;
+            }
+            
+            .form-input:focus {
+                outline: none;
+                border-color: #b22222;
+                box-shadow: 0 0 0 2px rgba(178, 34, 34, 0.1);
+            }
+            
+            .form-input[readonly] {
+                background-color: #f8f9fa;
+                color: #6c757d;
+            }
+            
+            .form-actions {
+                display: flex;
+                gap: 10px;
+                margin-top: 25px;
+            }
+            
+            .checkbox-group {
+                display: flex;
+                align-items: center;
+            }
+            
+            .checkbox-label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                font-weight: normal;
+                margin-bottom: 0;
+            }
+            
+            .checkbox-label input[type="checkbox"] {
+                margin-right: 10px;
+                transform: scale(1.2);
+            }
+            
+            .system-info {
+                background-color: #f8f9fa;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            
+            .info-row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            
+            .info-row:last-child {
+                margin-bottom: 0;
+            }
+            
+            .info-label {
+                font-weight: 500;
+                color: #666;
+            }
+            
+            .info-value {
+                color: #333;
+            }
+            
+            .status-online {
+                color: #28a745;
+                font-weight: 500;
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = settingsStyles;
+        document.head.appendChild(styleSheet);
+        
+        // Form handlers
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Profile updated successfully!');
+        });
+        
+        document.getElementById('password-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (newPassword !== confirmPassword) {
+                showToast('Passwords do not match!', 'error');
+                return;
+            }
+            
+            showToast('Password updated successfully!');
+            this.reset();
+        });
+        
+        document.getElementById('notification-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Notification preferences saved!');
+        });
+        
+        function resetProfileForm() {
+            document.getElementById('admin-name').value = 'Admin User';
+            document.getElementById('admin-email').value = 'admin@company.com';
+            showToast('Profile form reset');
+        }
+        
+        function exportData() {
+            showToast('Data export started. You will receive an email when complete.');
+        }
+        
+        function clearCache() {
+            showToast('Cache cleared successfully!');
+        }
+    </script>
+</body>
+</html>

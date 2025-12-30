@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Mentors - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-user-shield"></i> Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="pending-mentor.html" class="active"><i class="fas fa-clock"></i> Pending Mentors</a></li>
+                <li><a href="approved-mentors.html"><i class="fas fa-check-circle"></i> Approved Mentors</a></li>
+                <li><a href="rejected-mentors.html"><i class="fas fa-times-circle"></i> Rejected Mentors</a></li>
+                <li><a href="mentees.html"><i class="fas fa-users"></i> Mentees</a></li>
+                <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1>Pending Mentors</h1>
+                <div class="admin-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin User</span>
+                </div>
+            </header>
+
+
+              <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="pending-count">5</h3>
+                        <p>Pending Mentors</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon approved">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="approved-count">12</h3>
+                        <p>Approved Mentors</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon rejected">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="rejected-count">3</h3>
+                        <p>Rejected Mentors</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon mentees">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="mentees-count">28</h3>
+                        <p>Total Mentees</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Mentors Table -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>All Pending Mentor Applications</h2>
+                    <div class="filter-controls">
+                        <input type="text" id="search-input" placeholder="Search mentors..." class="search-input">
+                        <select id="expertise-filter" class="filter-select">
+                            <option value="">All Expertise</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Python">Python</option>
+                            <option value="UX Design">UX Design</option>
+                            <option value="DevOps">DevOps</option>
+                            <option value="Project Management">Project Management</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="mentors-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Expertise</th>
+                                <th>Experience</th>
+                                <th>Bio</th>
+                                <th>LinkedIn</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pending-mentors-table">
+                            <!-- Data populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include modals from main page -->
+    <div id="mentor-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mentor Details</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="mentor-profile">
+                    <div class="profile-picture">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="modal-name"></h3>
+                        <p id="modal-email"></p>
+                        <a id="modal-linkedin" href="#" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <div class="detail-section">
+                        <h4>Expertise</h4>
+                        <div id="modal-expertise" class="expertise-tags"></div>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Experience</h4>
+                        <p id="modal-experience"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Bio</h4>
+                        <p id="modal-bio"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Languages</h4>
+                        <p id="modal-languages"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-approve" onclick="approveMentor()">
+                    <i class="fas fa-check"></i> Approve
+                </button>
+                <button class="btn btn-reject" onclick="rejectMentor()">
+                    <i class="fas fa-times"></i> Reject
+                </button>
+                <button class="btn btn-secondary" onclick="closeModal()">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h3 id="confirmation-title"></h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirmation-message"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-btn" class="btn"></button>
+                <button class="btn btn-secondary" onclick="closeConfirmation()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script>
+        // Additional styles for this page
+        const additionalStyles = `
+            .section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .filter-controls {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .search-input, .filter-select {
+                padding: 8px 12px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 0.9rem;
+            }
+            
+            .search-input {
+                width: 250px;
+            }
+            
+            .filter-select {
+                width: 150px;
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalStyles;
+        document.head.appendChild(styleSheet);
+        
+        // Load all pending mentors on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllPendingMentors();
+            setupFilters();
+        });
+        
+        // function loadAllPendingMentors() {
+        //     const tableBody = document.getElementById('pending-mentors-table');
+        //     const pendingMentors = mentorsData.filter(mentor => mentor.status === 'pending');
+            
+        //     tableBody.innerHTML = '';
+            
+        //     pendingMentors.forEach(mentor => {
+        //         const row = document.createElement('tr');
+        //         row.innerHTML = `
+        //             <td><strong>${mentor.name}</strong></td>
+        //             <td>${mentor.email}</td>
+        //             <td>
+        //                 ${mentor.expertise.map(skill => 
+        //                     `<span class="expertise-tag">${skill}</span>`
+        //                 ).join(' ')}
+        //             </td>
+        //             <td>${mentor.experience}</td>
+        //             <td>${mentor.bio.substring(0, 80)}...</td>
+        //             <td><a href="${mentor.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a></td>
+        //             <td><span class="status-tag status-${mentor.status}">${mentor.status}</span></td>
+        //             <td>
+        //                 <button class="btn btn-approve" onclick="quickApprove(${mentor.id})">
+        //                     <i class="fas fa-check"></i> Approve
+        //                 </button>
+        //                 <button class="btn btn-reject" onclick="quickReject(${mentor.id})">
+        //                     <i class="fas fa-times"></i> Reject
+        //                 </button>
+        //                 <button class="btn btn-primary" onclick="viewMentor(${mentor.id})">
+        //                     <i class="fas fa-eye"></i> View
+        //                 </button>
+        //             </td>
+        //         `;
+        //         tableBody.appendChild(row);
+        //     });
+        // }
+        
+        function setupFilters() {
+            const searchInput = document.getElementById('search-input');
+            const expertiseFilter = document.getElementById('expertise-filter');
+            
+            searchInput.addEventListener('input', filterMentors);
+            expertiseFilter.addEventListener('change', filterMentors);
+        }
+        
+        function filterMentors() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const expertiseFilter = document.getElementById('expertise-filter').value;
+            
+            const rows = document.querySelectorAll('#pending-mentors-table tr');
+            
+            rows.forEach(row => {
+                const name = row.cells[0].textContent.toLowerCase();
+                const email = row.cells[1].textContent.toLowerCase();
+                const expertise = row.cells[2].textContent;
+                
+                const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
+                const matchesExpertise = !expertiseFilter || expertise.includes(expertiseFilter);
+                
+                row.style.display = matchesSearch && matchesExpertise ? '' : 'none';
+            });
+        }
+
+
+
+
+    let allMentors = []; // store all mentors
+
+async function loadAllPendingMentors() {
+  const res = await fetch("http://localhost:5000/api/v1/admin/pending-mentors");
+  allMentors = await res.json();
+  
+  const tableBody = document.getElementById("pending-mentors-table");
+  tableBody.innerHTML = "";
+
+  allMentors.forEach(mentor => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><strong>${mentor.name}</strong></td>
+      <td>${mentor.email}</td>
+      <td>
+        ${(mentor.expertise || "").split(",").map(s => `<span class="expertise-tag">${s.trim()}</span>`).join(" ")}
+      </td>
+      <td>${mentor.experience || "N/A"}</td>
+      <td>${mentor.bio ? mentor.bio.substring(0,80) + "..." : "N/A"}</td>
+      <td><a href="${mentor.linkedin || "#"}" target="_blank"><i class="fab fa-linkedin"></i></a></td>
+      <td><span class="status-tag status-${mentor.status}">${mentor.status}</span></td>
+      <td>
+        <button class="btn btn-approve" onclick="approveMentor(${mentor.id})">
+          <i class="fas fa-check"></i> Approve
+        </button>
+        <button class="btn btn-reject" onclick="rejectMentor(${mentor.id})">
+          <i class="fas fa-times"></i> Reject
+        </button>
+        <button class="btn btn-primary" onclick="openMentorModalById(${mentor.id})">
+          <i class="fas fa-eye"></i> View
+        </button>
+      </td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+function openMentorModalById(id) {
+  const mentor = allMentors.find(m => m.id === id);
+  openMentorModal(mentor);
+}
+
+
+// Open mentor details modal
+function openMentorModal(mentor) {
+  document.getElementById("modal-name").innerText = mentor.name || "N/A";
+  document.getElementById("modal-email").innerText = mentor.email || "N/A";
+  document.getElementById("modal-linkedin").href = mentor.linkedin || "#";
+
+  // Expertise as tags
+  const expertiseContainer = document.getElementById("modal-expertise");
+  expertiseContainer.innerHTML = mentor.expertise
+    ? mentor.expertise.split(",").map(exp => `<span class="tag">${exp.trim()}</span>`).join(" ")
+    : "N/A";
+
+  document.getElementById("modal-experience").innerText = mentor.experience || "N/A";
+  document.getElementById("modal-bio").innerText = mentor.bio || "N/A";
+
+  // Show modal
+  document.getElementById("mentor-modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("mentor-modal").style.display = "none";
+}
+
+
+
+
+
+async function loadStats() {
+    try {
+        const res = await fetch("http://localhost:5000/api/v1/admin/stats");
+        const stats = await res.json();
+
+        document.getElementById("pending-count").textContent = stats.mentorsPending;
+        document.getElementById("approved-count").textContent = stats.mentorsApproved;
+        document.getElementById("rejected-count").textContent = stats.mentorsRejected;
+        document.getElementById("mentees-count").textContent = stats.mentees;
+    } catch (error) {
+        console.error("Error loading stats:", error);
+    }
+}
+
+// Call this when page loads
+loadStats();
+
+// Approve mentor
+async function approveMentor(id) {
+    try {
+        const res = await fetch(`http://localhost:5000/api/v1/admin/approve-mentor/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" }
+        });
+
+        if (!res.ok) throw new Error("Failed to approve mentor");
+
+        await loadAllPendingMentors();
+       await loadStats();   
+    } catch (error) {
+        console.error("Error approving mentor:", error);
+    }
+}
+
+// Reject mentor
+async function rejectMentor(id) {
+    try {
+        const res = await fetch(`http://localhost:5000/api/v1/admin/reject-mentor/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" }
+        });
+
+        if (!res.ok) throw new Error("Failed to reject mentor");
+
+        await loadAllPendingMentors();
+      await loadStats();   
+    } catch (error) {
+        console.error("Error rejecting mentor:", error);
+    }
+}
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", () => {
+     loadAllPendingMentors();
+    loadStats();
+});
+
+
+
+
+
+
+    </script>
+</body>
+</html>

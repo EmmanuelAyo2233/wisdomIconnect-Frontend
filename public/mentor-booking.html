@@ -58,7 +58,7 @@
                         <a href="mentor-notification.html" class="all">view all Notification</a>
                     </div>
                 </div>
-                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="mentor-booking.html">Book A Session</a></button>
+                <!-- <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="mentor-booking.html">Book A Session</a></button> -->
             </div>
         </div>
     </header>
@@ -87,9 +87,9 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <img src="ccss/img/adult.webp" alt="Profile" class="profile-img">
             <div class="profile-info">
-                <p class="profile-name">Emmanuel Ayobami</p>
+                <p class="profile-name">loading.....</p>
                 <a href="mentor-profile-edit.html" class="view-profile">View Profile</a>
             </div>
         </div>
@@ -120,6 +120,13 @@
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
+
+             <li>
+                <a href="mentor-availabity.html" class="res">
+                    <i class="bi bi-calendar-plus"></i> Availability 
+                </a>
+                <span class="menu-description">Set your available times for sessions</span>
+                </li>
         </ul>
         <hr>
 
@@ -135,7 +142,7 @@
         <ul class="nav-list">
             <li><a href="mentor-setting.html"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
             <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
-            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+            <li><a href="#" class="res" id="logout"><i class="bx bx-log-out"></i> Logout </a></li>
         </ul>
     </div>
     
@@ -143,19 +150,24 @@
     <div class="sidebar">
         <ul class="nav-list">
             <li><a href="mentor-dashboard.html"><i class="bi bi-house-door icon"></i><span class="link-name">Home</span></a></li>
-            <!-- <li><a href="Explore.html"><i class="bx bx-compass icon"></i><span class="link-name">Explore</span></a></li> -->
+                    <li>
+  <a href="mentor-availabity.html">
+    <i class="bi bi-calendar-plus icon"></i>
+    <span class="link-name">Availability</span>
+  </a>
+</li>
             <li><a href="mentor-message.html"><i class="bx bx-message-alt-detail icon"></i><span class="link-name">Messages</span></a></li>
             <li><a href="mentor-booking.html"><i class="bx bxs-calendar-alt icon"></i><span class="link-name">Bookings</span></a></li>
             <li><a href="mentor-connection.html"><i class="bi bi-people-fill icon"></i><span class="link-name">Connections</span></a></li>
         </ul>
     
         <div class="profile-container">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <img src="ccss/img/adult.webp" alt="Profile" class="profile-pic1" id="profilePic">
             <div class="hover-options" id="hoverMenu" data-visible="false">
                 <a href="mentor-profile-edit.html" class="profile-link">
-                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <img src="css/img/adult.webp" alt="Profile" class="hover-profile-pic">
                     <div>
-                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="hover-profile-name">loading.....</span>
                         <span class="view-profile">View Profile</span>
                     </div>
                 </a>
@@ -172,7 +184,7 @@
                     <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
                     <li><a href="mentor-setting.html"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
-                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                     <li><a href="#" class="res" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -184,7 +196,7 @@
 <div class="bottom-nav">
     <ul class="nav-list">
         <li><a href="mentor-dashboard.html" class="home-link"><i class="bi bi-house-door "></i><span class="active-dot"></span></a></li>
-        <!-- <li><a href="Explore.html" class="explore-link"><i class="bx bx-compass iconb"></i><span class="active-dot"></span></a></li> -->
+          <li><a href="mentor-availabity.html" class="explore-link"><i class="bi bi-calendar-plus icon"></i><span class="active-dot"></span></a></li>
         <li><a href="mentor-message.html" class="message-link"><i class="bx bx-message-alt-detail iconb"></i><span class="active-dot"></span></a></li>
         <li><a href="mentor-booking.html" class="booking-link"><i class="bx bxs-calendar-alt iconb"></i><span class="active-dot"></span></a></li>
         <li><a href="#" class="search-link"><i class="bi bi-search icon"></i><span class="active-dot"></span></a></li>
@@ -195,67 +207,113 @@
     <h2 class="booking-header">Bookings</h2>
     <p class="sub-til">The session timings are following your local timezone Africa/Lagos Update</p>
     <!-- Custom Navigation -->
-    <div class="booking-nav">
-      <a href="#" class="booking-tab active" data-section="upcoming">Upcoming</a>
-      <a href="#" class="booking-tab" data-section="pending">Pending</a>
-      <a href="#" class="booking-tab" data-section="history">History</a>
+   <div class="booking-nav">
+  <a href="#" class="booking-tab active" data-section="upcoming">Upcoming</a>
+  <a href="#" class="booking-tab" data-section="pending">Pending</a>
+  <a href="#" class="booking-tab" data-section="history">History</a>
+</div>
+<!-- Booking Content -->
+<div id="upcoming" class="booking-content">
+     <div class="preloader" id="preloader-upcoming" aria-hidden="true">
+    <div class="spinner"></div>
+    <p class="preloader-text">Loading upcoming sessions...</p>
+  </div>
+
+  <div class="upcoming-session">
+    <div class="session-header">
+      <span class="status">Scheduled</span>
+      <span class="cancel-icon" onclick="cancelSession()">✖</span>
     </div>
+    <p><strong>Topic:</strong> The Wisdom of Ancient Healing</p>
+    <p><strong>Mentee:</strong> Dr. Adebayo Olufemi</p>
+    <p><strong>Time:</strong> Feb 20, 3:00 PM</p>
+      <button class="call-btn" onclick="joinCall()">Join Call</button>
+    <p class="user">👤 loading.....</p>
+  </div>
+</div>
+
+<div id="pending" class="booking-content hidden">
+
+    <div class="preloader" id="preloader-pending" aria-hidden="true">
+    <div class="spinner"></div>
+    <p class="preloader-text">Loading pending requests...</p>
+  </div>
+
+  <div class="pending-session">
+    <div class="session-header">
+      <span class="status pending">Pending Approval</span>
+      <span class="cancel-icon" onclick="cancelPendingSession()">✖</span>
+    </div>
+    <p><strong>Topic:</strong> The Power of Storytelling</p>
+    <p><strong>Mentee:</strong> Mrs. Aisha Ibrahim</p>
+    <p><strong>Time:</strong> Feb 25, 5:00 PM</p>
   
-    <!-- Booking Content -->
-    <div id="upcoming" class="booking-content">
-        <div class="upcoming-session">
-            <div class="session-header">
-              <span class="status">Scheduled</span>
-              <span class="cancel-icon" onclick="cancelSession()">&#10006;</span>
-            </div>  
-            <p><strong>Topic:</strong> The Wisdom of Ancient Healing</p>
-            <p><strong>Mentor:</strong> Dr. Adebayo Olufemi</p>
-            <p><strong>Time:</strong> Feb 20, 3:00 PM</p>
-            <p class="user">👤 Emmanuel Ayobami</p>
-          </div>
-          
-          
+
+    <!-- Action Buttons -->
+    <div class="pending-actions">
+      <button class="accept-btn" id="acceptBtn">✔ Accept</button>
+      <button class="reject-btn" id="rejectBtn">✖ Reject</button>
+      <button class="reschedule-btn" id="rescheduleBtn">📅 Reschedule</button>
+      
     </div>
-    <div id="pending" class="booking-content hidden">
-        <!-- You have no pending bookings - start sharing a conversation with a mentor. -->
-        <div class="pending-session">
-            <div class="session-header">
-              <span class="status pending">Pending Approval</span>
-              <span class="cancel-icon" onclick="cancelPendingSession()">&#10006;</span>
-            </div>
-            <p><strong>Topic:</strong> The Power of Storytelling</p>
-            <p><strong>Mentor:</strong> Mrs. Aisha Ibrahim</p>
-            <p><strong>Time:</strong> Feb 25, 5:00 PM</p>
-            <p class="user">👤 Emmanuel Ayobami</p>
-          </div>
-          
+      <p class="user">👤 loading.....</p>   
+  </div>
+</div>
+
+<div id="history" class="booking-content hidden">
+     <div class="preloader" id="preloader-history" aria-hidden="true">
+    <div class="spinner"></div>
+    <p class="preloader-text">Loading history...</p>
+  </div>
+  <div class="history-session">
+    <div class="session-header">
+      <span class="status history">Completed</span>
     </div>
-    <div id="history" class="booking-content hidden">
-        <div class="history-session">
-            <div class="session-header">
-              <span class="status history">Completed</span>
-            </div>
-            <p><strong>Topic:</strong> Leadership in African Cultures</p>
-            <p><strong>Mentor:</strong> Prof. Chinedu Okafor</p>
-            
-            <div class="session-time">
-              <p>🕒 <strong>Duration:</strong> 2 hours</p>
-              <p>📅 <strong>Start:</strong> Jan 15, 2:00 PM</p>
-              <p>⏳ <strong>End:</strong> Jan 15, 4:00 PM</p>
-            </div>
-            
-            <p class="user">👤 Emmanuel Ayobami</p>
-          </div>
-          
-        <!-- You have no history bookings - start sharing a conversation with a mentor. -->
+    <p><strong>Topic:</strong> Leadership in African Cultures</p>
+    <p><strong>Mentee:</strong> Prof. Chinedu Okafor</p>
+
+    <div class="session-time">
+      <p>🕒 <strong>Duration:</strong> 2 hours</p>
+      <p>📅 <strong>Start:</strong> Jan 15, 2:00 PM</p>
+      <p>⏳ <strong>End:</strong> Jan 15, 4:00 PM</p>
     </div>
 
+    <p class="user">👤 loading.....</p>
+  </div>
+</div>
+
+<!-- Reschedule Modal -->
+<div class="modal-overlay" id="rescheduleModal">
+  <div class="modal-box">
+    <h3>Reschedule Session</h3>
+    <p>Select a new date and time and provide a reason.</p>
+
+    <form id="rescheduleForm">
+      <label for="newDate">New Date</label>
+      <input type="date" id="newDate" required />
+
+      <label for="newTime">New Time</label>
+      <input type="time" id="newTime" required />
+
+      <label for="reason">Reason for Rescheduling</label>
+      <textarea id="reason" rows="3" placeholder="Enter reason..." required></textarea>
+
+      <div class="modal-actions">
+        <button type="button" id="cancelModal" class="cancel-btn">Cancel</button>
+        <button type="submit" class="save-btn">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 
     <a href="me.html" class="explore-btn">Accept session</a>
   </div>
-  
+   -->
 
 
 
 <script src="js/mentor-booking.js"></script>
+<script src="js/mentor-logout.js"></script>
 </body>
 </html>

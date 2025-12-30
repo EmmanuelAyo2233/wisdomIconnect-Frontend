@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejected Mentors - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-user-shield"></i> Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="pending-mentor.html"><i class="fas fa-clock"></i> Pending Mentors</a></li>
+                <li><a href="approved-mentors.html"><i class="fas fa-check-circle"></i> Approved Mentors</a></li>
+                <li><a href="rejected-mentors.html" class="active"><i class="fas fa-times-circle"></i> Rejected Mentors</a></li>
+                <li><a href="mentees.html"><i class="fas fa-users"></i> Mentees</a></li>
+                <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1>Rejected Mentors</h1>
+                <div class="admin-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin User</span>
+                </div>
+            </header>
+
+            <!-- Search and Filter -->
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-rejected" placeholder="Search rejected mentors...">
+                </div>
+                <div class="filter-dropdown">
+                    <select id="expertise-filter-rejected">
+                        <option value="">All Expertise</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Mobile Development">Mobile Development</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="DevOps">DevOps</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Rejected Mentors Table -->
+            <div class="content-section">
+                <div class="table-container">
+                    <table class="mentors-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Expertise</th>
+                                <th>Experience</th>
+                                <th>Rejected Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rejected-mentors-table">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mentor Details Modal -->
+    <div id="mentor-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mentor Details</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="mentor-profile">
+                    <div class="profile-picture">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="modal-name"></h3>
+                        <p id="modal-email"></p>
+                        <a id="modal-linkedin" href="#" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <div class="detail-section">
+                        <h4>Expertise</h4>
+                        <div id="modal-expertise" class="expertise-tags"></div>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Experience</h4>
+                        <p id="modal-experience"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Bio</h4>
+                        <p id="modal-bio"></p>
+                    </div>
+    
+                    <div class="detail-section">
+                        <h4>Rejection Reason</h4>
+                        <p id="modal-rejection-reason"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-approve" onclick="reconsiderMentor()">
+                    <i class="fas fa-redo"></i> Reconsider
+                </button>
+                <button class="btn btn-secondary" onclick="closeModal()">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="rejected-mentors.js"></script>
+</body>
+</html>

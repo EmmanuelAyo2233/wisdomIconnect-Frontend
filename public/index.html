@@ -86,9 +86,9 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-img">
             <div class="profile-info">
-                <p class="profile-name">Emmanuel Ayobami</p>
+                <p class="profile-name">loading.....</p>
                 <a href="#" class="view-profile">View Profile</a>
             </div>
         </div>
@@ -134,7 +134,7 @@
         <ul class="nav-list">
             <li><a href="#"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
             <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
-            <li><a href="#" class="res"><i class="bx bx-log-out"></i> Logout </a></li>
+            <li><a href="#" class="res" id="logout"><i class="bx bx-log-out"></i> Logout </a></li>
         </ul>
     </div>
     
@@ -149,12 +149,12 @@
         </ul>
     
         <div class="profile-container">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <img src="css/img/default-profile.png" alt="Profile" class="profile-pic1" id="profilePic">
             <div class="hover-options" id="hoverMenu" data-visible="false">
                 <a href="Member-profile.html" class="profile-link">
-                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <img src="css/img/default-profile.png" alt="Profile" class="hover-profile-pic">
                     <div>
-                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="hover-profile-name">loading....</span>
                         <span class="view-profile">View Profile</span>
                     </div>
                 </a>
@@ -171,7 +171,7 @@
                     <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
                     <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
-                    <li><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                   <li><a href="#" class="res" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -199,7 +199,7 @@
             <div class="home-content">
                 <div class="welcome">
                 <img src="css/img/welcome-img.jpg" alt="Welcome Image" class="welcome-image">
-                <div class="text">Welcome👋</div>
+                <div class="text" id="welcome-text">Welcome👋</div>
             </div>
             <p class="notice">You have no upcoming sessions.</p>
             </div>
@@ -210,7 +210,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm p-4 fast-link">
                         <div class="card-body ">
-                            <h5 class="card-title"><a href="#">Upcoming Sessions</a></h5>
+                            <h5 class="card-title"><a href="bookings.html">Upcoming Sessions</a></h5>
                             <p class="card-text">Check out your booked sessions with elders here.</p>
                         </div>
                     </div>
@@ -219,8 +219,9 @@
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm p-4 fast-link">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="#">Explore Topics</a></h5>
-                            <p class="card-text">Dive into different topics like history, self-care, and more.</p>
+                            <h5 class="card-title"><a href="Explore.html">Explore</a></h5>
+                           <p class="card-text">Explore knowledge that guides and inspires.</p>
+
                         </div>
                     </div>
                 </div>
@@ -228,7 +229,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm p-4 fast-link">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="#">Notifications</a></h5>
+                            <h5 class="card-title"><a href="notification.html">Notifications</a></h5>
                             <p class="card-text">Stay updated on new messages and booking reminders.</p>
                         </div>
                     </div>
@@ -672,7 +673,7 @@
             </div>
 
     <div class="col-12 col-lg-3  p-4 right-column" id="sidebar">
-        <a href="#" class="profile-strength-container">
+        <a href="Member-profile.html" class="profile-strength-container">
             <div class="profile-strength">
                 <small class="strength-title">Your Profile Strength</small>
                 <p id="strength-name">Youngling</p>
@@ -809,6 +810,7 @@
 
 
     <script src="js/youthDashboard.js"></script>
+    <script src="js/mentee-logout.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookings</title>
+    <title>My profile</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
                         <a href="mentor-notification.html" class="all">view all Notification</a>
                     </div>
                 </div>
-                <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="mentor-booking.html">Book A Session</a></button>
+                <!-- <button class="btn btn-danger"><i class="bi bi-calendar-plus btn-icon"></i><a href="mentor-booking.html">Book A Session</a></button> -->
             </div>
         </div>
         </div>
@@ -88,9 +88,9 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-img">
+            <img src="css/img/adult.webp" alt="Profile" class="profile-img">
             <div class="profile-info">
-                <p class="profile-name">Emmanuel Ayobami</p>
+                <p class="profile-name">loading.....</p>
                 <a href="mentor-profile-edit.html" class="view-profile">View Profile</a>
             </div>
         </div>
@@ -121,6 +121,14 @@
                     <i class="bx bxs-calendar-alt"></i> Booking  </a>
                     <span class="menu-description">Book your sessions with mentors</span>
             </li>
+
+
+             <li>
+                <a href="mentor-availabity.html" class="res">
+                    <i class="bi bi-calendar-plus"></i> Availability 
+                </a>
+                <span class="menu-description">Set your available times for sessions</span>
+                </li>
         </ul>
         <hr>
 
@@ -136,7 +144,7 @@
         <ul class="nav-list">
             <li><a href="mentor-setting.html"  class="res"><i class="bx bx-cog"></i> Settings</a></li>
             <li><a href="#"  class="res"><i class="bx bx-support"></i> Support </span></a></li>
-           <li><a href="#"   class="logout-btn" id="logoutBtn"><i class="bx bx-log-out"></i> Logout</a></li>
+            <li><a href="#" class="res" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
 
         </ul>
     </div>
@@ -152,12 +160,12 @@
         </ul>
     
         <div class="profile-container">
-            <img src="css/img/emma.jpg" alt="Profile" class="profile-pic1" id="profilePic">
+            <img src="css/img/adult.webp" alt="Profile" class="profile-pic1" id="profilePic">
             <div class="hover-options" id="hoverMenu" data-visible="false">
                 <a href="mentor-profile-edit.html" class="profile-link">
-                    <img src="css/img/emma.jpg" alt="Profile" class="hover-profile-pic">
+                    <img src="css/img/adult.webp" alt="Profile" class="hover-profile-pic">
                     <div>
-                        <span class="hover-profile-name">Emmanuel Ayobami</span>
+                        <span class="hover-profile-name">loading.....</span>
                         <span class="view-profile">View Profile</span>
                     </div>
                 </a>
@@ -174,7 +182,7 @@
                     <li><a href="#"><i class="bi bi-play-circle"></i> Watch tutorial</a></li>
                     <li><a href="mentor-setting.html"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><a href="#"><i class="bi bi-info-circle"></i> Support</a></li>
-                    <li><a href="#" class="logout-btn"><i class="bx bx-log-out"></i> Logout</a></li>
+                     <li><a href="#" class="res" id="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -202,27 +210,27 @@
         <div class="profile-wrapper">
             <!-- Profile Info (Image & Name) -->
             <div class="profile-info">
-                <div class="user-profile-img">
-                    <img src="css/img/emma.jpg" alt="User Profile">
-                </div>
+               <div class="user-profile-img">
+  <img src="css/img/adult.webp" alt="User Profile">
+  <span class="profile-img-pencil">✏️</span>
+  <input type="file" id="profileInput" style="display:none" accept="image/*">
+</div>
+
 
                 <div class="user-info">
-                    <div class="user-name"id="userName" >Emmanuel Ayobami 🇳🇬</div>
-                    <div class="user-role" id="userRole" >Community Manager at 3MTT</div>
+                    <div class="user-name"id="userName" >loading.....</div>
+                    <div class="user-role" id="userRole" >loading.....</div>
                 </div>
+
+
+                <div class="user-actions">
+            <button id="editProfileBtn" class="btn btn-edit">Edit Profile</button>
+            <!-- Optional LinkedIn view button (updates after saving LinkedIn URL) -->
+          </div>
             </div>
 
             <!-- Icons Section -->
             <div class="profile-actions">
-                <!-- Message Icon -->
-                <div class="icon-container message-icon">
-                    <i class="bi bi-chat-dots"></i>
-                </div>
-
-                <!-- Love (Wishlist) Icon -->
-                <div class="icon-container love-icon">
-                    <i class="bi bi-heart"></i>
-                </div>
 
                 <!-- Menu Icon -->
                 <div class="icon-container menu-icon">
@@ -235,11 +243,11 @@
         <div class="menu-box">
             <p class="report-account"><i class="bi bi-linkedin"></i>Share on LinkedIn</p>
             <p class="report-account"><i class="bi bi-twitter"></i>Tweet this profile</p>
-            <p class="report-account"><i class="bi bi-flag"></i> Report Account</p>
+            <!-- <p class="report-account"><i class="bi bi-flag"></i> Report Account</p> -->
         </div>
 
         <!-- Message Request Popup -->
-        <div class="custom-message-box">
+        <!-- <div class="custom-message-box">
             <span class="close-btn">&times;</span>
             <h4 style="font-size: 20px; padding-bottom: 13px; font-weight: bold;">Message Request</h4>
             <p class="text-message">This is the beginning of your conversation with <b>Emmanuel Ayobami</b>.  
@@ -249,8 +257,121 @@
 
             <textarea placeholder="Your message..."></textarea>
             <button class="send-btn">Send</button>
-        </div>
+        </div> -->
     </div>
+
+
+     <!-- ===== Edit Profile Modal ===== -->
+  <div id="editProfileModal" class="modal3" role="dialog" aria-hidden="true">
+    <div class="modal__content">
+      <button class="modal__close" id="modalCloseBtn" aria-label="Close">&times;</button>
+      <h3 class="modal__title">Edit Mentor Profile</h3>
+
+      <form id="mentorEditForm" class="form">
+        <div class="grid grid--2">
+          <div class="form-group">
+            <label for="fullName">Full name</label>
+            <input id="fullName" type="text" placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label for="headlineRole">Role</label>
+            <input id="headlineRole" type="text" placeholder="e.g., Community Manager at 3MTT" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea id="bio" rows="3" placeholder="Short professional bio..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="linkedinUrl">LinkedIn URL</label>
+          <input id="linkedinUrl" type="url" placeholder="https://www.linkedin.com/in/your-handle" />
+        </div>
+
+        <!-- Expertise -->
+        <div class="form-group">
+          <label for="expertiseSelect">Expertise (max 5)</label>
+          <select id="expertiseSelect">
+            <option value="">-- Select Expertise --</option>
+            <option>Career Development</option>
+            <option>Mental Health & Well-Being</option>
+            <option>Technology & Innovation</option>
+            <option>Personal Growth</option>
+            <option>Social & Community Issues</option>
+            <option>Job Search Strategies</option>
+            <option>Resume Building</option>
+            <option>Interview Skills</option>
+            <option>Networking</option>
+            <option>Time Management</option>
+            <option>Public Speaking</option>
+            <option>Project Management</option>
+            <option>Leadership</option>
+            <option>Self-Worth</option>
+            <option>Goal-Setting</option>
+            <option>Handling Failures</option>
+            <option>Building Resilience</option>
+            <option>Starting a Side Hustle</option>
+            <option>Financial Literacy</option>
+            <option>Client Management</option>
+            <option>Scaling Ideas</option>
+            <option>Study Techniques</option>
+            <option>College Applications</option>
+            <option>STEM Subjects</option>
+            <option>Lifelong Learning</option>
+            <option>Stress Management</option>
+            <option>Work-Life Balance</option>
+            <option>Building Positive Habits</option>
+          </select>
+          <div id="expertiseTags" class="taglist"></div>
+        </div>
+
+        <!-- Disciplines -->
+        <div class="form-group">
+          <label for="disciplineInput">Disciplines (type & press Enter)</label>
+          <input id="disciplineInput" type="text" placeholder="e.g., Product Design, Community Management" />
+          <div id="disciplineTags" class="taglist"></div>
+        </div>
+
+        <!-- Languages -->
+        <div class="form-group">
+          <label for="languageInput">Languages (max 2) — type & press Enter</label>
+          <input id="languageInput" type="text" placeholder="e.g., English, Yoruba" />
+          <div id="languageTags" class="taglist"></div>
+        </div>
+
+            <div class="form-group">
+    <label for="yearsOfExperience">Years of Experience</label>
+    <input id="yearsOfExperience" type="number" min="0" value="0" />
+    </div>
+
+
+        <!-- Experience -->
+        <div class="form-group">
+          <div class="section-head">
+            <label>Experience</label>
+            <button type="button" class="btn btn-add" id="addExperienceBtn">+ Add Experience</button>
+          </div>
+          <div id="experienceList" class="stack"></div>
+        </div>
+
+        <!-- Education -->
+        <div class="form-group">
+          <div class="section-head">
+            <label>Education</label>
+            <button type="button" class="btn btn-add" id="addEducationBtn">+ Add Education</button>
+          </div>
+          <div id="educationList" class="stack"></div>
+        </div>
+
+        <div class="modal__actions">
+          <button type="button" class="btn" id="cancelBtn3">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 
     <div class="overlay"></div>
 
@@ -379,33 +500,23 @@
                     </div>
               
                
+<div class="about-content">
+  <p class="short-text" id="shortBio">
+    <span id="bioPreview"></span><span id="bioRest" class="hidden"></span>
+  </p>
+  <a class="read-more" id="readMoreBtn">Read More</a>
 
-                <div class="about-content">
-                    <p class="short-text" id="shortBio">
-                        Hi, I'm Joy! I’m a content writer and community management professional with over 5 years of experience. 
-                        I specialize in crafting compelling content that resonates with diverse audiences and driving brand advocacy 
-                        through effective community management.
-                    </p>
-                    <p class="long-text hidden" id="longBio1">
-                        I've had the pleasure of working with both international companies in Silicon Valley and local brands. 
-                        One of my key strengths is cultivating and nurturing vibrant communities, both online and offline. 
-                        I’ve managed communities ranging from fewer than 100 to over 10,000 members across platforms like Slack, 
-                        Discord, Telegram, and Facebook.
-                    </p>
-                    <p class="long-text hidden"id="longBio2" >
-                        As a Meta Certified Community Manager, I bring a data-driven approach to everything I do—whether it’s 
-                        developing community guidelines, leading teams, creating content calendars, organizing engaging events, 
-                        or measuring the impact of strategies to make informed decisions.
-                    </p>
-                    <p class="long-text hidden" id="longBio3" >
-                        Outside of work, I love public speaking, moderating events, and reading books. I also enjoy sketching 
-                        and painting to tap into my creative side. If you're interested in content creation, community building, 
-                        or just want to chat about books or art, I’m here to help!
-                    </p>
-                    <a class="read-more">Read More</a>
+
 
                     <div class="social-icons1">
-                        <div class="social-icons"><a href="#"><i class="bi bi-linkedin"></i></a></div>
+                                            <div class="social-icons">
+                        <p class="report-account">
+                            <a id="linkedin-link" href="#" target="_blank">
+                            <i class="bi bi-linkedin"></i>
+                            </a>
+                        </p>
+                        </div>
+
                         <div class="social-icons"><a href="#"><i class="bi bi-twitter"></i></a></div>
                     </div>
 
@@ -464,10 +575,10 @@
                             <div class="experience-header">
                                 <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
                                 <div class="title">
-                                    <h3>Community Manager at 3MTT</h3>
-                                    <p class="company">3MTT Organization</p>
+                                    <h3>loading.....</h3>
+                                    <p class="company">loading.....</p>
                                 </div>
-                                <p class="timeframe">Feb 2022 - May 2024</p>
+                                <p class="timeframe">loading.....</p>
                             </div>
                         </div>
                        
@@ -479,15 +590,15 @@
                             <div class="experience-header">
                                 <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
                                 <div class="title">
-                                    <h3>Community Manager</h3>
-                                    <p class="company">3MTT Organization</p>
+                                    <h3>loading.....</h3>
+                                    <p class="company">loading.....</p>
                                 </div>
-                                <p class="timeframe">Feb 2022 - May 2024</p>
+                                <p class="timeframe">loading.....</p>
                             </div>
                             <ul class="experience-details">
-                                <li>Managed online communities across multiple platforms.</li>
-                                <li>Developed engagement strategies to foster growth.</li>
-                                <li>Organized and moderated community events.</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
                             </ul>
                             <span class="view-more" onclick="toggleDetails(this)">View More</span>
                         </div>
@@ -496,15 +607,15 @@
                             <div class="experience-header">
                                 <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
                                 <div class="title">
-                                    <h3>Content Writer </h3>
-                                    <p class="company">TechWorld Inc.</p>
+                                    <h3>loading.....</h3>
+                                    <p class="company">loading.....</p>
                                 </div>
-                                <p class="timeframe">June 2021 - Present</p>
+                                <p class="timeframe">loading.....</p>
                             </div>
                             <ul class="experience-details">
-                                <li>Wrote and edited articles on technology trends.</li>
-                                <li>Conducted research to produce high-quality content.</li>
-                                <li>Collaborated with designers for engaging blog visuals.</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
                             </ul>
                             <span class="view-more" onclick="toggleDetails(this)">View More</span>
                         </div>
@@ -513,15 +624,15 @@
                             <div class="experience-header">
                                 <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
                                 <div class="title">
-                                    <h3>Social Media Manager </h3>
-                                    <p class="company">GrowthHub Digital</p>
+                                    <h3>loading.....</h3>
+                                    <p class="company">loading.....</p>
                                 </div>
-                                <p class="timeframe">Jan 2020 - Dec 2021</p>
+                                <p class="timeframe">loading.....</p>
                             </div>
                             <ul class="experience-details">
-                                <li>Managed social media accounts and campaigns.</li>
-                                <li>Analyzed metrics to improve engagement rates.</li>
-                                <li>Created content strategies to increase brand visibility.</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
                             </ul>
                             <span class="view-more" onclick="toggleDetails(this)">View More</span>
                         </div>
@@ -530,15 +641,15 @@
                             <div class="experience-header">
                                 <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
                                 <div class="title">
-                                    <h3>Event Coordinator</h3>
-                                    <p class="company">Global Connect Events</p>
+                                    <h3>loading.....</h3>
+                                    <p class="company">loading.....</p>
                                 </div>
-                                <p class="timeframe">Mar 2018 - Nov 2019</p>
+                                <p class="timeframe">loading.....</p>
                             </div>
                             <ul class="experience-details">
-                                <li>Planned and executed corporate networking events.</li>
-                                <li>Managed event logistics and vendor coordination.</li>
-                                <li>Ensured smooth operations during live events.</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
 
                             </ul>
                             <span class="view-more" onclick="toggleDetails(this)">View More</span>
@@ -548,19 +659,21 @@
                             <div class="experience-header">
                                 <div class="icon2"><i class="bi bi-briefcase-fill"></i></div>
                                 <div class="title">
-                                    <h3>Customer Support Rep </h3>
-                                    <p class="company">HelpDesk Co.</p>
+                                    <h3>loading..... </h3>
+                                    <p class="company">loading.....</p>
                                 </div>
-                                <p class="timeframe">July 2016 - Feb 2018</p>
+                                <p class="timeframe">loading.....</p>
                             </div>
                             <ul class="experience-details">
-                                <li>Assisted customers with product-related inquiries.</li>
-                                <li>Provided technical support and troubleshooting.</li>
-                                <li>Maintained high customer satisfaction ratings.</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
+                                <li>loading.....</li>
                             </ul>
                             <span class="view-more" onclick="toggleDetails(this)">View More</span>
                         </div>
                         </div>
+
+                        
                     </div>
                     
 
@@ -576,8 +689,8 @@
                                 <div class="education-title">
                                     <i class="bi bi-mortarboard icon"></i>
                                     <div class="title2">
-                                        <h3>BSc in Computer Science</h3>
-                                        <p class="institution">University of Oxford</p>
+                                        <h3>loading.....</h3>
+                                        <p class="institution">loading.....</p>
                                     </div>
                                 </div>
                                 <p class="duration">2019 - 2023</p>
@@ -591,11 +704,11 @@
                                     <div class="education-title">
                                         <i class="bi bi-mortarboard icon"></i>
                                         <div class="title2">
-                                            <h3>MSc in AI & Data Science</h3>
-                                            <p class="institution">Stanford University</p>
+                                            <h3>loading.....</h3>
+                                            <p class="institution">loading.....</p>
                                         </div>
                                     </div>
-                                    <p class="duration">2024 - Present</p>
+                                    <p class="duration">loading.....</p>
                                 </div>
                             </div>
                 
@@ -605,11 +718,11 @@
                                     <div class="education-title">
                                         <i class="bi bi-mortarboard icon"></i>
                                         <div class="title2">
-                                            <h3>Diploma in IT</h3>
-                                            <p class="institution">Harvard Online</p>
+                                            <h3>loading.....</h3>
+                                            <p class="institution">loading.....</p>
                                         </div>
                                     </div>
-                                    <p class="duration">2018 - 2019</p>
+                                    <p class="duration">loading.....</p>
                                 </div>
                             </div>
                         </div>
@@ -667,7 +780,7 @@
 
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img3"></a>
                    
                     <div class="mentee-info">
                       <strong class="mentee-name">Zaccheus Martin 🇳🇬</strong>
@@ -691,7 +804,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile"  class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -716,7 +829,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile"  class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -740,7 +853,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile"  class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -768,7 +881,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -792,7 +905,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -816,7 +929,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -840,7 +953,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile"class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -867,7 +980,7 @@
                   </div>
 
                   <div class="mentee-profile">
-                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img"></a>
+                    <a href="mentee.html"> <img src="css/img/MARTIN.png" alt="Mentee Profile" class="profile-img3"></a>
                     <div class="mentee-info">
                       <strong class="mentee-name">Emmanuel Ayobami 🇳🇬</strong>
                       <p class="mentee-job">Front-End Developer | UI/UX Designer | Graphics Designer, LloydBanks Digital Services & DVA Bootcamp</p>
@@ -1034,5 +1147,6 @@
 
     
 <script src="js/mentor-profile-edit.js"></script>
+<script src="js/mentor-logout.js"></script>
 </body>
 </html>

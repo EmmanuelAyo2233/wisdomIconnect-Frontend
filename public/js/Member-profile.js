@@ -134,16 +134,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.querySelector(".read-more").addEventListener("click", function () {
-  let hiddenParagraphs = document.querySelectorAll(".long-text");
-  hiddenParagraphs.forEach((p) => p.classList.toggle("hidden"));
+// document.querySelector(".read-more").addEventListener("click", function () {
+//   let hiddenParagraphs = document.querySelectorAll(".long-text");
+//   hiddenParagraphs.forEach((p) => p.classList.toggle("hidden"));
 
-  if (hiddenParagraphs[0].classList.contains("hidden")) {
-    this.textContent = "Read More";
-  } else {
-    this.textContent = "Read Less";
-  }
-});
+//   if (hiddenParagraphs[0].classList.contains("hidden")) {
+//     this.textContent = "Read More";
+//   } else {
+//     this.textContent = "Read Less";
+//   }
+// });
 
 // document.getElementById("profileUpload").addEventListener("change", function(event) {
 //   const file = event.target.files[0];
@@ -158,310 +158,47 @@ document.querySelector(".read-more").addEventListener("click", function () {
 //   }
 // });
 
-const profilePic = document.getElementById("profilePic");
-const profileUpload = document.getElementById("profileUpload");
-const editProfileBtn = document.getElementById("editProfileBtn");
-const updateProfile = document.getElementById("update-profile"); 
-const updateRes = document.getElementById("update-res")
+// const profilePic = document.getElementById("profilePic");
+// const profileUpload = document.getElementById("profileUpload");
+// const editProfileBtn = document.getElementById("editProfileBtn");
+// const updateProfile = document.getElementById("update-profile"); 
+// const updateRes = document.getElementById("update-res")
 
 
-profileUpload.disabled = true;
+// profileUpload.disabled = true;
 
-editProfileBtn.addEventListener("click", function () {
-    profileUpload.disabled = false;
-    profileUpload.click();
-});
+// editProfileBtn.addEventListener("click", function () {
+//     profileUpload.disabled = false;
+//     profileUpload.click();
+// });
 
-// Update Profile Picture
-profileUpload.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            profilePic.src = e.target.result; 
-            if (sideNavPic) {
-                sideNavPic.src = e.target.result;
-            }
-            if (updateProfile) {
-                updateProfile.src = e.target.result; 
-            }
+// // Update Profile Picture
+// profileUpload.addEventListener("change", function () {
+//     const file = this.files[0];
+//     if (file) {
+//         const reader = new FileReader();
+//         reader.onload = function (e) {
+//             profilePic.src = e.target.result; 
+//             if (sideNavPic) {
+//                 sideNavPic.src = e.target.result;
+//             }
+//             if (updateProfile) {
+//                 updateProfile.src = e.target.result; 
+//             }
 
-            if (updateRes) {
-              updateRes.src = e.target.result; 
-          }
+//             if (updateRes) {
+//               updateRes.src = e.target.result; 
+//           }
 
-        };
-        reader.readAsDataURL(file);
+//         };
+//         reader.readAsDataURL(file);
 
       
-        setTimeout(() => {
-            profileUpload.disabled = true;
-        }, 100);
-    }
-});
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const profileEditOverlay = document.getElementById("profileEditOverlay");
-  const openEditProfile = document.getElementById("openEditProfile");
-  const closeEdit = document.getElementById("closeEdit");
-  const saveProfile = document.getElementById("saveProfile");
-
-  if (!profileEditOverlay || !openEditProfile || !closeEdit || !saveProfile) {
-      console.error("One or more elements are missing from the DOM.");
-      return;
-  }
-
-  const bioText = document.querySelector(".short-text");
-  const experienceText = document.querySelector(".experience-title");
-   const editBioInput = document.getElementById("editBio");
-    const editNameInput = document.getElementById("editName");
-    const editRoleInput = document.getElementById("editRole");
-       const editExperienceInput = document.getElementById("editExperience");
-  const editExpertise = document.getElementById("editExpertise");
-  const selectedExpertiseContainer = document.getElementById("selectedExpertiseContainer");
-  const editLanguage = document.getElementById("editLanguage");
-  const selectedLanguageContainer = document.getElementById("selectedLanguageContainer");
-  const editIndustry = document.getElementById("editIndustry");
-  const selectedIndustryContainer = document.getElementById("selectedIndustriesContainer");
-
-  let selectedExpertise = [];
-  let selectedLanguages = [];
-  let selectedIndustries = [];
-
-
-
-
-  
-
-  // Open modal
- openEditProfile.addEventListener("click", function () {
-  const editBioInput = document.getElementById("editBio");
-  const editExperienceInput = document.getElementById("editExperience");
-  const editNameInput = document.getElementById("editName");
-  const editRoleInput = document.getElementById("editRole");
-
-  // 🔹 Define name and role from the page
-  const nameDisplay = document.querySelector(".user-name");
-  const roleDisplay = document.querySelector(".user-role");
-
-  if (editBioInput && editExperienceInput) {
-    editBioInput.value = bioText ? bioText.innerText.trim() : "";
-    editExperienceInput.value = experienceText ? experienceText.innerText.trim() : "";
-  }
-
-  if (editNameInput && nameDisplay) {
-    editNameInput.value = nameDisplay.innerText.trim();
-  }
-
-  if (editRoleInput && roleDisplay) {
-    editRoleInput.value = roleDisplay.innerText.trim();
-  }
-
-  profileEditOverlay.style.display = "flex";
-});
-
-
-  // Close modal
-  closeEdit.addEventListener("click", function () {
-      profileEditOverlay.style.display = "none";
-  });
-
-
-   if (editBioInput && editExperienceInput && editNameInput && editRoleInput) {
-        editBioInput.value = bioText ? bioText.innerText.trim() : "";
-        editExperienceInput.value = experienceText ? experienceText.innerText.trim() : "";
-
-        // Grab current name and role text from your HTML
-        const currentName = document.querySelector(".user-name")?.innerText.trim() || "";
-        const currentRole = document.querySelector(".user-role")?.innerText.trim() || "";
-
-        editNameInput.value = currentName;
-        editRoleInput.value = currentRole;
-`x`
-    }
-
-
-  // Add expertise
-  if (editExpertise) {
-      editExpertise.addEventListener("change", function () {
-          const value = editExpertise.value;
-          
-          if (selectedExpertise.length >= 5) {
-              alert("You can only select up to 5 expertise!");
-              return;
-          }
-
-          if (!selectedExpertise.includes(value)) {
-              selectedExpertise.push(value);
-              updateExpertiseDisplay();
-          }
-      });
-  }
-
-
-  // Update displays
-  function updateExpertiseDisplay() {
-      if (!selectedExpertiseContainer) return;
-      selectedExpertiseContainer.innerHTML = "";
-      selectedExpertise.forEach(exp => {
-          const span = document.createElement("span");
-          span.classList.add("selected-expertise", "expertise-item", exp);
-          span.innerHTML = `${exp.charAt(0).toUpperCase() + exp.slice(1)} <span data-value="${exp}">✖</span>`;
-          selectedExpertiseContainer.appendChild(span);
-      });
-  }
-
-  function updateLanguageDisplay() {
-    languageDisplay.innerHTML = ""; // Clear previous display
-
-    selectedLanguages.forEach(lang => {
-        const langItem = document.createElement("span");
-        langItem.textContent = lang + " ✖"; // Add "✖" for removal
-        langItem.classList.add("language-tag");
-        langItem.dataset.value = lang; // Store value for easy removal
-
-        languageDisplay.appendChild(langItem);
-    });
-
-    // Ensure the display container stays visible
-    languageDisplay.style.display = selectedLanguages.length > 0 ? "block" : "none";
-}
-
-// ✅ Add language (Max 2)
-if (editLanguage) {
-    editLanguage.addEventListener("change", function () {
-        const value = editLanguage.value.trim();
-
-        if (!value) return;
-
-        if (selectedLanguages.length >= 2) {
-            alert("You can only select up to 2 languages!");
-            return;
-        }
-
-        if (!selectedLanguages.includes(value)) {
-            selectedLanguages.push(value);
-            updateLanguageDisplay();
-        } else {
-            alert("You have already selected this language.");
-        }
-    });
-}
-
-
-
-
-// ✅ Function to update selected industries
-function updateIndustryDisplay() {
-    if (!selectedIndustryContainer) return;
-    selectedIndustryContainer.innerHTML = ""; // Clear previous
-
-    selectedIndustries.forEach(ind => {
-        const span = document.createElement("span");
-        span.classList.add("industry-item");
-        span.innerHTML = `${ind.charAt(0).toUpperCase() + ind.slice(1)} <span data-value="${ind}">✖</span>`;
-        selectedIndustryContainer.appendChild(span);
-    });
-}
-
-
-
-// ✅ Limit selection of industries to 2
-if (editIndustry) {
-    editIndustry.addEventListener("change", function () {
-        const value = editIndustry.value;
-
-        if (selectedIndustries.length >= 2) {
-            alert("You can only select up to 2 industries!");
-            return;
-        }
-
-        if (!selectedIndustries.includes(value) && value !== "") {
-            selectedIndustries.push(value);
-            updateIndustryDisplay();
-        }
-    });
-}
-
-
-  
-  saveProfile.addEventListener("click", function () {
-    // Update Bio (Only if Edited)
-
-    if (editNameInput && editRoleInput) {
-        const newName = editNameInput.value.trim();
-        const newRole = editRoleInput.value.trim();
-
-        // Update profile display
-        const nameDisplay = document.querySelector(".user-name");
-        const roleDisplay = document.querySelector(".user-role");
-
-        if (nameDisplay) nameDisplay.innerText = newName;
-        if (roleDisplay) roleDisplay.innerText = newRole;
-
-        // Optionally update other fields and/or send updated data to backend here
-
-        
-    }
-        
-    
-
-  
-
-
-    if (editBio.value.trim()) {
-        bioText.innerText = editBio.value.trim();
-    }
-
-    // Update Experience (Only if Edited)
-    if (editExperience.value.trim()) {
-        experienceText.innerText = editExperience.value.trim();
-    }
-
-    // Update Expertise (Only if Selected)
-    if (selectedExpertise.length > 0) {
-        const expertiseGrid = document.querySelector(".expertise-grid");
-        expertiseGrid.innerHTML = ""; // Clear old values
-        selectedExpertise.forEach(exp => {
-            const span = document.createElement("span");
-            span.classList.add("expertise-item", exp);
-            span.innerText = exp.charAt(0).toUpperCase() + exp.slice(1);
-            expertiseGrid.appendChild(span);
-        });
-    }
-
-    // Update Industries (Only if Selected)
-    if (selectedIndustries.length > 0) {
-        const industryContainer = document.querySelector(".experiecew .inline");
-        industryContainer.innerHTML = ""; // Clear old values
-        selectedIndustries.forEach(ind => {
-            const p = document.createElement("p");
-            p.classList.add("experiecew-item");
-            p.innerText = ind.charAt(0).toUpperCase() + ind.slice(1);
-            industryContainer.appendChild(p);
-        });
-    }
-
-    // Update Languages (Only if Selected)
-    if (selectedLanguages.length > 0) {
-        const languageContainer = document.querySelector(".language");
-        languageContainer.innerHTML = `<h3>Fluent in</h3>`; // Keep title
-        selectedLanguages.forEach(lang => {
-            const span = document.createElement("span");
-            span.classList.add("language-item");
-            span.innerText = lang.charAt(0).toUpperCase() + lang.slice(1);
-            languageContainer.appendChild(span);
-        });
-    }
-
-    // Hide the edit profile modal
-    profileEditOverlay.style.display = "none";
-});
-  
-
-});
+//         setTimeout(() => {
+//             profileUpload.disabled = true;
+//         }, 100);
+//     }
+// });
 
 
 // document.addEventListener("DOMContentLoaded", function () {
@@ -579,225 +316,377 @@ if (editIndustry) {
 
 
 
+// ===== Utility to create tags with category colors =====
+// ===== Utility to create tags with colors and cancel button =====
+// ===== Utility: Create Tag =====
+// ===== Selected Arrays =====
 
+document.addEventListener('DOMContentLoaded', () => {
+  const profileOverlay = document.getElementById('profileEditOverlay');
+  const openBtn = document.getElementById('openEditProfile');
+  const closeBtn = document.getElementById('closeEdit');
+  const saveBtn = document.getElementById('saveProfile');
 
+  const expertiseSelect = document.getElementById('editExpertise');
+  const languageSelect = document.getElementById('editLanguage');
+  const industrySelect = document.getElementById('editIndustry');
+  const interestSelect = document.getElementById('editInterest');
 
+  const expertiseContainer = document.getElementById('selectedExpertiseContainer');
+  const languageContainer = document.getElementById('languageDisplay');
+  const industryContainer = document.getElementById('selectedIndustriesContainer');
+  const interestContainer = document.getElementById('selectedInterests');
+  const experienceWrapper = document.getElementById('experienceWrapper');
+  const addExperienceBtn = document.getElementById('addExperience');
 
-window.addEventListener("DOMContentLoaded", () => {
-  const user = JSON.parse(localStorage.getItem("youthUser"));
-  if (!user) return;
+  let selectedExpertise = [];
+  let selectedLanguages = [];
+  let selectedIndustries = [];
+  let selectedInterests = [];
+  let experience = [];
+  let profileData = {}; // store fetched profile
 
-  // 🔤 Name & Role
-  document.querySelector(".user-name").textContent = `${user.name} 🇳🇬`;
-  document.querySelector(".user-role").textContent = user.role || "No role provided";
-
-  // 📝 Bio
-  const fullBio = user.bio || "No bio provided.";
-  const sentences = fullBio.split(/\.\s+/);
-  document.querySelector(".short-text").textContent = sentences.slice(0, 2).join(". ") + ".";
-  document.querySelector(".long-text").textContent = sentences.slice(2).join(". ") + ".";
-
-const expertiseList = JSON.parse(user.expertise || "[]");
-const expertiseGrid = document.querySelector(".expertise-grid");
-expertiseGrid.innerHTML = "";
-
-// Map expertise text to class names
-const colors = ['#3498db', '#e67e22', '#2ecc71', '#9b59b6', '#34495e', '#1abc9c'];
-
-expertiseList.forEach((exp, i) => {
-  const cleanExp = exp.replace(" ×", "").trim();
-  const span = document.createElement("span");
-  span.className = "expertise-item";
-  span.textContent = cleanExp;
-  // assign color by index
-  span.style.backgroundColor = colors[i % colors.length];
-  span.style.color = 'white';
-  expertiseGrid.appendChild(span);
-});
-
-
-  // 🌍 Fluent In (Max 2 shown, rest as +n)
-  const fluentList = JSON.parse(user.fluentIn || "[]");
-  const languageSection = document.querySelector(".language");
-  languageSection.innerHTML = '<h3>Fluent in</h3>';
-  fluentList.slice(0, 2).forEach((lang) => {
-    const span = document.createElement("span");
-    span.className = "language-item";
-    span.textContent = lang.replace(" ×", "");
-    languageSection.appendChild(span);
-  });
-  if (fluentList.length > 2) {
-    const more = document.createElement("span");
-    more.className = "language-item";
-    more.textContent = `+${fluentList.length - 2}`;
-    languageSection.appendChild(more);
-  }
-
-  // 🏢 Industries
-  const industryContainer = document.querySelector(".experiecew .inline");
-  industryContainer.innerHTML = "";
-  const industries = (user.industry || "").split(",").map(i => i.trim());
-  industries.forEach((ind) => {
-    const p = document.createElement("p");
-    p.className = "experiecew-item";
-    p.textContent = ind.replace(" ×", "");
-    industryContainer.appendChild(p);
-  });
-
-
-  const experienceDetails = document.querySelector(".experience-details");
-  experienceDetails.querySelector(".experience-title").textContent = user.role || "No title provided";
-  experienceDetails.querySelector(".experience-company").textContent = user.experienceDescription || "No experience description.";
-
-  const expPresent = document.querySelector(".experience-present");
-  if (user.endDate === null || user.endDate.toLowerCase().includes("present")) {
-    expPresent.textContent = "Present";
-  } else {
-    expPresent.textContent = new Date(user.endDate).toLocaleDateString();
-  }
-});
-
-let selectedExpertise = [];
-let selectedLanguages = [];
-let selectedIndustries = [];
-
-// Create tag with cancel button
-function createTag(containerId, value, className) {
-  const container = document.getElementById(containerId);
-
-  // Prevent duplicate tags in DOM
-  if (Array.from(container.children).some(el => el.dataset.value === value)) return;
-
-  const tag = document.createElement("span");
-  tag.className = className;
-  tag.dataset.value = value;
-  tag.style.margin = "4px";
-  tag.style.padding = "4px 8px";
-  tag.style.borderRadius = "8px";
-  tag.style.display = "inline-block";
-
-  if (className === "expertise-tag") {
-    tag.style.backgroundColor = "#3498db";
-    tag.style.color = "#fff";
-  } else if (className === "language-tag") {
-    tag.style.backgroundColor = "#ccc";
-    tag.style.color = "#000";
-  } else if (className === "industry-tag") {
-    tag.style.backgroundColor = "#8e44ad";
-    tag.style.color = "#fff";
-  }
-
-  tag.textContent = value;
-
-  const cancelBtn = document.createElement("span");
-  cancelBtn.innerHTML = " ×";
-  cancelBtn.style.cursor = "pointer";
-  cancelBtn.style.marginLeft = "6px";
-  cancelBtn.addEventListener("click", function () {
-    tag.remove();
-
-    if (className === "expertise-tag") {
-      selectedExpertise = selectedExpertise.filter(item => item !== value);
-    } else if (className === "language-tag") {
-      selectedLanguages = selectedLanguages.filter(item => item !== value);
-    } else if (className === "industry-tag") {
-      selectedIndustries = selectedIndustries.filter(item => item !== value);
+  // ===== Tag Creation =====
+  function createTag(text, container, max, selectedArray) {
+    if (!text || selectedArray.includes(text)) return;
+    if (selectedArray.length >= max) {
+        alert(`You can select up to ${max} items`);
+        return;
     }
+    selectedArray.push(text);
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = text;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.textContent = '×';
+    removeBtn.className = 'remove-tag';
+    removeBtn.onclick = () => {
+        selectedArray.splice(selectedArray.indexOf(text), 1);
+        tag.remove();
+    };
+    tag.appendChild(removeBtn);
+    container.appendChild(tag);
+  }
+
+  // ===== Add Experience Block =====
+  function addExperienceBlock(exp = {}) {
+    const block = document.createElement('div');
+    block.className = 'experience-block';
+    block.innerHTML = `
+      <input type="text" class="exp-title" placeholder="Job Title" value="${exp.title || ''}">
+      <input type="text" class="exp-company" placeholder="Company" value="${exp.company || ''}">
+      <input type="date" class="exp-start" value="${exp.startDate || ''}">
+      <input type="date" class="exp-end" value="${exp.endDate || ''}" ${exp.present ? 'disabled' : ''}>
+      <label>
+        <input type="checkbox" class="exp-present" ${exp.present ? 'checked' : ''}> Present
+      </label>
+      <button type="button" class="remove-exp">Remove</button>
+    `;
+    const presentCheckbox = block.querySelector('.exp-present');
+    const endDateInput = block.querySelector('.exp-end');
+    presentCheckbox.addEventListener('change', () => {
+      endDateInput.disabled = presentCheckbox.checked;
+      if (presentCheckbox.checked) endDateInput.value = '';
+    });
+    block.querySelector('.remove-exp').onclick = () => block.remove();
+    experienceWrapper.appendChild(block);
+  }
+
+  addExperienceBtn.addEventListener('click', () => addExperienceBlock());
+
+  // ===== Open Modal =====
+  openBtn.addEventListener('click', () => {
+    profileOverlay.classList.add('active');
+
+    // Reset
+    expertiseContainer.innerHTML = ''; selectedExpertise = [];
+    languageContainer.innerHTML = ''; selectedLanguages = [];
+    industryContainer.innerHTML = ''; selectedIndustries = [];
+    interestContainer.innerHTML = ''; selectedInterests = [];
+    experienceWrapper.innerHTML = '';
+
+    // Prefill modal from profileData
+    document.getElementById('editName').value = profileData.name || '';
+    document.getElementById('editRole').value = profileData.role || '';
+    document.getElementById('editBio').value = profileData.bio || '';
+    document.getElementById('editPhone').value = profileData.phone || '';
+
+    (profileData.expertise || []).forEach(e => createTag(e, expertiseContainer, 5, selectedExpertise));
+    (profileData.fluentIn || []).forEach(l => createTag(l, languageContainer, 2, selectedLanguages));
+    (profileData.industries || []).forEach(i => createTag(i, industryContainer, 2, selectedIndustries));
+    (profileData.interests || []).forEach(i => createTag(i, interestContainer, 5, selectedInterests));
+    (profileData.experience || []).forEach(exp => addExperienceBlock(exp));
   });
 
-  tag.appendChild(cancelBtn);
-  container.appendChild(tag);
+  closeBtn.addEventListener('click', () => profileOverlay.classList.remove('active'));
+  profileOverlay.addEventListener('click', (e) => {
+    if (e.target === profileOverlay) profileOverlay.classList.remove('active');
+  });
+
+  // ===== Handle Select Changes =====
+  [expertiseSelect, languageSelect, industrySelect, interestSelect].forEach(sel => {
+    sel?.addEventListener('change', function() {
+      const mapping = {
+        'editExpertise': [selectedExpertise, expertiseContainer, 5],
+        'editLanguage': [selectedLanguages, languageContainer, 2],
+        'editIndustry': [selectedIndustries, industryContainer, 2],
+        'editInterest': [selectedInterests, interestContainer, 5],
+      };
+      const [arr, container, max] = mapping[this.id];
+      createTag(this.value, container, max, arr);
+      this.selectedIndex = 0;
+    });
+  });
+
+  // ===== Save to Backend =====
+  saveBtn.addEventListener('click', async () => {
+    // Gather experiences
+    experience = [];
+    document.querySelectorAll('.experience-block').forEach(block => {
+      experience.push({
+        title: block.querySelector('.exp-title').value.trim(),
+        company: block.querySelector('.exp-company').value.trim(),
+        startDate: block.querySelector('.exp-start').value,
+        endDate: block.querySelector('.exp-end').value,
+        present: block.querySelector('.exp-present').checked
+      });
+    });
+
+    // Payload
+ const payload = {
+  name: document.getElementById('editName').value.trim(),
+  role: document.getElementById('editRole').value.trim(),
+  bio: document.getElementById('editBio').value.trim(),
+  phone: document.getElementById('editPhone').value.trim(),
+  expertise: selectedExpertise,
+  fluentIn: selectedLanguages,
+  industries: selectedIndustries,
+  interests: selectedInterests,
+  experience: experience
+};
+  console.log("Payload to save:", payload);
+
+try {
+  // pick the correct token for mentee
+  const token = localStorage.getItem('menteeToken'); 
+  const res = await fetch('http://localhost:5000/api/v1/user/me/update', {
+    method: 'PATCH',
+    headers: { 
+      'Content-Type': 'application/json', 
+      Authorization: `Bearer ${token}` 
+    },
+    body: JSON.stringify(payload)
+  });
+  const result = await res.json();
+  if (!res.ok) throw new Error(result.message || 'Failed to update');
+
+  profileData = result.data || payload;
+  updateUI(profileData);
+  profileOverlay.classList.remove('active');
+  alert('Profile updated successfully!');
+} catch (err) {
+  console.error(err);
+  alert('Failed to update profile. Check console.');
+}
+  });
+  // ===== Update Profile UI =====
+  function updateUI(data) {
+    document.querySelector('.user-name').textContent = data.name || '';
+    document.querySelector('.user-role').textContent = data.role || '';
+    document.querySelector('.about-content .short-text').textContent = data.bio || '';
+    if(document.querySelector('.user-phone'))
+      document.querySelector('.user-phone').textContent = data.phone || '';
+
+    const mainExpertise = document.getElementById('expertiseContainer');
+    mainExpertise.innerHTML = '';
+    (data.expertise || []).forEach(e => {
+      const span = document.createElement('span');
+      span.className = 'expertise-item';
+      span.textContent = e;
+      mainExpertise.appendChild(span);
+    });
+
+    const mainLang = document.getElementById('languageContainer');
+    mainLang.innerHTML = '';
+    (data.fluentIn || []).forEach(l => {
+      const span = document.createElement('span');
+      span.className = 'language-item';
+      span.textContent = l;
+      mainLang.appendChild(span);
+    });
+
+    const mainIndustries = document.getElementById('industryContainer');
+    mainIndustries.innerHTML = '';
+    (data.industries || []).forEach(i => {
+      const p = document.createElement('p');
+      p.className = 'experiecew-item';
+      p.textContent = i;
+      mainIndustries.appendChild(p);
+    });
+
+    const mainInterests = document.getElementById('selectedInterests');
+    mainInterests.innerHTML = '';
+    (data.interests || []).forEach(i => {
+      const span = document.createElement('span');
+      span.className = 'tag';
+      span.textContent = i;
+      mainInterests.appendChild(span);
+    });
+
+    const mainExp = document.querySelector('.experience-container');
+    mainExp.innerHTML = '<h3>Experience</h3>';
+    (data.experience || []).forEach(exp => {
+      const div = document.createElement('div');
+      div.className = 'experience-item';
+      let dateText = '';
+      if(exp.startDate) {
+        dateText = exp.present ? `${exp.startDate} – Present` : `${exp.startDate} – ${exp.endDate || ''}`;
+      } else {
+        dateText = exp.present ? 'Present' : '';
+      }
+      div.innerHTML = `
+        <i class="bi bi-briefcase experience-icon"></i>
+        <div class="experience-details">
+          <p class="experience-title">${exp.title || ''}</p>
+          <p class="experience-company">${exp.company || ''}</p>
+        </div>
+        <span class="experience-dates">${dateText}</span>
+      `;
+      mainExp.appendChild(div);
+    });
+  }
+
+  // ===== Fetch Profile from Backend =====
+async function fetchProfile() {
+  try {
+    // use mentee token
+    const token = localStorage.getItem('menteeToken'); 
+    const res = await fetch('http://localhost:5000/api/v1/user/me', {
+      headers: { 
+        'Content-Type': 'application/json', 
+        Authorization: `Bearer ${token}` 
+      }
+    });
+    if(!res.ok) throw new Error('Failed to fetch profile');
+    const result = await res.json();
+    profileData = result.data || {};
+    updateUI(profileData);
+  } catch(err) {
+    console.error('Error fetching profile:', err);
+  }
 }
 
-// Load from localStorage on page load
-window.addEventListener("DOMContentLoaded", () => {
-  const storedUser = JSON.parse(localStorage.getItem("youthUser"));
-  if (!storedUser) return;
+fetchProfile();
 
-  // Fill input fields
-  document.getElementById("editName").value = storedUser.name || "";
-  document.getElementById("editRole").value = storedUser.role || "";
-  document.getElementById("editBio").value = storedUser.bio || "";
-  document.getElementById("editExperience").value = storedUser.experienceDescription || "";
-
-  // Clear existing tag displays
-  document.getElementById("selectedExpertiseContainer").innerHTML = "";
-  document.getElementById("languageDisplay").innerHTML = "";
-  document.getElementById("selectedIndustriesContainer").innerHTML = "";
-
-  // Parse and load stored tags
-  selectedExpertise = JSON.parse(storedUser.expertise || "[]");
-  selectedLanguages = JSON.parse(storedUser.fluentIn || "[]");
-  selectedIndustries = JSON.parse(storedUser.industry || "[]");
-
-  selectedExpertise.forEach(item => createTag("selectedExpertiseContainer", item, "expertise-tag"));
-  selectedLanguages.forEach(item => createTag("languageDisplay", item, "language-tag"));
-  selectedIndustries.forEach(item => createTag("selectedIndustriesContainer", item, "industry-tag"));
 });
 
-// Tag adding handlers
-document.addEventListener("DOMContentLoaded", () => {
-  // Expertise
-  document.getElementById("editExpertise").addEventListener("change", function () {
-    const val = this.value.trim();
-    if (!val || selectedExpertise.includes(val)) return;
-    if (selectedExpertise.length >= 5) return alert("You can select up to 5 expertise");
 
-    selectedExpertise.push(val);
-    createTag("selectedExpertiseContainer", val, "expertise-tag");
-  });
 
-  // Languages
-  document.getElementById("editLanguage").addEventListener("change", function () {
-    const val = this.value.trim();
-    if (!val || selectedLanguages.includes(val)) return;
-    if (selectedLanguages.length >= 2) return alert("You can select up to 2 languages");
+// --- Elements ---
+// --- Elements ---
+const profileInput  = document.querySelector("#profileUpload");
+const editBtn       = document.querySelector("#editProfileBtn");
 
-    selectedLanguages.push(val);
-    createTag("languageDisplay", val, "language-tag");
-  });
+// Grab ALL profile images in the UI (main profile + sidebar + hover, etc.)
+const profileImgs = document.querySelectorAll(
+  "#profilePic, .hover-profile-pic, .profile-img, .profile-pic1"
+);
 
-  // Industries
-  document.getElementById("editIndustry").addEventListener("change", function () {
-    const val = this.value.trim();
-    if (!val || selectedIndustries.includes(val)) return;
+// --- Pick token dynamically ---
+const token =localStorage.getItem("menteeToken");
+const API_BASE = "http://localhost:5000/api/v1/user";
 
-    selectedIndustries.push(val);
-    createTag("selectedIndustriesContainer", val, "industry-tag");
-  });
+// --- Helpers ---
+function bumpVersion() {
+  const v = Date.now().toString();
+  localStorage.setItem("pf_ver", v);
+  return v;
+}
+function currentVersion() {
+  return localStorage.getItem("pf_ver") || "";
+}
+function withBust(url) {
+  if (!url) return url;
+  const sep = url.includes("?") ? "&" : "?";
+  const v = currentVersion();
+  return v ? `${url}${sep}v=${v}` : url;
+}
 
-  // Save Profile
-  document.getElementById("saveProfile").addEventListener("click", async () => {
-    const storedUser = JSON.parse(localStorage.getItem("youthUser"));
-    if (!storedUser || !storedUser.id) return alert("User ID not found");
-
-    const updatedData = {
-      id: storedUser.id,
-      name: document.getElementById("editName").value.trim(),
-      role: document.getElementById("editRole").value.trim(),
-      bio: document.getElementById("editBio").value.trim(),
-      experienceDescription: document.getElementById("editExperience").value.trim(),
-      expertise: JSON.stringify(selectedExpertise),
-      fluentIn: JSON.stringify(selectedLanguages),
-      industry: JSON.stringify(selectedIndustries)
-    };
-
-    try {
-      const response = await fetch("/api/update-profile/youth", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedData)
-      });
-
-      const result = await response.json();
-      if (!response.ok) return alert("❌ " + (result.error || "Update failed"));
-
-      // Update local storage
-      localStorage.setItem("youthUser", JSON.stringify({ ...storedUser, ...updatedData }));
-      alert("✅ Profile updated!");
-    } catch (err) {
-      console.error(err);
-      alert("❌ Error updating profile");
+// Apply new image to ALL profile images
+function applyProfileImg(url) {
+  profileImgs.forEach((img) => {
+    if (url) {
+      img.src = withBust(url);
+    } else {
+      img.src = "css/img/default-profile.png"; // fallback
     }
   });
-});
+}
+
+// --- Load user ---
+async function loadUser() {
+  try {
+    const res = await fetch(`${API_BASE}/me`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const json = await res.json();
+    const pic = json?.data?.picture || null;
+    console.log("User data:", json);
+    applyProfileImg(pic);
+  } catch (e) {
+    console.error("Failed to load user:", e);
+  }
+}
+
+// --- Events ---
+if (editBtn && profileInput) {
+  editBtn.addEventListener("click", () => profileInput.click());
+}
+
+if (profileInput) {
+  profileInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("picture", file);
+
+    try {
+      const res = await fetch(`${API_BASE}/me/picture`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        console.error("Upload failed:", data);
+        throw new Error(data.message || "Upload failed");
+      }
+
+      console.log("Upload success:", data);
+
+      bumpVersion();
+      if (data.imageUrl) {
+        applyProfileImg(data.imageUrl);
+      }
+
+      await loadUser();
+    } catch (err) {
+      console.error("Upload error:", err);
+      alert("Failed to upload profile picture.");
+    } finally {
+      profileInput.value = "";
+    }
+  });
+}
+
+// Initial load
+loadUser();
+
+
+
+

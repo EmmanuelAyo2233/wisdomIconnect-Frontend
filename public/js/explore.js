@@ -171,3 +171,234 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
   
+
+
+// Utility: Update all profile images across dashboard
+function updateDashboardProfileImages(imageUrl) {
+  const profileImgs = document.querySelectorAll(
+    ".profile-pic1, .profile-img, .hover-profile-pic"
+  );
+
+  profileImgs.forEach((img) => {
+    img.src = `${imageUrl}?t=${Date.now()}`; // prevent caching old one
+  });
+}
+
+// On Page Load
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("menteeToken"); // 👈 mentee token
+  let userData = JSON.parse(localStorage.getItem("menteeData")); // 👈 cache key
+
+  // If we already cached profile
+  if (userData?.picture) {
+    updateDashboardProfileImages(userData.picture);
+  }
+
+  // Fetch fresh from backend
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const data = await res.json();
+    if (data.status === "success") {
+      userData = data.data;
+
+      // Save in localStorage for next reload
+      localStorage.setItem("menteeData", JSON.stringify(userData));
+
+      // Update everywhere
+      if (userData.picture) {
+        updateDashboardProfileImages(userData.picture);
+      }
+    }
+  } catch (err) {
+    console.error("Failed to fetch mentee data for dashboard:", err);
+  }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("menteeToken");
+
+  if (!token) {
+    window.location.href = "/public/login.html";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const result = await res.json();
+    console.log("Mentee profile result:", result);
+
+    if (res.ok && result.status === "success") {
+      const user = result.data;
+      const fullName = user.name || "Unknown User";
+
+      // Update sidebar name
+      document.querySelectorAll(".profile-name").forEach(el => {
+        el.textContent = fullName;
+      });
+
+      // Update mobile/hover name
+      document.querySelectorAll(".hover-profile-name").forEach(el => {
+        el.textContent = fullName;
+      });
+
+    } else {
+      console.error("Failed to fetch mentee details:", result.message);
+      localStorage.removeItem("menteeToken");
+    }
+  } catch (err) {
+    console.error("Error fetching mentee details:", err);
+    localStorage.removeItem("menteeToken");
+  }
+});
+
+
+
+  // Fetch mentors from API
+const mentorContainer = document.getElementById('mentor-cards-container');
+const searchInput = document.querySelector('.form-control[placeholder="Search Wisdom Keepers..."]');
+const filterItem = document.querySelectorAll('.filter-item');
+
+let allMentors = []; // store fetched mentors
+
+// ✅ Load mentors from backend
+async function loadMentors() {
+  try {
+    const token = localStorage.getItem('menteeToken'); // mentee ONLY
+    if (!token) {
+      console.error('No token found, redirect to login');
+      return;
+    }
+
+    const res = await fetch('http://localhost:5000/api/v1/mentors/explore', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    if (!res.ok) {
+      console.error(`❌ Failed to fetch mentors: ${res.status}`);
+      return;
+    }
+
+    const data = await res.json();
+
+    if (data.status === 'success') {
+      allMentors = data.data;
+      renderMentorCards(allMentors);
+    } else {
+      console.error('❌ Unexpected response:', data);
+    }
+  } catch (err) {
+    console.error('❌ Error loading mentors:', err);
+  }
+}
+// ✅ Render mentor cards
+function renderMentorCards(mentors) {
+  mentorContainer.innerHTML = '';
+
+  if (!mentors.length) {
+    mentorContainer.innerHTML = `<p class="text-center text-muted">No mentors found</p>`;
+    return;
+  }
+
+  mentors.forEach(m => {
+    // Parse expertise safely
+    let expertise = [];
+    try {
+      expertise = typeof m.expertise === 'string' ? JSON.parse(m.expertise) : (m.expertise || []);
+    } catch (e) {
+      expertise = [];
+    }
+
+    const card = document.createElement('a');
+    card.href = `adultpro.html?mentorId=${m.id}`;
+    card.classList.add('card-link');
+
+    card.innerHTML = `
+      <div class="elder-card">
+        <div class="elder-card-header">
+          <img src="${m.user?.picture || 'images/default-avatar.png'}" 
+            alt="${m.user?.name || 'Mentor'}" class="elder-photo" />
+        </div>
+        <div class="elder-card-body">
+          <h3 class="elder-name">
+            <span class="country-code" data-tooltip="${m.countryCode || 'NG'}">${m.countryCode || 'NG'}</span> 
+            ${m.user?.name || 'Unknown'}
+          </h3>
+          <p class="elder-offers">
+            <i class="fas fa-clipboard-list"></i> ${expertise.length ? expertise.join(', ') : 'N/A'}
+          </p>
+          <p class="elder-sessions">
+            <i class="fas fa-calendar-check"></i> ${m.sessions || 0} sessions (${m.reviews || 0} reviews)
+          </p>
+        </div>
+        <div class="elder-card-footer">
+          <div class="experience">
+            <p>Experience</p>
+            <span>${m.yearsOfExperience || 0} years</span>
+          </div>
+          <div class="attendance">
+            <p>Avg. Attendance</p>
+            <span>${m.attendance || '0%'}</span>
+          </div>
+        </div>
+      </div>
+    `;
+
+    mentorContainer.appendChild(card);
+  });
+}
+
+// ✅ Search mentors by name
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  const filtered = allMentors.filter(m => 
+    m.user?.name?.toLowerCase().includes(query)
+  );
+  renderMentorCards(filtered);
+});
+
+// ✅ Filter mentors by expertise
+filterItems.forEach(item => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+
+    // toggle active class
+    filterItems.forEach(f => f.classList.remove('active'));
+    item.classList.add('active');
+
+    const expertise = item.getAttribute('data-expertise');
+
+    if (expertise === "all") {
+      // Show all mentors
+      renderMentorCards(allMentors);
+      return;
+    }
+
+    // Filter mentors by expertise
+    const filtered = allMentors.filter(m => {
+      let expList = [];
+      try {
+        expList = typeof m.expertise === 'string' ? JSON.parse(m.expertise) : (m.expertise || []);
+      } catch (e) {}
+      return expList.includes(expertise);
+    });
+
+    renderMentorCards(filtered);
+  });
+});
+
+
+// Run initial load
+loadMentors();

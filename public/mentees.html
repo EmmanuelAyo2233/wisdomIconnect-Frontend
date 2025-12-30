@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentees - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-user-shield"></i> Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="pending-mentors.html"><i class="fas fa-clock"></i> Pending Mentors</a></li>
+                <li><a href="approved-mentors.html"><i class="fas fa-check-circle"></i> Approved Mentors</a></li>
+                <li><a href="rejected-mentors.html"><i class="fas fa-times-circle"></i> Rejected Mentors</a></li>
+                <li><a href="mentees.html" class="active"><i class="fas fa-users"></i> Mentees</a></li>
+                <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1>Mentees</h1>
+                <div class="admin-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin User</span>
+                </div>
+            </header>
+
+            <!-- Search and Filter -->
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-mentees" placeholder="Search mentees...">
+                </div>
+                <div class="filter-dropdown">
+                    <select id="status-filter-mentees">
+                        <option value="">All Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Mentees Table -->
+            <div class="content-section">
+                <div class="table-container">
+                    <table class="mentors-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Interests</th>
+                                <th>Bio</th>
+                                <th>Status</th>
+                                <th>Join Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mentees-table">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mentee Details Modal -->
+    <div id="mentee-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mentee Details</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="mentor-profile">
+                    <div class="profile-picture">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="modal-name"></h3>
+                        <p id="modal-email"></p>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <div class="detail-section">
+                        <h4>Interests</h4>
+                        <div id="modal-interests" class="expertise-tags"></div>
+                    </div>
+                    <div class="detail-section">
+                        <h4>bio</h4>
+                        <p id="modal-bio"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Status</h4>
+                        <p id="modal-status"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Join Date</h4>
+                        <p id="modal-join-date"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeMenteeModal()">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="mentees.js"></script>
+</body>
+</html>

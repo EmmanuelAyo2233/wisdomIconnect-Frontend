@@ -11,6 +11,88 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("mentorToken");
+  const bannerEl = document.getElementById("banner");
+  const bannerIcon = document.getElementById("banner-icon");
+  const bannerMsg = document.getElementById("banner-text");
+  const bannerClose = document.getElementById("banner-close");
+
+  if (!token) {
+    window.location.href = "/public/login.html";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const result = await res.json();
+
+    if (res.ok && result.status === "success") {
+      const user = result.data;
+
+      // Welcome message
+      const firstName = user.name ? user.name.split(" ")[0] : "";
+      document.getElementById("welcome-text").textContent =
+        `Welcome 👋 ${firstName}`;
+
+      // --- Banner logic ---
+      let bannerText = null;
+      let bannerType = "info";
+
+      if (user.userType === "mentor") {
+        if (user.status === "pending") {
+          bannerText = "Your mentor account is under review. You’re not visible in search or bookings yet.";
+          bannerType = "warning";
+        } else if (user.status === "approved") {
+          bannerText = "You are approved! You can now create sessions and start mentoring.";
+          bannerType = "success";
+        }
+      }
+
+      if (bannerText) {
+        bannerMsg.textContent = bannerText;
+
+        // icon & styling
+        switch (bannerType) {
+          case "warning":
+            bannerIcon.textContent = "⚠️";
+            bannerEl.className = "banner warning";
+            break;
+          case "success":
+            bannerIcon.textContent = "✅";
+            bannerEl.className = "banner success";
+            break;
+          case "info":
+            bannerIcon.textContent = "ℹ️";
+            bannerEl.className = "banner info";
+            break;
+        }
+
+        bannerEl.style.display = "flex";
+      }
+
+      // --- Close button ---
+      bannerClose.addEventListener("click", () => {
+        bannerEl.style.display = "none";
+      });
+
+    } else {
+      console.error("Failed to fetch user details:", result.message);
+    }
+
+  } catch (err) {
+    console.error("Error fetching user details:", err);
+  }
+});
+
+
 const menuToggle = document.getElementById('menuToggle');
 const slidingMenu = document.getElementById('slidingMenu');
 const cancelBtn = document.getElementById('cancelBtn');
@@ -32,62 +114,7 @@ body.addEventListener('click', (event) => {
     }
 });
 
-const prevArrow = document.getElementById('prevArrow');
-const nextArrow = document.getElementById('nextArrow');
-const cardContainer = document.querySelector('.card-container');
-const cardItems = document.querySelectorAll('.card-item');
 
-let currentIndex = 0;
-let visibleCards = getVisibleCardsCount(); 
-
-
-function getVisibleCardsCount() {
-    if (window.innerWidth <= 768) {
-        return 2; 
-    } else if (window.innerWidth <= 1024) {
-        return 3;
-    } else {
-        return 4;
-    }
-}
-
-function updateVisibleCards() {
-    visibleCards = getVisibleCardsCount(); 
-
-    cardItems.forEach((card, index) => {
-        if (index >= currentIndex && index < currentIndex + visibleCards - 1) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-
-    
-    cardItems[0].style.display = 'block';
-
-    prevArrow.classList.toggle('disabled', currentIndex === 0);
-    nextArrow.classList.toggle('disabled', currentIndex >= cardItems.length - (visibleCards - 1));
-}
-
-function changeCards(direction) {
-    const slideCount = visibleCards - 1; 
-
-    if (direction === 'next' && currentIndex < cardItems.length - slideCount) {
-        currentIndex += slideCount;
-    } else if (direction === 'prev' && currentIndex > 0) {
-        currentIndex -= slideCount;
-    }
-
-    updateVisibleCards();
-}
-
-prevArrow.addEventListener('click', () => changeCards('prev'));
-nextArrow.addEventListener('click', () => changeCards('next'));
-
-
-window.addEventListener('resize', updateVisibleCards);
-
-window.addEventListener('load', updateVisibleCards);
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -111,195 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', adjustLayout);
 });
 
-
-
-// Modal Elements
-const openModalButton = document.getElementById('openModalButton');
-const feedbackModal = document.getElementById('feedbackModal');
-const closeModalButton = document.getElementById('closeModalButton');
-const feedbackList = document.getElementById('feedbackList');
-const confirmationModal = document.getElementById('confirmationModal');
-const confirmDeleteButton = document.getElementById('confirmDeleteButton');
-const cancelDeleteButton = document.getElementById('cancelDeleteButton');
-
-let feedbackToDelete = null; 
-
-openModalButton.addEventListener('click', () => {
-    feedbackModal.style.display = 'flex';
-});
-
-closeModalButton.addEventListener('click', () => {
-    feedbackModal.style.display = 'none';
-});
-
-
-window.addEventListener('click', (event) => {
-    if (event.target === feedbackModal) {
-        feedbackModal.style.display = 'none';
-    }
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const storedFeedback = JSON.parse(localStorage.getItem('feedback')) || [];
-    storedFeedback.forEach(feedback => addFeedbackToList(feedback));
-});
-
-
-const feedbackForm = document.getElementById('feedbackForm');
-feedbackForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const elderName = document.getElementById('elderName').value;
-    const topic = document.getElementById('topic').value;
-    const feedbackText = document.getElementById('feedbackText').value;
-    const date = new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    });
-
-  
-    const feedback = {
-        id: Date.now(),
-        elderName,
-        topic,
-        feedbackText,
-        date
-    };
-
-  
-    addFeedbackToList(feedback);
-    saveFeedbackToLocalStorage(feedback);
-
-  
-    feedbackForm.reset();
-    feedbackModal.style.display = 'none';
-
-    alert('Feedback submitted successfully!');
-});
-
-
-function addFeedbackToList(feedback) {
-    const newFeedback = document.createElement('div');
-    newFeedback.classList.add('feedback-card');
-    newFeedback.dataset.id = feedback.id;
-    newFeedback.innerHTML = `
-        <p><strong>Elder:</strong> ${feedback.elderName}</p>
-        <p><strong>Topic:</strong> ${feedback.topic}</p>
-        <p class="feedback-text">"${feedback.feedbackText}"</p>
-        <p class="feedback-date">Submitted on: ${feedback.date}</p>
-        <button class="delete-feedback-btn">Delete</button>
-    `;
-
-    feedbackList.appendChild(newFeedback);
-
-    
-    newFeedback.querySelector('.delete-feedback-btn').addEventListener('click', () => {
-        openConfirmationModal(feedback.id);
-    });
-}
-
-
-function saveFeedbackToLocalStorage(feedback) {
-    const storedFeedback = JSON.parse(localStorage.getItem('feedback')) || [];
-    storedFeedback.push(feedback);
-    localStorage.setItem('feedback', JSON.stringify(storedFeedback));
-}
-
-
-function openConfirmationModal(feedbackId) {
-    feedbackToDelete = feedbackId; 
-    confirmationModal.style.display = 'flex';
-}
-
-function closeConfirmationModal() {
-    confirmationModal.style.display = 'none';
-    feedbackToDelete = null;
-}
-
-confirmDeleteButton.addEventListener('click', () => {
-    if (feedbackToDelete) {
-        deleteFeedback(feedbackToDelete);
-        closeConfirmationModal(); 
-    }
-});
-
-cancelDeleteButton.addEventListener('click', () => {
-    closeConfirmationModal(); 
-});
-
-function deleteFeedback(id) {
-    const storedFeedback = JSON.parse(localStorage.getItem('feedback')) || [];
-    const updatedFeedback = storedFeedback.filter(feedback => feedback.id !== id);
-
-   
-    localStorage.setItem('feedback', JSON.stringify(updatedFeedback));
-
-  
-    const feedbackCard = document.querySelector(`.feedback-card[data-id="${id}"]`);
-    if (feedbackCard) {
-        feedbackCard.remove();
-    }
-}
-
-const tips = [
-    {
-        title: "#1 Tips for Success",
-        topic: "How to prepare for your first meeting?",
-        text: "Plan an agenda! Plan out the questions and topics you'd like to discuss. If you'd like to work together on long-term goals, set some time to discuss expectations for each other."
-    },
-    {
-        title: "#2 Tips for Success",
-        topic: "Research your mentor or expert.",
-        text: "Learn about their background, expertise, and areas of interest to make the session more engaging and relevant."
-    },
-    {
-        title: "#3 Tips for Success",
-        topic: "Clarify your session goals.",
-        text: "Identify what you want to achieve—whether it's gaining specific insights, solving a problem, or getting guidance on a project."
-    },
-    {
-        title: "#4 Tips for Success",
-        topic: "Prepare relevant materials.",
-        text: "Gather documents, reports, or other resources that can guide the discussion effectively."
-    },
-    {
-        title: "#5 Tips for Success",
-        topic: "Engage and follow up.",
-        text: "Take notes during the session, show enthusiasm, and send a thank-you note with key takeaways after the meeting."
-    }
-];
-
-let currentTipIndex = 0;
-
-const tipTitleElement = document.getElementById("tip-title");
-const tipTopicElement = document.getElementById("tip-topic");
-const tipTextElement = document.getElementById("tip-text");
-const prevTipButton = document.getElementById("prev-tip");
-const nextTipButton = document.getElementById("next-tip");
-
-// Function to update the displayed tip
-function updateTip() {
-    const tip = tips[currentTipIndex];
-    tipTitleElement.textContent = tip.title;
-    tipTopicElement.textContent = tip.topic;
-    tipTextElement.textContent = tip.text;
-}
-
-// Event listeners for navigation
-prevTipButton.addEventListener("click", () => {
-    currentTipIndex = (currentTipIndex - 1 + tips.length) % tips.length;
-    updateTip();
-});
-
-nextTipButton.addEventListener("click", () => {
-    currentTipIndex = (currentTipIndex + 1) % tips.length;
-    updateTip();
-});
-
-// Initialize the first tip
-updateTip();
 
 
 
@@ -468,4 +306,111 @@ document.addEventListener("DOMContentLoaded", function () {
             dropdown.style.display = "none";
         }
     });
+});
+
+
+//  const btn = document.querySelector('.dropdown-btn');
+//   const menu = document.querySelector('.dropdown-menu');
+
+//   btn.addEventListener('click', () => {
+//     menu.classList.toggle('show');
+//   });
+
+//   document.addEventListener('click', (e) => {
+//     if (!btn.contains(e.target) && !menu.contains(e.target)) {
+//       menu.classList.remove('show');
+//     }
+//   });
+
+
+
+
+  // ===================
+// Dashboard Profile Loader
+// ===================
+
+// Utility: Update all profile images across dashboard
+function updateDashboardProfileImages(imageUrl) {
+  const profileImgs = document.querySelectorAll(
+    ".profile-pic1, .profile-img, .hover-profile-pic"
+  );
+  profileImgs.forEach((img) => {
+    img.src = `${imageUrl}?t=${Date.now()}`; // prevent caching old one
+  });
+}
+
+// On Page Load
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("mentorToken");
+  let userData = JSON.parse(localStorage.getItem("userData"));
+
+  // If we already cached profile
+  if (userData?.picture) {
+    updateDashboardProfileImages(userData.picture);
+  }
+
+  // Also fetch fresh from backend to be sure
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const data = await res.json();
+    if (data.status === "success") {
+      userData = data.data;
+
+      // Save in localStorage for next reload
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      // Update everywhere
+      if (userData.picture) {
+        updateDashboardProfileImages(userData.picture);
+      }
+    }
+  } catch (err) {
+    console.error("Failed to fetch user data for dashboard:", err);
+  }
+});
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("mentorToken");
+
+  if (!token) {
+    window.location.href = "/public/login.html";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const result = await res.json();
+    console.log("User API result:", result);
+
+    if (res.ok && result.status === "success") {
+      const user = result.data;
+      const fullName = user.name || "Unknown User";
+
+      // Replace text in both sidebar + mobile
+      const profileNameEls = document.querySelectorAll(".profile-name");
+      const hoverProfileNameEls = document.querySelectorAll(".hover-profile-name");
+
+      profileNameEls.forEach(el => el.textContent = fullName);
+      hoverProfileNameEls.forEach(el => el.textContent = fullName);
+    } else {
+      console.error("Failed to fetch user details:", result.message);
+    }
+  } catch (err) {
+    console.error("Error fetching user details:", err);
+  }
 });

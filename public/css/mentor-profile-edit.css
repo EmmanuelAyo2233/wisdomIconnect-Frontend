@@ -1074,8 +1074,8 @@ body{
     display: flex;
     gap: 12px;
     position: absolute;
-    top: 55px;
-    right: 15px;
+    top: 50px;
+    right: 190px;
     padding: 8px;
     border-radius: 10px;
 }
@@ -1109,8 +1109,8 @@ body{
 .menu-box {
     display: none;
     position: absolute;
-    right: 0;
-    top: 270px;
+    right: 20px;
+    top: 230px;
     padding: 10px;
     background: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -1339,7 +1339,7 @@ body{
         width: 130px;
         height: 130px;
         border-radius: 50%;
-        overflow: hidden;
+       
         border: 4px solid white;
         background: white;
         display: flex;
@@ -2344,7 +2344,7 @@ th, td {
     position: relative;
   }
   
-  .profile-img {
+  .profile-img3 {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -2926,6 +2926,363 @@ button:disabled {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+
+
+
+
+
+/* === Modal Overlay === */
+.modal3 {
+  display: none; /* Hidden by default */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal3.show {
+  display: flex; /* Show modal */
+}
+
+/* === Modal Box === */
+.modal__content {
+  background: #fff;
+  width: min(700px, 95%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  padding: 1.5rem 1.8rem;
+  position: relative;
+  animation: modalFade 0.25s ease-out;
+}
+
+/* Animation */
+@keyframes modalFade {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Header === */
+.modal__title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #b22222;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f3f3f3;
+  padding-bottom: 0.6rem;
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  font-size: 1.8rem;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal__close:hover { color: #b22222; }
+
+/* === Form Elements === */
+.form-group {
+  margin-bottom: 1rem;
+}
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  display: block;
+  color: #222;
+}
+input, textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: #b22222;
+  box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.2);
+  outline: none;
+}
+
+/* === Tags (Expertise, Discipline, Languages) === */
+.taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: default;
+}
+.tag button {
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Tag Colors */
+#expertiseTags .tag {
+  background: #fde2e2;
+  color: #b22222;
+  border: 1px solid #b22222;
+}
+#disciplineTags .tag {
+  background: #e2f7e2;
+  color: #1b5e20;
+  border: 1px solid #1b5e20;
+}
+#languageTags .tag {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border: 1px solid #0d47a1;
+}
+
+/* === Add Buttons === */
+.btn {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 14px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+.btn:hover { background: #f5f5f5; }
+
+.btn-add {
+  background: #fff8f8;
+  border-color: #f8d7da;
+  color: #b22222;
+  font-weight: 600;
+}
+.btn-add:hover { background: #fde2e2; }
+
+/* === Primary & Cancel Buttons === */
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+.btn-primary {
+  background: #b22222;
+  color: #fff;
+  border: 1px solid #b22222;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: #a11d1d;
+}
+#cancelBtn3 {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+}
+#cancelBtn3:hover {
+  background: #f1f1f1;
+}
+
+
+
+.short-text {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.long-text {
+  font-size: 16px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.long-text.expanded {
+  max-height: 500px; /* big enough for most bios */
+  opacity: 1;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: bold;
+  color: #b22222; /* LinkedIn-blue style */
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.read-more:hover {
+  color: #b22222;
+}
+
+
+
+.profile-ui-taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.profile-ui-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  background: #fde2e2;
+  color: #b22222;
+  border: 1px solid #b22222;
+  white-space: nowrap;
+}
+
+.profile-ui-tag.more {
+  background: #f0f0f0;
+  color: #555;
+  font-weight: 500;
+}
+
+.profile-ui-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 6px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.profile-ui-dropdown .profile-ui-tag {
+  display: block;
+  padding: 4px 10px;
+  margin: 2px 6px;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+/* === Primary Button in Modal === */
+.btn-primary {
+  background: #b22222;        /* red background */
+  color: #fff;                 /* white text */
+  border: 1px solid #b22222;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: #a11d1d;        /* slightly darker on hover */
+  transform: translateY(-1px);
+}
+
+/* === Cancel Button in Modal === */
+#cancelBtn3 {
+  background: #fff8f8;         /* light background */
+  border: 1px solid #b22222;  /* red border */
+  color: #b22222;              /* red text */
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#cancelBtn3:hover {
+  background: #fde2e2;         /* slightly darker red-ish background */
+  transform: translateY(-1px);
+}
+
+
+
+/* === Tag Remove Button === */
+.remove {
+  border: none;
+  background:#b22222 ;
+  color: #aaa;         /* red color */
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 12px 12px;
+  line-height: 1;
+  transition: color 0.2s, transform 0.1s;
+}
+
+.remove:hover {   
+  background-color:#a11d1d ;    /* darker red on hover */
+  transform: scale(1.2);   /* slight pop effect */
+}
+
+
+
+.user-profile-img {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: visible; /* allow pencil to appear outside */
+  border: 2px solid #fde2e2; /* optional border */
+}
+
+.user-profile-img img {
+  width: 100%;
+  height: 100%;
+    border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-img-pencil {
+  position: absolute;
+  top: -2px;          /* moves pencil above the image */
+  right: -2px;
+  bottom: -200px;        /* adjust horizontal position */
+  background: #b22222;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  border: 2px solid #fff; /* optional white border for contrast */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.profile-img-pencil:hover {
+  background: #a11d1d;
+  transform: scale(1.1);
 }
 
 

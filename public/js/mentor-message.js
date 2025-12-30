@@ -318,3 +318,107 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+//  const btn = document.querySelector('.dropdown-btn');
+//   const menu = document.querySelector('.dropdown-menu');
+
+//   btn.addEventListener('click', () => {
+//     menu.classList.toggle('show');
+//   });
+
+//   document.addEventListener('click', (e) => {
+//     if (!btn.contains(e.target) && !menu.contains(e.target)) {
+//       menu.classList.remove('show');
+//     }
+//   });
+
+
+
+
+  // Utility: Update all profile images across dashboard
+function updateDashboardProfileImages(imageUrl) {
+  const profileImgs = document.querySelectorAll(
+    ".profile-pic1, .profile-img, .hover-profile-pic"
+  );
+
+  profileImgs.forEach((img) => {
+    img.src = `${imageUrl}?t=${Date.now()}`; // prevent caching old one
+  });
+}
+
+// On Page Load
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("mentorToken");
+  let userData = JSON.parse(localStorage.getItem("userData"));
+
+  // If we already cached profile
+  if (userData?.picture) {
+    updateDashboardProfileImages(userData.picture);
+  }
+
+  // Also fetch fresh from backend to be sure
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const data = await res.json();
+    if (data.status === "success") {
+      userData = data.data;
+
+      // Save in localStorage for next reload
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      // Update everywhere
+      if (userData.picture) {
+        updateDashboardProfileImages(userData.picture);
+      }
+    }
+  } catch (err) {
+    console.error("Failed to fetch user data for dashboard:", err);
+  }
+});
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("mentorToken");
+
+  if (!token) {
+    window.location.href = "/public/login.html";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/user/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const result = await res.json();
+    console.log("User API result:", result);
+
+    if (res.ok && result.status === "success") {
+      const user = result.data;
+      const fullName = user.name || "Unknown User";
+
+      // Replace text in both sidebar + mobile
+      const profileNameEls = document.querySelectorAll(".profile-name");
+      const hoverProfileNameEls = document.querySelectorAll(".hover-profile-name");
+
+      profileNameEls.forEach(el => el.textContent = fullName);
+      hoverProfileNameEls.forEach(el => el.textContent = fullName);
+    } else {
+      console.error("Failed to fetch user details:", result.message);
+    }
+  } catch (err) {
+    console.error("Error fetching user details:", err);
+  }
+});
